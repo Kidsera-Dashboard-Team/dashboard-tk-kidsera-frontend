@@ -7,7 +7,7 @@
             <ion-grid>
                 <ion-row class="ion-justify-content-between">
                     <ion-col size="3" size-xl="6">
-                        <ion-title class="d-none d-xl-inline-block" size="small"><span style="opacity: 50%;">Pages</span> / Guru & Tenaga Kependidikan <br> <span style="font-size: 18px; letter-spacing: 3.5px;">Guru & Tenaga Kependidikan</span>
+                        <ion-title class="d-none d-xl-inline-block" size="small"><span style="opacity: 100%;">Pages</span> / Sarana & Prasarana <br> <span style="font-size: 18px; letter-spacing: 3.5px;">Sarana & Prasarana</span>
                         </ion-title>
                     </ion-col>
                     <ion-col size-sm="9" size="10" size-xl="6">
@@ -38,54 +38,18 @@
                         <ion-card class="m-5 p-3 rounded text-center">
                             <ion-card-header>
                                 <ion-card-title>
-                                    <h4>Tambah Data Tenaga Kependidikan</h4>
+                                    <h4>Tambah Ruangan</h4>
                                 </ion-card-title>
                             </ion-card-header>
                             <ion-card-content class="d-grid gap-3">
                                 <ion-item fill="outline">
-                                    <ion-label position="floating">Nama</ion-label>
+                                    <ion-label position="floating">Nama Ruang</ion-label>
                                     <ion-input placeholder="Masukkan Nama" required></ion-input>
                                 </ion-item>
-                                <ion-item fill="outline">
-                                    <ion-label position="floating">Jenis Kelamin</ion-label>
-                                    <ion-input placeholder="Masukkan Jenis Kelamin" required></ion-input>
-                                </ion-item>
-                                <ion-item fill="outline">
-                                    <ion-label position="floating">No. HP</ion-label>
-                                    <ion-input placeholder="Masukkan No. HP" required></ion-input>
-                                </ion-item>
-                                <ion-item fill="outline">
-                                    <ion-label position="floating">Email</ion-label>
-                                    <ion-input placeholder="Masukkan Email" required></ion-input>
-                                </ion-item>
-                                <ion-item fill="outline">
-                                    <ion-label position="floating" >Tempat, Tanggal Lahir</ion-label>
-                                    <ion-input placeholder="Masukkan Tempat, Tanggal Lahir" required></ion-input>
-                                </ion-item>
-                                <ion-row class="checkbox-custom">
-                                    <ion-col size-xl="3" size-xs="12">
-                                        <ion-item lines="none">
-                                            <ion-checkbox slot="start"></ion-checkbox>
-                                            <ion-label>Guru</ion-label>
-                                        </ion-item>
-                                    </ion-col>
-                                    <ion-col>
-                                        <ion-item lines="none">
-                                            <ion-checkbox slot="start"></ion-checkbox>
-                                            <ion-label>Non Guru</ion-label>
-                                        </ion-item>
-                                    </ion-col>
-                                </ion-row>
-                                <div>
-                                    <ion-row class="ion-justify-content-center row-button">
-                                        <ion-col size="6" size-sm="2">
-                                            <a class="btn btn-danger" href="/pages/Sarpras/DetailSarpras" role="button">Batalkan</a>
-                                        </ion-col>
-                                        <ion-col size="6" size-sm="2">
-                                            <a class="btn btn-success" role="button" href="javascript: doSomethingForAddSarprasFasilitas()">Tambah</a>
-                                        </ion-col>
-                                    </ion-row>
-                                </div>
+                                <ion-button class="m-auto" expand="block" color="=" href="" 
+                                    style="width: 60%; background-image: linear-gradient(to right, #3A416F, #141727);" >
+                                    Simpan
+                                </ion-button>
                             </ion-card-content>
                         </ion-card>
                     </ion-col>
@@ -113,7 +77,8 @@ import {
     IonCardTitle,
     IonInput,
     IonItem,
-    IonLabel
+    IonLabel,
+    IonButton
 } from '@ionic/vue';
 
 export default defineComponent({
@@ -134,7 +99,8 @@ export default defineComponent({
         IonCardTitle,
         IonInput,
         IonItem,
-        IonLabel
+        IonLabel,
+        IonButton
     }
 });
 </script>
@@ -146,6 +112,10 @@ ion-col {
     padding: 0;
 }
 
+.sabeb{
+  text-decoration: none;
+  color: linear-gradient(to right, #3A416F, #141727);
+}
 /* Icon navbar style */
 a .iconButton {
     color: black;

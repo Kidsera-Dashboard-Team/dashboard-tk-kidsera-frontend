@@ -7,17 +7,21 @@
             <ion-grid>
                 <ion-row class="ion-justify-content-between">
                     <ion-col size="3" size-xl="6">
-                        <ion-title class="d-none d-xl-inline-block" size="small"><span style="opacity: 50%;">Pages</span> / Sarana & Prasarana <br> <span style="font-size: 18px; letter-spacing: 3.5px;">Sarana & Prasarana</span>
+                        <ion-title class="d-none d-xl-inline-block" size="small"><span
+                                style="opacity: 50%;">Pages</span> / Sarana & Prasarana <br> <span
+                                style="font-size: 18px; letter-spacing: 3.5px;">Sarana & Prasarana</span>
                         </ion-title>
                     </ion-col>
                     <ion-col size-sm="9" size="10" size-xl="6">
-                        <ion-row class="ion-align-items-center ion-justify-content-end goright mt-2" style="margin-right: 20px;">
+                        <ion-row class="ion-align-items-center ion-justify-content-end goright mt-2"
+                            style="margin-right: 20px;">
                             <div class="search-box">
                                 <button class="btn-search"><i class="fas fa-search"></i></button>
                                 <input type="text" class="input-search" placeholder="Type to Search...">
                             </div>
                             <a href="pages/SignIn">
-                                <ion-icon class="iconButton" src="assets/icon/home.svg"></ion-icon><span class="d-none d-sm-inline-block text-dark">&nbsp;Sign in</span>
+                                <ion-icon class="iconButton" src="assets/icon/home.svg"></ion-icon><span
+                                    class="d-none d-sm-inline-block text-dark">&nbsp;Sign in</span>
                             </a>
                             <a href="">
                                 <ion-icon class="iconButton" src="assets/icon/settings-sharp.svg"> </ion-icon>
@@ -30,7 +34,7 @@
                 </ion-row>
             </ion-grid>
         </ion-toolbar>
-    
+
         <ion-content :fullscreen="true">
             <ion-card class="rounded card-content">
                 <ion-card-header class="ion-text-justify">
@@ -41,15 +45,16 @@
                             </ion-card-title>
                         </ion-col>
                         <ion-col size-xl="6" size-md="6" size-xs="auto">
-                            <a href="/pages/Sarpras/DetailSarpras/TambahFasilitasSarpras" class="btn btn-success float-end tambah">Tambah Fasilitas</a>
+                            <a href="/pages/Sarpras/DetailSarpras/TambahFasilitasSarpras"
+                                class="btn btn-success float-end tambah">Tambah Fasilitas</a>
                         </ion-col>
                     </ion-row>
                 </ion-card-header>
-    
+
                 <ion-card-content>
-                    <ion-searchbar show-cancel-button="focus" placeholder="Show on Focus"></ion-searchbar>
+                    <!-- <ion-searchbar show-cancel-button="focus" placeholder="Show on Focus"></ion-searchbar> -->
                     <div class="table-responsive">
-                        <table class="table table-borderless table-hover">
+                        <table class="table table-borderless table-hover display" id="example">
                             <thead>
                                 <tr>
                                     <th scope="col" class="text-center text-secondary opacity-7">Fasilitas</th>
@@ -65,34 +70,150 @@
                                     <td class="text-center">Sarana</td>
                                     <td class="text-center">10</td>
                                     <td class="text-center">2 Desember 2022</td>
-                                    <td class="text-center"><a href="/pages/Sarpras/DetailSarpras/EditSarpras"><button type="button" class="btn btn-warning btn-sm text-uppercase text-white fw-bold p-2">Edit</button></a> <a href=""><button type="button" class="btn btn-danger btn-sm text-uppercase text-white fw-bold p-2">Delete</button></a></td>
+                                    <td class="text-center"><a href="/pages/Sarpras/DetailSarpras/EditSarpras"><button
+                                                type="button"
+                                                class="btn btn-warning btn-sm text-uppercase text-white fw-bold p-2">Edit</button></a>
+                                        <a href=""><button type="button"
+                                                class="btn btn-danger btn-sm text-uppercase text-white fw-bold p-2">Delete</button></a>
+                                    </td>
                                 </tr>
                                 <tr>
                                     <td class="text-center">Meja</td>
                                     <td class="text-center">Sarana</td>
                                     <td class="text-center">10</td>
                                     <td class="text-center">2 Desember 2022</td>
-                                    <td class="text-center"><a href="/pages/Sarpras/DetailSarpras/EditSarpras"><button type="button" class="btn btn-warning btn-sm text-uppercase text-white fw-bold p-2">Edit</button></a> <a href=""><button type="button" class="btn btn-danger btn-sm text-uppercase text-white fw-bold p-2">Delete</button></a></td>
+                                    <td class="text-center"><a href="/pages/Sarpras/DetailSarpras/EditSarpras"><button
+                                                type="button"
+                                                class="btn btn-warning btn-sm text-uppercase text-white fw-bold p-2">Edit</button></a>
+                                        <a href=""><button type="button"
+                                                class="btn btn-danger btn-sm text-uppercase text-white fw-bold p-2">Delete</button></a>
+                                    </td>
                                 </tr>
                                 <tr>
                                     <td class="text-center">Buku Tulis</td>
                                     <td class="text-center">ATK</td>
                                     <td class="text-center">10</td>
                                     <td class="text-center">2 Desember 2022</td>
-                                    <td class="text-center"><a href="/pages/Sarpras/DetailSarpras/EditSarpras"><button type="button" class="btn btn-warning btn-sm text-uppercase text-white fw-bold p-2">Edit</button></a> <a href=""><button type="button" class="btn btn-danger btn-sm text-uppercase text-white fw-bold p-2">Delete</button></a></td>
+                                    <td class="text-center"><a href="/pages/Sarpras/DetailSarpras/EditSarpras"><button
+                                                type="button"
+                                                class="btn btn-warning btn-sm text-uppercase text-white fw-bold p-2">Edit</button></a>
+                                        <a href=""><button type="button"
+                                                class="btn btn-danger btn-sm text-uppercase text-white fw-bold p-2">Delete</button></a>
+                                    </td>
                                 </tr>
                                 <tr>
                                     <td class="text-center">Puzle</td>
                                     <td class="text-center">Alat Permainan Edukatif</td>
                                     <td class="text-center">1</td>
                                     <td class="text-center">2 Desember 2022</td>
-                                    <td class="text-center"><a href="/pages/Sarpras/DetailSarpras/EditSarpras"><button type="button" class="btn btn-warning btn-sm text-uppercase text-white fw-bold p-2">Edit</button></a> <a href=""><button type="button" class="btn btn-danger btn-sm text-uppercase text-white fw-bold p-2">Delete</button></a></td>
+                                    <td class="text-center"><a href="/pages/Sarpras/DetailSarpras/EditSarpras"><button
+                                                type="button"
+                                                class="btn btn-warning btn-sm text-uppercase text-white fw-bold p-2">Edit</button></a>
+                                        <a href=""><button type="button"
+                                                class="btn btn-danger btn-sm text-uppercase text-white fw-bold p-2">Delete</button></a>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="text-center">Kursi</td>
+                                    <td class="text-center">Sarana</td>
+                                    <td class="text-center">10</td>
+                                    <td class="text-center">2 Desember 2022</td>
+                                    <td class="text-center"><a href="/pages/Sarpras/DetailSarpras/EditSarpras"><button
+                                                type="button"
+                                                class="btn btn-warning btn-sm text-uppercase text-white fw-bold p-2">Edit</button></a>
+                                        <a href=""><button type="button"
+                                                class="btn btn-danger btn-sm text-uppercase text-white fw-bold p-2">Delete</button></a>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="text-center">Meja</td>
+                                    <td class="text-center">Sarana</td>
+                                    <td class="text-center">10</td>
+                                    <td class="text-center">2 Desember 2022</td>
+                                    <td class="text-center"><a href="/pages/Sarpras/DetailSarpras/EditSarpras"><button
+                                                type="button"
+                                                class="btn btn-warning btn-sm text-uppercase text-white fw-bold p-2">Edit</button></a>
+                                        <a href=""><button type="button"
+                                                class="btn btn-danger btn-sm text-uppercase text-white fw-bold p-2">Delete</button></a>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="text-center">Buku Tulis</td>
+                                    <td class="text-center">ATK</td>
+                                    <td class="text-center">10</td>
+                                    <td class="text-center">2 Desember 2022</td>
+                                    <td class="text-center"><a href="/pages/Sarpras/DetailSarpras/EditSarpras"><button
+                                                type="button"
+                                                class="btn btn-warning btn-sm text-uppercase text-white fw-bold p-2">Edit</button></a>
+                                        <a href=""><button type="button"
+                                                class="btn btn-danger btn-sm text-uppercase text-white fw-bold p-2">Delete</button></a>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="text-center">Puzle</td>
+                                    <td class="text-center">Alat Permainan Edukatif</td>
+                                    <td class="text-center">1</td>
+                                    <td class="text-center">2 Desember 2022</td>
+                                    <td class="text-center"><a href="/pages/Sarpras/DetailSarpras/EditSarpras"><button
+                                                type="button"
+                                                class="btn btn-warning btn-sm text-uppercase text-white fw-bold p-2">Edit</button></a>
+                                        <a href=""><button type="button"
+                                                class="btn btn-danger btn-sm text-uppercase text-white fw-bold p-2">Delete</button></a>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="text-center">Kursi</td>
+                                    <td class="text-center">Sarana</td>
+                                    <td class="text-center">10</td>
+                                    <td class="text-center">2 Desember 2022</td>
+                                    <td class="text-center"><a href="/pages/Sarpras/DetailSarpras/EditSarpras"><button
+                                                type="button"
+                                                class="btn btn-warning btn-sm text-uppercase text-white fw-bold p-2">Edit</button></a>
+                                        <a href=""><button type="button"
+                                                class="btn btn-danger btn-sm text-uppercase text-white fw-bold p-2">Delete</button></a>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="text-center">Meja</td>
+                                    <td class="text-center">Sarana</td>
+                                    <td class="text-center">10</td>
+                                    <td class="text-center">2 Desember 2022</td>
+                                    <td class="text-center"><a href="/pages/Sarpras/DetailSarpras/EditSarpras"><button
+                                                type="button"
+                                                class="btn btn-warning btn-sm text-uppercase text-white fw-bold p-2">Edit</button></a>
+                                        <a href=""><button type="button"
+                                                class="btn btn-danger btn-sm text-uppercase text-white fw-bold p-2">Delete</button></a>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="text-center">Buku Tulis</td>
+                                    <td class="text-center">ATK</td>
+                                    <td class="text-center">10</td>
+                                    <td class="text-center">2 Desember 2022</td>
+                                    <td class="text-center"><a href="/pages/Sarpras/DetailSarpras/EditSarpras"><button
+                                                type="button"
+                                                class="btn btn-warning btn-sm text-uppercase text-white fw-bold p-2">Edit</button></a>
+                                        <a href=""><button type="button"
+                                                class="btn btn-danger btn-sm text-uppercase text-white fw-bold p-2">Delete</button></a>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="text-center">Puzle</td>
+                                    <td class="text-center">Alat Permainan Edukatif</td>
+                                    <td class="text-center">1</td>
+                                    <td class="text-center">2 Desember 2022</td>
+                                    <td class="text-center"><a href="/pages/Sarpras/DetailSarpras/EditSarpras"><button
+                                                type="button"
+                                                class="btn btn-warning btn-sm text-uppercase text-white fw-bold p-2">Edit</button></a>
+                                        <a href=""><button type="button"
+                                                class="btn btn-danger btn-sm text-uppercase text-white fw-bold p-2">Delete</button></a>
+                                    </td>
                                 </tr>
                             </tbody>
                         </table>
                     </div>
-    
-                    <nav aria-label="Page navigation example">
+
+                    <!-- <nav aria-label="Page navigation example">
                         <ul class="pagination">
                             <li class="page-item"><a class="page-link" href="#">Previous</a></li>
                             <li class="page-item"><a class="page-link" href="/pages/Sarpras/DetailSarpras">1</a></li>
@@ -100,7 +221,7 @@
                             <li class="page-item"><a class="page-link" href="#">3</a></li>
                             <li class="page-item"><a class="page-link" href="#">Next</a></li>
                         </ul>
-                    </nav>
+                    </nav> -->
                 </ion-card-content>
             </ion-card>
         </ion-content>
@@ -109,7 +230,7 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue';
-import { IonButtons, IonContent, IonMenuButton, IonPage, IonTitle, IonToolbar, IonCol, IonGrid, IonRow, IonSearchbar } from '@ionic/vue';
+import { IonButtons, IonContent, IonMenuButton, IonPage, IonTitle, IonToolbar, IonCol, IonGrid, IonRow } from '@ionic/vue';
 
 export default defineComponent({
     name: 'PesertaDidikPage',
@@ -123,7 +244,7 @@ export default defineComponent({
         IonCol,
         IonGrid,
         IonRow,
-        IonSearchbar
+
     }
 });
 </script>
@@ -243,7 +364,6 @@ td {
 }
 
 .tambah {
-    background: linear-gradient(135deg, #3A416F 0%, #141727 100%);
     border-radius: 8px;
     border: none;
     font-weight: bold;
@@ -287,13 +407,16 @@ td {
     .btn-search:focus~.input-search {
         width: 250px;
     }
+
     .input-search:focus {
         width: 250px;
     }
+
     th,
     td {
         width: 160px;
     }
+
     .action-button {
         padding: 5px 12px;
         font-size: 12px;
@@ -306,9 +429,11 @@ td {
     .btn-search:focus~.input-search {
         width: 200px;
     }
+
     .input-search:focus {
         width: 200px;
     }
+
     th,
     td {
         font-size: 12px;
@@ -322,10 +447,12 @@ td {
         position: relative;
         left: 60px
     }
+
     th,
     td {
         width: 150px;
     }
+
     /* .title-table {
         font-size: 12px;
         margin-top: 10px;
@@ -346,9 +473,11 @@ td {
         position: absolute;
         right: 34%;
     }
+
     .btn-search:focus~.input-search {
         width: 200px;
     }
+
     .input-search:focus {
         width: 200px;
     }
@@ -361,9 +490,11 @@ td {
         position: absolute;
         right: 41%;
     }
+
     .btn-search:focus~.input-search {
         width: 180px;
     }
+
     .input-search:focus {
         width: 180px;
     }
@@ -374,9 +505,11 @@ td {
         position: absolute;
         right: 50%;
     }
+
     .btn-search:focus~.input-search {
         width: 150px;
     }
+
     .input-search:focus {
         width: 150px;
     }
