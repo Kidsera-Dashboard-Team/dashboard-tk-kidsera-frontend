@@ -197,22 +197,6 @@
             ></ion-input>
           </ion-item>
           <ion-item fill="outline">
-            <ion-label position="floating">Berat Badan</ion-label>
-            <ion-input
-              placeholder="Masukkan Berat Badan"
-              v-model="berat"
-              required
-            ></ion-input>
-          </ion-item>
-          <ion-item fill="outline">
-            <ion-label position="floating">Berat Badan</ion-label>
-            <ion-input
-              placeholder="Masukkan Berat Badan"
-              v-model="berat"
-              required
-            ></ion-input>
-          </ion-item>
-          <ion-item fill="outline">
             <ion-label position="floating">Nama Ayah</ion-label>
             <ion-input
               placeholder="Masukkan Nama Ayah"
