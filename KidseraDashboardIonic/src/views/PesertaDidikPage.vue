@@ -67,7 +67,7 @@
                                             <th width="30%" class="text-secondary opacity-7 text-center">Aksi</th>
                                         </tr>
                                     </thead>
-                                    <tbody>
+                                    <tbody  v-for="result in results" :key="result._id">
                                         <tr onclick="window.location='/pages/PesertaDidik/DetailPesertaDidik';">
                                             <td class="align-middle">
                                                 <div class="d-flex px-3 py-1">
@@ -76,18 +76,18 @@
                                                             <!-- alt="user1"> -->
                                                     </div>
                                                     <div class="justify-content-center">
-                                                        <h6 class="mb-0 text-sm td-name">John Michael</h6>
+                                                        <h6 class="mb-0 text-sm td-name">{{ result.nama }}</h6>
                                                     </div>
                                                 </div>
                                             </td>
                                             <td class="align-middle">
-                                                <p class="text-xs font-weight-bold mb-0 ps-3">Manager</p>
+                                                <p class="text-xs font-weight-bold mb-0 ps-3">{{ result.jenis_kelamin }}</p>
                                             </td>
                                             <td class="align-middle text-center text-sm">
-                                                <span class="">1313621000</span>
+                                                <span class="">{{ result.nisn }}</span>
                                             </td>
                                             <td class="align-middle text-center">
-                                                <span class="text-dark text-xs font-weight-bold">TK A</span>
+                                                <span class="text-dark text-xs font-weight-bold">{{ result.tingkat_kelas }}</span>
                                             </td>
                                             <td class="align-middle text-center justify-content-evenly">
                                                 <!-- <a href="javascript:;" class="text-secondary font-weight-bold text-xs"
@@ -114,6 +114,7 @@
 </template>
 
 <script lang="ts">
+import axios from "axios";
 import { defineComponent } from 'vue';
 import { IonButtons, IonContent, IonMenuButton, IonPage, IonTitle, IonToolbar, IonCol, IonGrid, IonRow } from '@ionic/vue';
 
@@ -129,7 +130,22 @@ export default defineComponent({
         IonCol,
         IonGrid,
         IonRow
-    }
+    },
+    data() {
+		return {
+		    results: [],
+		};
+	},
+    mounted: function () {
+        axios.get("http://localhost:5000/API/students")
+        .then((response) => {
+            this.results = response.data;
+            console.log(response);
+        })
+        .catch(function (error) {
+            console.error(error.response.data);
+        });
+    },
 });
 </script>
 
