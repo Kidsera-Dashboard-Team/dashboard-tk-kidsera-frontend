@@ -14,7 +14,7 @@
 	Membuat API tambah rombel, update rombel, mendapatkan data rombel berdasarkan Id, dan mendapatkan data keseluruhan rombel 
 2. **Menu Sarpras dan Ruang**
 	- Frontend <br>
-	(Diisi Alfin dan Farhan)
+	Membuat core feature halaman sarpras diantaranya ada menu sarpras utama, form edit sarpras, detail sarpras, form tambah ruang dengan konteks (collapse), dan form tambah fasilitas ruang
 	- Backend <br>
 	Membuat API tambah sarpras, update sarpras, mendapatkan data sarpras, dan delete sarpras. Membuat API tambah ruangan dan mendapatkan data ruangan.
 
