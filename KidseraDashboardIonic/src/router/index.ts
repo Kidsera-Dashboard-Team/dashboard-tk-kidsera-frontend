@@ -1,9 +1,13 @@
-import { createRouter, createWebHistory } from '@ionic/vue-router';
-import { RouteRecordRaw } from 'vue-router';
+import { createRouter, createWebHistory } from "@ionic/vue-router";
+import { RouteRecordRaw } from "vue-router";
 
 const routes: Array<RouteRecordRaw> = [
   {
     path: "",
+    redirect: "/pages/Dashboard",
+  },
+  {
+    path: "/pages",
     redirect: "/pages/Dashboard",
   },
   {
@@ -23,6 +27,14 @@ const routes: Array<RouteRecordRaw> = [
     component: () => import("../views/PesertaDidikPage.vue"),
   },
   {
+    path: "/pages/PesertaDidik/TambahPesertaDidik",
+    component: () => import("../views/TambahPesertaDidikPage.vue"),
+  },
+  {
+    path: "/pages/PesertaDidik/DetailPesertaDidik",
+    component: () => import("../views/DetailPesertaDidikPage.vue"),
+  },
+  {
     path: "/pages/TenagaKependidikan",
     component: () => import("../views/TenagaKependidikanPage.vue"),
   },
@@ -35,27 +47,46 @@ const routes: Array<RouteRecordRaw> = [
     component: () => import("../views/SarprasPage.vue"),
   },
   {
-    path: "/pages/:id",
-    component: () => import("../views/Pages.vue"),
-  },
-  {
     path: "/pages/Sarpras/DetailSarpras",
     component: () => import("../views/DetailSarprasPage.vue"),
+  },
+  {
+    path: "/pages/Sarpras/TambahFasilitasSarpras",
+    component: () => import("../views/TambahSarprasRuanganPage.vue"),
   },
   {
     path: "/pages/Sarpras/DetailSarpras/TambahFasilitasSarpras",
     component: () => import("../views/TambahFasilitasSarprasPage.vue"),
   },
+  // {
+  //   path: "/pages/Sarpras/DetailSarpras/EditSarpras",
+  //   component: () => import("../views/EditSarprasPage.vue"),
+  // },
   {
-    path: "/pages/Sarpras/DetailSarpras/EditSarpras",
-    component: () => import("../views/EditSarprasPage.vue"),
+    path: "/pages/rombonganbelajar",
+    component: () => import("../views/RombonganBelajarPage.vue"),
+  },
+  {
+    path: "/pages/rombonganbelajar/TambahRombonganBelajar",
+    component: () => import("../views/TambahRombonganBelajarPage.vue"),
+  },
+  {
+    path: "/pages/rombonganbelajar/TahunAjaranRombonganBelajar",
+    component: () => import("../views/TahunAjaranRombonganBelajarPage.vue"),
+  },
+  {
+    path: "/pages/rombonganbelajar/TahunAjaranRombonganBelajar/detail",
+    component: () => import("../views/DetailRombelPage.vue"),
+  },
+  {
+    path: "/pages/:id",
+    component: () => import("../views/Pages.vue"),
   },
 ];
-  
 
 const router = createRouter({
   history: createWebHistory(process.env.BASE_URL),
-  routes
-})
+  routes,
+});
 
-export default router
+export default router;

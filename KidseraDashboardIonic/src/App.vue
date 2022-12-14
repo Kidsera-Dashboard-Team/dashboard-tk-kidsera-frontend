@@ -4,7 +4,10 @@
       <ion-menu content-id="main-content" type="overlay">
         <ion-content>
           <ion-list id="inbox-list">
-            <ion-list-header>Kidsera Dashboard</ion-list-header>
+            <ion-row>
+              <ion-col size="3"><img src="assets/img/kidsera-logo.png" alt="" style="width: 60px; padding: 0;"></ion-col>
+              <ion-col size="9"><ion-list-header style="margin-top: 12px; padding: 0;">Kidsera Dashboard</ion-list-header></ion-col>
+            </ion-row>
             <ion-note></ion-note>
             <ion-menu-toggle auto-hide="false" v-for="(p, i) in appPages" :key="i">
               <ion-item @click="selectedIndex = i" router-direction="root" :router-link="p.url" lines="none" detail="false" class="hydrated" :class="{ selected: selectedIndex === i }">
@@ -29,7 +32,7 @@ import { archiveOutline, archiveSharp, bookmarkOutline, bookmarkSharp, heartOutl
 export default defineComponent({
   name: 'App',
   data() {
-    if (window.location.pathname == '/SignUp' || window.location.pathname == '/pages/SignIn') {
+    if (window.location.pathname == '/SignUp' || window.location.pathname == '/SignIn') {
       return {
         disabledVariable: true,
       };
@@ -61,26 +64,26 @@ export default defineComponent({
       {
         title: 'Peserta Didik',
         url: '/pages/PesertaDidik',
-        iosIcon: paperPlaneOutline,
-        mdIcon: paperPlaneSharp
+        iosIcon: 'assets/icon/pesertadidik-icon.svg',
+        mdIcon: 'assets/icon/pesertadidik-icon.svg'
       },
       {
         title: 'Guru & Tenaga Kependidikan',
         url: '/pages/TenagaKependidikan',
-        iosIcon: heartOutline,
-        mdIcon: heartSharp,
+        iosIcon: 'assets/icon/guru-icon.svg',
+        mdIcon: 'assets/icon/guru-icon.svg',
       },
       {
         title: 'Sarana & Prasarana',
-        url: '/pages/Sarpras',
-        iosIcon: archiveOutline,
-        mdIcon: archiveSharp
+        url: '/pages/sarpras',
+        iosIcon: 'assets/icon/sapras-icon.svg',
+        mdIcon: 'assets/icon/sapras-icon.svg'
       },
       {
         title: 'Rombongan Belajar',
-        url: '/pages/RombonganBelajar',
-        iosIcon: trashOutline,
-        mdIcon: trashSharp
+        url: '/pages/rombonganbelajar',
+        iosIcon: 'assets/icon/rombel-icon.svg',
+        mdIcon: 'assets/icon/rombel-icon.svg'
       },
     ];
     
@@ -147,7 +150,6 @@ ion-menu.md ion-note {
 ion-menu.md ion-list#inbox-list ion-list-header {
   font-size: 22px;
   font-weight: 600;
-
   min-height: 20px;
 }
 
@@ -162,11 +164,16 @@ ion-menu.md ion-item.selected {
 }
 
 ion-menu.md ion-item.selected ion-icon {
-  color: var(--ion-color-primary);
+  color: #fff;
+  background-color: #1fbff1;
 }
 
 ion-menu.md ion-item ion-icon {
-  color: #616e7e;
+  color: #3a416f;
+  padding: 5px;
+  border-radius: 8px;
+  background-color: white;
+  box-shadow: 0px 4px 6px -1px rgba(0, 0, 0, 0.12), 0px 2px 4px -1px rgba(0, 0, 0, 0.07);
 }
 
 ion-menu.md ion-item ion-label {
@@ -214,7 +221,6 @@ ion-menu.ios ion-note {
 ion-note {
   display: inline-block;
   font-size: 16px;
-
   color: var(--ion-color-medium-shade);
 }
 
@@ -224,8 +230,11 @@ ion-item.selected {
 
 @media only screen and (min-width: 1440px) {
   ion-split-pane{
-    --side-width: 340px;
+    --side-width: 335px;
   }
 }
 
+ion-col{
+  padding: 0;
+}
 </style>

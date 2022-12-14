@@ -14,19 +14,24 @@
                         </ion-col>
                         <ion-col size-sm="9" size="10">
                             <ion-row class="ion-align-items-center ion-justify-content-end goright mt-2" style="margin-right: 20px;">
-                                <div class="search-box">
-                                    <button class="btn-search"><i class="fas fa-search"></i></button>
-                                    <input type="text" class="input-search" placeholder="Type to Search...">
+                                <div class="nav-icon">
+                                    <a href="/SignUp">
+                                        <ion-icon class="iconButton" src="assets/icon/signup.svg"></ion-icon>
+                                    </a>
                                 </div>
-                                <a href="/SignUp">
-                                    <ion-icon class="iconButton" src="assets/icon/home.svg"></ion-icon><span class="d-none d-sm-inline-block text-dark">&nbsp;Sign in</span> 
+                                    <a href="/SignUp" class="d-none d-sm-inline-block text-dark mb-1" style="text-decoration: none;">&nbsp;Add User</a>
+                                    <!-- <a href="">
+                                    <ion-icon class="iconButton nav-icon" src="assets/icon/settings-sharp.svg"> </ion-icon>
                                 </a>
                                 <a href="">
-                                    <ion-icon class="iconButton" src="assets/icon/settings-sharp.svg"> </ion-icon>
-                                </a>
-                                <a href="">
-                                    <ion-icon class="iconButton" src="assets/icon/notifications.svg"> </ion-icon>
-                                </a>
+                                    <ion-icon class="iconButton nav-icon" src="assets/icon/notifications.svg"> </ion-icon>
+                                </a> -->
+                                <ion-item>
+                                    <ion-label>Hi User 13141</ion-label>
+                                    <ion-select :interface-options="customAlertOptions" interface="popover" multiple="true" ok-text>
+                                        <ion-buttons>ok</ion-buttons>
+                                    </ion-select>
+                                </ion-item>
                             </ion-row>
                         </ion-col>
                     </ion-row>
@@ -47,7 +52,7 @@
                                         </ion-card-header>
                                     </ion-col>
                                     <ion-col size="4" class="text-end text-sm-center">
-                                        <ion-icon src="assets/icon/home.svg" style="font-size: large; margin-right: 20px"></ion-icon>
+                                        <ion-icon src="assets/icon/gender-icon.svg" class="icon-tk" style="font-size: large; margin-right: 20px"></ion-icon>
                                     </ion-col>
                                 </ion-row>
                         </ion-card>
@@ -62,7 +67,7 @@
                                     </ion-card-header>
                                 </ion-col>
                                 <ion-col size="4" class="text-end text-sm-center">
-                                    <ion-icon src="assets/icon/home.svg" style="font-size: large; margin-right: 20px"></ion-icon>
+                                    <ion-icon src="assets/icon/gender-icon.svg" width class="icon-tk" style="font-size: large; margin-right: 20px"></ion-icon>
                                 </ion-col>
                             </ion-row>
                         </ion-card>
@@ -77,7 +82,7 @@
                                     </ion-card-header>
                                 </ion-col>
                                 <ion-col size="4" class="text-end text-sm-center">
-                                    <ion-icon src="assets/icon/home.svg" style="font-size: large; margin-right: 20px"></ion-icon>
+                                    <ion-icon src="assets/icon/laki-icon.svg" class="icon-gender" style="font-size: large; margin-right: 20px"></ion-icon>
                                 </ion-col>
                             </ion-row>
                         </ion-card>
@@ -92,14 +97,14 @@
                                     </ion-card-header>
                                 </ion-col>
                                 <ion-col size="4" class="text-end text-sm-center">
-                                    <ion-icon src="assets/icon/home.svg" style="font-size: large; margin-right: 20px;"></ion-icon>
+                                    <ion-icon src="assets/icon/perempuan-icon.svg" class="icon-gender" style="font-size: large; margin-right: 20px;"></ion-icon>
                                 </ion-col>
                             </ion-row>
                         </ion-card>
                     </ion-col>
                 </ion-row>
                 <ion-row>
-                    <ion-card class="w-100" style="box-shadow: 0px 20px 27px rgba(0, 0, 0, 0.05);">
+                    <ion-card class="w-100" style="box-shadow: 0px 20px 27px rgba(0, 0, 0, 0.05); border-radius: 12px;">
                         <ion-row class="ion-align-items-center ">
                             <ion-col>
                                 <ion-card-header>
@@ -180,8 +185,9 @@
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue';
+import { defineComponent, onMounted, ref } from 'vue';
 import { IonButtons, IonContent, IonMenuButton, IonPage, IonTitle, IonToolbar, IonCol, IonGrid, IonRow } from '@ionic/vue';
+import axios from 'axios';
 
 export default defineComponent({
     name: 'DashboardPage',
@@ -195,7 +201,17 @@ export default defineComponent({
         IonCol,
         IonGrid,
         IonRow,
+    },
+    setup() {
+        const ponds = ref();
+        onMounted(async () => {
+            const response = await axios.get('http://localhost:5000/API/ponds')
+        });
+        return {
+
+        }
     }
+
 });
 
 
@@ -233,11 +249,11 @@ ion-col{
 }
 
 /* Icon navbar style */
-a .iconButton{
-    color: black;
+a .iconButton {
+    color: #67748E;
     text-decoration: none;
     margin-left: 20px;
-    font-size: 18px;
+    font-size: 20px;
 }
 
 /* Searchbar Style */
@@ -245,7 +261,7 @@ a .iconButton{
     width: fit-content;
     height: fit-content;
     position: relative;
-    color: black;
+    color: #67748E;
 }
 
 .input-search {
@@ -260,7 +276,7 @@ a .iconButton{
     transition: all .5s ease-in-out;
     background-color: transparent;
     padding-right: 40px;
-    color: black;
+    color: #67748E;
 }
 
 .input-search::placeholder {
@@ -271,6 +287,7 @@ a .iconButton{
 }
 
 .btn-search {
+    color: #67748E;
     width: 40px;
     height: 40px;
     border-style: none;
@@ -281,23 +298,23 @@ a .iconButton{
     border-radius: 50%;
     position: absolute;
     right: 0px;
-    color: black;
     background-color: transparent;
     pointer-events: painted;
+    top: -3px;
 }
 
 .btn-search:focus~.input-search {
-    width: 500px;
+    width: 300px;
     border-radius: 10px;
-    background-color: white;
+    background-color: #fff;
     border-bottom: 1px solid rgba(255, 255, 255, 0.5);
     transition: all 500ms cubic-bezier(0, 0.110, 0.35, 2);
 }
 
 .input-search:focus {
-    width: 500px;
+    width: 300px;
     border-radius: 10px;
-    background-color: white;
+    background-color: #fff;
     border-bottom: 1px solid rgba(255, 255, 255, .5);
     transition: all 500ms cubic-bezier(0, 0.110, 0.35, 2);
 }
@@ -408,5 +425,14 @@ ion-card-subtitle {
     .input-search:focus {
         width: 150px;
     }
+}
+
+/* icon style */
+.icon-tk, .icon-gender{
+    padding: 10px;
+    background-color: black;
+    background: linear-gradient(328.19deg, #1B76E1 -5.21%, #1BE1C6 88.43%);
+    box-shadow: 0px 4px 6px -1px rgba(0, 0, 0, 0.12), 0px 2px 4px -1px rgba(0, 0, 0, 0.07);
+    border-radius: 8px;
 }
 </style>

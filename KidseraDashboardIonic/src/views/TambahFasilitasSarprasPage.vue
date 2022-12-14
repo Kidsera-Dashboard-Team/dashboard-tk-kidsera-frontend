@@ -7,17 +7,21 @@
             <ion-grid>
                 <ion-row class="ion-justify-content-between">
                     <ion-col size="3" size-xl="6">
-                        <ion-title class="d-none d-xl-inline-block" size="small"><span style="opacity: 50%;">Pages</span> / Sarana & Prasarana <br> <span style="font-size: 18px; letter-spacing: 3.5px;">Sarana & Prasarana</span>
+                        <ion-title class="d-none d-xl-inline-block" size="small"><span
+                                style="opacity: 50%;">Pages</span> / Sarana & Prasarana <br> <span
+                                style="font-size: 18px; letter-spacing: 3.5px;">Sarana & Prasarana</span>
                         </ion-title>
                     </ion-col>
                     <ion-col size-sm="9" size="10" size-xl="6">
-                        <ion-row class="ion-align-items-center ion-justify-content-end goright mt-2" style="margin-right: 20px;">
+                        <ion-row class="ion-align-items-center ion-justify-content-end goright mt-2"
+                            style="margin-right: 20px;">
                             <div class="search-box">
                                 <button class="btn-search"><i class="fas fa-search"></i></button>
                                 <input type="text" class="input-search" placeholder="Type to Search...">
                             </div>
                             <a href="/SignUp">
-                                <ion-icon class="iconButton" src="assets/icon/home.svg"></ion-icon><span class="d-none d-sm-inline-block text-dark">&nbsp;Sign in</span>
+                                <ion-icon class="iconButton" src="assets/icon/home.svg"></ion-icon><span
+                                    class="d-none d-sm-inline-block text-dark">&nbsp;Sign in</span>
                             </a>
                             <a href="">
                                 <ion-icon class="iconButton" src="assets/icon/settings-sharp.svg"> </ion-icon>
@@ -30,12 +34,9 @@
                 </ion-row>
             </ion-grid>
         </ion-toolbar>
-    
+
         <ion-content :fullscreen="true">
-            <ion-grid>
-                <ion-row>
-                    <ion-col size-xl="12" size="12">
-                        <ion-card class="m-5 p-3 rounded text-center">
+                        <ion-card class="mt-4 p-3 rounded text-center card-form">
                             <ion-card-header>
                                 <ion-card-title>
                                     <h4>Tambah Fasilitas Ruang</h4>
@@ -43,7 +44,8 @@
                             </ion-card-header>
                             <ion-card-content class="d-grid gap-3">
                                 <ion-item fill="outline" lines="none">
-                                    <ion-label position="floating" :readonly="true" class="mb-5">Nama Ruang -> Ruang ...</ion-label>
+                                    <ion-label position="floating" :readonly="true" class="mb-5">Nama Ruang -> Ruang
+                                        ...</ion-label>
                                     <!-- <ion-input placeholder="Masukkan Fasilitas" ></ion-input> -->
                                 </ion-item>
                                 <ion-item fill="outline">
@@ -59,14 +61,17 @@
                                     <ion-input placeholder="Masukkan Jumlah" required></ion-input>
                                 </ion-item>
                                 <div>
-                                    <a class="btn btn-danger" href="/pages/Sarpras/DetailSarpras" role="button">Batalkan</a>
-                                    <a class="btn btn-primary" role="button" href="javascript: doSomethingForAddSarprasFasilitas()">Tambahkan</a>
+                                    <ion-row class="ion-justify-content-center row-button">
+                                        <ion-col size="6" size-sm="2">
+                                            <a class="btn btn-danger" href="/pages/Sarpras/DetailSarpras" role="button">Batalkan</a>
+                                        </ion-col>
+                                        <ion-col size="6" size-sm="2">
+                                            <a class="btn btn-success" role="button" href="javascript: doSomethingForAddSarprasFasilitas()">Tambah</a>
+                                        </ion-col>
+                                    </ion-row>
                                 </div>
                             </ion-card-content>
                         </ion-card>
-                    </ion-col>
-                </ion-row>
-            </ion-grid>
         </ion-content>
     </ion-page>
 </template>
@@ -201,6 +206,7 @@ a .iconButton {
     .btn-search:focus~.input-search {
         width: 250px;
     }
+
     .input-search:focus {
         width: 250px;
     }
@@ -212,6 +218,7 @@ a .iconButton {
     .btn-search:focus~.input-search {
         width: 200px;
     }
+
     .input-search:focus {
         width: 200px;
     }
@@ -233,9 +240,11 @@ a .iconButton {
         position: absolute;
         right: 34%;
     }
+
     .btn-search:focus~.input-search {
         width: 200px;
     }
+
     .input-search:focus {
         width: 200px;
     }
@@ -248,11 +257,18 @@ a .iconButton {
         position: absolute;
         right: 41%;
     }
+
     .btn-search:focus~.input-search {
         width: 180px;
     }
+
     .input-search:focus {
         width: 180px;
+    }
+
+    .btn{
+        width: 100px;
+        margin: 0;
     }
 }
 
@@ -261,11 +277,18 @@ a .iconButton {
         position: absolute;
         right: 50%;
     }
+
     .btn-search:focus~.input-search {
         width: 150px;
     }
+
     .input-search:focus {
         width: 150px;
+    }
+
+    .card-form{
+        width: 90%;
+        margin: auto;
     }
 }
 
@@ -306,6 +329,7 @@ ion-card-subtitle {
     ion-checkbox {
         --size: 15px;
     }
+
     .checkbox-custom ion-item {
         font-size: 20px !important;
     }
