@@ -1,0 +1,338 @@
+<template>
+    <ion-page>
+        <ion-toolbar>
+            <ion-buttons slot="start">
+                <ion-menu-button color="primary"></ion-menu-button>
+            </ion-buttons>
+            <ion-grid>
+                <ion-row class="ion-justify-content-between">
+                    <ion-col size="3" size-xl="6">
+                        <ion-title class="d-none d-xl-inline-block" size="small"><span
+                                style="opacity: 50%;">Pages</span> / Detail Guru & Tenaga Kependidikan <br> <span
+                                style="font-size: 18px; letter-spacing: 3.5px;">Detail Guru & Tenaga Kependidikan</span>
+                        </ion-title>
+                    </ion-col>
+                    <ion-col size-sm="9" size="10" size-xl="6">
+                        <ion-row class="ion-align-items-center ion-justify-content-end goright mt-2"
+                            style="margin-right: 20px;">
+                            <div class="btn-group dropstart mb-1 ms-2" style="content: inherit;">
+                                <button class="btn dropdown-toggle text-info text-gradient" type="button"
+                                    data-bs-toggle="dropdown" aria-expanded="true"
+                                    style="background-color: transparent;">
+                                    Hi User 13141
+                                </button>
+                                <ul class="dropdown-menu dropdown-menu-dark">
+                                    <li><a class="dropdown-item" href="javascript: doSomethingLogout()">Logout</a></li>
+                                </ul>
+                            </div>
+                            <div class="nav-icon">
+                                <a href="/SignUp">
+                                    <ion-icon class="iconButton text-info text-gradient"
+                                        src="assets/icon/signup.svg"></ion-icon>
+                                </a>
+                            </div>
+                            <a href="/SignUp" class="d-none d-sm-inline-block mb-1 text-info text-gradient"
+                                style="text-decoration: none;">&nbsp;Add User</a>
+                            <div>&nbsp;</div>
+                        </ion-row>
+                    </ion-col>
+                </ion-row>
+            </ion-grid>
+        </ion-toolbar>
+
+        <ion-content :fullscreen="true">
+            <ion-row class="mt-3 mx-2">
+                <ion-col>
+                    <ion-card class="content-card mb-4 border-0">
+                        <ion-row>
+                            <ion-col>
+                                <h3 class="px-3 py-3 title-table">Biodata Guru & Tenaga Kependidikan</h3>
+                            </ion-col>
+                        </ion-row>
+                        <h2 class="text-center mt-1 mb-4">Nama ... </h2>
+                        <ion-row class="mx-auto form-container">
+                            <ion-col size="4" style="line-height: 2.5;" class="text-dark text-center form1">
+                                <ul>
+                                    <li>Jenis Kelamin :</li>
+                                    <li>NIP :</li>
+                                    <li>NIK :</li>
+                                    <li>NO.KK :</li>
+                                    <li>Lulusan Terakhir :</li>
+                                    <li>Wali Murid Ruang :</li>
+                                    <li>Tanggal Masuk :</li>
+                                    <li>NIPD :</li>
+                                    <li>Status ;</li>
+                                    <li>Tinggi Badan :</li>
+                                </ul>
+                            </ion-col>
+                            <ion-col size="4" style="line-height: 2.5;" class="text-dark fw-bold text-center form2">
+                                <ul>
+                                    <li>Laki-laki</li>
+                                    <li>1234567890</li>
+                                    <li>1234567890123456</li>
+                                    <li>1234567890123456</li>
+                                    <li>S1</li>
+                                    <li>A</li>
+                                    <li>30 Oktober 2022</li>
+                                    <li>1234567890</li>
+                                    <li>Guru</li>
+                                    <li>130 cm</li>
+                                </ul>
+                            </ion-col>
+                        </ion-row>
+                        <ion-card-content class="px-0 pt-0 pb-2">
+
+                        </ion-card-content>
+                    </ion-card>
+                </ion-col>
+            </ion-row>
+        </ion-content>
+    </ion-page>
+</template>
+
+<script lang="ts">
+import { defineComponent } from 'vue';
+import { IonButtons, IonContent, IonHeader, IonMenuButton, IonPage, IonTitle, IonToolbar, IonCol, IonGrid, IonRow } from '@ionic/vue';
+
+export default defineComponent({
+    name: 'PesertaDidikPage',
+    components: {
+        IonButtons,
+        IonContent,
+        // IonHeader,
+        IonMenuButton,
+        IonPage,
+        IonTitle,
+        IonToolbar,
+        IonCol,
+        IonGrid,
+        IonRow
+    }
+});
+</script>
+
+<style scoped>
+/* template style */
+ion-col {
+    padding: 0;
+}
+
+/* Icon navbar style */
+a .iconButton {
+    color: #67748E;
+    text-decoration: none;
+    margin-left: 20px;
+    font-size: 20px;
+}
+
+/* Searchbar Style */
+.search-box {
+    width: fit-content;
+    height: fit-content;
+    position: relative;
+    color: black;
+}
+
+.input-search {
+    height: 40px;
+    width: 50px;
+    border-style: none;
+    padding: 10px;
+    font-size: 18px;
+    letter-spacing: 2px;
+    outline: none;
+    border-radius: 25px;
+    transition: all .5s ease-in-out;
+    background-color: transparent;
+    padding-right: 40px;
+    color: black;
+}
+
+.input-search::placeholder {
+    color: rgba(0, 0, 0, 0.5);
+    font-size: 18px;
+    letter-spacing: 2px;
+    font-weight: 100;
+}
+
+.btn-search {
+    width: 40px;
+    height: 40px;
+    border-style: none;
+    font-size: 20px;
+    font-weight: bold;
+    outline: none;
+    cursor: pointer;
+    border-radius: 50%;
+    position: absolute;
+    right: 0px;
+    color: black;
+    background-color: transparent;
+    pointer-events: painted;
+}
+
+.btn-search:focus~.input-search {
+    width: 400px;
+    border-radius: 10px;
+    background-color: white;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.5);
+    transition: all 500ms cubic-bezier(0, 0.110, 0.35, 2);
+}
+
+.input-search:focus {
+    width: 400px;
+    border-radius: 0px;
+    background-color: transparent;
+    border-bottom: 1px solid rgba(255, 255, 255, .5);
+    transition: all 500ms cubic-bezier(0, 0.110, 0.35, 2);
+}
+
+.text-info {
+    color: #17c1e8 !important;
+}
+
+.text-gradient {
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    position: relative;
+    z-index: 1;
+}
+
+.text-gradient.text-info {
+    background-image: linear-gradient(310deg, #2152FF, #21D4FD);
+}
+
+.text-gradient.text-dark {
+    background-image: linear-gradient(310deg, #141727, #3A416F);
+}
+
+/* content style */
+
+.form-container ul {
+    list-style: none;
+    display: inline-block;
+    text-align: left;
+}
+
+.content-card {
+    height: 110%;
+}
+
+.form-container {
+    justify-content: center;
+}
+
+/* small laptop dimension */
+@media only screen and (max-width: 1280px) {
+    .btn-search:focus~.input-search {
+        width: 250px;
+    }
+
+    .input-search:focus {
+        width: 250px;
+    }
+
+}
+
+/* tablet dimension */
+@media only screen and (max-width: 990px) {
+    .btn-search:focus~.input-search {
+        width: 180px;
+    }
+
+    .input-search:focus {
+        width: 180px;
+    }
+}
+
+/* large phone dimension */
+@media only screen and (max-width: 575px) {
+    .goright {
+        position: relative;
+        left: 60px
+    }
+
+    th,
+    td,
+    .td-name {
+        width: 150px;
+    }
+
+    .title-table {
+        font-size: 12px;
+        margin-top: 10px;
+    }
+}
+
+/* large phone dimension */
+@media only screen and (max-width: 426px) {
+    .form {
+        font-size: 10px;
+    }
+
+    .search-box {
+        position: absolute;
+        right: 34%;
+    }
+
+    .btn-search:focus~.input-search {
+        width: 200px;
+    }
+
+    .input-search:focus {
+        width: 200px;
+    }
+}
+
+/* small phone dimension */
+@media only screen and (max-width: 376px) {
+    .search-box {
+        position: absolute;
+        right: 41%;
+    }
+
+    .btn-search:focus~.input-search {
+        width: 180px;
+    }
+
+    .input-search:focus {
+        width: 180px;
+    }
+}
+
+@media only screen and (max-width: 320px) {
+    .search-box {
+        position: absolute;
+        right: 50%;
+    }
+
+    .btn-search:focus~.input-search {
+        width: 150px;
+    }
+
+    .input-search:focus {
+        width: 150px;
+    }
+
+    .form-container {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-evenly;
+    }
+
+    .form1 {
+        font-size: 10px;
+        margin: 0;
+        padding: 0;
+    }
+
+    .form2 {
+        font-size: 10px;
+        margin: 0;
+        padding: 0;
+    }
+
+
+}
+</style>
