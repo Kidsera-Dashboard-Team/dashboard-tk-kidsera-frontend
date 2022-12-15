@@ -156,7 +156,7 @@
                                 <ion-card-header>
                                     <ion-grid>
                                         <ion-row>
-                                            <h3>KIDSERA</h3>
+                                            <h3 class="text-black">KIDSERA</h3>
                                         </ion-row>
                                         <ion-row class="mt-4">
                                             <ion-col>
