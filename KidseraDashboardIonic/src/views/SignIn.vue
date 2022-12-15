@@ -2,33 +2,6 @@
   <ion-page>
 
     <ion-content :fullscreen="true">
-      <ion-card class="container rounded-pill fixed-top z-index-sticky navbar-custom"
-        style="width: 80%; margin-top: 2%; font-size: 12pt;">
-        <ion-toolbar>
-          <ion-grid>
-            <ion-row clas="ion-justify-content-between">
-              <ion-col size-lg="7">
-                <a class="navbar-brand ms-lg-0 ms-3 title" href="#" style="color: #344767;"><strong>Kidsera
-                    Dashboard</strong></a>
-              </ion-col>
-              <ion-col size-lg="4">
-                <ion-row class="ion-justify-content-between">
-                  <ion-col size-lg="7">
-                    <a class="nav-link" aria-current="page" href="#"><i
-                        class="fa fa-chart-pie opacity-6 me-1 d-inline-block"></i><span
-                        class="d-none d-md-inline-block">Dashboard</span></a>
-                  </ion-col>
-                  <ion-col size-lg="4" style="right: 60px">
-                    <a class="nav-link" href="../pages/sign-up.html"><i
-                        class="fas fa-user-circle opacity-6 me-1 d-inline-block"></i><span
-                        class="d-none d-md-inline-block">Daftar</span></a>
-                  </ion-col>
-                </ion-row>
-              </ion-col>
-            </ion-row>
-          </ion-grid>
-        </ion-toolbar>
-      </ion-card>
       <div id="container">
         <ion-grid>
           <ion-row class="ion-text-justify ion-justify-content-start">
@@ -36,7 +9,7 @@
                 <ion-card-header>
                   <ion-card-header>
                     <ion-card-title class="text-dark">
-                      <h3 class="text-info text-gradient"><b>Masuk</b></h3>
+                      <h3 class="text-info text-gradient"><b>Sign In to <br> Kidsera Dashboard</b></h3>
                     </ion-card-title>
                   </ion-card-header>
                   <ion-card-content>Masukkan Email dan Password <br> untuk masuk</ion-card-content>
@@ -68,10 +41,6 @@
                     class="bg-gradient-info w-100 mt-4 mb-0 text-white">
                     <ion-label>Masuk</ion-label>
                   </ion-button>
-                  <p class="mb-4 text-sm me-auto ms-5 mt-2">
-                    Belum punya akun?
-                    <a href="javascript:doSomething2();" class="text-info text-gradient"><b>Daftar</b></a>
-                  </p>
                 </ion-card-content>
               </ion-card>
             
@@ -97,8 +66,7 @@
 <script lang="ts">
 import {
   IonContent, IonPage,
-  IonTitle,
-  IonCol, IonGrid, IonLabel, IonRow,
+  IonTitle, IonGrid, IonLabel, IonRow,
   IonCard, IonCardHeader, IonCardTitle, IonCardContent,
   IonItem, IonInput,
   IonToggle,
@@ -111,8 +79,7 @@ export default defineComponent({
   components: {
     IonContent,
     IonPage,
-    IonTitle,
-    IonCol, IonGrid, IonLabel, IonRow,
+    IonTitle, IonGrid, IonLabel, IonRow,
     IonCard, IonCardHeader, IonCardTitle, IonCardContent,
     IonItem, IonInput,
     IonToggle,

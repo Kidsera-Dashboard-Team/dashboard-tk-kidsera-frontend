@@ -11,26 +11,28 @@
                             Peserta Didik <br> <span style="font-size: 18px; letter-spacing: 3.5px;">Peserta Didik</span>
                         </ion-title>
                     </ion-col>
-                    <ion-col size-sm="9" size="10">
+                    <ion-col size-sm="9" size="10" size-xl="6">
                         <ion-row class="ion-align-items-center ion-justify-content-end goright mt-2"
                             style="margin-right: 20px;">
-                            <div class="search-box nav-icon">
-                                <button class="btn-search"><i class="fas fa-search"></i></button>
-                                <input type="text" class="input-search" placeholder="Type to Search...">
+                            <div class="btn-group dropstart mb-1 ms-2" style="content: inherit;">
+                                <button class="btn dropdown-toggle text-info text-gradient" type="button"
+                                    data-bs-toggle="dropdown" aria-expanded="true"
+                                    style="background-color: transparent;">
+                                    Hi User 13141
+                                </button>
+                                <ul class="dropdown-menu dropdown-menu-dark">
+                                    <li><a class="dropdown-item" href="javascript: doSomethingLogout()">Logout</a></li>
+                                </ul>
                             </div>
                             <div class="nav-icon">
                                 <a href="/SignUp">
-                                    <ion-icon class="iconButton" src="assets/icon/signup.svg"></ion-icon>
+                                    <ion-icon class="iconButton text-info text-gradient"
+                                        src="assets/icon/signup.svg"></ion-icon>
                                 </a>
                             </div>
-                            <a href="/SignUp" class="d-none d-sm-inline-block text-dark mb-1"
-                                style="text-decoration: none;">&nbsp;Daftar</a>
-                            <a href="">
-                                <ion-icon class="iconButton nav-icon" src="assets/icon/settings-sharp.svg"> </ion-icon>
-                            </a>
-                            <a href="">
-                                <ion-icon class="iconButton nav-icon" src="assets/icon/notifications.svg"> </ion-icon>
-                            </a>
+                            <a href="/SignUp" class="d-none d-sm-inline-block mb-1 text-info text-gradient"
+                                style="text-decoration: none;">&nbsp;Add User</a>
+                            <div>&nbsp;</div>
                         </ion-row>
                     </ion-col>
                 </ion-row>
@@ -51,7 +53,7 @@
                         </ion-row>
                         <ion-card-content class="px-0 pt-0 pb-2"><!-- <div > -->
                             <div class="table-responsive p-0">
-                                <table style="table-layout:fixed;" id="examples" class="table table-hover align-items-center mb-0">
+                                <table style="table-layout:fixed;" id="table-peserta-didik" class="table table-hover align-items-center mb-0 display">
                                     <thead>
                                         <tr>
                                             <th width="25%" class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-4">Nama
@@ -67,7 +69,7 @@
                                             <th width="30%" class="text-secondary opacity-7 text-center">Aksi</th>
                                         </tr>
                                     </thead>
-                                    <tbody  v-for="result in results" :key="result._id">
+                                    <tbody>
                                         <tr onclick="window.location='/pages/PesertaDidik/DetailPesertaDidik';">
                                             <td class="align-middle">
                                                 <div class="d-flex px-3 py-1">
@@ -76,18 +78,18 @@
                                                             <!-- alt="user1"> -->
                                                     </div>
                                                     <div class="justify-content-center">
-                                                        <h6 class="mb-0 text-sm td-name">{{ result.nama }}</h6>
+                                                        <h6 class="mb-0 text-sm td-name">John Michael</h6>
                                                     </div>
                                                 </div>
                                             </td>
                                             <td class="align-middle">
-                                                <p class="text-xs font-weight-bold mb-0 ps-3">{{ result.jenis_kelamin }}</p>
+                                                <p class="text-xs font-weight-bold mb-0 ps-3">Manager</p>
                                             </td>
                                             <td class="align-middle text-center text-sm">
-                                                <span class="">{{ result.nisn }}</span>
+                                                <span class="">1313621000</span>
                                             </td>
                                             <td class="align-middle text-center">
-                                                <span class="text-dark text-xs font-weight-bold">{{ result.tingkat_kelas }}</span>
+                                                <span class="text-dark text-xs font-weight-bold">TK A</span>
                                             </td>
                                             <td class="align-middle text-center justify-content-evenly">
                                                 <!-- <a href="javascript:;" class="text-secondary font-weight-bold text-xs"
@@ -114,7 +116,6 @@
 </template>
 
 <script lang="ts">
-import axios from "axios";
 import { defineComponent } from 'vue';
 import { IonButtons, IonContent, IonMenuButton, IonPage, IonTitle, IonToolbar, IonCol, IonGrid, IonRow } from '@ionic/vue';
 
@@ -130,22 +131,7 @@ export default defineComponent({
         IonCol,
         IonGrid,
         IonRow
-    },
-    data() {
-		return {
-		    results: [],
-		};
-	},
-    mounted: function () {
-        axios.get("http://localhost:5000/API/students")
-        .then((response) => {
-            this.results = response.data;
-            console.log(response);
-        })
-        .catch(function (error) {
-            console.error(error.response.data);
-        });
-    },
+    }
 });
 </script>
 
@@ -224,6 +210,26 @@ a .iconButton {
     background-color: #fff;
     border-bottom: 1px solid rgba(255, 255, 255, .5);
     transition: all 500ms cubic-bezier(0, 0.110, 0.35, 2);
+}
+
+.text-info {
+    color: #17c1e8 !important;
+}
+
+.text-gradient {
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    position: relative;
+    z-index: 1;
+}
+
+.text-gradient.text-info {
+    background-image: linear-gradient(310deg, #2152FF, #21D4FD);
+}
+
+.text-gradient.text-dark {
+    background-image: linear-gradient(310deg, #141727, #3A416F);
 }
 
 /* content style */

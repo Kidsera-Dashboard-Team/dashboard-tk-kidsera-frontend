@@ -75,13 +75,13 @@ export default defineComponent({
       },
       {
         title: 'Sarana & Prasarana',
-        url: '/pages/sarpras',
+        url: '/pages/Sarpras',
         iosIcon: 'assets/icon/sapras-icon.svg',
         mdIcon: 'assets/icon/sapras-icon.svg'
       },
       {
         title: 'Rombongan Belajar',
-        url: '/pages/rombonganbelajar',
+        url: '/pages/RombonganBelajar',
         iosIcon: 'assets/icon/rombel-icon.svg',
         mdIcon: 'assets/icon/rombel-icon.svg'
       },

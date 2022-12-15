@@ -7,30 +7,39 @@
             <ion-grid>
                 <ion-row class="ion-justify-content-between">
                     <ion-col size="3" size-xl="6">
-                        <ion-title class="d-none d-xl-inline-block" size="small"><span style="opacity: 50%;">Pages</span> / Guru & Tenaga Kependidikan <br> <span style="font-size: 18px; letter-spacing: 3.5px;">Guru & Tenaga Kependidikan</span>
+                        <ion-title class="d-none d-xl-inline-block" size="small"><span
+                                style="opacity: 50%;">Pages</span> / Tambah Guru & Tenaga Kependidikan <br> <span
+                                style="font-size: 18px; letter-spacing: 2.5px;">Tambah Guru & Tenaga Kependidikan</span>
                         </ion-title>
                     </ion-col>
                     <ion-col size-sm="9" size="10" size-xl="6">
-                        <ion-row class="ion-align-items-center ion-justify-content-end goright mt-2" style="margin-right: 20px;">
-                            <div class="search-box">
-                                <button class="btn-search"><i class="fas fa-search"></i></button>
-                                <input type="text" class="input-search" placeholder="Type to Search...">
+                        <ion-row class="ion-align-items-center ion-justify-content-end goright mt-2"
+                            style="margin-right: 20px;">
+                            <div class="btn-group dropstart mb-1 ms-2" style="content: inherit;">
+                                <button class="btn dropdown-toggle text-info text-gradient" type="button"
+                                    data-bs-toggle="dropdown" aria-expanded="true"
+                                    style="background-color: transparent;">
+                                    Hi User 13141
+                                </button>
+                                <ul class="dropdown-menu dropdown-menu-dark">
+                                    <li><a class="dropdown-item" href="javascript: doSomethingLogout()">Logout</a></li>
+                                </ul>
                             </div>
-                            <a href="/SignUp">
-                                <ion-icon class="iconButton" src="assets/icon/home.svg"></ion-icon><span class="d-none d-sm-inline-block text-dark">&nbsp;Sign in</span>
-                            </a>
-                            <a href="">
-                                <ion-icon class="iconButton" src="assets/icon/settings-sharp.svg"> </ion-icon>
-                            </a>
-                            <a href="">
-                                <ion-icon class="iconButton" src="assets/icon/notifications.svg"> </ion-icon>
-                            </a>
+                            <div class="nav-icon">
+                                <a href="/SignUp">
+                                    <ion-icon class="iconButton text-info text-gradient"
+                                        src="assets/icon/signup.svg"></ion-icon>
+                                </a>
+                            </div>
+                            <a href="/SignUp" class="d-none d-sm-inline-block mb-1 text-info text-gradient"
+                                style="text-decoration: none;">Add User</a>
+                            <div>&nbsp;</div>
                         </ion-row>
                     </ion-col>
                 </ion-row>
             </ion-grid>
         </ion-toolbar>
-    
+
         <ion-content :fullscreen="true">
             <ion-grid>
                 <ion-row>
@@ -59,7 +68,7 @@
                                     <ion-input placeholder="Masukkan Email" required></ion-input>
                                 </ion-item>
                                 <ion-item fill="outline">
-                                    <ion-label position="floating" >Tempat, Tanggal Lahir</ion-label>
+                                    <ion-label position="floating">Tempat, Tanggal Lahir</ion-label>
                                     <ion-input placeholder="Masukkan Tempat, Tanggal Lahir" required></ion-input>
                                 </ion-item>
                                 <ion-row class="checkbox-custom">
@@ -79,10 +88,12 @@
                                 <div>
                                     <ion-row class="ion-justify-content-center row-button">
                                         <ion-col size="6" size-sm="2">
-                                            <a class="btn btn-danger" href="/pages/Sarpras/DetailSarpras" role="button">Batalkan</a>
+                                            <a class="btn btn-danger" href="/pages/TenagaKependidikan"
+                                                role="button">Batalkan</a>
                                         </ion-col>
                                         <ion-col size="6" size-sm="2">
-                                            <a class="btn btn-success" role="button" href="javascript: doSomethingForAddSarprasFasilitas()">Tambah</a>
+                                            <a class="btn btn-success" role="button"
+                                                href="javascript: doSomethingForAddSarprasFasilitas()">Tambah</a>
                                         </ion-col>
                                     </ion-row>
                                 </div>
@@ -140,7 +151,6 @@ export default defineComponent({
 </script>
 
 <style scoped>
-
 /* template style */
 ion-col {
     padding: 0;
@@ -148,10 +158,11 @@ ion-col {
 
 /* Icon navbar style */
 a .iconButton {
-    color: black;
+    color: #67748E;
     text-decoration: none;
     /* margin-left: 20px; */
-    font-size: 18px;
+    margin-right: -13px;
+    font-size: 20px;
 }
 
 /* Searchbar Style */
@@ -218,12 +229,33 @@ a .iconButton {
     transition: all 500ms cubic-bezier(0, 0.110, 0.35, 2);
 }
 
+.text-info {
+    color: #17c1e8 !important;
+}
+
+.text-gradient {
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    position: relative;
+    z-index: 1;
+}
+
+.text-gradient.text-info {
+    background-image: linear-gradient(310deg, #2152FF, #21D4FD);
+}
+
+.text-gradient.text-dark {
+    background-image: linear-gradient(310deg, #141727, #3A416F);
+}
+
 /* small laptop dimension */
 
 @media only screen and (max-width: 1280px) {
     .btn-search:focus~.input-search {
         width: 250px;
     }
+
     .input-search:focus {
         width: 250px;
     }
@@ -235,6 +267,7 @@ a .iconButton {
     .btn-search:focus~.input-search {
         width: 200px;
     }
+
     .input-search:focus {
         width: 200px;
     }
@@ -256,9 +289,11 @@ a .iconButton {
         position: absolute;
         right: 34%;
     }
+
     .btn-search:focus~.input-search {
         width: 200px;
     }
+
     .input-search:focus {
         width: 200px;
     }
@@ -271,9 +306,11 @@ a .iconButton {
         position: absolute;
         right: 41%;
     }
+
     .btn-search:focus~.input-search {
         width: 180px;
     }
+
     .input-search:focus {
         width: 180px;
     }
@@ -284,9 +321,11 @@ a .iconButton {
         position: absolute;
         right: 50%;
     }
+
     .btn-search:focus~.input-search {
         width: 150px;
     }
+
     .input-search:focus {
         width: 150px;
     }
@@ -328,6 +367,7 @@ ion-card-subtitle {
     ion-checkbox {
         --size: 15px;
     }
+
     .checkbox-custom ion-item {
         font-size: 20px !important;
     }

@@ -39,8 +39,16 @@ const routes: Array<RouteRecordRaw> = [
     component: () => import("../views/TenagaKependidikanPage.vue"),
   },
   {
+    path: "/pages/TenagaKependidikan/DetailTenagaKependidikan",
+    component: () => import("../views/DetailTenagaKependidikanPage.vue"),
+  },
+  {
     path: "/pages/TenagaKependidikan/TambahTenagaKependidikan",
     component: () => import("../views/TambahTenagaKependidikanPage.vue"),
+  },
+  {
+    path: "/pages/TenagaKependidikan/EditTenagaKependidikan",
+    component: () => import("../views/EditTenagaKependidikanPage.vue"),
   },
   {
     path: "/pages/Sarpras",
@@ -51,31 +59,27 @@ const routes: Array<RouteRecordRaw> = [
     component: () => import("../views/DetailSarprasPage.vue"),
   },
   {
-    path: "/pages/Sarpras/TambahFasilitasSarpras",
-    component: () => import("../views/TambahSarprasRuanganPage.vue"),
-  },
-  {
     path: "/pages/Sarpras/DetailSarpras/TambahFasilitasSarpras",
     component: () => import("../views/TambahFasilitasSarprasPage.vue"),
   },
-  // {
-  //   path: "/pages/Sarpras/DetailSarpras/EditSarpras",
-  //   component: () => import("../views/EditSarprasPage.vue"),
-  // },
   {
-    path: "/pages/rombonganbelajar",
+    path: "/pages/Sarpras/DetailSarpras/EditSarpras",
+    component: () => import("../views/EditSarprasPage.vue"),
+  },
+  {
+    path: "/pages/RombonganBelajar",
     component: () => import("../views/RombonganBelajarPage.vue"),
   },
   {
-    path: "/pages/rombonganbelajar/TambahRombonganBelajar",
+    path: "/pages/RombonganBelajar/TambahRombonganBelajar",
     component: () => import("../views/TambahRombonganBelajarPage.vue"),
   },
   {
-    path: "/pages/rombonganbelajar/TahunAjaranRombonganBelajar",
+    path: "/pages/RombonganBelajar/TahunAjaranRombonganBelajar",
     component: () => import("../views/TahunAjaranRombonganBelajarPage.vue"),
   },
   {
-    path: "/pages/rombonganbelajar/TahunAjaranRombonganBelajar/detail",
+    path: "/pages/RombonganBelajar/TahunAjaranRombonganBelajar/DetailRombonganBelajar",
     component: () => import("../views/DetailRombelPage.vue"),
   },
   {

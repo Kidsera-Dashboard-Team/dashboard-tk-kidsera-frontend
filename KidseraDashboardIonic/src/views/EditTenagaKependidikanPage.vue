@@ -7,30 +7,39 @@
             <ion-grid>
                 <ion-row class="ion-justify-content-between">
                     <ion-col size="3" size-xl="6">
-                        <ion-title class="d-none d-xl-inline-block" size="small"><span style="opacity: 100%;">Pages</span> / Sarana & Prasarana <br> <span style="font-size: 18px; letter-spacing: 3.5px;">Sarana & Prasarana</span>
+                        <ion-title class="d-none d-xl-inline-block" size="small"><span
+                                style="opacity: 50%;">Pages</span> / Edit Tenaga Kependidikan <br> <span
+                                style="font-size: 18px; letter-spacing: 3.5px;">Edit Tenaga Kependidikan</span>
                         </ion-title>
                     </ion-col>
                     <ion-col size-sm="9" size="10" size-xl="6">
-                        <ion-row class="ion-align-items-center ion-justify-content-end goright mt-2" style="margin-right: 20px;">
-                            <div class="search-box">
-                                <button class="btn-search"><i class="fas fa-search"></i></button>
-                                <input type="text" class="input-search" placeholder="Type to Search...">
+                        <ion-row class="ion-align-items-center ion-justify-content-end goright mt-2"
+                            style="margin-right: 20px;">
+                            <div class="btn-group dropstart mb-1 ms-2" style="content: inherit;">
+                                <button class="btn dropdown-toggle text-info text-gradient" type="button"
+                                    data-bs-toggle="dropdown" aria-expanded="true"
+                                    style="background-color: transparent;">
+                                    Hi User 13141
+                                </button>
+                                <ul class="dropdown-menu dropdown-menu-dark">
+                                    <li><a class="dropdown-item" href="javascript: doSomethingLogout()">Logout</a></li>
+                                </ul>
                             </div>
-                            <a href="/SignUp">
-                                <ion-icon class="iconButton" src="assets/icon/home.svg"></ion-icon><span class="d-none d-sm-inline-block text-dark">&nbsp;Sign in</span>
-                            </a>
-                            <a href="">
-                                <ion-icon class="iconButton" src="assets/icon/settings-sharp.svg"> </ion-icon>
-                            </a>
-                            <a href="">
-                                <ion-icon class="iconButton" src="assets/icon/notifications.svg"> </ion-icon>
-                            </a>
+                            <div class="nav-icon">
+                                <a href="/SignUp">
+                                    <ion-icon class="iconButton text-info text-gradient"
+                                        src="assets/icon/signup.svg"></ion-icon>
+                                </a>
+                            </div>
+                            <a href="/SignUp" class="d-none d-sm-inline-block mb-1 text-info text-gradient"
+                                style="text-decoration: none;">&nbsp;Add User</a>
+                            <div>&nbsp;</div>
                         </ion-row>
                     </ion-col>
                 </ion-row>
             </ion-grid>
         </ion-toolbar>
-    
+
         <ion-content :fullscreen="true">
             <ion-grid>
                 <ion-row>
@@ -38,18 +47,54 @@
                         <ion-card class="m-5 p-3 rounded text-center">
                             <ion-card-header>
                                 <ion-card-title>
-                                    <h4>Tambah Ruangan</h4>
+                                    <h4>Edit Tenaga Kependidikan</h4>
                                 </ion-card-title>
                             </ion-card-header>
                             <ion-card-content class="d-grid gap-3">
+                                <!-- <ion-item fill="outline" lines="none">
+                                    <ion-label position="floating" :readonly="true" class="mb-5">Nama -> ...</ion-label>
+                                    <ion-input placeholder="Masukkan Fasilitas" ></ion-input>
+                                </ion-item> -->
                                 <ion-item fill="outline">
-                                    <ion-label position="floating">Nama Ruang</ion-label>
-                                    <ion-input placeholder="Masukkan Nama" required></ion-input>
+                                    <ion-label position="floating">Nama</ion-label>
+                                    <ion-input placeholder="Michael John" required></ion-input>
                                 </ion-item>
-                                <ion-button class="m-auto" expand="block" color="=" href="" 
-                                    style="width: 60%; background-image: linear-gradient(to right, #3A416F, #141727);" >
-                                    Simpan
-                                </ion-button>
+                                <ion-item fill="outline">
+                                    <ion-label position="floating">Jenis Kelamin</ion-label>
+                                    <ion-input placeholder="Laki - laki / Perempuan" required></ion-input>
+                                </ion-item>
+                                <ion-item fill="outline">
+                                    <ion-label position="floating">No. HP</ion-label>
+                                    <ion-input placeholder="085357889754" required></ion-input>
+                                </ion-item>
+                                <ion-item fill="outline">
+                                    <ion-label position="floating">Email</ion-label>
+                                    <ion-input placeholder="example@gmail.com" required></ion-input>
+                                </ion-item>
+                                <ion-item fill="outline">
+                                    <ion-label position="floating">Tempat dan Tanggal Lahir</ion-label>
+                                    <ion-input placeholder="Jakarta, 12 November 1987" required></ion-input>
+                                </ion-item>
+                                <ion-row class="checkbox-custom">
+                                    <ion-col size-xl="3" size-xs="12">
+                                        <ion-item lines="none">
+                                            <ion-checkbox slot="start"></ion-checkbox>
+                                            <ion-label>Guru</ion-label>
+                                        </ion-item>
+                                    </ion-col>
+                                    <ion-col>
+                                        <ion-item lines="none">
+                                            <ion-checkbox slot="start"></ion-checkbox>
+                                            <ion-label>Non Guru</ion-label>
+                                        </ion-item>
+                                    </ion-col>
+                                </ion-row>
+                                <div>
+                                    <a class="btn btn-danger" href="/pages/TenagaKependidikan"
+                                        role="button">Batalkan</a>
+                                    <a class="btn btn-primary" role="button"
+                                        href="javascript: doSomethingForEditSarprasFasilitas()">Simpan</a>
+                                </div>
                             </ion-card-content>
                         </ion-card>
                     </ion-col>
@@ -77,8 +122,7 @@ import {
     IonCardTitle,
     IonInput,
     IonItem,
-    IonLabel,
-    IonButton
+    IonLabel
 } from '@ionic/vue';
 
 export default defineComponent({
@@ -99,29 +143,26 @@ export default defineComponent({
         IonCardTitle,
         IonInput,
         IonItem,
-        IonLabel,
-        IonButton
+        IonLabel
     }
 });
 </script>
 
 <style scoped>
-
 /* template style */
+
 ion-col {
     padding: 0;
 }
 
-.sabeb{
-  text-decoration: none;
-  color: linear-gradient(to right, #3A416F, #141727);
-}
 /* Icon navbar style */
+
 a .iconButton {
-    color: black;
+    color: #67748E;
     text-decoration: none;
     /* margin-left: 20px; */
-    font-size: 18px;
+    margin-right: -13px;
+    font-size: 20px;
 }
 
 /* Searchbar Style */
@@ -188,12 +229,33 @@ a .iconButton {
     transition: all 500ms cubic-bezier(0, 0.110, 0.35, 2);
 }
 
+.text-info {
+    color: #17c1e8 !important;
+}
+
+.text-gradient {
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    position: relative;
+    z-index: 1;
+}
+
+.text-gradient.text-info {
+    background-image: linear-gradient(310deg, #2152FF, #21D4FD);
+}
+
+.text-gradient.text-dark {
+    background-image: linear-gradient(310deg, #141727, #3A416F);
+}
+
 /* small laptop dimension */
 
 @media only screen and (max-width: 1280px) {
     .btn-search:focus~.input-search {
         width: 250px;
     }
+
     .input-search:focus {
         width: 250px;
     }
@@ -205,6 +267,7 @@ a .iconButton {
     .btn-search:focus~.input-search {
         width: 200px;
     }
+
     .input-search:focus {
         width: 200px;
     }
@@ -226,9 +289,11 @@ a .iconButton {
         position: absolute;
         right: 34%;
     }
+
     .btn-search:focus~.input-search {
         width: 200px;
     }
+
     .input-search:focus {
         width: 200px;
     }
@@ -241,9 +306,11 @@ a .iconButton {
         position: absolute;
         right: 41%;
     }
+
     .btn-search:focus~.input-search {
         width: 180px;
     }
+
     .input-search:focus {
         width: 180px;
     }
@@ -254,15 +321,18 @@ a .iconButton {
         position: absolute;
         right: 50%;
     }
+
     .btn-search:focus~.input-search {
         width: 150px;
     }
+
     .input-search:focus {
         width: 150px;
     }
 }
 
 /* content card style */
+
 ion-checkbox {
     --size: 32px;
     --background-checked: #6815ec;
@@ -298,6 +368,7 @@ ion-card-subtitle {
     ion-checkbox {
         --size: 15px;
     }
+
     .checkbox-custom ion-item {
         font-size: 20px !important;
     }

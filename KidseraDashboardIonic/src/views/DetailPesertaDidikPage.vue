@@ -6,30 +6,34 @@
             </ion-buttons>
             <ion-grid>
                 <ion-row class="ion-justify-content-between">
-                    <ion-col size="3">
+                    <ion-col size="3" size-xl="6">
                         <ion-title class="d-none d-xl-inline-block" size="small"><span
-                                style="opacity: 50%;">Pages</span> /
-                            Detail Peserta Didik <br> <span style="font-size: 18px; letter-spacing: 2px;">Detail Peserta
-                                Didik</span>
+                                style="opacity: 50%;">Pages</span> / Detail Peserta Didik <br> <span
+                                style="font-size: 18px; letter-spacing: 3.5px;">Detail Peserta Didik</span>
                         </ion-title>
                     </ion-col>
-                    <ion-col size-sm="9" size="10">
+                    <ion-col size-sm="9" size="10" size-xl="6">
                         <ion-row class="ion-align-items-center ion-justify-content-end goright mt-2"
                             style="margin-right: 20px;">
-                            <div class="search-box">
-                                <button class="btn-search"><i class="fas fa-search"></i></button>
-                                <input type="text" class="input-search" placeholder="Type to Search...">
+                            <div class="btn-group dropstart mb-1 ms-2" style="content: inherit;">
+                                <button class="btn dropdown-toggle text-info text-gradient" type="button"
+                                    data-bs-toggle="dropdown" aria-expanded="true"
+                                    style="background-color: transparent;">
+                                    Hi User 13141
+                                </button>
+                                <ul class="dropdown-menu dropdown-menu-dark">
+                                    <li><a class="dropdown-item" href="javascript: doSomethingLogout()">Logout</a></li>
+                                </ul>
                             </div>
-                            <a href="/SignUp">
-                                <ion-icon class="iconButton" src="assets/icon/home.svg"></ion-icon><span
-                                    class="d-none d-sm-inline-block text-dark">&nbsp;Sign in</span>
-                            </a>
-                            <a href="">
-                                <ion-icon class="iconButton" src="assets/icon/settings-sharp.svg"> </ion-icon>
-                            </a>
-                            <a href="">
-                                <ion-icon class="iconButton" src="assets/icon/notifications.svg"> </ion-icon>
-                            </a>
+                            <div class="nav-icon">
+                                <a href="/SignUp">
+                                    <ion-icon class="iconButton text-info text-gradient"
+                                        src="assets/icon/signup.svg"></ion-icon>
+                                </a>
+                            </div>
+                            <a href="/SignUp" class="d-none d-sm-inline-block mb-1 text-info text-gradient"
+                                style="text-decoration: none;">&nbsp;Add User</a>
+                            <div>&nbsp;</div>
                         </ion-row>
                     </ion-col>
                 </ion-row>
@@ -37,7 +41,7 @@
         </ion-toolbar>
 
         <ion-content :fullscreen="true">
-            
+
             <ion-row class="mt-3 mx-2">
                 <ion-col>
                     <ion-card class="content-card mb-4 border-0">
@@ -84,7 +88,7 @@
                             </ion-col>
                         </ion-row>
                         <ion-card-content class="px-0 pt-0 pb-2">
-                            
+
                         </ion-card-content>
                     </ion-card>
                 </ion-col>
@@ -190,18 +194,38 @@ a .iconButton {
     transition: all 500ms cubic-bezier(0, 0.110, 0.35, 2);
 }
 
+.text-info {
+    color: #17c1e8 !important;
+}
+
+.text-gradient {
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    position: relative;
+    z-index: 1;
+}
+
+.text-gradient.text-info {
+    background-image: linear-gradient(310deg, #2152FF, #21D4FD);
+}
+
+.text-gradient.text-dark {
+    background-image: linear-gradient(310deg, #141727, #3A416F);
+}
+
 /* content style */
-ul{
+.form-container ul {
     list-style: none;
     display: inline-block;
     text-align: left;
 }
 
-.content-card{
+.content-card {
     height: 110%;
 }
 
-.form-container{
+.form-container {
     justify-content: center;
 }
 
@@ -244,7 +268,7 @@ ul{
     .title-table {
         font-size: 12px;
         margin-top: 10px;
-    }   
+    }
 }
 
 /* large phone dimension */
@@ -297,19 +321,19 @@ ul{
         width: 150px;
     }
 
-    .form-container{
+    .form-container {
         display: flex;
         flex-wrap: wrap;
         justify-content: space-evenly;
     }
 
-    .form1{
+    .form1 {
         font-size: 10px;
         margin: 0;
         padding: 0;
     }
 
-    .form2{
+    .form2 {
         font-size: 10px;
         margin: 0;
         padding: 0;

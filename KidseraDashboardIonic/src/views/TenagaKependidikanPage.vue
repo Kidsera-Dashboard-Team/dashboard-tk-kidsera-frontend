@@ -6,31 +6,34 @@
             </ion-buttons>
             <ion-grid>
                 <ion-row class="ion-justify-content-between">
-                    <ion-col size="4">
-                        <ion-title class="d-none d-lg-inline-block" size="small"><span style="opacity: 50%;">Pages</span> /
-                            Guru & Tenaga Kependidikan <br> <span style="font-size: 18px; letter-spacing: 1.5px;">Guru & Tenaga Kependidikan</span>
+                    <ion-col size="3" size-xl="6">
+                        <ion-title class="d-none d-xl-inline-block" size="small"><span
+                                style="opacity: 50%;">Pages</span> / Guru & Tenaga Kependidikan <br> <span
+                                style="font-size: 18px; letter-spacing: 3.5px;">Guru & Tenaga Kependidikan</span>
                         </ion-title>
                     </ion-col>
-                    <ion-col size-sm="8" size="10">
+                    <ion-col size-sm="9" size="10" size-xl="6">
                         <ion-row class="ion-align-items-center ion-justify-content-end goright mt-2"
                             style="margin-right: 20px;">
-                            <div class="search-box nav-icon">
-                                <button class="btn-search"><i class="fas fa-search"></i></button>
-                                <input type="text" class="input-search" placeholder="Type to Search...">
+                            <div class="btn-group dropstart mb-1 ms-2" style="content: inherit;">
+                                <button class="btn dropdown-toggle text-info text-gradient" type="button"
+                                    data-bs-toggle="dropdown" aria-expanded="true"
+                                    style="background-color: transparent;">
+                                    Hi User 13141
+                                </button>
+                                <ul class="dropdown-menu dropdown-menu-dark">
+                                    <li><a class="dropdown-item" href="javascript: doSomethingLogout()">Logout</a></li>
+                                </ul>
                             </div>
                             <div class="nav-icon">
                                 <a href="/SignUp">
-                                    <ion-icon class="iconButton" src="assets/icon/signup.svg"></ion-icon>
+                                    <ion-icon class="iconButton text-info text-gradient"
+                                        src="assets/icon/signup.svg"></ion-icon>
                                 </a>
                             </div>
-                            <a href="/SignUp" class="d-none d-sm-inline-block text-dark mb-1"
-                                style="text-decoration: none;">&nbsp;Daftar</a>
-                            <a href="">
-                                <ion-icon class="iconButton nav-icon" src="assets/icon/settings-sharp.svg"> </ion-icon>
-                            </a>
-                            <a href="">
-                                <ion-icon class="iconButton nav-icon" src="assets/icon/notifications.svg"> </ion-icon>
-                            </a>
+                            <a href="/SignUp" class="d-none d-sm-inline-block mb-1 text-info text-gradient"
+                                style="text-decoration: none;">&nbsp;Add User</a>
+                            <div>&nbsp;</div>
                         </ion-row>
                     </ion-col>
                 </ion-row>
@@ -38,154 +41,204 @@
         </ion-toolbar>
 
         <ion-content :fullscreen="true">
-            <ion-row class="mt-3 mx-2"><!-- <div class="row mt-3 mx-2"> -->
-                <ion-col>
-                    <ion-card class="mb-4 border-0"><!-- <div class="card mb-4 border-0"> -->
-                        <ion-row>
-                            <ion-col>
-                                <h4 class="px-3 py-3 title-table">Daftar Guru & Tenaga Kependidikan</h4>
-                            </ion-col>
-                            <ion-col class="text-end my-auto me-5"><!-- <div class="col text-end my-auto me-5"> -->
-                                <a href="/pages/TenagaKependidikan/TambahTenagaKependidikan" class="btn btn-success tambah"> Tambah Data</a>
-                            </ion-col>
-                        </ion-row>
-                        <ion-card-content class="px-0 pt-0 pb-2"><!-- <div > -->
-                            <div class="table-responsive p-0">
-                                <table style="table-layout:fixed;" class="table table-hover align-items-center mb-0">
-                                    <thead>
-                                        <tr>
-                                            <th width="25%"
-                                                class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-4">
-                                                Nama
-                                            </th>
-                                            <th width="20%"
-                                                class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-4">
-                                                Jenis Kelamin</th>
-                                            <th width="15%"
-                                                class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
-                                                No. HP</th>
-                                            <th width="20%"
-                                                class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
-                                                Email</th>
-                                            <th width="30%" class="text-secondary opacity-7 text-center">Aksi</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr onclick="window.location='/pages/PesertaDidik/Detail';">
-                                            <td class="align-middle">
-                                                <div class="d-flex px-3 py-1">
-                                                    <div>
-                                                        <!-- <img src="../assets/img/team-2.jpg" class="avatar avatar-sm me-3" -->
-                                                        <!-- alt="user1"> -->
-                                                    </div>
-                                                    <div class="justify-content-center">
-                                                        <h6 class="mb-0 text-sm td-name">John Michael</h6>
-                                                    </div>
-                                                </div>
-                                            </td>
-                                            <td class="align-middle">
-                                                <p class="text-xs font-weight-bold mb-0 ps-3">Manager</p>
-                                            </td>
-                                            <td class="align-middle text-center text-sm">
-                                                <span class="">1313621000</span>
-                                            </td>
-                                            <td class="align-middle text-center">
-                                                <span class="text-dark text-xs font-weight-bold">TK A</span>
-                                            </td>
-                                            <td class="align-middle text-center justify-content-evenly">
-                                                <!-- <a href="javascript:;" class="text-secondary font-weight-bold text-xs"
-                                                    data-toggle="tooltip" data-original-title="Edit user">
-                                                    Edit
-                                                </a> -->
-                                                <div class="btn btn-warning me-3 text-white action-button">
-                                                    &nbsp;&nbsp;&nbsp;Edit&nbsp;&nbsp;&nbsp;
-                                                </div>
-                                                <div class="btn btn-danger text-white action-button">
-                                                    Delete
-                                                </div>
-                                            </td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </div>
-                        </ion-card-content>
-                    </ion-card>
-                </ion-col>
-            </ion-row>
-            <ion-row class="mt-3 mx-2"><!-- <div class="row mt-3 mx-2"> -->
-                <ion-col>
-                    <ion-card class="mb-4 border-0"><!-- <div class="card mb-4 border-0"> -->
-                        <ion-row>
-                            <ion-col>
-                                <h4 class="px-3 py-3 title-table">Daftar Tenaga Kependidikan Non Guru</h4>
-                            </ion-col>
-                            <ion-col class="text-end my-auto me-5"><!-- <div class="col text-end my-auto me-5"> -->
-                                <a href="/pages/TambahTenagaKependidikan" class="btn btn-success tambah"> Tambah Data</a>
-                            </ion-col>
-                        </ion-row>
-                        <ion-card-content class="px-0 pt-0 pb-2"><!-- <div > -->
-                            <div class="table-responsive p-0">
-                                <table style="table-layout:fixed;" class="table table-hover align-items-center mb-0">
-                                    <thead>
-                                        <tr>
-                                            <th width="25%"
-                                                class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-4">
-                                                Nama
-                                            </th>
-                                            <th width="20%"
-                                                class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-4">
-                                                Jenis Kelamin</th>
-                                            <th width="15%"
-                                                class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
-                                                No. HP</th>
-                                            <th width="20%"
-                                                class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
-                                                Email</th>
-                                            <th width="30%" class="text-secondary opacity-7 text-center">Aksi</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr onclick="window.location='/pages/PesertaDidik/Detail';">
-                                            <td class="align-middle">
-                                                <div class="d-flex px-3 py-1">
-                                                    <div>
-                                                        <!-- <img src="../assets/img/team-2.jpg" class="avatar avatar-sm me-3" -->
-                                                        <!-- alt="user1"> -->
-                                                    </div>
-                                                    <div class="justify-content-center">
-                                                        <h6 class="mb-0 text-sm td-name">John Michael</h6>
-                                                    </div>
-                                                </div>
-                                            </td>
-                                            <td class="align-middle">
-                                                <p class="text-xs font-weight-bold mb-0 ps-3">Manager</p>
-                                            </td>
-                                            <td class="align-middle text-center text-sm">
-                                                <span class="">1313621000</span>
-                                            </td>
-                                            <td class="align-middle text-center">
-                                                <span class="text-dark text-xs font-weight-bold">TK A</span>
-                                            </td>
-                                            <td class="align-middle text-center justify-content-evenly">
-                                                <!-- <a href="javascript:;" class="text-secondary font-weight-bold text-xs"
-                                                                data-toggle="tooltip" data-original-title="Edit user">
-                                                                Edit
-                                                            </a> -->
-                                                <div class="btn btn-warning me-3 text-white action-button">
-                                                    &nbsp;&nbsp;&nbsp;Edit&nbsp;&nbsp;&nbsp;
-                                                </div>
-                                                <div class="btn btn-danger text-white action-button">
-                                                    Delete
-                                                </div>
-                                            </td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </div>
-                        </ion-card-content>
-                    </ion-card>
-                </ion-col>
-            </ion-row>
+            <ion-card class="m-5 rounded">
+                <ion-card-header class="ion-text-justify">
+                    <ion-row class="ion-justify-content-between">
+                        <ion-col size-xl="6" size-md="6" size-xs="12">
+                            <ion-card-title>
+                                <h4>Daftar Guru</h4>
+                            </ion-card-title>
+                        </ion-col>
+                        <ion-col size-xl="6" size-md="6" size-xs="auto">
+                            <a href="/pages/TenagaKependidikan/TambahTenagaKependidikan"
+                                class="btn btn-success float-end">Tambah Data</a>
+                        </ion-col>
+                    </ion-row>
+                </ion-card-header>
+
+                <ion-card-content>
+                    <div class="table-responsive">
+                        <table class="table table-hover display" id="table-tenaga-kependidikan-1">
+                            <thead>
+                                <tr>
+                                    <th scope="col" class="text-secondary opacity-7">Nama</th>
+                                    <th scope="col" class="text-center text-secondary opacity-7">Jenis Kelamin</th>
+                                    <th scope="col" class="text-center text-secondary opacity-7">No HP</th>
+                                    <th scope="col" class="text-center text-secondary opacity-7">Email</th>
+                                    <th scope="col" class="text-center text-secondary opacity-7">Aksi</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr onclick="window.location='/pages/TenagaKependidikan/DetailTenagaKependidikan';">
+                                    <td scope="row">Michael John</td>
+                                    <td class="text-center">Laki-laki</td>
+                                    <td class="text-center">085357889754</td>
+                                    <td class="text-center">john@mail.com</td>
+                                    <td class="text-center"><a href="/pages/TenagaKependidikan/EditTenagaKependidikan"><button type="button"
+                                                class="btn btn-warning btn-sm text-uppercase text-white fw-bold p-2">Edit</button></a>
+                                        <a href=""><button type="button"
+                                                class="btn btn-danger btn-sm text-uppercase text-white fw-bold p-2 ms-2">Delete</button></a>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td scope="row">Putri Dina</td>
+                                    <td class="text-center">Perempuan</td>
+                                    <td class="text-center">085357889999</td>
+                                    <td class="text-center">putrid@mail.com</td>
+                                    <td class="text-center"><a href="/pages/TenagaKependidikan/EditTenagaKependidikan"><button type="button"
+                                                class="btn btn-warning btn-sm text-uppercase text-white fw-bold p-2">Edit</button></a>
+                                        <a href=""><button type="button"
+                                                class="btn btn-danger btn-sm text-uppercase text-white fw-bold p-2 ms-2">Delete</button></a>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td scope="row">Michael John</td>
+                                    <td class="text-center">Laki-laki</td>
+                                    <td class="text-center">085357889754</td>
+                                    <td class="text-center">john@mail.com</td>
+                                    <td class="text-center"><a href="/pages/TenagaKependidikan/EditTenagaKependidikan"><button type="button"
+                                                class="btn btn-warning btn-sm text-uppercase text-white fw-bold p-2">Edit</button></a>
+                                        <a href=""><button type="button"
+                                                class="btn btn-danger btn-sm text-uppercase text-white fw-bold p-2 ms-2">Delete</button></a>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td scope="row">Putri Dina</td>
+                                    <td class="text-center">Perempuan</td>
+                                    <td class="text-center">085357889999</td>
+                                    <td class="text-center">putrid@mail.com</td>
+                                    <td class="text-center"><a href="/pages/TenagaKependidikan/EditTenagaKependidikan"><button type="button"
+                                                class="btn btn-warning btn-sm text-uppercase text-white fw-bold p-2">Edit</button></a>
+                                        <a href=""><button type="button"
+                                                class="btn btn-danger btn-sm text-uppercase text-white fw-bold p-2 ms-2">Delete</button></a>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td scope="row">Michael John</td>
+                                    <td class="text-center">Laki-laki</td>
+                                    <td class="text-center">085357889754</td>
+                                    <td class="text-center">john@mail.com</td>
+                                    <td class="text-center"><a href="/pages/TenagaKependidikan/EditTenagaKependidikan"><button type="button"
+                                                class="btn btn-warning btn-sm text-uppercase text-white fw-bold p-2">Edit</button></a>
+                                        <a href=""><button type="button"
+                                                class="btn btn-danger btn-sm text-uppercase text-white fw-bold p-2 ms-2">Delete</button></a>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td scope="row">Putri Dina</td>
+                                    <td class="text-center">Perempuan</td>
+                                    <td class="text-center">085357889999</td>
+                                    <td class="text-center">putrid@mail.com</td>
+                                    <td class="text-center"><a href="/pages/TenagaKependidikan/EditTenagaKependidikan"><button type="button"
+                                                class="btn btn-warning btn-sm text-uppercase text-white fw-bold p-2">Edit</button></a>
+                                        <a href=""><button type="button"
+                                                class="btn btn-danger btn-sm text-uppercase text-white fw-bold p-2 ms-2">Delete</button></a>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </ion-card-content>
+            </ion-card>
+
+            <ion-card class="m-5 rounded">
+                <ion-card-header class="ion-text-justify">
+                    <ion-row class="ion-justify-content-between">
+                        <ion-col size-xl="6" size-md="6" size-xs="12">
+                            <ion-card-title>
+                                <h4>Daftar Tenaga Kependidikan Non-Guru</h4>
+                            </ion-card-title>
+                        </ion-col>
+                        <ion-col size-xl="6" size-md="6" size-xs="auto">
+                            <a href="/pages/TambahTenagaKependidikan" class="btn btn-success float-end">Tambah Data</a>
+                        </ion-col>
+                    </ion-row>
+                </ion-card-header>
+
+                <ion-card-content>
+                    <div class="table-responsive">
+                        <table class="table table-hover display" id="table-tenaga-kependidikan-2">
+                            <thead>
+                                <tr>
+                                    <th scope="col" class="text-secondary opacity-7">Nama</th>
+                                    <th scope="col" class="text-center text-secondary opacity-7">Jenis Kelamin</th>
+                                    <th scope="col" class="text-center text-secondary opacity-7">No HP</th>
+                                    <th scope="col" class="text-center text-secondary opacity-7">Email</th>
+                                    <th scope="col" class="text-center text-secondary opacity-7">Aksi</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr onclick="window.location='/pages/TenagaKependidikan/DetailTenagaKependidikanPage';">
+                                    <td scope="row">Michael John</td>
+                                    <td class="text-center">Laki-laki</td>
+                                    <td class="text-center">085357889754</td>
+                                    <td class="text-center">john@mail.com</td>
+                                    <td class="text-center"><a href="/pages/TenagaKependidikan/EditTenagaKependidikan"><button type="button"
+                                                class="btn btn-warning btn-sm text-uppercase text-white fw-bold p-2">Edit</button></a>
+                                        <a href=""><button type="button"
+                                                class="btn btn-danger btn-sm text-uppercase text-white fw-bold p-2 ms-2">Delete</button></a>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td scope="row">Putri Dina</td>
+                                    <td class="text-center">Perempuan</td>
+                                    <td class="text-center">085357889999</td>
+                                    <td class="text-center">putrid@mail.com</td>
+                                    <td class="text-center"><a href="/pages/TenagaKependidikan/EditTenagaKependidikan"><button type="button"
+                                                class="btn btn-warning btn-sm text-uppercase text-white fw-bold p-2">Edit</button></a>
+                                        <a href=""><button type="button"
+                                                class="btn btn-danger btn-sm text-uppercase text-white fw-bold p-2 ms-2">Delete</button></a>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td scope="row">Michael John</td>
+                                    <td class="text-center">Laki-laki</td>
+                                    <td class="text-center">085357889754</td>
+                                    <td class="text-center">john@mail.com</td>
+                                    <td class="text-center"><a href="/pages/TenagaKependidikan/EditTenagaKependidikan"><button type="button"
+                                                class="btn btn-warning btn-sm text-uppercase text-white fw-bold p-2">Edit</button></a>
+                                        <a href=""><button type="button"
+                                                class="btn btn-danger btn-sm text-uppercase text-white fw-bold p-2 ms-2">Delete</button></a>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td scope="row">Putri Dina</td>
+                                    <td class="text-center">Perempuan</td>
+                                    <td class="text-center">085357889999</td>
+                                    <td class="text-center">putrid@mail.com</td>
+                                    <td class="text-center"><a href="/pages/TenagaKependidikan/EditTenagaKependidikan"><button type="button"
+                                                class="btn btn-warning btn-sm text-uppercase text-white fw-bold p-2">Edit</button></a>
+                                        <a href=""><button type="button"
+                                                class="btn btn-danger btn-sm text-uppercase text-white fw-bold p-2 ms-2">Delete</button></a>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td scope="row">Michael John</td>
+                                    <td class="text-center">Laki-laki</td>
+                                    <td class="text-center">085357889754</td>
+                                    <td class="text-center">john@mail.com</td>
+                                    <td class="text-center"><a href="/pages/TenagaKependidikan/EditTenagaKependidikan"><button type="button"
+                                                class="btn btn-warning btn-sm text-uppercase text-white fw-bold p-2">Edit</button></a>
+                                        <a href=""><button type="button"
+                                                class="btn btn-danger btn-sm text-uppercase text-white fw-bold p-2 ms-2">Delete</button></a>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td scope="row">Putri Dina</td>
+                                    <td class="text-center">Perempuan</td>
+                                    <td class="text-center">085357889999</td>
+                                    <td class="text-center">putrid@mail.com</td>
+                                    <td class="text-center"><a href="/pages/TenagaKependidikan/EditTenagaKependidikan"><button type="button"
+                                                class="btn btn-warning btn-sm text-uppercase text-white fw-bold p-2">Edit</button></a>
+                                        <a href=""><button type="button"
+                                                class="btn btn-danger btn-sm text-uppercase text-white fw-bold p-2 ms-2">Delete</button></a>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </ion-card-content>
+            </ion-card>
         </ion-content>
     </ion-page>
 </template>
@@ -216,11 +269,8 @@ ion-col {
     padding: 0;
 }
 
-*{
-    /* font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif; */
-}
-
 /* Icon navbar style */
+
 a .iconButton {
     color: #67748E;
     text-decoration: none;
@@ -229,11 +279,12 @@ a .iconButton {
 }
 
 /* Searchbar Style */
+
 .search-box {
     width: fit-content;
     height: fit-content;
     position: relative;
-    color: #67748E;
+    color: black;
 }
 
 .input-search {
@@ -248,7 +299,7 @@ a .iconButton {
     transition: all .5s ease-in-out;
     background-color: transparent;
     padding-right: 40px;
-    color: #67748E;
+    color: black;
 }
 
 .input-search::placeholder {
@@ -259,7 +310,6 @@ a .iconButton {
 }
 
 .btn-search {
-    color: #67748E;
     width: 40px;
     height: 40px;
     border-style: none;
@@ -270,36 +320,57 @@ a .iconButton {
     border-radius: 50%;
     position: absolute;
     right: 0px;
+    color: black;
     background-color: transparent;
     pointer-events: painted;
-    top: -3px;
+    top: -1.5px;
 }
 
 .btn-search:focus~.input-search {
-    width: 300px;
+    width: 230px;
     border-radius: 10px;
-    background-color: #fff;
+    background-color: white;
     border-bottom: 1px solid rgba(255, 255, 255, 0.5);
     transition: all 500ms cubic-bezier(0, 0.110, 0.35, 2);
 }
 
 .input-search:focus {
-    width: 300px;
-    border-radius: 10px;
-    background-color: #fff;
+    width: 230px;
+    border-radius: 0px;
+    background-color: transparent;
     border-bottom: 1px solid rgba(255, 255, 255, .5);
     transition: all 500ms cubic-bezier(0, 0.110, 0.35, 2);
 }
 
+.text-info {
+    color: #17c1e8 !important;
+}
+
+.text-gradient {
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    position: relative;
+    z-index: 1;
+}
+
+.text-gradient.text-info {
+    background-image: linear-gradient(310deg, #2152FF, #21D4FD);
+}
+
+.text-gradient.text-dark {
+    background-image: linear-gradient(310deg, #141727, #3A416F);
+}
+
 /* content style */
+
 [data-href] {
     cursor: pointer;
 }
 
-
-.table {
+/* .table {
     border-collapse: inherit;
-}
+} */
 
 thead th {
     padding: 0.75rem 1rem;
@@ -326,12 +397,14 @@ td {
 }
 
 .tambah {
+    background: linear-gradient(135deg, #6BFF25 0%, #42DD1C 100%);
     border-radius: 8px;
     border: none;
-    height: 40px;
+    font-weight: bold;
 }
 
 /* small laptop dimension */
+
 @media only screen and (max-width: 1280px) {
     .btn-search:focus~.input-search {
         width: 250px;
@@ -342,8 +415,7 @@ td {
     }
 
     th,
-    td,
-    .td-name {
+    td {
         width: 160px;
     }
 
@@ -354,6 +426,7 @@ td {
 }
 
 /* tablet dimension */
+
 @media only screen and (max-width: 990px) {
     .btn-search:focus~.input-search {
         width: 200px;
@@ -364,13 +437,13 @@ td {
     }
 
     th,
-    td,
-    .td-name {
+    td {
         font-size: 12px;
     }
 }
 
 /* large phone dimension */
+
 @media only screen and (max-width: 575px) {
     .goright {
         position: relative;
@@ -378,31 +451,26 @@ td {
     }
 
     th,
-    td,
-    .td-name {
+    td {
         width: 150px;
     }
 
-    .title-table {
+    /* .title-table {
         font-size: 12px;
         margin-top: 10px;
-    }
-
+    } */
     .tambah {
         padding: 10px;
         font-size: 10px;
-        position: relative;
+        /* position: relative;
         left: 20px;
-        height: 30px;
+        height: 30px; */
     }
 }
 
 /* large phone dimension */
-@media only screen and (max-width: 426px) {
-    .form {
-        font-size: 10px;
-    }
 
+@media only screen and (max-width: 426px) {
     .search-box {
         position: absolute;
         right: 34%;
@@ -418,6 +486,7 @@ td {
 }
 
 /* small phone dimension */
+
 @media only screen and (max-width: 376px) {
     .search-box {
         position: absolute;

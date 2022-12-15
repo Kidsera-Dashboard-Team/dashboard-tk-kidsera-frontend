@@ -15,20 +15,25 @@
                     <ion-col size-sm="9" size="10" size-xl="6">
                         <ion-row class="ion-align-items-center ion-justify-content-end goright mt-2"
                             style="margin-right: 20px;">
-                            <div class="search-box">
-                                <button class="btn-search"><i class="fas fa-search"></i></button>
-                                <input type="text" class="input-search" placeholder="Type to Search...">
+                            <div class="btn-group dropstart mb-1 ms-2" style="content: inherit;">
+                                <button class="btn dropdown-toggle text-info text-gradient" type="button"
+                                    data-bs-toggle="dropdown" aria-expanded="true"
+                                    style="background-color: transparent;">
+                                    Hi User 13141
+                                </button>
+                                <ul class="dropdown-menu dropdown-menu-dark">
+                                    <li><a class="dropdown-item" href="javascript: doSomethingLogout()">Logout</a></li>
+                                </ul>
                             </div>
-                            <a href="/pages/SignIn">
-                                <ion-icon class="iconButton" src="assets/icon/home.svg"></ion-icon><span
-                                    class="d-none d-sm-inline-block text-dark">&nbsp;Sign in</span>
-                            </a>
-                            <a href="">
-                                <ion-icon class="iconButton" src="assets/icon/settings-sharp.svg"> </ion-icon>
-                            </a>
-                            <a href="">
-                                <ion-icon class="iconButton" src="assets/icon/notifications.svg"> </ion-icon>
-                            </a>
+                            <div class="nav-icon">
+                                <a href="/SignUp">
+                                    <ion-icon class="iconButton text-info text-gradient"
+                                        src="assets/icon/signup.svg"></ion-icon>
+                                </a>
+                            </div>
+                            <a href="/SignUp" class="d-none d-sm-inline-block mb-1 text-info text-gradient"
+                                style="text-decoration: none;">&nbsp;Add User</a>
+                            <div>&nbsp;</div>
                         </ion-row>
                     </ion-col>
                 </ion-row>
@@ -176,10 +181,10 @@ ion-col {
 /* Icon navbar style */
 
 a .iconButton {
-    color: black;
+    color: #67748E;
     text-decoration: none;
     margin-left: 20px;
-    font-size: 18px;
+    font-size: 20px;
 }
 
 /* Searchbar Style */
@@ -244,6 +249,26 @@ a .iconButton {
     background-color: transparent;
     border-bottom: 1px solid rgba(255, 255, 255, .5);
     transition: all 500ms cubic-bezier(0, 0.110, 0.35, 2);
+}
+
+.text-info {
+    color: #17c1e8 !important;
+}
+
+.text-gradient {
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    position: relative;
+    z-index: 1;
+}
+
+.text-gradient.text-info {
+    background-image: linear-gradient(310deg, #2152FF, #21D4FD);
+}
+
+.text-gradient.text-dark {
+    background-image: linear-gradient(310deg, #141727, #3A416F);
 }
 
 /* content style */
