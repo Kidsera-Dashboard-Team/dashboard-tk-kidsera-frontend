@@ -2,7 +2,7 @@
   "compilerOptions": {
     "target": "esnext",
     "module": "esnext",
-    "strict": true, // teori pak eka disuru false
+    "strict": false, // teori pak eka disuru false
     "jsx": "preserve",
     "importHelpers": true,
     "moduleResolution": "node",

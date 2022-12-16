@@ -85,6 +85,12 @@ export default defineComponent({
         iosIcon: 'assets/icon/rombel-icon.svg',
         mdIcon: 'assets/icon/rombel-icon.svg'
       },
+      {
+        title: 'E - Rapor',
+        url: '/pages/Rapor',
+        iosIcon: 'assets/icon/rapor-icon.svg',
+        mdIcon: 'assets/icon/rapor-icon.svg'
+      },
     ];
     
     const path = window.location.pathname.split('pages/')[1];
