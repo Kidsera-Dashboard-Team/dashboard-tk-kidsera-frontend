@@ -45,7 +45,7 @@
                     <ion-card class="mb-4 border-0"><!-- <div class="card mb-4 border-0"> -->
                         <ion-row>
                             <ion-col>
-                                <h3 class="px-3 py-3 title-table">Peserta Didik</h3>        
+                                <h3 class="px-3 py-3 title-table text-black">Peserta Didik</h3>        
                             </ion-col>
                             <ion-col class="text-end my-auto me-5"><!-- <div class="col text-end my-auto me-5"> -->
                                 <a href="/pages/PesertaDidik/TambahPesertaDidik" class="btn btn-success tambah"> Tambah Data</a>

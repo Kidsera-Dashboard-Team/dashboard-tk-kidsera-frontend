@@ -46,7 +46,7 @@
                     <ion-row class="ion-justify-content-between">
                         <ion-col size-xl="6" size-md="6" size-xs="12">
                             <ion-card-title>
-                                <h4>Daftar Guru</h4>
+                                <h4 class="text-dark">Daftar Guru</h4>
                             </ion-card-title>
                         </ion-col>
                         <ion-col size-xl="6" size-md="6" size-xs="auto">
@@ -146,7 +146,7 @@
                     <ion-row class="ion-justify-content-between">
                         <ion-col size-xl="6" size-md="6" size-xs="12">
                             <ion-card-title>
-                                <h4>Daftar Tenaga Kependidikan Non-Guru</h4>
+                                <h4 class="text-black">Daftar Tenaga Kependidikan Non-Guru</h4>
                             </ion-card-title>
                         </ion-col>
                         <ion-col size-xl="6" size-md="6" size-xs="auto">
