@@ -102,6 +102,10 @@ const routes: Array<RouteRecordRaw> = [
     path: "/pages/Rapor/TahunAjaranRapor/PesertaDidikRapor/InputNilaiPesertaDidikRapor",
     component: () => import("../views/InputNilaiPesertaDidikRaporPage.vue"),
   },
+  {
+    path: "/pages/Rapor/TahunAjaranRapor/PesertaDidikRapor/InputNilaiPesertaDidikRapor/InputRapor",
+    component: () => import("../views/InputRaporPage.vue"),
+  },
 ];
 
 const router = createRouter({
