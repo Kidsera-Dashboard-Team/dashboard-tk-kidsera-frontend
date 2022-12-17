@@ -1442,8 +1442,171 @@
                                             </label>
                                         </div>
                                     </li>
+                                </ol>
+                            </div>
+                            <!-- <span class="badge bg-primary rounded-pill">14</span> -->
+                        </li>
+                        <li class="list-group-item d-flex justify-content-between align-items-start">
+                            <div class="ms-2 me-auto">
+                                <div class="fw-bold">Berpikir Logis</div>
+                                <ol class="list-group list-group-numbered">
                                     <li class="list-group-item">
-                                        Senang dan menghargai bacaan <br>
+                                        Mengenal perbedaan berdasarkan ukuran "lebih dari" ; "kurang dari" ; dan "paling/ter"  <br>
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="radio" name="flexRadioDefault9"
+                                                id="flexRadioDefault33">
+                                            <label class="form-check-label" for="flexRadioDefault33">
+                                                BB
+                                            </label>
+                                        </div>
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="radio" name="flexRadioDefault9"
+                                                id="flexRadioDefault34" checked>
+                                            <label class="form-check-label" for="flexRadioDefault34">
+                                                MB
+                                            </label>
+                                        </div>
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="radio" name="flexRadioDefault9"
+                                                id="flexRadioDefault35" checked>
+                                            <label class="form-check-label" for="flexRadioDefault35">
+                                                BSH
+                                            </label>
+                                        </div>
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="radio" name="flexRadioDefault9"
+                                                id="flexRadioDefault36" checked>
+                                            <label class="form-check-label" for="flexRadioDefault36">
+                                                BSB
+                                            </label>
+                                        </div>
+                                    </li>
+                                    <li class="list-group-item">
+                                        Menyusun perencanaan kegiatan yang akan dilakukan <br>
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="radio" name="flexRadioDefault10"
+                                                id="flexRadioDefault37">
+                                            <label class="form-check-label" for="flexRadioDefault37">
+                                                BB
+                                            </label>
+                                        </div>
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="radio" name="flexRadioDefault10"
+                                                id="flexRadioDefault38" checked>
+                                            <label class="form-check-label" for="flexRadioDefault38">
+                                                MB
+                                            </label>
+                                        </div>
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="radio" name="flexRadioDefault10"
+                                                id="flexRadioDefault39" checked>
+                                            <label class="form-check-label" for="flexRadioDefault39">
+                                                BSH
+                                            </label>
+                                        </div>
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="radio" name="flexRadioDefault10"
+                                                id="flexRadioDefault40" checked>
+                                            <label class="form-check-label" for="flexRadioDefault40">
+                                                BSB
+                                            </label>
+                                        </div>
+                                    </li>
+                                    <li class="list-group-item">
+                                        Mengenal sebab - akibat tentang lingkungannya <br>
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="radio" name="flexRadioDefault11"
+                                                id="flexRadioDefault41">
+                                            <label class="form-check-label" for="flexRadioDefault41">
+                                                BB
+                                            </label>
+                                        </div>
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="radio" name="flexRadioDefault11"
+                                                id="flexRadioDefault42" checked>
+                                            <label class="form-check-label" for="flexRadioDefault42">
+                                                MB
+                                            </label>
+                                        </div>
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="radio" name="flexRadioDefault11"
+                                                id="flexRadioDefault43" checked>
+                                            <label class="form-check-label" for="flexRadioDefault43">
+                                                BSH
+                                            </label>
+                                        </div>
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="radio" name="flexRadioDefault11"
+                                                id="flexRadioDefault44" checked>
+                                            <label class="form-check-label" for="flexRadioDefault44">
+                                                BSB
+                                            </label>
+                                        </div>
+                                    </li>
+                                    <li class="list-group-item">
+                                        Mengklasifikasikan benda berdasarkan warna, bentuk, dan ukuran <br>
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="radio" name="flexRadioDefault12"
+                                                id="flexRadioDefault45">
+                                            <label class="form-check-label" for="flexRadioDefault45">
+                                                BB
+                                            </label>
+                                        </div>
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="radio" name="flexRadioDefault12"
+                                                id="flexRadioDefault46" checked>
+                                            <label class="form-check-label" for="flexRadioDefault46">
+                                                MB
+                                            </label>
+                                        </div>
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="radio" name="flexRadioDefault12"
+                                                id="flexRadioDefault47" checked>
+                                            <label class="form-check-label" for="flexRadioDefault47">
+                                                BSH
+                                            </label>
+                                        </div>
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="radio" name="flexRadioDefault12"
+                                                id="flexRadioDefault48" checked>
+                                            <label class="form-check-label" for="flexRadioDefault48">
+                                                BSB
+                                            </label>
+                                        </div>
+                                    </li>
+                                    <li class="list-group-item">
+                                        Mengenal pola ABCD-ABCD <br>
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="radio" name="flexRadioDefault12"
+                                                id="flexRadioDefault45">
+                                            <label class="form-check-label" for="flexRadioDefault45">
+                                                BB
+                                            </label>
+                                        </div>
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="radio" name="flexRadioDefault12"
+                                                id="flexRadioDefault46" checked>
+                                            <label class="form-check-label" for="flexRadioDefault46">
+                                                MB
+                                            </label>
+                                        </div>
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="radio" name="flexRadioDefault12"
+                                                id="flexRadioDefault47" checked>
+                                            <label class="form-check-label" for="flexRadioDefault47">
+                                                BSH
+                                            </label>
+                                        </div>
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="radio" name="flexRadioDefault12"
+                                                id="flexRadioDefault48" checked>
+                                            <label class="form-check-label" for="flexRadioDefault48">
+                                                BSB
+                                            </label>
+                                        </div>
+                                    </li>
+                                    <li class="list-group-item">
+                                        Mengurutkan benda berdasarkan ukuran dari paling kecil kepaling besar atau sebaliknya <br>
                                         <div class="form-check form-check-inline">
                                             <input class="form-check-input" type="radio" name="flexRadioDefault12"
                                                 id="flexRadioDefault45">
@@ -1479,10 +1642,10 @@
                         </li>
                         <li class="list-group-item d-flex justify-content-between align-items-start">
                             <div class="ms-2 me-auto">
-                                <div class="fw-bold">Ekspresif</div>
+                                <div class="fw-bold">Berfikir Simbolik (Matematika Sederhana)</div>
                                 <ol class="list-group list-group-numbered">
                                     <li class="list-group-item">
-                                        Menjawab pertanyaan yang lebih kompleks <br>
+                                        Menggunakan lambang bilangan untuk menghitung<br>
                                         <div class="form-check form-check-inline">
                                             <input class="form-check-input" type="radio" name="flexRadioDefault9"
                                                 id="flexRadioDefault33">
@@ -1513,7 +1676,7 @@
                                         </div>
                                     </li>
                                     <li class="list-group-item">
-                                        Menyebutkan kelompok gambar yang memiliki bunyi yang sama <br>
+                                        Menyebutkan lambang bilangan untuk menghitung<br>
                                         <div class="form-check form-check-inline">
                                             <input class="form-check-input" type="radio" name="flexRadioDefault10"
                                                 id="flexRadioDefault37">
@@ -1544,7 +1707,7 @@
                                         </div>
                                     </li>
                                     <li class="list-group-item">
-                                        Memiliki lebih banyak kata-kata untuk mengekspresikan ide <br>
+                                        Mencocokan lambang bilangan dengan bilangan <br>
                                         <div class="form-check form-check-inline">
                                             <input class="form-check-input" type="radio" name="flexRadioDefault11"
                                                 id="flexRadioDefault41">
@@ -1575,7 +1738,8 @@
                                         </div>
                                     </li>
                                     <li class="list-group-item">
-                                        Menyebutkan kalimat sederhana dalam struktur lengkap (pokok kalimat - predikat - keterangan) <br>
+                                        Membedakan dan mengelompokan benda yang jumlahnya sama, tidak sama, lebih banyak, <br>lebih sedikit
+                                        dari 2 kumpulan benda termasuk penjumlahan dan pengurangan <br>
                                         <div class="form-check form-check-inline">
                                             <input class="form-check-input" type="radio" name="flexRadioDefault12"
                                                 id="flexRadioDefault45">
@@ -1605,70 +1769,183 @@
                                             </label>
                                         </div>
                                     </li>
+                                </ol>
+                            </div>
+                            <!-- <span class="badge bg-primary rounded-pill">14</span> -->
+                        </li>
+                    </ol>
+                    <!-- Sosial Emosional -->
+                    <ion-card-title class="text-dark">SOSIAL EMOSIONAL</ion-card-title>
+                    <ol class="list-group list-group-numbered">
+                        <li class="list-group-item d-flex justify-content-between align-items-start">
+                            <div class="ms-2 me-auto">
+                                <div class="fw-bold">Kesadaran Diri</div>
+                                <ol class="list-group list-group-numbered">
                                     <li class="list-group-item">
-                                        Mampu mengungkapkan pendapat <br>
+                                        Memperlihatkan kemampuan diri untuk menyesuaikan dengan situasi <br>
                                         <div class="form-check form-check-inline">
-                                            <input class="form-check-input" type="radio" name="flexRadioDefault12"
-                                                id="flexRadioDefault45">
-                                            <label class="form-check-label" for="flexRadioDefault45">
+                                            <input class="form-check-input" type="radio" name="flexRadioDefault9"
+                                                id="flexRadioDefault33">
+                                            <label class="form-check-label" for="flexRadioDefault33">
                                                 BB
                                             </label>
                                         </div>
                                         <div class="form-check form-check-inline">
-                                            <input class="form-check-input" type="radio" name="flexRadioDefault12"
-                                                id="flexRadioDefault46" checked>
-                                            <label class="form-check-label" for="flexRadioDefault46">
+                                            <input class="form-check-input" type="radio" name="flexRadioDefault9"
+                                                id="flexRadioDefault34" checked>
+                                            <label class="form-check-label" for="flexRadioDefault34">
                                                 MB
                                             </label>
                                         </div>
                                         <div class="form-check form-check-inline">
-                                            <input class="form-check-input" type="radio" name="flexRadioDefault12"
-                                                id="flexRadioDefault47" checked>
-                                            <label class="form-check-label" for="flexRadioDefault47">
+                                            <input class="form-check-input" type="radio" name="flexRadioDefault9"
+                                                id="flexRadioDefault35" checked>
+                                            <label class="form-check-label" for="flexRadioDefault35">
                                                 BSH
                                             </label>
                                         </div>
                                         <div class="form-check form-check-inline">
-                                            <input class="form-check-input" type="radio" name="flexRadioDefault12"
-                                                id="flexRadioDefault48" checked>
-                                            <label class="form-check-label" for="flexRadioDefault48">
+                                            <input class="form-check-input" type="radio" name="flexRadioDefault9"
+                                                id="flexRadioDefault36" checked>
+                                            <label class="form-check-label" for="flexRadioDefault36">
                                                 BSB
                                             </label>
                                         </div>
                                     </li>
                                     <li class="list-group-item">
-                                        Memiliki banyak perbendaharaan kata untuk mengekspresikan ide <br>
+                                        Memperhatikan kehati-hatian kepada orang yang belum dikenal <br>
                                         <div class="form-check form-check-inline">
-                                            <input class="form-check-input" type="radio" name="flexRadioDefault12"
-                                                id="flexRadioDefault45">
-                                            <label class="form-check-label" for="flexRadioDefault45">
+                                            <input class="form-check-input" type="radio" name="flexRadioDefault10"
+                                                id="flexRadioDefault37">
+                                            <label class="form-check-label" for="flexRadioDefault37">
                                                 BB
                                             </label>
                                         </div>
                                         <div class="form-check form-check-inline">
-                                            <input class="form-check-input" type="radio" name="flexRadioDefault12"
-                                                id="flexRadioDefault46" checked>
-                                            <label class="form-check-label" for="flexRadioDefault46">
+                                            <input class="form-check-input" type="radio" name="flexRadioDefault10"
+                                                id="flexRadioDefault38" checked>
+                                            <label class="form-check-label" for="flexRadioDefault38">
                                                 MB
                                             </label>
                                         </div>
                                         <div class="form-check form-check-inline">
-                                            <input class="form-check-input" type="radio" name="flexRadioDefault12"
-                                                id="flexRadioDefault47" checked>
-                                            <label class="form-check-label" for="flexRadioDefault47">
+                                            <input class="form-check-input" type="radio" name="flexRadioDefault10"
+                                                id="flexRadioDefault39" checked>
+                                            <label class="form-check-label" for="flexRadioDefault39">
                                                 BSH
                                             </label>
                                         </div>
                                         <div class="form-check form-check-inline">
-                                            <input class="form-check-input" type="radio" name="flexRadioDefault12"
-                                                id="flexRadioDefault48" checked>
-                                            <label class="form-check-label" for="flexRadioDefault48">
+                                            <input class="form-check-input" type="radio" name="flexRadioDefault10"
+                                                id="flexRadioDefault40" checked>
+                                            <label class="form-check-label" for="flexRadioDefault40">
+                                                BSB
+                                            </label>
+                                        </div>
+                                    </li>
+                                </ol>
+                            </div>
+                            <!-- <span class="badge bg-primary rounded-pill">14</span> -->
+                        </li>
+                        <li class="list-group-item d-flex justify-content-between align-items-start">
+                            <div class="ms-2 me-auto">
+                                <div class="fw-bold">Rasa Tanggung Jawab Atas Perilakunya Untuk Kebaikan Diri Sendiri</div>
+                                <ol class="list-group list-group-numbered">
+                                    <li class="list-group-item">
+                                        Bertanggung jawab atas perilakunya untuk kebaikan diri sendiri <br>
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="radio" name="flexRadioDefault9"
+                                                id="flexRadioDefault33">
+                                            <label class="form-check-label" for="flexRadioDefault33">
+                                                BB
+                                            </label>
+                                        </div>
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="radio" name="flexRadioDefault9"
+                                                id="flexRadioDefault34" checked>
+                                            <label class="form-check-label" for="flexRadioDefault34">
+                                                MB
+                                            </label>
+                                        </div>
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="radio" name="flexRadioDefault9"
+                                                id="flexRadioDefault35" checked>
+                                            <label class="form-check-label" for="flexRadioDefault35">
+                                                BSH
+                                            </label>
+                                        </div>
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="radio" name="flexRadioDefault9"
+                                                id="flexRadioDefault36" checked>
+                                            <label class="form-check-label" for="flexRadioDefault36">
                                                 BSB
                                             </label>
                                         </div>
                                     </li>
                                     <li class="list-group-item">
-                                        Melanjutkan sebagian cerita yang telah diperdengarkan<br>
+                                        Tahu akan Haknya <br>
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="radio" name="flexRadioDefault10"
+                                                id="flexRadioDefault37">
+                                            <label class="form-check-label" for="flexRadioDefault37">
+                                                BB
+                                            </label>
+                                        </div>
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="radio" name="flexRadioDefault10"
+                                                id="flexRadioDefault38" checked>
+                                            <label class="form-check-label" for="flexRadioDefault38">
+                                                MB
+                                            </label>
+                                        </div>
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="radio" name="flexRadioDefault10"
+                                                id="flexRadioDefault39" checked>
+                                            <label class="form-check-label" for="flexRadioDefault39">
+                                                BSH
+                                            </label>
+                                        </div>
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="radio" name="flexRadioDefault10"
+                                                id="flexRadioDefault40" checked>
+                                            <label class="form-check-label" for="flexRadioDefault40">
+                                                BSB
+                                            </label>
+                                        </div>
+                                    </li>
+                                    <li class="list-group-item">
+                                        Mentaati aturan kelas (Kegiatan, Aturan) <br>
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="radio" name="flexRadioDefault11"
+                                                id="flexRadioDefault41">
+                                            <label class="form-check-label" for="flexRadioDefault41">
+                                                BB
+                                            </label>
+                                        </div>
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="radio" name="flexRadioDefault11"
+                                                id="flexRadioDefault42" checked>
+                                            <label class="form-check-label" for="flexRadioDefault42">
+                                                MB
+                                            </label>
+                                        </div>
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="radio" name="flexRadioDefault11"
+                                                id="flexRadioDefault43" checked>
+                                            <label class="form-check-label" for="flexRadioDefault43">
+                                                BSH
+                                            </label>
+                                        </div>
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="radio" name="flexRadioDefault11"
+                                                id="flexRadioDefault44" checked>
+                                            <label class="form-check-label" for="flexRadioDefault44">
+                                                BSB
+                                            </label>
+                                        </div>
+                                    </li>
+                                    <li class="list-group-item">
+                                        Mengatur diri sendiri <br>
                                         <div class="form-check form-check-inline">
                                             <input class="form-check-input" type="radio" name="flexRadioDefault12"
                                                 id="flexRadioDefault45">
@@ -1704,10 +1981,10 @@
                         </li>
                         <li class="list-group-item d-flex justify-content-between align-items-start">
                             <div class="ms-2 me-auto">
-                                <div class="fw-bold">Literasi</div>
+                                <div class="fw-bold">Perilaku Prososial</div>
                                 <ol class="list-group list-group-numbered">
                                     <li class="list-group-item">
-                                        Menyebutkan simbol-simbol huruf yang dikenal<br>
+                                        Bermain dengan teman sebaya<br>
                                         <div class="form-check form-check-inline">
                                             <input class="form-check-input" type="radio" name="flexRadioDefault9"
                                                 id="flexRadioDefault33">
@@ -1738,7 +2015,7 @@
                                         </div>
                                     </li>
                                     <li class="list-group-item">
-                                        Mengenal suara huruf awal dari nama benda-benda yang ada disekitarnya<br>
+                                        Mengetahui perasaan temannya dan merespon secara wajar<br>
                                         <div class="form-check form-check-inline">
                                             <input class="form-check-input" type="radio" name="flexRadioDefault10"
                                                 id="flexRadioDefault37">
@@ -1769,7 +2046,7 @@
                                         </div>
                                     </li>
                                     <li class="list-group-item">
-                                        Menyebutkan kelompok gambar yang memiliki bunyi / huruf awal yang sama<br>
+                                        Berbagi dengan orang lain <br>
                                         <div class="form-check form-check-inline">
                                             <input class="form-check-input" type="radio" name="flexRadioDefault11"
                                                 id="flexRadioDefault41">
@@ -1800,7 +2077,7 @@
                                         </div>
                                     </li>
                                     <li class="list-group-item">
-                                        Memahami hubungan antara bunyi dan bentuk huruf <br>
+                                        Menghargai hak/pendapat/karya orang lain<br>
                                         <div class="form-check form-check-inline">
                                             <input class="form-check-input" type="radio" name="flexRadioDefault12"
                                                 id="flexRadioDefault45">
@@ -1831,7 +2108,8 @@
                                         </div>
                                     </li>
                                     <li class="list-group-item">
-                                        Menuliskan dan membaca nama diri sendiri <br>
+                                        Menggunakan cara yang diterima secara sosial dalam menyelesaikan <br>
+                                        masalah (menggunakan pikiran untuk menyelesaikan masalah)<br>
                                         <div class="form-check form-check-inline">
                                             <input class="form-check-input" type="radio" name="flexRadioDefault12"
                                                 id="flexRadioDefault45">
@@ -1862,7 +2140,7 @@
                                         </div>
                                     </li>
                                     <li class="list-group-item">
-                                        Memahami arti kata <br>
+                                        Bersikap kooperatif dengan teman<br>
                                         <div class="form-check form-check-inline">
                                             <input class="form-check-input" type="radio" name="flexRadioDefault12"
                                                 id="flexRadioDefault45">
@@ -1888,6 +2166,297 @@
                                             <input class="form-check-input" type="radio" name="flexRadioDefault12"
                                                 id="flexRadioDefault48" checked>
                                             <label class="form-check-label" for="flexRadioDefault48">
+                                                BSB
+                                            </label>
+                                        </div>
+                                    </li>
+                                    <li class="list-group-item">
+                                        Menunjukan sikap toleran<br>
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="radio" name="flexRadioDefault12"
+                                                id="flexRadioDefault45">
+                                            <label class="form-check-label" for="flexRadioDefault45">
+                                                BB
+                                            </label>
+                                        </div>
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="radio" name="flexRadioDefault12"
+                                                id="flexRadioDefault46" checked>
+                                            <label class="form-check-label" for="flexRadioDefault46">
+                                                MB
+                                            </label>
+                                        </div>
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="radio" name="flexRadioDefault12"
+                                                id="flexRadioDefault47" checked>
+                                            <label class="form-check-label" for="flexRadioDefault47">
+                                                BSH
+                                            </label>
+                                        </div>
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="radio" name="flexRadioDefault12"
+                                                id="flexRadioDefault48" checked>
+                                            <label class="form-check-label" for="flexRadioDefault48">
+                                                BSB
+                                            </label>
+                                        </div>
+                                    </li>
+                                    <li class="list-group-item">
+                                        Mengekspresikan emosi yang sesuai dengan kondisi yang ada (senang-sedih-antusias dsb)<br>
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="radio" name="flexRadioDefault12"
+                                                id="flexRadioDefault45">
+                                            <label class="form-check-label" for="flexRadioDefault45">
+                                                BB
+                                            </label>
+                                        </div>
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="radio" name="flexRadioDefault12"
+                                                id="flexRadioDefault46" checked>
+                                            <label class="form-check-label" for="flexRadioDefault46">
+                                                MB
+                                            </label>
+                                        </div>
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="radio" name="flexRadioDefault12"
+                                                id="flexRadioDefault47" checked>
+                                            <label class="form-check-label" for="flexRadioDefault47">
+                                                BSH
+                                            </label>
+                                        </div>
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="radio" name="flexRadioDefault12"
+                                                id="flexRadioDefault48" checked>
+                                            <label class="form-check-label" for="flexRadioDefault48">
+                                                BSB
+                                            </label>
+                                        </div>
+                                    </li>
+                                    <li class="list-group-item">
+                                        Mengenal tata krama dan sopan santun dengan nilai sosial budaya setempa<br>
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="radio" name="flexRadioDefault12"
+                                                id="flexRadioDefault45">
+                                            <label class="form-check-label" for="flexRadioDefault45">
+                                                BB
+                                            </label>
+                                        </div>
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="radio" name="flexRadioDefault12"
+                                                id="flexRadioDefault46" checked>
+                                            <label class="form-check-label" for="flexRadioDefault46">
+                                                MB
+                                            </label>
+                                        </div>
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="radio" name="flexRadioDefault12"
+                                                id="flexRadioDefault47" checked>
+                                            <label class="form-check-label" for="flexRadioDefault47">
+                                                BSH
+                                            </label>
+                                        </div>
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="radio" name="flexRadioDefault12"
+                                                id="flexRadioDefault48" checked>
+                                            <label class="form-check-label" for="flexRadioDefault48">
+                                                BSB
+                                            </label>
+                                        </div>
+                                    </li>
+                                </ol>
+                            </div>
+                            <!-- <span class="badge bg-primary rounded-pill">14</span> -->
+                        </li>
+                    </ol>
+                    <!-- SENI -->
+                    <ion-card-title class="text-dark">SENI</ion-card-title>
+                    <ol class="list-group list-group-numbered">
+                        <li class="list-group-item d-flex justify-content-between align-items-start">
+                            <div class="ms-2 me-auto">
+                                <div class="fw-bold">Kesadaran Diri</div>
+                                <ol class="list-group list-group-numbered">
+                                    <li class="list-group-item">
+                                        Menghargai keindahan diri sendiri, karya sendiri atau orang lain, alam dan lingkungan sekitar<br>
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="radio" name="flexRadioDefault9"
+                                                id="flexRadioDefault33">
+                                            <label class="form-check-label" for="flexRadioDefault33">
+                                                BB
+                                            </label>
+                                        </div>
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="radio" name="flexRadioDefault9"
+                                                id="flexRadioDefault34" checked>
+                                            <label class="form-check-label" for="flexRadioDefault34">
+                                                MB
+                                            </label>
+                                        </div>
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="radio" name="flexRadioDefault9"
+                                                id="flexRadioDefault35" checked>
+                                            <label class="form-check-label" for="flexRadioDefault35">
+                                                BSH
+                                            </label>
+                                        </div>
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="radio" name="flexRadioDefault9"
+                                                id="flexRadioDefault36" checked>
+                                            <label class="form-check-label" for="flexRadioDefault36">
+                                                BSB
+                                            </label>
+                                        </div>
+                                    </li>
+                                    <li class="list-group-item">
+                                        Bermain drama sederhana<br>
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="radio" name="flexRadioDefault10"
+                                                id="flexRadioDefault37">
+                                            <label class="form-check-label" for="flexRadioDefault37">
+                                                BB
+                                            </label>
+                                        </div>
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="radio" name="flexRadioDefault10"
+                                                id="flexRadioDefault38" checked>
+                                            <label class="form-check-label" for="flexRadioDefault38">
+                                                MB
+                                            </label>
+                                        </div>
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="radio" name="flexRadioDefault10"
+                                                id="flexRadioDefault39" checked>
+                                            <label class="form-check-label" for="flexRadioDefault39">
+                                                BSH
+                                            </label>
+                                        </div>
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="radio" name="flexRadioDefault10"
+                                                id="flexRadioDefault40" checked>
+                                            <label class="form-check-label" for="flexRadioDefault40">
+                                                BSB
+                                            </label>
+                                        </div>
+                                    </li>
+                                    <li class="list-group-item">
+                                        Menggambar berbagai macam bentuk yang beragam<br>
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="radio" name="flexRadioDefault10"
+                                                id="flexRadioDefault37">
+                                            <label class="form-check-label" for="flexRadioDefault37">
+                                                BB
+                                            </label>
+                                        </div>
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="radio" name="flexRadioDefault10"
+                                                id="flexRadioDefault38" checked>
+                                            <label class="form-check-label" for="flexRadioDefault38">
+                                                MB
+                                            </label>
+                                        </div>
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="radio" name="flexRadioDefault10"
+                                                id="flexRadioDefault39" checked>
+                                            <label class="form-check-label" for="flexRadioDefault39">
+                                                BSH
+                                            </label>
+                                        </div>
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="radio" name="flexRadioDefault10"
+                                                id="flexRadioDefault40" checked>
+                                            <label class="form-check-label" for="flexRadioDefault40">
+                                                BSB
+                                            </label>
+                                        </div>
+                                    </li>
+                                    <li class="list-group-item">
+                                        Melukis dengan berbagai cara dan objek<br>
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="radio" name="flexRadioDefault10"
+                                                id="flexRadioDefault37">
+                                            <label class="form-check-label" for="flexRadioDefault37">
+                                                BB
+                                            </label>
+                                        </div>
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="radio" name="flexRadioDefault10"
+                                                id="flexRadioDefault38" checked>
+                                            <label class="form-check-label" for="flexRadioDefault38">
+                                                MB
+                                            </label>
+                                        </div>
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="radio" name="flexRadioDefault10"
+                                                id="flexRadioDefault39" checked>
+                                            <label class="form-check-label" for="flexRadioDefault39">
+                                                BSH
+                                            </label>
+                                        </div>
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="radio" name="flexRadioDefault10"
+                                                id="flexRadioDefault40" checked>
+                                            <label class="form-check-label" for="flexRadioDefault40">
+                                                BSB
+                                            </label>
+                                        </div>
+                                    </li>
+                                    <li class="list-group-item">
+                                        Anak bersenandung atau bernyanyi sambil mengerjakan sesuatu<br>
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="radio" name="flexRadioDefault10"
+                                                id="flexRadioDefault37">
+                                            <label class="form-check-label" for="flexRadioDefault37">
+                                                BB
+                                            </label>
+                                        </div>
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="radio" name="flexRadioDefault10"
+                                                id="flexRadioDefault38" checked>
+                                            <label class="form-check-label" for="flexRadioDefault38">
+                                                MB
+                                            </label>
+                                        </div>
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="radio" name="flexRadioDefault10"
+                                                id="flexRadioDefault39" checked>
+                                            <label class="form-check-label" for="flexRadioDefault39">
+                                                BSH
+                                            </label>
+                                        </div>
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="radio" name="flexRadioDefault10"
+                                                id="flexRadioDefault40" checked>
+                                            <label class="form-check-label" for="flexRadioDefault40">
+                                                BSB
+                                            </label>
+                                        </div>
+                                    </li>
+                                    <li class="list-group-item">
+                                        Memainkan alat musik/instrumen/benda bersama teman<br>
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="radio" name="flexRadioDefault10"
+                                                id="flexRadioDefault37">
+                                            <label class="form-check-label" for="flexRadioDefault37">
+                                                BB
+                                            </label>
+                                        </div>
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="radio" name="flexRadioDefault10"
+                                                id="flexRadioDefault38" checked>
+                                            <label class="form-check-label" for="flexRadioDefault38">
+                                                MB
+                                            </label>
+                                        </div>
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="radio" name="flexRadioDefault10"
+                                                id="flexRadioDefault39" checked>
+                                            <label class="form-check-label" for="flexRadioDefault39">
+                                                BSH
+                                            </label>
+                                        </div>
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="radio" name="flexRadioDefault10"
+                                                id="flexRadioDefault40" checked>
+                                            <label class="form-check-label" for="flexRadioDefault40">
                                                 BSB
                                             </label>
                                         </div>
