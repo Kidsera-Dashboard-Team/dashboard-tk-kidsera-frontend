@@ -100,7 +100,7 @@ const routes: Array<RouteRecordRaw> = [
   },
   {
     path: "/pages/Rapor/TahunAjaranRapor/PesertaDidikRapor/InputNilaiPesertaDidikRapor",
-    component: () => import("../views/InputNilaiPesertaDidikRapor.vue"),
+    component: () => import("../views/InputNilaiPesertaDidikRaporPage.vue"),
   },
 ];
 
