@@ -43,36 +43,97 @@
         <ion-content :fullscreen="true">
             <ion-card class="rounded card-content">
                 <ion-card-header class="ion-text-justify">
-                    <ion-row class="ion-justify-content-between">
-                        <ion-col size-xl="6" size-md="6" size-xs="12">
-                            <ion-card-title>
-                                <h4 class="text-dalem">Rombongan Belajar</h4>{{ }}
-                            </ion-card-title>
+                    <ion-row class="ion-justify-content-between mb-4">
+                        <ion-col size-xl="4" size-md="4" size-xs="12">
+                                <h6 class="text-dark">Nama Peserta Didik</h6>
+                                <h4 class="text-dark">Jono Sukandara</h4>
+                        </ion-col>
+                        <ion-col size-xl="2" size-md="2" size-xs="12">
+                                <h6 class="text-dark">Rombel</h6>
+                                <h4 class="text-dark">2022/2023</h4>
+                        </ion-col>
+                        <ion-col size-xl="1" size-md="1" size-xs="12">
+                                <h6 class="text-dark">Kelas</h6>
+                                <h4 class="text-dark">A</h4>
+                        </ion-col>
+                        <ion-col size-xl="2" size-md="2" size-xs="12">
+                                <h6 class="text-dark">Kelompok Usia</h6>
+                                <h4 class="text-dark">6</h4>
+                        </ion-col>
+                        <ion-col size-xl="3" size-md="3" size-xs="12">
+                                <h6 class="text-dark">Nomor Induk</h6>
+                                <h4 class="text-dark">132413</h4>
                         </ion-col>
                     </ion-row>
                 </ion-card-header>
 
                 <ion-card-content>
-                    <ion-grid>
-                        <ion-row>
-                            <ion-col>
-                                <ion-card
-                                    onclick="window.location='/pages/Rapor/TahunAjaranRapor/PesertaDidikRapor';"
-                                    class="card-content-judul">
-                                    <ion-card-content class="text-center" style="margin: 70px;">
-                                        <ion-card-title color="light">TK A</ion-card-title>
-                                    </ion-card-content>
-                                </ion-card>
-                            </ion-col>
-                            <ion-col>
-                                <ion-card class="card-content-judul">
-                                    <ion-card-header class="text-center" style="margin: 70px;">
-                                        <ion-card-title color="light">TK B</ion-card-title>
-                                    </ion-card-header>
-                                </ion-card>
-                            </ion-col>
-                        </ion-row>
-                    </ion-grid>
+                    <!-- <ion-searchbar show-cancel-button="focus" placeholder="Show on Focus"></ion-searchbar> -->
+                    <div class="table-responsive">
+                        <table class="table table-borderless table-hover display" id="table-rapor">
+                            <thead>
+                                <tr>
+                                    <th scope="col" class="text-center text-secondary opacity-7">No</th>
+                                    <th scope="col" class="text-center text-secondary opacity-7">Keterangan</th>
+                                    <th scope="col" class="text-center text-secondary opacity-7">Aksi</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td class="text-center">1</td>
+                                    <td class="text-center">Tengah Semester 1</td>
+                                    <td class="text-center">
+                                        <a href="">
+                                            <div class="kotak kotak-pink"></div>
+                                        </a>
+                                        <a href="">
+                                            <div class="kotak kotak-kuning"></div>
+                                        </a>
+                                        <a href="">
+                                            <div class="kotak kotak-merah"></div>
+                                        </a>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="text-center">2</td>
+                                    <td class="text-center">Akhir Semester 1</td>
+                                    <td class="text-center">
+                                        <a href="">
+                                            <div class="kotak kotak-hijau"></div>
+                                        </a>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="text-center">3</td>
+                                    <td class="text-center">Tengah Semester 2</td>
+                                    <td class="text-center">
+                                        <a href="">
+                                            <div class="kotak kotak-hijau"></div>
+                                        </a>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="text-center">4</td>
+                                    <td class="text-center">Akhir Semester 2</td>
+                                    <td class="text-center">
+                                        <a href="">
+                                            <div class="kotak kotak-hijau"></div>
+                                        </a>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <!-- <nav aria-label="Page navigation example">
+                        <ul class="pagination">
+                            <li class="page-item"><a class="page-link" href="#">Previous</a></li>
+                            <li class="page-item"><a class="page-link" href="/pages/Sarpras/DetailSarpras">1</a></li>
+                            <li class="page-item"><a class="page-link" href="#">2</a></li>
+                            <li class="page-item"><a class="page-link" href="#">3</a></li>
+                            <li class="page-item"><a class="page-link" href="#">Next</a></li>
+                        </ul>
+                    </nav> -->
                 </ion-card-content>
             </ion-card>
         </ion-content>
@@ -81,7 +142,10 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue';
-import { IonButtons, IonContent, IonMenuButton, IonPage, IonTitle, IonToolbar, IonCol, IonGrid, IonRow } from '@ionic/vue';
+import {
+    IonButtons, IonContent, IonMenuButton, IonPage, IonTitle, IonToolbar, IonCol, IonGrid, IonRow,
+    // IonSearchbar 
+} from '@ionic/vue';
 
 export default defineComponent({
     name: 'PesertaDidikPage',
@@ -94,7 +158,8 @@ export default defineComponent({
         IonToolbar,
         IonCol,
         IonGrid,
-        IonRow
+        IonRow,
+        // IonSearchbar
     }
 });
 </script>
@@ -113,11 +178,6 @@ a .iconButton {
     text-decoration: none;
     margin-left: 20px;
     font-size: 20px;
-}
-
-.text-dalem {
-    color: black;
-    font-weight: bold;
 }
 
 /* Searchbar Style */
@@ -239,10 +299,10 @@ td {
 }
 
 .tambah {
-    background: linear-gradient(to right, #3A416F, #141727);
+    background: linear-gradient(135deg, #3A416F 0%, #141727 100%);
     border-radius: 8px;
     border: none;
-    font-weight: normal;
+    font-weight: bold;
 }
 
 .slide-custom-body {
@@ -266,19 +326,40 @@ td {
 }
 
 .card-content-judul {
-    background-color: #F4F0F0;
-    border: 1px solid rgba(0, 0, 0, 0.25);
-    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-    border-radius: 10px;
+    background: linear-gradient(135deg, #336B87 0%, #90AFC5 100%);
     font-weight: bold;
-    color: black;
+    border-radius: 20px;
 }
 
 .card-content-judul:hover {
-    background: #a39797;
-    transition: 0.5s ease-in;
+    background: linear-gradient(135deg, #90AFC5 0%, #336B87 100%);
+    transition: 5s ease-in;
     cursor: pointer;
-    color: white;
+}
+
+.kotak {
+    background-color: #141727;
+    border-radius: 5px;
+    width: 20px;
+    height: 20px;
+    display: inline-block;
+    margin-right: 10px;
+}
+
+.kotak-pink {
+    background-color: #F409F9;
+}
+
+.kotak-kuning {
+    background-color: #F9F409;
+}
+
+.kotak-merah {
+    background-color: #F90909;
+}
+
+.kotak-hijau {
+    background-color: #09F909;
 }
 
 /* small laptop dimension */

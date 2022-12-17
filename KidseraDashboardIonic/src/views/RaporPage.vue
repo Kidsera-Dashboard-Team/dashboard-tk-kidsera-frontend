@@ -53,7 +53,7 @@
                                     </ion-card-title>
                                 </ion-col>
                                 <ion-col size-xl="6" size-md="6" size-xs="auto">
-                                    <a href="/pages/rombonganbelajar/TambahRombonganBelajar"
+                                    <a href="/pages/RombonganBelajar/TambahRombonganBelajar"
                                         class="btn btn-success float-end tambah">Tambah Ruang</a>
                                 </ion-col>
                             </ion-row>
@@ -63,7 +63,7 @@
                             <ion-grid>
                                 <div class="ion-justify-content-evenly container"
                                     style="flex-wrap: wrap; display: flex;">
-                                    <div onclick="window.location='/pages/Rapor/TahunAjaran';"
+                                    <div onclick="window.location='/pages/Rapor/TahunAjaranRapor';"
                                         class="card-content col" style="width: 30%; margin: 0;">
                                         <ion-card class="card-content-judul">
                                             <ion-card-header class="ion-margin text-center">

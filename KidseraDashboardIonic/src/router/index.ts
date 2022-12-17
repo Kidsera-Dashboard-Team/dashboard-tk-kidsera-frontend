@@ -91,8 +91,16 @@ const routes: Array<RouteRecordRaw> = [
     component: () => import("../views/RaporPage.vue"),
   },
   {
-    path: "/pages/Rapor/TahunAjaran",
+    path: "/pages/Rapor/TahunAjaranRapor",
     component: () => import("../views/TahunAjaranRaporPage.vue"),
+  },
+  {
+    path: "/pages/Rapor/TahunAjaranRapor/PesertaDidikRapor",
+    component: () => import("../views/PesertaDidikRaporPage.vue"),
+  },
+  {
+    path: "/pages/Rapor/TahunAjaranRapor/PesertaDidikRapor/InputNilaiPesertaDidikRapor",
+    component: () => import("../views/InputNilaiPesertaDidikRapor.vue"),
   },
 ];
 
