@@ -245,7 +245,10 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue';
-import { IonButtons, IonContent, IonMenuButton, IonPage, IonTitle, IonToolbar, IonCol, IonGrid, IonRow } from '@ionic/vue';
+import { 
+    IonButtons, IonContent, IonMenuButton, IonPage, IonTitle, IonToolbar, IonCol, IonGrid, IonRow,
+    IonCard, IonCardHeader, IonCardTitle, IonCardContent, IonIcon,
+} from '@ionic/vue';
 
 export default defineComponent({
     name: 'PesertaDidikPage',
@@ -258,7 +261,8 @@ export default defineComponent({
         IonToolbar,
         IonCol,
         IonGrid,
-        IonRow
+        IonRow,
+        IonCard, IonCardHeader, IonCardTitle, IonCardContent, IonIcon,
     }
 });
 </script>

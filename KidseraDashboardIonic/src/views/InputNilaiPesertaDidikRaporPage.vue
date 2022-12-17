@@ -98,7 +98,7 @@
                                     <td class="text-center">2</td>
                                     <td class="text-center">Akhir Semester 1</td>
                                     <td class="text-center">
-                                        <a href="">
+                                        <a href="/pages/Rapor/TahunAjaranRapor/PesertaDidikRapor/InputNilaiPesertaDidikRapor/InputRapor">
                                             <div class="kotak kotak-hijau"></div>
                                         </a>
                                     </td>
@@ -144,6 +144,7 @@
 import { defineComponent } from 'vue';
 import {
     IonButtons, IonContent, IonMenuButton, IonPage, IonTitle, IonToolbar, IonCol, IonGrid, IonRow,
+    IonCard, IonCardContent, IonCardHeader,
     // IonSearchbar 
 } from '@ionic/vue';
 
@@ -159,6 +160,7 @@ export default defineComponent({
         IonCol,
         IonGrid,
         IonRow,
+        IonCard, IonCardContent, IonCardHeader,
         // IonSearchbar
     }
 });

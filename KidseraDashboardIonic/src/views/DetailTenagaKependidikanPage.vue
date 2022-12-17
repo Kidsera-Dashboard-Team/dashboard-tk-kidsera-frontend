@@ -80,9 +80,9 @@
                                 </ul>
                             </ion-col>
                         </ion-row>
-                        <ion-card-content class="px-0 pt-0 pb-2">
+                        <!-- <ion-card-content class="px-0 pt-0 pb-2">
 
-                        </ion-card-content>
+                        </ion-card-content> -->
                     </ion-card>
                 </ion-col>
             </ion-row>
@@ -92,7 +92,10 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue';
-import { IonButtons, IonContent, IonHeader, IonMenuButton, IonPage, IonTitle, IonToolbar, IonCol, IonGrid, IonRow } from '@ionic/vue';
+import { 
+    IonButtons, IonContent, IonMenuButton, IonPage, IonTitle, IonToolbar, IonCol, IonGrid, IonRow,
+    IonCard,
+} from '@ionic/vue';
 
 export default defineComponent({
     name: 'PesertaDidikPage',
@@ -106,7 +109,8 @@ export default defineComponent({
         IonToolbar,
         IonCol,
         IonGrid,
-        IonRow
+        IonRow,
+        IonCard,
     }
 });
 </script>

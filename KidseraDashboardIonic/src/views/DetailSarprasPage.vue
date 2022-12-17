@@ -238,6 +238,7 @@ import { defineComponent } from 'vue';
 import {
     IonButtons, IonContent, IonMenuButton, IonPage, IonTitle, IonToolbar, IonCol, IonGrid, IonRow,
     // IonSearchbar 
+    IonCard, IonCardHeader, IonCardTitle, IonCardContent, 
 } from '@ionic/vue';
 
 export default defineComponent({
@@ -253,6 +254,7 @@ export default defineComponent({
         IonGrid,
         IonRow,
         // IonSearchbar
+        IonCard, IonCardHeader, IonCardTitle, IonCardContent, 
     }
 });
 </script>
