@@ -228,7 +228,6 @@ a .iconButton {
 /* content style */
 .text-dalem {
     color: black;
-    font-weight: bold;
 }
 
 [data-href] {

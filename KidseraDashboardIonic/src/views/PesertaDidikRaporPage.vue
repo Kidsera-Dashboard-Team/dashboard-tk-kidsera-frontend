@@ -46,7 +46,7 @@
                     <ion-row class="ion-justify-content-between">
                         <ion-col size-xl="6" size-md="6" size-xs="12">
                             <ion-card-title>
-                                <h4>Input E-Rapor Peserta Didik ...</h4>
+                                <h4 class="text-dalem">Input E-Rapor Peserta Didik ...</h4>
                             </ion-card-title>
                         </ion-col>
                     </ion-row>
@@ -308,6 +308,9 @@ a .iconButton {
 }
 
 /* content style */
+.text-dalem{
+    color: black
+}
 
 [data-href] {
     cursor: pointer;
