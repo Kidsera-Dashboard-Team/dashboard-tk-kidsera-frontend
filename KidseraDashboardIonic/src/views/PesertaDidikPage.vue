@@ -96,12 +96,12 @@
                                                     data-toggle="tooltip" data-original-title="Edit user">
                                                     Edit
                                                 </a> -->
-                                                <a class="btn btn-warning me-3 text-white action-button" href="/pages/TenagaKependidikan/EditPesertaDidik">
+                                                <a href="/pages/PesertaDidik/EditPesertaDidik"><button type="button" class="btn btn-warning me-3 text-white action-button">
                                                     &nbsp;&nbsp;&nbsp;Edit&nbsp;&nbsp;&nbsp;
-                                                </a>
-                                                <a class="btn btn-danger text-white action-button" href="/pages">
+                                                </button></a>
+                                                <a href=""><button type="button" class="btn btn-danger text-white action-button" href="/pages">
                                                     Delete
-                                                </a>
+                                                </button></a>
                                             </td>
                                         </tr>
                                     </tbody>

@@ -31,6 +31,10 @@ const routes: Array<RouteRecordRaw> = [
     component: () => import("../views/TambahPesertaDidikPage.vue"),
   },
   {
+    path: "/pages/PesertaDidik/EditPesertaDidik",
+    component: () => import("../views/EditPesertaDidikPage.vue"),
+  },
+  {
     path: "/pages/PesertaDidik/DetailPesertaDidik",
     component: () => import("../views/DetailPesertaDidikPage.vue"),
   },
