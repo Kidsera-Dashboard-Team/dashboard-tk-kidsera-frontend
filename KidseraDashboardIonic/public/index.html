@@ -105,6 +105,18 @@
       }
     }
 
+    // Rapor
+    function doSomethingForSaveInputRapor() {
+      const statement = confirm("Perubahan Akan Disimpan, Lanjutkan Perubahan?");
+      if (statement == true) {
+        alert("Data Berhasil Disimpan");
+        window.location.href = "/pages/Rapor/TahunAjaranRapor/PesertaDidikRapor/InputNilaiPesertaDidikRapor";
+      }
+      else {
+        alert("Data Tidak Berhasil Disimpan");
+      }
+    }
+
     // Pagination
     $(document).ready(function () {
       $('#table-tenaga-kependidikan-1').DataTable();

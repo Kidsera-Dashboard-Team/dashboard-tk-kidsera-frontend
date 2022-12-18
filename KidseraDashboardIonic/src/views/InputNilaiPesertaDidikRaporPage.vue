@@ -107,7 +107,7 @@
                                     <td class="text-center">3</td>
                                     <td class="text-center">Tengah Semester 2</td>
                                     <td class="text-center">
-                                        <a href="">
+                                        <a href="/pages/Rapor/TahunAjaranRapor/PesertaDidikRapor/InputNilaiPesertaDidikRapor/InputRapor">
                                             <div class="kotak kotak-hijau"></div>
                                         </a>
                                     </td>
@@ -116,7 +116,7 @@
                                     <td class="text-center">4</td>
                                     <td class="text-center">Akhir Semester 2</td>
                                     <td class="text-center">
-                                        <a href="">
+                                        <a href="/pages/Rapor/TahunAjaranRapor/PesertaDidikRapor/InputNilaiPesertaDidikRapor/InputRapor">
                                             <div class="kotak kotak-hijau"></div>
                                         </a>
                                     </td>
