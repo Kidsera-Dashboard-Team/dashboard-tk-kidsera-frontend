@@ -41,7 +41,7 @@
         </ion-toolbar>
 
         <ion-content :fullscreen="true">
-            <ion-card class="rounded card-content">
+            <ion-card class="rounded card-content mt-3 mx-4">
                 <ion-card-header class="ion-text-justify">
                     <ion-row class="ion-justify-content-between">
                         <ion-col size-xl="6" size-md="6" size-xs="12">
@@ -365,22 +365,6 @@ td {
     width: 90%;
     max-height: 300px;
     object-fit: cover;
-}
-
-.card-content {
-    margin: 30px 50px;
-}
-
-.card-content-judul {
-    background: linear-gradient(135deg, #336B87 0%, #90AFC5 100%);
-    font-weight: bold;
-    border-radius: 20px;
-}
-
-.card-content-judul:hover {
-    background: linear-gradient(135deg, #90AFC5 0%, #336B87 100%);
-    transition: 5s ease-in;
-    cursor: pointer;
 }
 
 /* small laptop dimension */

@@ -9,7 +9,7 @@
                     <ion-col size="3" size-xl="6">
                         <ion-title class="d-none d-lg-inline-block" size="small"><span
                                 style="opacity: 50%;">Pages</span> /
-                            E - Rapor <br> <span style="font-size: 18px; letter-spacing: 2.5px;">E - Rapor</span>
+                            Rombongan Belajar <br> <span style="font-size: 18px; letter-spacing: 2.5px;">Rombongan Belajar</span>
                         </ion-title>
                     </ion-col>
                     <ion-col size-sm="9" size="10" size-xl="6">
@@ -52,6 +52,10 @@
                                         <h4 class="text-dalem">Rombongan Belajar</h4>
                                     </ion-card-title>
                                 </ion-col>
+                                <ion-col size-xl="6" size-md="6" size-xs="auto">
+                                    <a href="/pages/rombonganbelajar/TambahRombonganBelajar"
+                                        class="btn btn-success float-end tambah">Tambah Ruang</a>
+                                </ion-col>
                             </ion-row>
                         </ion-card-header>
 
@@ -59,8 +63,7 @@
                             <ion-grid>
                                 <div class="ion-justify-content-evenly container"
                                     style="flex-wrap: wrap; display: flex;">
-                                    <div class="card-content"
-                                        onclick="window.location='/pages/Rapor/TahunAjaranRapor';">
+                                    <div class="card-content" onclick="window.location='/pages/RombonganBelajar/TahunAjaranRombonganBelajar';">
                                         <ion-card class="card-content-judul">
                                             <ion-card-header class="ion-margin text-center">
                                                 <ion-card-title>
@@ -72,25 +75,28 @@
                                     </div>
                                     <div class="card-content">
                                         <ion-card class="card-content-judul">
-                                            <ion-card-header class="ion-margin text-center"><ion-card-title>
-                                                    <p>Tahun Ajaran</p>
-                                                    <p>2022/2023</p>
-                                                </ion-card-title>
+                                            <ion-card-header class="ion-margin text-center">
+                                                    <ion-card-title>
+                                                        <p>Tahun Ajaran</p>
+                                                        <p>2022/2023</p>
+                                                    </ion-card-title>
                                             </ion-card-header>
                                         </ion-card>
                                     </div>
                                     <div class="card-content">
                                         <ion-card class="card-content-judul">
-                                            <ion-card-header class="ion-margin text-center"><ion-card-title>
-                                                    <p>Tahun Ajaran</p>
-                                                    <p>2022/2023</p>
-                                                </ion-card-title>
+                                            <ion-card-header class="ion-margin text-center">
+                                                    <ion-card-title>
+                                                        <p>Tahun Ajaran</p>
+                                                        <p>2022/2023</p>
+                                                    </ion-card-title>
                                             </ion-card-header>
                                         </ion-card>
                                     </div>
                                     <div class="card-content">
                                         <ion-card class="card-content-judul">
-                                            <ion-card-header class="ion-margin text-center"><ion-card-title>
+                                            <ion-card-header class="ion-margin text-center">
+                                                <ion-card-title>
                                                     <p>Tahun Ajaran</p>
                                                     <p>2022/2023</p>
                                                 </ion-card-title>
@@ -145,6 +151,7 @@ a .iconButton {
     font-size: 20px;
 }
 
+/* Content Styling */
 .text-info {
     color: #17c1e8 !important;
 }
@@ -165,7 +172,6 @@ a .iconButton {
     background-image: linear-gradient(310deg, #141727, #3A416F);
 }
 
-/* content style */
 .text-dalem {
     color: black;
 }
@@ -173,10 +179,6 @@ a .iconButton {
 [data-href] {
     cursor: pointer;
 }
-
-/* .table {
-    border-collapse: inherit;
-} */
 
 thead th {
     padding: 0.75rem 1rem;
@@ -208,22 +210,6 @@ td {
     font-weight: normal;
 }
 
-.slide-custom-body {
-    margin-top: 20px;
-}
-
-.slide-custom {
-    width: 90%;
-    margin: auto;
-    border-radius: 18px;
-}
-
-.slide-custom img {
-    width: 90%;
-    max-height: 300px;
-    object-fit: cover;
-}
-
 .card-content-judul {
     background-color: #F4F0F0;
     border: 1px solid rgba(0, 0, 0, 0.25);
@@ -247,12 +233,10 @@ card-content {
 /* Laptop Large Above dimension */
 
 @media only screen and (min-width: 1280px) {
-
     th,
     td {
         width: 160px;
     }
-
     .card-content {
         width: 30%;
     }
@@ -260,7 +244,9 @@ card-content {
 
 /* tablet dimension */
 
-@media only screen and (min-width: 990px) {}
+@media only screen and (min-width: 990px) {
+    
+}
 
 /* large phone dimension */
 
@@ -289,7 +275,13 @@ card-content {
 
 /* small phone dimension */
 
-@media only screen and (max-width: 376px) {}
+@media only screen and (max-width: 376px) {
 
-@media only screen and (max-width: 320px) {}
+    
+}
+
+@media only screen and (max-width: 320px) {
+
+
+}
 </style>

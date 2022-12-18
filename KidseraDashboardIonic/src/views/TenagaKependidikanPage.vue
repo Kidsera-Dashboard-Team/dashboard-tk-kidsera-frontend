@@ -41,7 +41,7 @@
         </ion-toolbar>
 
         <ion-content :fullscreen="true">
-            <ion-card class="m-5 rounded">
+            <ion-card class="mt-4 mx-3 rounded">
                 <ion-card-header class="ion-text-justify">
                     <ion-row class="ion-justify-content-between">
                         <ion-col size-xl="6" size-md="6" size-xs="12">
@@ -141,7 +141,7 @@
                 </ion-card-content>
             </ion-card>
 
-            <ion-card class="m-5 rounded">
+            <ion-card class="mt-4 mx-3 rounded">
                 <ion-card-header class="ion-text-justify">
                     <ion-row class="ion-justify-content-between">
                         <ion-col size-xl="6" size-md="6" size-xs="12">

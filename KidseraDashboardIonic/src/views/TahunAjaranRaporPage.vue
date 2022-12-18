@@ -41,7 +41,7 @@
         </ion-toolbar>
 
         <ion-content :fullscreen="true">
-            <ion-card class="rounded card-content">
+            <ion-card class="rounded card-content w-100">
                 <ion-card-header class="ion-text-justify">
                     <ion-row class="ion-justify-content-between">
                         <ion-col size-xl="6" size-md="6" size-xs="12">
@@ -54,24 +54,37 @@
 
                 <ion-card-content>
                     <ion-grid>
-                        <ion-row>
-                            <ion-col>
-                                <ion-card
-                                    onclick="window.location='/pages/Rapor/TahunAjaranRapor/PesertaDidikRapor';"
-                                    class="card-content-judul">
-                                    <ion-card-content class="text-center" style="margin: 70px;">
-                                        <ion-card-title color="light">TK A</ion-card-title>
-                                    </ion-card-content>
-                                </ion-card>
-                            </ion-col>
-                            <ion-col>
-                                <ion-card class="card-content-judul">
-                                    <ion-card-header class="text-center" style="margin: 70px;">
-                                        <ion-card-title color="light">TK B</ion-card-title>
-                                    </ion-card-header>
-                                </ion-card>
-                            </ion-col>
-                        </ion-row>
+                        <ion-grid>
+                            <div class="ion-justify-content-evenly container" style="flex-wrap: wrap; display: flex;">
+                                <div onclick="window.location='/pages/Rapor/TahunAjaranRapor/PesertaDidikRapor';" class="card-content">
+                                    <ion-card class="card-content-judul">
+                                        <ion-card-content class="ion-margin text-center" style="margin: 70px;">
+                                            <ion-card-title>
+                                                <p>TK A</p>
+                                            </ion-card-title>
+                                        </ion-card-content>
+                                    </ion-card>
+                                </div>
+                                <div class="card-content">
+                                    <ion-card class="card-content-judul">
+                                        <ion-card-content class="ion-margin text-center" style="margin: 70px;">
+                                            <a href="" class="text-decoration-none"><ion-card-title>
+                                                    <p>TK B</p>
+                                                </ion-card-title></a>
+                                        </ion-card-content>
+                                    </ion-card>
+                                </div>
+                                <div class="card-content">
+                                    <ion-card class="card-content-judul">
+                                        <ion-card-content class="ion-margin text-center" style="margin: 70px;">
+                                            <a href="" class="text-decoration-none"><ion-card-title>
+                                                    <p>TK C</p>
+                                                </ion-card-title></a>
+                                        </ion-card-content>
+                                    </ion-card>
+                                </div>
+                            </div>
+                        </ion-grid>
                     </ion-grid>
                 </ion-card-content>
             </ion-card>
@@ -119,70 +132,6 @@ a .iconButton {
     color: black;
 }
 
-/* Searchbar Style */
-
-.search-box {
-    width: fit-content;
-    height: fit-content;
-    position: relative;
-    color: black;
-}
-
-.input-search {
-    height: 40px;
-    width: 50px;
-    border-style: none;
-    padding: 10px;
-    font-size: 18px;
-    letter-spacing: 2px;
-    outline: none;
-    border-radius: 25px;
-    transition: all .5s ease-in-out;
-    background-color: transparent;
-    padding-right: 40px;
-    color: black;
-}
-
-.input-search::placeholder {
-    color: rgba(0, 0, 0, 0.5);
-    font-size: 18px;
-    letter-spacing: 2px;
-    font-weight: 100;
-}
-
-.btn-search {
-    width: 40px;
-    height: 40px;
-    border-style: none;
-    font-size: 20px;
-    font-weight: bold;
-    outline: none;
-    cursor: pointer;
-    border-radius: 50%;
-    position: absolute;
-    right: 0px;
-    color: black;
-    background-color: transparent;
-    pointer-events: painted;
-    top: -1.5px;
-}
-
-.btn-search:focus~.input-search {
-    width: 230px;
-    border-radius: 10px;
-    background-color: white;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.5);
-    transition: all 500ms cubic-bezier(0, 0.110, 0.35, 2);
-}
-
-.input-search:focus {
-    width: 230px;
-    border-radius: 0px;
-    background-color: transparent;
-    border-bottom: 1px solid rgba(255, 255, 255, .5);
-    transition: all 500ms cubic-bezier(0, 0.110, 0.35, 2);
-}
-
 .text-info {
     color: #17c1e8 !important;
 }
@@ -209,10 +158,6 @@ a .iconButton {
     cursor: pointer;
 }
 
-/* .table {
-    border-collapse: inherit;
-} */
-
 thead th {
     padding: 0.75rem 1rem;
     text-transform: uppercase;
@@ -227,41 +172,6 @@ th {
 td,
 th {
     white-space: nowrap;
-}
-
-.tables> :not(:last-child)> :last-child>* {
-    border-bottom-color: black;
-}
-
-td {
-    width: 100px;
-}
-
-.tambah {
-    background: linear-gradient(to right, #3A416F, #141727);
-    border-radius: 8px;
-    border: none;
-    font-weight: normal;
-}
-
-.slide-custom-body {
-    margin-top: 20px;
-}
-
-.slide-custom {
-    width: 90%;
-    margin: auto;
-    border-radius: 18px;
-}
-
-.slide-custom img {
-    width: 90%;
-    max-height: 300px;
-    object-fit: cover;
-}
-
-.card-content {
-    margin: 30px 50px;
 }
 
 .card-content-judul {
@@ -280,44 +190,25 @@ td {
     color: white;
 }
 
+ion-card-title{
+    color: black;
+}
 /* small laptop dimension */
 
 @media only screen and (max-width: 1280px) {
-    .btn-search:focus~.input-search {
-        width: 250px;
-    }
+}
 
-    .input-search:focus {
-        width: 250px;
-    }
+/* Laptop Large Above dimension */
 
-    th,
-    td {
-        width: 160px;
-    }
-
-    .action-button {
-        padding: 5px 12px;
-        font-size: 12px;
+@media only screen and (min-width: 1280px) {
+    .card-content {
+        width: 50%;
     }
 }
 
 /* tablet dimension */
 
-@media only screen and (max-width: 990px) {
-    .btn-search:focus~.input-search {
-        width: 200px;
-    }
-
-    .input-search:focus {
-        width: 200px;
-    }
-
-    th,
-    td {
-        font-size: 12px;
-    }
-}
+@media only screen and (min-width: 990px) {}
 
 /* large phone dimension */
 
@@ -327,70 +218,19 @@ td {
         left: 60px
     }
 
-    th,
-    td {
-        width: 150px;
-    }
-
-    /* .title-table {
-        font-size: 12px;
-        margin-top: 10px;
-    } */
-    .tambah {
-        padding: 10px;
-        font-size: 10px;
-        /* position: relative;
-        left: 20px;
-        height: 30px; */
-    }
 }
 
 /* large phone dimension */
 
 @media only screen and (max-width: 426px) {
-    .search-box {
-        position: absolute;
-        right: 34%;
-    }
-
-    .btn-search:focus~.input-search {
-        width: 200px;
-    }
-
-    .input-search:focus {
-        width: 200px;
+    .card-content {
+        width: 100%;
     }
 }
 
 /* small phone dimension */
 
-@media only screen and (max-width: 376px) {
-    .search-box {
-        position: absolute;
-        right: 41%;
-    }
+@media only screen and (max-width: 376px) {}
 
-    .btn-search:focus~.input-search {
-        width: 180px;
-    }
-
-    .input-search:focus {
-        width: 180px;
-    }
-}
-
-@media only screen and (max-width: 320px) {
-    .search-box {
-        position: absolute;
-        right: 50%;
-    }
-
-    .btn-search:focus~.input-search {
-        width: 150px;
-    }
-
-    .input-search:focus {
-        width: 150px;
-    }
-}
+@media only screen and (max-width: 320px) {}
 </style>

@@ -154,7 +154,7 @@
                             </ion-col>
                             <ion-col size="6" size-sm="2">
                                 <a class="btn btn-success" role="button"
-                                    href="javascript: doSomethingForAddSarprasFasilitas()"
+                                    href=""
                                     @click="submitForm()">Tambah</a>
                             </ion-col>
                         </ion-row>
