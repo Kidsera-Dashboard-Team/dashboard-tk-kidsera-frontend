@@ -2483,7 +2483,7 @@
                     </ol>
 
                     <div>
-                        <ion-row class="ion-justify-content-center row-button">
+                        <ion-row class="ion-justify-content-center row-button mt-4 mb-3">
                             <ion-col size="6" size-sm="2">
                                 <a class="btn btn-danger" href="/pages/Rapor/TahunAjaranRapor/PesertaDidikRapor/InputNilaiPesertaDidikRapor" role="button">Batalkan</a>
                             </ion-col>
