@@ -1,7 +1,7 @@
 <template>
   <ion-app>
     <ion-split-pane content-id="main-content" :disabled="disabledVariable">
-      <ion-menu content-id="main-content" type="overlay">
+      <ion-menu content-id="main-content" type="overlay" swipeEnabled="false" swipe-gesture="false">
         <ion-content>
           <ion-list id="inbox-list">
             <ion-row>
