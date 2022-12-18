@@ -44,7 +44,7 @@
             <ion-grid>
                 <ion-row>
                     <ion-col size-xl="12" size="12">
-                        <ion-card class="m-5 p-3 rounded text-center">
+                        <ion-card class="mt-3 mx-3 p-lg-3 rounded text-center">
                             <ion-card-header>
                                 <ion-card-title>
                                     <h4>Edit Fasilitas Ruang</h4>

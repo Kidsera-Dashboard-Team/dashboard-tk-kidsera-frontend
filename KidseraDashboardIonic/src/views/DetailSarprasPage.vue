@@ -41,7 +41,7 @@
         </ion-toolbar>
 
         <ion-content :fullscreen="true">
-            <ion-card class="rounded card-content">
+            <ion-card class="rounded card-content mt-3 mx-3">
                 <ion-card-header class="ion-text-justify">
                     <ion-row class="ion-justify-content-between">
                         <ion-col size-xl="6" size-md="6" size-xs="12">
@@ -394,7 +394,6 @@ td {
 }
 
 .tambah {
-    background: linear-gradient(135deg, #3A416F 0%, #141727 100%);
     border-radius: 8px;
     border: none;
     font-weight: bold;

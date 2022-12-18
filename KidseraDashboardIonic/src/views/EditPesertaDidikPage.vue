@@ -57,8 +57,8 @@
                             <ion-label class="h5">Status </ion-label>
                         </ion-list-header>
                         <ion-item class="col-12 col-sm-4">
-                            <ion-label>Siswa Baru</ion-label>
-                            <ion-radio value="Siswa Baru"></ion-radio>
+                            <ion-label>Siswa Aktif</ion-label>
+                            <ion-radio value="Siswa Aktif"></ion-radio>
                         </ion-item>
                         <ion-item class="col-12 col-sm-4">
                             <ion-label>Alumni</ion-label>
