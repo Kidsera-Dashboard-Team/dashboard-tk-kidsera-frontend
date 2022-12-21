@@ -346,7 +346,6 @@ td {
 
 .card-content {
     margin: 30px 50px;
-    border: .2px solid black;
 }
 
 .card-content-judul {
