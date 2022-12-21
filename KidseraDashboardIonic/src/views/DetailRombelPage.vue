@@ -121,7 +121,7 @@ import { defineComponent } from 'vue';
 import { IonButtons, IonContent, IonMenuButton, IonPage, IonTitle, IonToolbar, IonCol, IonGrid, IonRow } from '@ionic/vue';
 
 export default defineComponent({
-    name: 'PesertaDidikPage',
+    name: 'DetailRombonganBelajar',
     components: {
         IonButtons,
         IonContent,
@@ -132,7 +132,8 @@ export default defineComponent({
         IonCol,
         IonGrid,
         IonRow
-    }
+    },
+    props: ["kelas"],
 });
 </script>
 

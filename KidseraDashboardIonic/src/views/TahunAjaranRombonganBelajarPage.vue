@@ -1,101 +1,146 @@
 <template>
-    <ion-page>
-        <ion-toolbar>
-            <ion-buttons slot="start">
-                <ion-menu-button color="primary"></ion-menu-button>
-            </ion-buttons>
-            <ion-grid>
-                <ion-row class="ion-justify-content-between">
-                    <ion-col size="3" size-xl="6">
-                        <ion-title class="d-none d-lg-inline-block" size="small"><span
-                                style="opacity: 50%;">Pages</span> /
-                            Tahun Rombongan Belajar <br> <span style="font-size: 18px; letter-spacing: 2.5px;">Tahun Rombongan Belajar</span>
-                        </ion-title>
-                    </ion-col>
-                    <ion-col size-sm="9" size="10" size-xl="6">
-                        <ion-row class="ion-align-items-center ion-justify-content-end goright mt-2"
-                            style="margin-right: 20px;">
-                            <div class="btn-group dropstart mb-1 ms-2" style="content: inherit;">
-                                <button class="btn dropdown-toggle text-info text-gradient" type="button"
-                                    data-bs-toggle="dropdown" aria-expanded="true"
-                                    style="background-color: transparent;">
-                                    Hi User 13141
-                                </button>
-                                <ul class="dropdown-menu dropdown-menu-dark">
-                                    <li><a class="dropdown-item" href="javascript: doSomethingLogout()">Logout</a></li>
-                                </ul>
-                            </div>
-                            <div class="nav-icon">
-                                <a href="/SignUp">
-                                    <ion-icon class="iconButton text-info text-gradient"
-                                        src="assets/icon/signup.svg"></ion-icon>
-                                </a>
-                            </div>
-                            <a href="/SignUp" class="d-none d-sm-inline-block mb-1 text-info text-gradient"
-                                style="text-decoration: none;">&nbsp;Add User</a>
-                            <div>&nbsp;</div>
-                        </ion-row>
-                    </ion-col>
-                </ion-row>
-            </ion-grid>
-        </ion-toolbar>
+  <ion-page>
+    <ion-toolbar>
+      <ion-buttons slot="start">
+        <ion-menu-button color="primary"></ion-menu-button>
+      </ion-buttons>
+      <ion-grid>
+        <ion-row class="ion-justify-content-between">
+          <ion-col size="3" size-xl="6">
+            <ion-title class="d-none d-lg-inline-block" size="small"
+              ><span style="opacity: 50%">Pages</span> / Tahun Rombongan Belajar
+              <br />
+              <span style="font-size: 18px; letter-spacing: 2.5px"
+                >Tahun Rombongan Belajar</span
+              >
+            </ion-title>
+          </ion-col>
+          <ion-col size-sm="9" size="10" size-xl="6">
+            <ion-row
+              class="ion-align-items-center ion-justify-content-end goright mt-2"
+              style="margin-right: 20px"
+            >
+              <div
+                class="btn-group dropstart mb-1 ms-2"
+                style="content: inherit"
+              >
+                <button
+                  class="btn dropdown-toggle text-info text-gradient"
+                  type="button"
+                  data-bs-toggle="dropdown"
+                  aria-expanded="true"
+                  style="background-color: transparent"
+                >
+                  Hi User 13141
+                </button>
+                <ul class="dropdown-menu dropdown-menu-dark">
+                  <li>
+                    <a
+                      class="dropdown-item"
+                      href="javascript: doSomethingLogout()"
+                      >Logout</a
+                    >
+                  </li>
+                </ul>
+              </div>
+              <div class="nav-icon">
+                <a href="/SignUp">
+                  <ion-icon
+                    class="iconButton text-info text-gradient"
+                    src="assets/icon/signup.svg"
+                  ></ion-icon>
+                </a>
+              </div>
+              <a
+                href="/SignUp"
+                class="d-none d-sm-inline-block mb-1 text-info text-gradient"
+                style="text-decoration: none"
+                >&nbsp;Add User</a
+              >
+              <div>&nbsp;</div>
+            </ion-row>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-toolbar>
 
-        <ion-content :fullscreen="true">
-            <ion-card class="rounded card-content">
-                <ion-card-header class="ion-text-justify">
-                    <ion-row class="ion-justify-content-between">
-                        <ion-col size-xl="6" size-md="6" size-xs="12">
-                            <ion-card-title>
-                                <h4 class="text-dalem">Rombongan Belajar</h4>{{ }}
-                            </ion-card-title>
-                        </ion-col>
-                    </ion-row>
-                </ion-card-header>
+    <ion-content :fullscreen="true">
+      <ion-card class="rounded card-content">
+        <ion-card-header class="ion-text-justify">
+          <ion-row class="ion-justify-content-between">
+            <ion-col size-xl="6" size-md="6" size-xs="12">
+              <ion-card-title>
+                <h4 class="text-dalem">Rombongan Belajar</h4>
+                {{}}
+              </ion-card-title>
+            </ion-col>
+          </ion-row>
+        </ion-card-header>
 
-                <ion-card-content>
-                    <ion-grid>
-                        <ion-row>
-                            <ion-col>
-                                <ion-card
-                                    onclick="window.location='/pages/RombonganBelajar/TahunAjaranRombonganBelajar/DetailRombonganBelajar';"
-                                    class="card-content-judul">
-                                    <ion-card-content class="text-center" style="margin: 70px;">
-                                        <ion-card-title color="light">TK A</ion-card-title>
-                                    </ion-card-content>
-                                </ion-card>
-                            </ion-col>
-                            <ion-col>
-                                <ion-card class="card-content-judul">
-                                    <ion-card-header class="text-center" style="margin: 70px;">
-                                        <ion-card-title color="light">TK B</ion-card-title>
-                                    </ion-card-header>
-                                </ion-card>
-                            </ion-col>
-                        </ion-row>
-                    </ion-grid>
-                </ion-card-content>
-            </ion-card>
-        </ion-content>
-    </ion-page>
+        <ion-card-content>
+          <ion-grid>
+            <ion-row>
+              <ion-col>
+                <ion-card class="card-content-judul" @click="() => router.push('/pages/RombonganBelajar/'+tahun+'/A')">
+                  <ion-card-content
+                    class="text-center"
+                    style="margin: 70px"
+                  >
+                    <ion-card-title color="light">TK A</ion-card-title>
+                  </ion-card-content>
+                </ion-card>
+              </ion-col>
+              <ion-col>
+                <ion-card class="card-content-judul" @click="() => router.push('/pages/RombonganBelajar/'+tahun+'/B')">
+                  <ion-card-header class="text-center" style="margin: 70px">
+                    <ion-card-title color="light">TK B</ion-card-title>
+                  </ion-card-header>
+                </ion-card>
+              </ion-col>
+            </ion-row>
+          </ion-grid>
+        </ion-card-content>
+      </ion-card>
+    </ion-content>
+  </ion-page>
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue';
-import { IonButtons, IonContent, IonMenuButton, IonPage, IonTitle, IonToolbar, IonCol, IonGrid, IonRow } from '@ionic/vue';
+import { defineComponent } from "vue";
+import {
+  IonButtons,
+  IonContent,
+  IonMenuButton,
+  IonPage,
+  IonTitle,
+  IonToolbar,
+  IonCol,
+  IonGrid,
+  IonRow,
+} from "@ionic/vue";
+import { useRouter } from "vue-router";
 
 export default defineComponent({
-    name: 'PesertaDidikPage',
-    components: {
-        IonButtons,
-        IonContent,
-        IonMenuButton,
-        IonPage,
-        IonTitle,
-        IonToolbar,
-        IonCol,
-        IonGrid,
-        IonRow
-    }
+  name: "PesertaDidikPage",
+  components: {
+    IonButtons,
+    IonContent,
+    IonMenuButton,
+    IonPage,
+    IonTitle,
+    IonToolbar,
+    IonCol,
+    IonGrid,
+    IonRow,
+  },
+  props: ["tahun"],
+  setup() {
+    const router = useRouter();
+
+    return {
+      router,
+    };
+  },
 });
 </script>
 
@@ -103,111 +148,111 @@ export default defineComponent({
 /* template style */
 
 ion-col {
-    padding: 0;
+  padding: 0;
 }
 
 /* Icon navbar style */
 
 a .iconButton {
-    color: #67748E;
-    text-decoration: none;
-    margin-left: 20px;
-    font-size: 20px;
+  color: #67748e;
+  text-decoration: none;
+  margin-left: 20px;
+  font-size: 20px;
 }
 
 .text-dalem {
-    color: black;
-    font-weight: bold;
+  color: black;
+  font-weight: bold;
 }
 
 /* Searchbar Style */
 
 .search-box {
-    width: fit-content;
-    height: fit-content;
-    position: relative;
-    color: black;
+  width: fit-content;
+  height: fit-content;
+  position: relative;
+  color: black;
 }
 
 .input-search {
-    height: 40px;
-    width: 50px;
-    border-style: none;
-    padding: 10px;
-    font-size: 18px;
-    letter-spacing: 2px;
-    outline: none;
-    border-radius: 25px;
-    transition: all .5s ease-in-out;
-    background-color: transparent;
-    padding-right: 40px;
-    color: black;
+  height: 40px;
+  width: 50px;
+  border-style: none;
+  padding: 10px;
+  font-size: 18px;
+  letter-spacing: 2px;
+  outline: none;
+  border-radius: 25px;
+  transition: all 0.5s ease-in-out;
+  background-color: transparent;
+  padding-right: 40px;
+  color: black;
 }
 
 .input-search::placeholder {
-    color: rgba(0, 0, 0, 0.5);
-    font-size: 18px;
-    letter-spacing: 2px;
-    font-weight: 100;
+  color: rgba(0, 0, 0, 0.5);
+  font-size: 18px;
+  letter-spacing: 2px;
+  font-weight: 100;
 }
 
 .btn-search {
-    width: 40px;
-    height: 40px;
-    border-style: none;
-    font-size: 20px;
-    font-weight: bold;
-    outline: none;
-    cursor: pointer;
-    border-radius: 50%;
-    position: absolute;
-    right: 0px;
-    color: black;
-    background-color: transparent;
-    pointer-events: painted;
-    top: -1.5px;
+  width: 40px;
+  height: 40px;
+  border-style: none;
+  font-size: 20px;
+  font-weight: bold;
+  outline: none;
+  cursor: pointer;
+  border-radius: 50%;
+  position: absolute;
+  right: 0px;
+  color: black;
+  background-color: transparent;
+  pointer-events: painted;
+  top: -1.5px;
 }
 
-.btn-search:focus~.input-search {
-    width: 230px;
-    border-radius: 10px;
-    background-color: white;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.5);
-    transition: all 500ms cubic-bezier(0, 0.110, 0.35, 2);
+.btn-search:focus ~ .input-search {
+  width: 230px;
+  border-radius: 10px;
+  background-color: white;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.5);
+  transition: all 500ms cubic-bezier(0, 0.11, 0.35, 2);
 }
 
 .input-search:focus {
-    width: 230px;
-    border-radius: 0px;
-    background-color: transparent;
-    border-bottom: 1px solid rgba(255, 255, 255, .5);
-    transition: all 500ms cubic-bezier(0, 0.110, 0.35, 2);
+  width: 230px;
+  border-radius: 0px;
+  background-color: transparent;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.5);
+  transition: all 500ms cubic-bezier(0, 0.11, 0.35, 2);
 }
 
 .text-info {
-    color: #17c1e8 !important;
+  color: #17c1e8 !important;
 }
 
 .text-gradient {
-    background-clip: text;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    position: relative;
-    z-index: 1;
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  position: relative;
+  z-index: 1;
 }
 
 .text-gradient.text-info {
-    background-image: linear-gradient(310deg, #2152FF, #21D4FD);
+  background-image: linear-gradient(310deg, #2152ff, #21d4fd);
 }
 
 .text-gradient.text-dark {
-    background-image: linear-gradient(310deg, #141727, #3A416F);
+  background-image: linear-gradient(310deg, #141727, #3a416f);
 }
 
 /* content style */
 
 [data-href] {
-    cursor: pointer;
+  cursor: pointer;
 }
 
 /* .table {
@@ -215,183 +260,183 @@ a .iconButton {
 } */
 
 thead th {
-    padding: 0.75rem 1rem;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    border-bottom: 1px solid lighten(black, 35%);
+  padding: 0.75rem 1rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  border-bottom: 1px solid lighten(black, 35%);
 }
 
 th {
-    font-weight: bold;
+  font-weight: bold;
 }
 
 td,
 th {
-    white-space: nowrap;
+  white-space: nowrap;
 }
 
-.tables> :not(:last-child)> :last-child>* {
-    border-bottom-color: black;
+.tables > :not(:last-child) > :last-child > * {
+  border-bottom-color: black;
 }
 
 td {
-    width: 100px;
+  width: 100px;
 }
 
 .tambah {
-    background: linear-gradient(to right, #3A416F, #141727);
-    border-radius: 8px;
-    border: none;
-    font-weight: normal;
+  background: linear-gradient(to right, #3a416f, #141727);
+  border-radius: 8px;
+  border: none;
+  font-weight: normal;
 }
 
 .slide-custom-body {
-    margin-top: 20px;
+  margin-top: 20px;
 }
 
 .slide-custom {
-    width: 90%;
-    margin: auto;
-    border-radius: 18px;
+  width: 90%;
+  margin: auto;
+  border-radius: 18px;
 }
 
 .slide-custom img {
-    width: 90%;
-    max-height: 300px;
-    object-fit: cover;
+  width: 90%;
+  max-height: 300px;
+  object-fit: cover;
 }
 
 .card-content {
-    margin: 30px 50px;
+  margin: 30px 50px;
 }
 
 .card-content-judul {
-    background-color: #F4F0F0;
-    border: 1px solid rgba(0, 0, 0, 0.25);
-    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-    border-radius: 10px;
-    font-weight: bold;
-    color: black;
+  background-color: #f4f0f0;
+  border: 1px solid rgba(0, 0, 0, 0.25);
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 10px;
+  font-weight: bold;
+  color: black;
 }
 
 .card-content-judul:hover {
-    background: #a39797;
-    transition: 0.5s ease-in;
-    cursor: pointer;
-    color: white;
+  background: #a39797;
+  transition: 0.5s ease-in;
+  cursor: pointer;
+  color: white;
 }
 
 /* small laptop dimension */
 
 @media only screen and (max-width: 1280px) {
-    .btn-search:focus~.input-search {
-        width: 250px;
-    }
+  .btn-search:focus ~ .input-search {
+    width: 250px;
+  }
 
-    .input-search:focus {
-        width: 250px;
-    }
+  .input-search:focus {
+    width: 250px;
+  }
 
-    th,
-    td {
-        width: 160px;
-    }
+  th,
+  td {
+    width: 160px;
+  }
 
-    .action-button {
-        padding: 5px 12px;
-        font-size: 12px;
-    }
+  .action-button {
+    padding: 5px 12px;
+    font-size: 12px;
+  }
 }
 
 /* tablet dimension */
 
 @media only screen and (max-width: 990px) {
-    .btn-search:focus~.input-search {
-        width: 200px;
-    }
+  .btn-search:focus ~ .input-search {
+    width: 200px;
+  }
 
-    .input-search:focus {
-        width: 200px;
-    }
+  .input-search:focus {
+    width: 200px;
+  }
 
-    th,
-    td {
-        font-size: 12px;
-    }
+  th,
+  td {
+    font-size: 12px;
+  }
 }
 
 /* large phone dimension */
 
 @media only screen and (max-width: 575px) {
-    .goright {
-        position: relative;
-        left: 60px
-    }
+  .goright {
+    position: relative;
+    left: 60px;
+  }
 
-    th,
-    td {
-        width: 150px;
-    }
+  th,
+  td {
+    width: 150px;
+  }
 
-    /* .title-table {
+  /* .title-table {
         font-size: 12px;
         margin-top: 10px;
     } */
-    .tambah {
-        padding: 10px;
-        font-size: 10px;
-        /* position: relative;
+  .tambah {
+    padding: 10px;
+    font-size: 10px;
+    /* position: relative;
         left: 20px;
         height: 30px; */
-    }
+  }
 }
 
 /* large phone dimension */
 
 @media only screen and (max-width: 426px) {
-    .search-box {
-        position: absolute;
-        right: 34%;
-    }
+  .search-box {
+    position: absolute;
+    right: 34%;
+  }
 
-    .btn-search:focus~.input-search {
-        width: 200px;
-    }
+  .btn-search:focus ~ .input-search {
+    width: 200px;
+  }
 
-    .input-search:focus {
-        width: 200px;
-    }
+  .input-search:focus {
+    width: 200px;
+  }
 }
 
 /* small phone dimension */
 
 @media only screen and (max-width: 376px) {
-    .search-box {
-        position: absolute;
-        right: 41%;
-    }
+  .search-box {
+    position: absolute;
+    right: 41%;
+  }
 
-    .btn-search:focus~.input-search {
-        width: 180px;
-    }
+  .btn-search:focus ~ .input-search {
+    width: 180px;
+  }
 
-    .input-search:focus {
-        width: 180px;
-    }
+  .input-search:focus {
+    width: 180px;
+  }
 }
 
 @media only screen and (max-width: 320px) {
-    .search-box {
-        position: absolute;
-        right: 50%;
-    }
+  .search-box {
+    position: absolute;
+    right: 50%;
+  }
 
-    .btn-search:focus~.input-search {
-        width: 150px;
-    }
+  .btn-search:focus ~ .input-search {
+    width: 150px;
+  }
 
-    .input-search:focus {
-        width: 150px;
-    }
+  .input-search:focus {
+    width: 150px;
+  }
 }
 </style>
