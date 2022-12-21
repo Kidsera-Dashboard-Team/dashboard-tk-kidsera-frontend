@@ -79,11 +79,15 @@ const routes: Array<RouteRecordRaw> = [
     component: () => import("../views/TambahRombonganBelajarPage.vue"),
   },
   {
-    path: "/pages/RombonganBelajar/TahunAjaranRombonganBelajar",
+    props: true,
+    name: "TahunAjaranRombonganBelajar",
+    path: "/pages/RombonganBelajar/:tahun",
     component: () => import("../views/TahunAjaranRombonganBelajarPage.vue"),
   },
   {
-    path: "/pages/RombonganBelajar/TahunAjaranRombonganBelajar/DetailRombonganBelajar",
+    props: true,
+    name: "DetailRombonganBelajar",
+    path: "/pages/RombonganBelajar/:tahun/:kelas",
     component: () => import("../views/DetailRombelPage.vue"),
   },
   {
