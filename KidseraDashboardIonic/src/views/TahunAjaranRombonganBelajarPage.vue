@@ -117,7 +117,6 @@ a .iconButton {
 
 .text-dalem {
     color: black;
-    font-weight: bold;
 }
 
 /* Searchbar Style */

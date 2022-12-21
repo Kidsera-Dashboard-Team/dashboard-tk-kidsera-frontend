@@ -46,7 +46,7 @@
                     <ion-row class="ion-justify-content-between">
                         <ion-col size-xl="6" size-md="6" size-xs="12">
                             <ion-card-title>
-                                <h4>Sarana & Prasarana Ruang ... </h4>
+                                <h4 class="text-dalem">Sarana & Prasarana Ruang ... </h4>
                             </ion-card-title>
                         </ion-col>
                         <ion-col size-xl="6" size-md="6" size-xs="auto">
@@ -284,6 +284,9 @@ a .iconButton {
     color: black;
 }
 
+.text-dalem{
+    color: black;
+}
 .input-search {
     height: 40px;
     width: 50px;
