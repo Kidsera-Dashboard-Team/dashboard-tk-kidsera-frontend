@@ -127,7 +127,9 @@
                   </thead>
                   <tbody v-for="result in results" :key="result._id">
                     <tr
-                      onclick="window.location='/pages/PesertaDidik/DetailPesertaDidik';"
+                      v-on:click="
+                        router.push('/pages/PesertaDidik/' + result._id.$oid)
+                      "
                     >
                       <td class="align-middle">
                         <div class="d-flex px-3 py-1">
@@ -194,6 +196,7 @@
 
 <script lang="ts">
 import axios from "axios";
+import { useRouter } from "vue-router";
 import { defineComponent } from "vue";
 import {
   IonButtons,
@@ -235,6 +238,13 @@ export default defineComponent({
       .catch((error) => {
         console.log(error.response.data);
       });
+  },
+  setup() {
+    const router = useRouter();
+
+    return {
+      router,
+    };
   },
 });
 </script>
