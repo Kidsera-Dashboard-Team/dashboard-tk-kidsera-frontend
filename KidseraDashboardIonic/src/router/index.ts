@@ -31,11 +31,15 @@ const routes: Array<RouteRecordRaw> = [
     component: () => import("../views/TambahPesertaDidikPage.vue"),
   },
   {
-    path: "/pages/PesertaDidik/EditPesertaDidik",
+    props: true,
+    name: "EditPesertaDidik",
+    path: "/pages/PesertaDidik/EditPesertaDidik/:id",
     component: () => import("../views/EditPesertaDidikPage.vue"),
   },
   {
-    path: "/pages/PesertaDidik/DetailPesertaDidik",
+    props: true,
+    name: "DetailPesertaDidik",
+    path: "/pages/PesertaDidik/:id",
     component: () => import("../views/DetailPesertaDidikPage.vue"),
   },
   {
