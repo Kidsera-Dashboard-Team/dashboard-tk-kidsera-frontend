@@ -86,7 +86,7 @@
                                                                             <span class="visually-hidden">Next</span>
                                                                         </button> -->
             </div>
-            <ion-card class="rounded card-content">
+            <ion-card class="rounded card-container">
                 <ion-card-header class="ion-text-justify">
                     <ion-row class="ion-justify-content-between">
                         <ion-col size-xl="6" size-md="6" size-xs="12">
@@ -104,35 +104,49 @@
 
                 <ion-card-content>
                     <ion-grid>
-                        <ion-row>
-                            <ion-col>
+                        <div class="ion-justify-content-evenly container" style="flex-wrap: wrap; display: flex;">
+                            <div class="card-content">
                                 <ion-card class="card-content-judul">
                                     <ion-card-header class="ion-margin text-center">
-                                        <a href="/pages/Sarpras/DetailSarpras" class="text-decoration-none">
-                                            <ion-card-title color="light">Ruang A</ion-card-title>
+                                        <a href="/pages/Sarpras/DetailSarpras"
+                                            class="text-decoration-none"><ion-card-title color="light">
+                                                Ruang A
+                                            </ion-card-title>
                                         </a>
                                     </ion-card-header>
                                 </ion-card>
-                            </ion-col>
-                            <ion-col>
+                            </div>
+                            <div class="card-content">
                                 <ion-card class="card-content-judul">
                                     <ion-card-header class="ion-margin text-center">
-                                        <a href="" class="text-decoration-none">
-                                            <ion-card-title color="light">Ruang B</ion-card-title>
+                                        <a href="" class="text-decoration-none"><ion-card-title color="light">
+                                                Ruang B
+                                            </ion-card-title>
                                         </a>
                                     </ion-card-header>
                                 </ion-card>
-                            </ion-col>
-                            <ion-col>
+                            </div>
+                            <div class="card-content">
                                 <ion-card class="card-content-judul">
                                     <ion-card-header class="ion-margin text-center">
-                                        <a href="" class="text-decoration-none">
-                                            <ion-card-title color="light">Ruang C</ion-card-title>
+                                        <a href="" class="text-decoration-none"><ion-card-title color="light">
+                                                Ruang C
+                                            </ion-card-title>
                                         </a>
                                     </ion-card-header>
                                 </ion-card>
-                            </ion-col>
-                        </ion-row>
+                            </div>
+                            <div class="card-content">
+                                <ion-card class="card-content-judul">
+                                    <ion-card-header class="ion-margin text-center">
+                                        <a href="" class="text-decoration-none"><ion-card-title color="light">
+                                                Ruang C
+                                            </ion-card-title>
+                                        </a>
+                                    </ion-card-header>
+                                </ion-card>
+                            </div>
+                        </div>
                     </ion-grid>
                 </ion-card-content>
             </ion-card>
@@ -153,9 +167,9 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue';
-import { 
+import {
     IonButtons, IonContent, IonMenuButton, IonPage, IonTitle, IonToolbar, IonCol, IonGrid, IonRow,
-    IonCard, IonCardHeader, IonCardTitle, IonCardContent, 
+    IonCard, IonCardHeader, IonCardTitle, IonCardContent,
 
 } from '@ionic/vue';
 
@@ -171,7 +185,7 @@ export default defineComponent({
         IonCol,
         IonGrid,
         IonRow,
-        IonCard, IonCardHeader, IonCardTitle, IonCardContent, 
+        IonCard, IonCardHeader, IonCardTitle, IonCardContent,
     }
 });
 </script>
@@ -181,6 +195,10 @@ export default defineComponent({
 
 ion-col {
     padding: 0;
+}
+
+p {
+    color: black;
 }
 
 /* Icon navbar style */
@@ -282,34 +300,6 @@ a .iconButton {
     cursor: pointer;
 }
 
-/* .table {
-    border-collapse: inherit;
-} */
-
-thead th {
-    padding: 0.75rem 1rem;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    border-bottom: 1px solid lighten(black, 35%);
-}
-
-th {
-    font-weight: bold;
-}
-
-td,
-th {
-    white-space: nowrap;
-}
-
-.tables> :not(:last-child)> :last-child>* {
-    border-bottom-color: black;
-}
-
-td {
-    width: 100px;
-}
-
 .tambah {
     /* background: linear-gradient(135deg, #3A416F 0%, #141727 100%); */
     border-radius: 8px;
@@ -344,17 +334,17 @@ td {
     object-fit: cover;
 }
 
-.card-content {
+.card-container {
     margin: 30px 50px;
 }
 
 .card-content-judul {
     background-color: #F4F0F0;
+    color: black;
     border: 1px solid rgba(0, 0, 0, 0.25);
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
     border-radius: 10px;
     font-weight: bold;
-    color: black;
 }
 
 .card-content-judul:hover {
@@ -383,6 +373,12 @@ td {
     .action-button {
         padding: 5px 12px;
         font-size: 12px;
+    }
+}
+
+@media only screen and (min-width: 1280px) {
+    .card-content {
+        width: 30%;
     }
 }
 
