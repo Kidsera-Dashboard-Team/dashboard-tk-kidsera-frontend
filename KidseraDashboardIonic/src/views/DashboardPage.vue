@@ -5,52 +5,21 @@
         <ion-menu-button color="primary"></ion-menu-button>
       </ion-buttons>
       <ion-grid>
-        <ion-row class="ion-justify-content-between">
-          <ion-col size="3">
-            <ion-title class="d-none d-lg-inline-block" size="small"
-              ><span style="opacity: 50%">Pages</span> / Dashboard <br />
-              <span style="font-size: 18px; letter-spacing: 5px"
-                >Dashboard</span
-              >
+        <ion-row class="ion-justify-content-between ion-align-items-center">
+          <ion-col size="4">
+            <ion-title class="d-none d-lg-inline-block mt-1" size="small">
+                <ion-breadcrumbs :max-items="4" :items-after-collapse="2" class="ion-no-padding">
+                  <ion-breadcrumb style="font-size: 1em;" href="/Pages">Pages</ion-breadcrumb>
+                  <ion-breadcrumb style="font-size: 1em;" href="/Pages/Dashboard">Home</ion-breadcrumb>
+                </ion-breadcrumbs>
+                <h5 style="margin-left: 11px;">Home</h5>
             </ion-title>
           </ion-col>
-          <ion-col size-sm="9" size="10">
+          <ion-col size-sm="8" size="10">
             <ion-row
               class="ion-align-items-center ion-justify-content-end goright mt-2"
               style="margin-right: 20px"
             >
-              <!-- <div class="nav-icon">
-                                <a href="/SignUp">
-                                    <ion-icon class="iconButton text-info text-gradient"
-                                        src="assets/icon/signup.svg"></ion-icon>
-                                </a>
-                            </div>
-                            <a href="/SignUp" class="d-none d-sm-inline-block mb-1 text-info text-gradient"
-                                style="text-decoration: none;">&nbsp;Add User</a>
-                            <div>&nbsp;</div> -->
-              <!-- <a href="">
-                                    <ion-icon class="iconButton nav-icon" src="assets/icon/settings-sharp.svg"> </ion-icon>
-                                </a>
-                                <a href="">
-                                    <ion-icon class="iconButton nav-icon" src="assets/icon/notifications.svg"> </ion-icon>
-                                </a> -->
-              <!-- <ion-item color="tertiary" class="rounded-pill" style="max-width: 180px;">
-                                        <ion-label>Hi User 13141</ion-label>
-                                        <ion-select interface="popover">
-                                            <ion-select-option value="logout" style="background-color: red;">Logout</ion-select-option>
-                                        </ion-select>
-                                    </ion-item> -->
-              <!-- Large button groups (default and split) -->
-              <!-- <select class="form-select form-select-lg mb-2" aria-label=".form-select-lg example" color="primary">
-                                <option selected hidden>Hi User 13141</option>
-                                <option value="logout">
-                                    <a href="javascript: doSomethingLogout()">
-                                        Logout
-                                    </a>
-                                </option>
-                                <option value="2">Two</option>
-                                <option value="3">Three</option>
-                            </select> -->
               <div
                 class="btn-group dropstart mb-1 ms-2"
                 style="content: inherit"
@@ -218,8 +187,7 @@
             class="w-100"
             style="
               box-shadow: 0px 20px 27px rgba(0, 0, 0, 0.05);
-              border-radius: 12px;
-            "
+              border-radius: 12px;"
           >
             <ion-row class="ion-align-items-center">
               <ion-col>
@@ -317,6 +285,8 @@ import {
   IonCol,
   IonGrid,
   IonRow,
+  IonBreadcrumb, 
+  IonBreadcrumbs,
 } from "@ionic/vue";
 import axios from "axios";
 
@@ -332,6 +302,8 @@ export default defineComponent({
     IonCol,
     IonGrid,
     IonRow,
+    IonBreadcrumb,
+    IonBreadcrumbs,
   },
   data() {
     return {
@@ -452,6 +424,17 @@ a .iconButton {
   background-color: #fff;
   border-bottom: 1px solid rgba(255, 255, 255, 0.5);
   transition: all 500ms cubic-bezier(0, 0.11, 0.35, 2);
+}
+
+.ion-no-padding {
+  --padding-start: 0 !important;
+  --padding-end: 0 !important;
+  --padding-top: 0 !important;
+  --padding-bottom: 0 !important;
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+  padding-top: 0 !important;
+  padding-bottom: 0 !important;
 }
 
 .text-info {
