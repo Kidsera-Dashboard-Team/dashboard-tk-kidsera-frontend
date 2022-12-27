@@ -5,17 +5,18 @@
         <ion-menu-button color="primary"></ion-menu-button>
       </ion-buttons>
       <ion-grid>
-        <ion-row class="ion-justify-content-between">
-          <ion-col size="3" size-xl="6">
-            <ion-title class="d-none d-xl-inline-block" size="small"
-              ><span style="opacity: 50%">Pages</span> / Edit Peserta Didik
-              <br />
-              <span style="font-size: 18px; letter-spacing: 3.5px"
-                >Edit Peserta Didik</span
-              >
+        <ion-row class="ion-justify-content-between ion-align-items-center">
+          <ion-col size="6">
+            <ion-title class="d-none d-lg-inline-block mt-1" size="small">
+              <ion-breadcrumbs :max-items="4" :items-after-collapse="2" class="p-0">
+                <ion-breadcrumb href="/Pages">Pages</ion-breadcrumb>
+                <ion-breadcrumb href="/pages/PesertaDidik">Peserta Didik</ion-breadcrumb>
+                <ion-breadcrumb href="/pages/PesertaDidik/EditPesertaDidik/">Edit</ion-breadcrumb>
+              </ion-breadcrumbs>
+              <h5 style="margin-left: 11px;">Edit Peserta Didik</h5>
             </ion-title>
           </ion-col>
-          <ion-col size-sm="9" size="10" size-xl="6">
+          <ion-col size-sm="6" size="10">
             <ion-row
               class="ion-align-items-center ion-justify-content-end goright mt-2"
               style="margin-right: 20px"
