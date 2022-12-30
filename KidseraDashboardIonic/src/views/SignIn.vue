@@ -12,14 +12,14 @@
                       <h3 class="text-info text-gradient"><b>Sign In to <br> Kidsera Dashboard</b></h3>
                     </ion-card-title>
                   </ion-card-header>
-                  <ion-card-content>Masukkan Email dan Password <br> untuk masuk</ion-card-content>
+                  <ion-card-content>Masukkan username dan Password <br> untuk masuk</ion-card-content>
                 </ion-card-header>
 
                 <ion-card-content class="mb-3">
                   <ion-item lines="none">
-                    <ion-label position="stacked" class="mb-3"><b>Email</b></ion-label>
+                    <ion-label position="stacked" class="mb-3"><b>username</b></ion-label>
                     <ion-item fill="outline" ref="item">
-                      <ion-input type="email" placeholder="Email" @ionInput="validate" @ionBlur="markTouched" required>
+                      <ion-input type="email" placeholder="Email" @ionInput="validate" @ionBlur="markTouched" v-model="data.username" required>
                       </ion-input>
                       <ion-note slot="helper">Masukkan email yang valid</ion-note>
                       <ion-note slot="error">Email tidak valid</ion-note>
@@ -28,7 +28,7 @@
                   <ion-item lines="none">
                     <ion-label position="stacked" class="mb-3"><b>Password</b></ion-label>
                     <ion-item fill="outline">
-                      <ion-input type="password" placeholder="Password" required></ion-input>
+                      <ion-input type="password" placeholder="Password" v-model="data.password" required></ion-input>
                     </ion-item>
                   </ion-item>
 
@@ -38,7 +38,7 @@
                   </ion-item>
 
                   <ion-button expand="block" shape="round" color="primary" href="javascript: doSomething()"
-                    class="bg-gradient-info w-100 mt-4 mb-0 text-white">
+                    class="bg-gradient-info w-100 mt-4 mb-0 text-white" @click="submit()">
                     <ion-label>Masuk</ion-label>
                   </ion-button>
                 </ion-card-content>
@@ -73,6 +73,8 @@ import {
   IonNote
 } from '@ionic/vue';
 import { defineComponent } from 'vue';
+import axios from 'axios';
+import { useRouter } from 'vue-router';
 
 export default defineComponent({
   name: 'SignIn',
@@ -85,6 +87,43 @@ export default defineComponent({
     IonToggle,
     IonNote
   },
+    setup() {
+      const data = reactive({
+        username: '',
+        password: '',
+      });
+
+      const router = useRouter();
+
+      const submit = () => {
+        axios
+          .post("http://localhost:5000/API/auth/login", JSON.stringify(data), {
+            headers: {
+              "Access-Control-Allow-Origin": "*",
+              "Access-Control-Allow-Credentials": "true",
+              "Content-Type": "application/json",
+            },
+            withCredentials: true
+          })
+          .then(response => {
+            console.log(response)
+            console.log(response.data.access_token)
+
+            localStorage.setItem('access_token', response.data.access_token)
+            localStorage.setItem('is_admin', response.data.is_admin)
+            localStorage.setItem('username', response.data.username)
+          })
+          .catch(error => {
+            console.log(error.response.data);
+          });
+
+      };
+
+      return {
+        data,
+        submit
+      }
+   },
   methods: {
     validateEmail(email) {
       return email.match(/^(?=.{1,254}$)(?=.{1,64}@)[a-zA-Z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-zA-Z0-9!#$%&'*+/=?^_`{|}~-]+)*@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/);
