@@ -72,7 +72,7 @@ import {
   IonToggle,
   IonNote
 } from '@ionic/vue';
-import { defineComponent } from 'vue';
+import { defineComponent, reactive } from 'vue';
 import axios from 'axios';
 import { useRouter } from 'vue-router';
 
