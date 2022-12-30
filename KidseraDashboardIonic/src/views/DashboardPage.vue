@@ -8,57 +8,31 @@
         <ion-row class="ion-justify-content-between ion-align-items-center">
           <ion-col size="4">
             <ion-title class="d-none d-lg-inline-block mt-1" size="small">
-                <ion-breadcrumbs :max-items="4" :items-after-collapse="2" class="ion-no-padding">
-                  <ion-breadcrumb style="font-size: 1em;" href="/Pages">Pages</ion-breadcrumb>
-                  <ion-breadcrumb style="font-size: 1em;" href="/Pages/Dashboard">Home</ion-breadcrumb>
-                </ion-breadcrumbs>
-                <h5 style="margin-left: 11px;">Home</h5>
+              <ion-breadcrumbs :max-items="4" :items-after-collapse="2" class="ion-no-padding">
+                <ion-breadcrumb style="font-size: 1em" href="/Pages">Pages</ion-breadcrumb>
+                <ion-breadcrumb style="font-size: 1em" href="/Pages/Dashboard">Home</ion-breadcrumb>
+              </ion-breadcrumbs>
+              <h5 style="margin-left: 11px">Home</h5>
             </ion-title>
           </ion-col>
           <ion-col size-sm="8" size="10">
-            <ion-row
-              class="ion-align-items-center ion-justify-content-end goright mt-2"
-              style="margin-right: 20px"
-            >
-              <div
-                class="btn-group dropstart mb-1 ms-2"
-                style="content: inherit"
-              >
-                <button
-                  class="btn dropdown-toggle text-info text-gradient"
-                  type="button"
-                  data-bs-toggle="dropdown"
-                  aria-expanded="true"
-                  style="background-color: transparent"
-                >
-                  Hi User 13141
-                </button>
+            <ion-row class="ion-align-items-center ion-justify-content-end goright mt-2" style="margin-right: 20px">
+              <div class="btn-group dropstart mb-1 ms-2" style="content: inherit">
+                <button class="btn dropdown-toggle text-info text-gradient" type="button" data-bs-toggle="dropdown" aria-expanded="true" style="background-color: transparent">Hi {{ username }}</button>
                 <ul class="dropdown-menu dropdown-menu-dark">
-                  <li>
-                    <a
-                      class="dropdown-item"
-                      href="javascript: doSomethingLogout()"
-                      >Logout</a
-                    >
-                  </li>
+                  <li><a class="dropdown-item" href="javascript: doSomethingLogout()" @click="del()">Logout</a></li>
                   <!-- <li><a class="dropdown-item" href="#">Another action</a></li> -->
                   <!-- <li><a class="dropdown-item" href="#">Something else here</a></li> -->
                 </ul>
               </div>
-              <div class="nav-icon">
-                <a href="/SignUp">
-                  <ion-icon
-                    class="iconButton text-info text-gradient"
-                    src="assets/icon/signup.svg"
-                  ></ion-icon>
-                </a>
+              <div v-if="is_admin == 'true'" class="d-flex">
+                <div class="nav-icon">
+                  <a href="/SignUp">
+                    <ion-icon class="iconButton text-info text-gradient" src="assets/icon/signup.svg"></ion-icon>
+                  </a>
+                </div>
+                <a href="/SignUp" class="d-none d-sm-inline-block mb-1 text-info text-gradient" style="text-decoration: none">&nbsp;Add User</a>
               </div>
-              <a
-                href="/SignUp"
-                class="d-none d-sm-inline-block mb-1 text-info text-gradient"
-                style="text-decoration: none"
-                >&nbsp;Add User</a
-              >
               <div>&nbsp;</div>
             </ion-row>
           </ion-col>
@@ -69,126 +43,69 @@
     <ion-content :fullscreen="true">
       <ion-grid>
         <ion-row>
-          <ion-col
-            class="col-xl-3 col-sm-6 mb-xl-0 mb-4 p-0"
-            size="12"
-            size-sm="6"
-            size-xl="3"
-          >
+          <ion-col class="col-xl-3 col-sm-6 mb-xl-0 mb-4 p-0" size="12" size-sm="6" size-xl="3">
             <ion-card class="card-info">
               <ion-row class="ion-align-items-center m-0">
                 <ion-col size="8">
                   <ion-card-header>
-                    <ion-card-subtitle
-                      class="text-sm mb-0 text-capitalize font-weight-bold overflow-hidden text-overflow"
-                    >
-                      Jumlah TK A</ion-card-subtitle
-                    >
-                    <ion-card-title class="font-weight-bolder mb-0"
-                      >30</ion-card-title
-                    >
+                    <ion-card-subtitle class="text-sm mb-0 text-capitalize font-weight-bold overflow-hidden text-overflow"> Jumlah TK A</ion-card-subtitle>
+                    <ion-card-title class="font-weight-bolder mb-0">30</ion-card-title>
                   </ion-card-header>
                 </ion-col>
                 <ion-col size="4" class="text-end text-sm-center">
-                  <ion-icon
-                    src="assets/icon/gender-icon.svg"
-                    class="icon-tk"
-                    style="font-size: large; margin-right: 20px"
-                  ></ion-icon>
+                  <ion-icon src="assets/icon/gender-icon.svg" class="icon-tk" style="font-size: large; margin-right: 20px"></ion-icon>
                 </ion-col>
               </ion-row>
             </ion-card>
           </ion-col>
-          <ion-col
-            class="col-xl-3 col-sm-6 mb-xl-0 mb-4 p-0"
-            size="12"
-            size-sm="6"
-            size-xl="3"
-          >
+          <ion-col class="col-xl-3 col-sm-6 mb-xl-0 mb-4 p-0" size="12" size-sm="6" size-xl="3">
             <ion-card class="card-info">
               <ion-row class="ion-align-items-center">
                 <ion-col size="8">
                   <ion-card-header>
-                    <ion-card-subtitle
-                      class="text-sm mb-0 text-capitalize font-weight-bold overflow-hidden text-overflow"
-                      >Jumlah TK B</ion-card-subtitle
-                    >
+                    <ion-card-subtitle class="text-sm mb-0 text-capitalize font-weight-bold overflow-hidden text-overflow">Jumlah TK B</ion-card-subtitle>
                     <ion-card-title>20</ion-card-title>
                   </ion-card-header>
                 </ion-col>
                 <ion-col size="4" class="text-end text-sm-center">
-                  <ion-icon
-                    src="assets/icon/gender-icon.svg"
-                    width
-                    class="icon-tk"
-                    style="font-size: large; margin-right: 20px"
-                  ></ion-icon>
+                  <ion-icon src="assets/icon/gender-icon.svg" width class="icon-tk" style="font-size: large; margin-right: 20px"></ion-icon>
                 </ion-col>
               </ion-row>
             </ion-card>
           </ion-col>
-          <ion-col
-            class="col-xl-3 col-sm-6 mb-xl-0 mb-4 p-0"
-            size="12"
-            size-sm="6"
-            size-xl="3"
-          >
+          <ion-col class="col-xl-3 col-sm-6 mb-xl-0 mb-4 p-0" size="12" size-sm="6" size-xl="3">
             <ion-card class="card-info">
               <ion-row class="ion-align-items-center">
                 <ion-col size="8">
                   <ion-card-header>
-                    <ion-card-subtitle
-                      class="text-sm mb-0 text-capitalize font-weight-bold overflow-hidden text-overflow"
-                      >Jumlah Siswa Laki-laki</ion-card-subtitle
-                    >
+                    <ion-card-subtitle class="text-sm mb-0 text-capitalize font-weight-bold overflow-hidden text-overflow">Jumlah Siswa Laki-laki</ion-card-subtitle>
                     <ion-card-title>20</ion-card-title>
                   </ion-card-header>
                 </ion-col>
                 <ion-col size="4" class="text-end text-sm-center">
-                  <ion-icon
-                    src="assets/icon/laki-icon.svg"
-                    class="icon-gender"
-                    style="font-size: large; margin-right: 20px"
-                  ></ion-icon>
+                  <ion-icon src="assets/icon/laki-icon.svg" class="icon-gender" style="font-size: large; margin-right: 20px"></ion-icon>
                 </ion-col>
               </ion-row>
             </ion-card>
           </ion-col>
-          <ion-col
-            class="col-xl-3 col-sm-6 mb-xl-0 mb-4 p-0"
-            size="12"
-            size-sm="6"
-            size-xl="3"
-          >
+          <ion-col class="col-xl-3 col-sm-6 mb-xl-0 mb-4 p-0" size="12" size-sm="6" size-xl="3">
             <ion-card class="card-info">
               <ion-row class="ion-align-items-center">
                 <ion-col size="8">
                   <ion-card-header>
-                    <ion-card-subtitle
-                      class="text-sm mb-0 text-capitalize font-weight-bold overflow-hidden text-overflow"
-                      >Jumlah Siswa Perempuan</ion-card-subtitle
-                    >
+                    <ion-card-subtitle class="text-sm mb-0 text-capitalize font-weight-bold overflow-hidden text-overflow">Jumlah Siswa Perempuan</ion-card-subtitle>
                     <ion-card-title>30</ion-card-title>
                   </ion-card-header>
                 </ion-col>
                 <ion-col size="4" class="text-end text-sm-center">
-                  <ion-icon
-                    src="assets/icon/perempuan-icon.svg"
-                    class="icon-gender"
-                    style="font-size: large; margin-right: 20px"
-                  ></ion-icon>
+                  <ion-icon src="assets/icon/perempuan-icon.svg" class="icon-gender" style="font-size: large; margin-right: 20px"></ion-icon>
                 </ion-col>
               </ion-row>
             </ion-card>
           </ion-col>
         </ion-row>
         <ion-row>
-          <ion-card
-            class="w-100"
-            style="
-              box-shadow: 0px 20px 27px rgba(0, 0, 0, 0.05);
-              border-radius: 12px;"
-          >
+          <ion-card class="w-100" style="box-shadow: 0px 20px 27px rgba(0, 0, 0, 0.05); border-radius: 12px">
             <ion-row class="ion-align-items-center">
               <ion-col>
                 <ion-card-header>
@@ -199,10 +116,7 @@
                     <ion-row class="mt-4">
                       <ion-col>
                         <ion-row>
-                          <ion-col
-                            style="line-height: 2.5"
-                            class="text-dark form"
-                          >
+                          <ion-col style="line-height: 2.5" class="text-dark form">
                             NPSN :
                             <br />
                             Bentuk Pendidikan :
@@ -227,10 +141,7 @@
                             <br />
                             Bendahara BOP :
                           </ion-col>
-                          <ion-col
-                            style="line-height: 2.5"
-                            class="text-dark fw-bold form"
-                          >
+                          <ion-col style="line-height: 2.5" class="text-dark fw-bold form">
                             70011681
                             <br />
                             TK
@@ -269,25 +180,12 @@
         </ion-row>
       </ion-grid>
     </ion-content>
-    {{results}}
   </ion-page>
 </template>
 
 <script lang="ts">
 import { defineComponent, onMounted, ref } from "vue";
-import {
-  IonButtons,
-  IonContent,
-  IonMenuButton,
-  IonPage,
-  IonTitle,
-  IonToolbar,
-  IonCol,
-  IonGrid,
-  IonRow,
-  IonBreadcrumb, 
-  IonBreadcrumbs,
-} from "@ionic/vue";
+import { IonButtons, IonContent, IonMenuButton, IonPage, IonTitle, IonToolbar, IonCol, IonGrid, IonRow, IonBreadcrumb, IonBreadcrumbs } from "@ionic/vue";
 import axios from "axios";
 
 export default defineComponent({
@@ -305,16 +203,41 @@ export default defineComponent({
     IonBreadcrumb,
     IonBreadcrumbs,
   },
+
   data() {
     return {
-      results: [],
+      username: localStorage.getItem('username'),
+      is_admin: localStorage.getItem('is_admin')
     };
   },
+
+  methods: {
+    del() {
+      let headers = {
+        Authorization: "Bearer " + localStorage.getItem("access_token"),
+      };
+
+      axios.delete("http://localhost:5000/API/auth/logout", { headers })
+        .then((response) => {
+          console.log(response);
+          localStorage.clear()
+        })
+        .catch(error => {
+          console.log(error.response.data);
+        });
+    },
+  },
+
   mounted: function () {
     axios
-      .get("http://localhost:5000/API/overview")
+      .get("http://localhost:5000/API/auth/userlogin", {
+        headers: {
+          Authorization: "Bearer " + localStorage.getItem("access_token"),
+        },
+        withCredentials: true,
+      })
       .then((response) => {
-        this.results = response.data;
+        this.username = response.data.username;
         console.log(response);
       })
       .catch((error) => {
@@ -569,8 +492,7 @@ ion-card-subtitle {
   padding: 10px;
   background-color: black;
   background: linear-gradient(328.19deg, #1b76e1 -5.21%, #1be1c6 88.43%);
-  box-shadow: 0px 4px 6px -1px rgba(0, 0, 0, 0.12),
-    0px 2px 4px -1px rgba(0, 0, 0, 0.07);
+  box-shadow: 0px 4px 6px -1px rgba(0, 0, 0, 0.12), 0px 2px 4px -1px rgba(0, 0, 0, 0.07);
   border-radius: 8px;
 }
 </style>
