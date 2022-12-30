@@ -227,23 +227,6 @@ export default defineComponent({
         });
     },
   },
-
-  mounted: function () {
-    axios
-      .get("http://localhost:5000/API/auth/userlogin", {
-        headers: {
-          Authorization: "Bearer " + localStorage.getItem("access_token"),
-        },
-        withCredentials: true,
-      })
-      .then((response) => {
-        this.username = response.data.username;
-        console.log(response);
-      })
-      .catch((error) => {
-        console.log(error.response.data);
-      });
-  },
 });
 </script>
 
