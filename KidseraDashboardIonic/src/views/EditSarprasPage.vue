@@ -5,41 +5,41 @@
                 <ion-menu-button color="primary"></ion-menu-button>
             </ion-buttons>
             <ion-grid>
-                <ion-row class="ion-justify-content-between">
-                    <ion-col size="3" size-xl="6">
-                        <ion-title class="d-none d-xl-inline-block" size="small"><span
-                                style="opacity: 50%;">Pages</span> / Edit Fasilitas Sarana & Prasarana <br> <span
-                                style="font-size: 18px; letter-spacing: 3.5px;">Edit Fasilitas Sarana & Prasarana</span>
+                <ion-row class="ion-justify-content-between ion-align-items-center">
+                    <ion-col size="6">
+                        <ion-title class="d-none d-lg-inline-block mt-1" size="small">
+                            <ion-breadcrumbs :max-items="4" :items-after-collapse="2" class="p-0">
+                                <ion-breadcrumb style="font-size: 1em;" href="/Pages">Pages</ion-breadcrumb>
+                                <ion-breadcrumb style="font-size: 1em;" href="/pages/Sarpras">Sarana & Prasarana</ion-breadcrumb>
+                                <ion-breadcrumb style="font-size: 1em;" href="/pages/Sarpras/DetailSarpras">Detail</ion-breadcrumb>
+                                <ion-breadcrumb style="font-size: 1em;" href="/pages/Sarpras/DetailSarpras/EditSarpras">Edit</ion-breadcrumb>
+                            </ion-breadcrumbs>
+                            <h5 style="margin-left: 11px;">Edit Fasilitas Sarana & Prasarana</h5>
                         </ion-title>
                     </ion-col>
-                    <ion-col size-sm="9" size="10" size-xl="6">
-                        <ion-row class="ion-align-items-center ion-justify-content-end goright mt-2"
-                            style="margin-right: 20px;">
+                    <ion-col size-sm="6" size="10">
+                        <ion-row class="ion-align-items-center ion-justify-content-end goright mt-2" style="margin-right: 20px;">
                             <div class="btn-group dropstart mb-1 ms-2" style="content: inherit;">
-                                <button class="btn dropdown-toggle text-info text-gradient" type="button"
-                                    data-bs-toggle="dropdown" aria-expanded="true"
-                                    style="background-color: transparent;">
-                                    Hi User 13141
-                                </button>
+                                <button class="btn dropdown-toggle text-info text-gradient" type="button" data-bs-toggle="dropdown" aria-expanded="true" style="background-color: transparent;">Hi {{ username }} </button>
                                 <ul class="dropdown-menu dropdown-menu-dark">
-                                    <li><a class="dropdown-item" href="javascript: doSomethingLogout()">Logout</a></li>
+                                    <li><a class="dropdown-item" href="javascript: doSomethingLogout()" @click="del()">Logout</a></li>
                                 </ul>
                             </div>
-                            <div class="nav-icon">
-                                <a href="/SignUp">
-                                    <ion-icon class="iconButton text-info text-gradient"
-                                        src="assets/icon/signup.svg"></ion-icon>
-                                </a>
+                            <div v-if="is_admin == 'true'" class="d-flex">
+                                <div class="nav-icon">
+                                    <a href="/SignUp">
+                                        <ion-icon class="iconButton text-info text-gradient" src="assets/icon/signup.svg"></ion-icon>
+                                    </a>
+                                </div>
+                                <a href="/SignUp" class="d-none d-sm-inline-block mb-1 text-info text-gradient" style="text-decoration: none;">&nbsp;Add User</a>
                             </div>
-                            <a href="/SignUp" class="d-none d-sm-inline-block mb-1 text-info text-gradient"
-                                style="text-decoration: none;">&nbsp;Add User</a>
                             <div>&nbsp;</div>
                         </ion-row>
                     </ion-col>
                 </ion-row>
             </ion-grid>
         </ion-toolbar>
-
+    
         <ion-content :fullscreen="true">
             <ion-grid>
                 <ion-row>
@@ -52,8 +52,7 @@
                             </ion-card-header>
                             <ion-card-content class="d-grid gap-3">
                                 <ion-item fill="outline" lines="none">
-                                    <ion-label position="floating" :readonly="true" class="mb-5">Nama Fasilitas ->
-                                        Fasilitas ...</ion-label>
+                                    <ion-label position="floating" :readonly="true" class="mb-5">Nama Fasilitas -> Fasilitas ...</ion-label>
                                     <!-- <ion-input placeholder="Masukkan Fasilitas" ></ion-input> -->
                                 </ion-item>
                                 <ion-item fill="outline">
@@ -65,10 +64,8 @@
                                     <ion-input placeholder="Masukkan Jumlah" required></ion-input>
                                 </ion-item>
                                 <div>
-                                    <a class="btn btn-danger" href="/pages/Sarpras/DetailSarpras"
-                                        role="button">Batalkan</a>
-                                    <a class="btn btn-primary" role="button"
-                                        href="javascript: doSomethingForEditSarprasFasilitas()">Simpan</a>
+                                    <a class="btn btn-danger" href="/pages/Sarpras/DetailSarpras" role="button">Batalkan</a>
+                                    <a class="btn btn-primary" role="button" href="javascript: doSomethingForEditSarprasFasilitas()">Simpan</a>
                                 </div>
                             </ion-card-content>
                         </ion-card>
@@ -99,6 +96,7 @@ import {
     IonItem,
     IonLabel
 } from '@ionic/vue';
+import axios from "axios";
 
 export default defineComponent({
     name: 'DashboardPage',
@@ -119,7 +117,31 @@ export default defineComponent({
         IonInput,
         IonItem,
         IonLabel
-    }
+    },
+
+    data() {
+        return {
+            username: localStorage.getItem('username'),
+            is_admin: localStorage.getItem('is_admin')
+        };
+    },
+
+    methods: {
+        del() {
+            let headers = {
+                Authorization: "Bearer " + localStorage.getItem("access_token"),
+            };
+
+            axios.delete("http://localhost:5000/API/auth/logout", { headers })
+                .then((response) => {
+                    console.log(response);
+                    localStorage.clear()
+                })
+                .catch(error => {
+                    console.log(error.response.data);
+                });
+        },
+    },
 });
 </script>
 
@@ -230,7 +252,6 @@ a .iconButton {
     .btn-search:focus~.input-search {
         width: 250px;
     }
-
     .input-search:focus {
         width: 250px;
     }
@@ -242,7 +263,6 @@ a .iconButton {
     .btn-search:focus~.input-search {
         width: 200px;
     }
-
     .input-search:focus {
         width: 200px;
     }
@@ -264,11 +284,9 @@ a .iconButton {
         position: absolute;
         right: 34%;
     }
-
     .btn-search:focus~.input-search {
         width: 200px;
     }
-
     .input-search:focus {
         width: 200px;
     }
@@ -281,11 +299,9 @@ a .iconButton {
         position: absolute;
         right: 41%;
     }
-
     .btn-search:focus~.input-search {
         width: 180px;
     }
-
     .input-search:focus {
         width: 180px;
     }
@@ -296,11 +312,9 @@ a .iconButton {
         position: absolute;
         right: 50%;
     }
-
     .btn-search:focus~.input-search {
         width: 150px;
     }
-
     .input-search:focus {
         width: 150px;
     }
@@ -343,7 +357,6 @@ ion-card-subtitle {
     ion-checkbox {
         --size: 15px;
     }
-
     .checkbox-custom ion-item {
         font-size: 20px !important;
     }
