@@ -55,6 +55,10 @@ const routes: Array<RouteRecordRaw> = [
     component: () => import("../views/TambahTenagaKependidikanPage.vue"),
   },
   {
+    path: "/pages/TenagaKependidikan/TambahTenagaKependidikanNonGuru",
+    component: () => import("../views/TambahTenagaKependidikanPageNonGuru.vue"),
+  },
+  {
     path: "/pages/TenagaKependidikan/EditTenagaKependidikan",
     component: () => import("../views/EditTenagaKependidikanPage.vue"),
   },
