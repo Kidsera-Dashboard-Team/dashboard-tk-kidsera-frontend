@@ -183,7 +183,7 @@
                             </ion-card-title>
                         </ion-col>
                         <ion-col size-xl="6" size-md="6" size-xs="auto">
-                            <a href="/pages/TenagaKependidikan/TambahTenagaKependidikan" class="btn btn-success float-end">Tambah Data</a>
+                            <a href="/pages/TenagaKependidikan/TambahTenagaKependidikanNonGuru" class="btn btn-success float-end">Tambah Data</a>
                         </ion-col>
                     </ion-row>
                 </ion-card-header>

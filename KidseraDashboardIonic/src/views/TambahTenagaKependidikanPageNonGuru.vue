@@ -13,7 +13,7 @@
                                 <ion-breadcrumb style="font-size: 1em;" href="/pages/TenagaKependidikan">Tenaga Kependidikan</ion-breadcrumb>
                                 <ion-breadcrumb style="font-size: 1em;" href="/pages/TenagaKependidikan/TambahTenagaKependidikan">Tambah</ion-breadcrumb>
                             </ion-breadcrumbs>
-                            <h5 style="margin-left: 11px;">Tambah Tenaga Kependidikan Guru</h5>
+                            <h5 style="margin-left: 11px;">Tambah Tenaga Kependidikan Non-Guru</h5>
                         </ion-title>
                     </ion-col>
                     <ion-col size-sm="6" size="10">
@@ -46,7 +46,7 @@
                         <ion-card class="m-5 p-3 rounded text-center">
                             <ion-card-header>
                                 <ion-card-title>
-                                    <h4>Tambah Data Tenaga Kependidikan Guru</h4>
+                                    <h4>Tambah Data Tenaga Kependidikan Non-Guru</h4>
                                 </ion-card-title>
                             </ion-card-header>
                             <ion-card-content class="d-grid gap-3">
