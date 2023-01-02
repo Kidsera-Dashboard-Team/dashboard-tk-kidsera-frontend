@@ -33,9 +33,9 @@
                 <a href="/SignUp">
                   <ion-icon class="iconButton text-info text-gradient" src="assets/icon/signup.svg"></ion-icon>
                 </a>
+                <a href="/SignUp" class="d-none d-sm-inline-block mb-1 text-info text-gradient"
+                  style="text-decoration: none">&nbsp;Add User</a>
               </div>
-              <a href="/SignUp" class="d-none d-sm-inline-block mb-1 text-info text-gradient"
-                style="text-decoration: none">&nbsp;Add User</a>
               <div>&nbsp;</div>
             </ion-row>
           </ion-col>

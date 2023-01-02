@@ -10,54 +10,33 @@
             <ion-title class="d-none d-lg-inline-block mt-1" size="small">
               <ion-breadcrumbs :max-items="4" :items-after-collapse="2" class="p-0">
                 <ion-breadcrumb style="font-size: 1em;" href="/Pages">Pages</ion-breadcrumb>
-                <ion-breadcrumb style="font-size: 1em;" href="/pages/RombonganBelajar">Rombongan Belajar</ion-breadcrumb>
+                <ion-breadcrumb style="font-size: 1em;" href="/pages/RombonganBelajar">Rombongan
+                  Belajar</ion-breadcrumb>
                 <ion-breadcrumb style="font-size: 1em;">Tahun Ajaran</ion-breadcrumb>
               </ion-breadcrumbs>
               <h5 style="margin-left: 11px;">Tahun Ajaran Rombongan Belajar</h5>
             </ion-title>
           </ion-col>
           <ion-col size-sm="6" size="10">
-            <ion-row
-              class="ion-align-items-center ion-justify-content-end goright mt-2"
-              style="margin-right: 20px"
-            >
-              <div
-                class="btn-group dropstart mb-1 ms-2"
-                style="content: inherit"
-              >
-                <button
-                  class="btn dropdown-toggle text-info text-gradient"
-                  type="button"
-                  data-bs-toggle="dropdown"
-                  aria-expanded="true"
-                  style="background-color: transparent"
-                >
-                  Hi User 13141
+            <ion-row class="ion-align-items-center ion-justify-content-end goright mt-2" style="margin-right: 20px">
+              <div class="btn-group dropstart mb-1 ms-2" style="content: inherit">
+                <button class="btn dropdown-toggle text-info text-gradient" type="button" data-bs-toggle="dropdown"
+                  aria-expanded="true" style="background-color: transparent">
+                  Hi {{ username }}
                 </button>
                 <ul class="dropdown-menu dropdown-menu-dark">
                   <li>
-                    <a
-                      class="dropdown-item"
-                      href="javascript: doSomethingLogout()"
-                      >Logout</a
-                    >
+                    <a class="dropdown-item" href="javascript: doSomethingLogout()" @click="del()">Logout</a>
                   </li>
                 </ul>
               </div>
-              <div class="nav-icon">
+              <div v-if="is_admin == 'true'" class="nav-icon">
                 <a href="/SignUp">
-                  <ion-icon
-                    class="iconButton text-info text-gradient"
-                    src="assets/icon/signup.svg"
-                  ></ion-icon>
+                  <ion-icon class="iconButton text-info text-gradient" src="assets/icon/signup.svg"></ion-icon>
                 </a>
+                <a href="/SignUp" class="d-none d-sm-inline-block mb-1 text-info text-gradient"
+                  style="text-decoration: none">&nbsp;Add User</a>
               </div>
-              <a
-                href="/SignUp"
-                class="d-none d-sm-inline-block mb-1 text-info text-gradient"
-                style="text-decoration: none"
-                >&nbsp;Add User</a
-              >
               <div>&nbsp;</div>
             </ion-row>
           </ion-col>
@@ -82,17 +61,16 @@
           <ion-grid>
             <ion-row>
               <ion-col>
-                <ion-card class="card-content-judul" @click="() => router.push('/pages/RombonganBelajar/'+tahun+'/A')">
-                  <ion-card-content
-                    class="text-center"
-                    style="margin: 70px"
-                  >
+                <ion-card class="card-content-judul"
+                  @click="() => router.push('/pages/RombonganBelajar/' + tahun + '/A')">
+                  <ion-card-content class="text-center" style="margin: 70px">
                     <ion-card-title color="light">TK A</ion-card-title>
                   </ion-card-content>
                 </ion-card>
               </ion-col>
               <ion-col>
-                <ion-card class="card-content-judul" @click="() => router.push('/pages/RombonganBelajar/'+tahun+'/B')">
+                <ion-card class="card-content-judul"
+                  @click="() => router.push('/pages/RombonganBelajar/' + tahun + '/B')">
                   <ion-card-header class="text-center" style="margin: 70px">
                     <ion-card-title color="light">TK B</ion-card-title>
                   </ion-card-header>
@@ -120,6 +98,7 @@ import {
   IonRow,
 } from "@ionic/vue";
 import { useRouter } from "vue-router";
+import axios from "axios";
 
 export default defineComponent({
   name: "PesertaDidikPage",
@@ -141,6 +120,28 @@ export default defineComponent({
     return {
       router,
     };
+  },
+  data() {
+    return {
+      username: localStorage.getItem('username'),
+      is_admin: localStorage.getItem('is_admin')
+    };
+  },
+  methods: {
+    del() {
+      let headers = {
+        Authorization: "Bearer " + localStorage.getItem("access_token"),
+      };
+
+      axios.delete("http://localhost:5000/API/auth/logout", { headers })
+        .then((response) => {
+          console.log(response);
+          localStorage.clear()
+        })
+        .catch(error => {
+          console.log(error.response.data);
+        });
+    },
   },
 });
 </script>
@@ -214,7 +215,7 @@ a .iconButton {
   top: -1.5px;
 }
 
-.btn-search:focus ~ .input-search {
+.btn-search:focus~.input-search {
   width: 230px;
   border-radius: 10px;
   background-color: white;
@@ -276,7 +277,7 @@ th {
   white-space: nowrap;
 }
 
-.tables > :not(:last-child) > :last-child > * {
+.tables> :not(:last-child)> :last-child>* {
   border-bottom-color: black;
 }
 
@@ -330,7 +331,7 @@ td {
 /* small laptop dimension */
 
 @media only screen and (max-width: 1280px) {
-  .btn-search:focus ~ .input-search {
+  .btn-search:focus~.input-search {
     width: 250px;
   }
 
@@ -352,7 +353,7 @@ td {
 /* tablet dimension */
 
 @media only screen and (max-width: 990px) {
-  .btn-search:focus ~ .input-search {
+  .btn-search:focus~.input-search {
     width: 200px;
   }
 
@@ -400,7 +401,7 @@ td {
     right: 34%;
   }
 
-  .btn-search:focus ~ .input-search {
+  .btn-search:focus~.input-search {
     width: 200px;
   }
 
@@ -417,7 +418,7 @@ td {
     right: 41%;
   }
 
-  .btn-search:focus ~ .input-search {
+  .btn-search:focus~.input-search {
     width: 180px;
   }
 
@@ -432,7 +433,7 @@ td {
     right: 50%;
   }
 
-  .btn-search:focus ~ .input-search {
+  .btn-search:focus~.input-search {
     width: 150px;
   }
 
