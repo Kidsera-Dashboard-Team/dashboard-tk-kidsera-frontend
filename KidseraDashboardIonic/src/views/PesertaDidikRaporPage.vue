@@ -63,7 +63,7 @@
                 <ion-card-content>
                     <!-- <ion-searchbar show-cancel-button="focus" placeholder="Show on Focus"></ion-searchbar> -->
                     <div class="table-responsive">
-                        <table class="table table-borderless table-hover display" id="table-rapor">
+                        <table class="table table-hover display" id="table-rapor">
                             <thead>
                                 <tr>
                                     <th scope="col" class="text-center text-secondary opacity-7">Nama</th>

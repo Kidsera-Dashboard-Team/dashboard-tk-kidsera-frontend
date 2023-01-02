@@ -58,7 +58,7 @@
                 <ion-card-content>
                     <!-- <ion-searchbar show-cancel-button="focus" placeholder="Show on Focus"></ion-searchbar> -->
                     <div class="table-responsive">
-                        <table class="table table-borderless table-hover display" id="table-sarpras">
+                        <table class="table table-hover display" id="table-sarpras">
                             <thead>
                                 <tr>
                                     <th scope="col" class="text-center text-secondary opacity-7">Fasilitas</th>
