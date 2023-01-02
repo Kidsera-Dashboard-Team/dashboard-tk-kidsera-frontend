@@ -47,7 +47,8 @@ const routes: Array<RouteRecordRaw> = [
     component: () => import("../views/TenagaKependidikanPage.vue"),
   },
   {
-    path: "/pages/TenagaKependidikan/DetailTenagaKependidikan",
+    props: true,
+    path: "/pages/TenagaKependidikan/DetailTenagaKependidikan/:id",
     component: () => import("../views/DetailTenagaKependidikanPage.vue"),
   },
   {
@@ -59,7 +60,8 @@ const routes: Array<RouteRecordRaw> = [
     component: () => import("../views/TambahTenagaKependidikanPageNonGuru.vue"),
   },
   {
-    path: "/pages/TenagaKependidikan/EditTenagaKependidikan",
+    props: true,
+    path: "/pages/TenagaKependidikan/EditTenagaKependidikan/:id",
     component: () => import("../views/EditTenagaKependidikanPage.vue"),
   },
   {
