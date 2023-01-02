@@ -5,34 +5,48 @@
                 <ion-menu-button color="primary"></ion-menu-button>
             </ion-buttons>
             <ion-grid>
-                <ion-row class="ion-justify-content-between">
-                    <ion-col size="3" size-xl="6">
-                        <ion-title class="d-none d-lg-inline-block" size="small"><span
-                                style="opacity: 50%;">Pages</span> /
-                            E - Rapor <br> <span style="font-size: 18px; letter-spacing: 2.5px;">E - Rapor</span>
+                <ion-row class="ion-justify-content-between ion-align-items-center">
+                    <ion-col size="6">
+                        <ion-title class="d-none d-lg-inline-block mt-1" size="small">
+                            <ion-breadcrumbs :max-items="4" :items-after-collapse="2" class="p-0">
+                                <ion-breadcrumb style="font-size: 1em;" href="/Pages">Pages</ion-breadcrumb>
+                                <ion-breadcrumb style="font-size: 1em;" href="/pages/Rapor">E - Rapor</ion-breadcrumb>
+                                <ion-breadcrumb style="font-size: 1em;" href="/pages/Rapor/TahunAjaranRapor">Tahun
+                                    Ajaran</ion-breadcrumb>
+                                <ion-breadcrumb style="font-size: 1em;"
+                                    href="/pages/Rapor/TahunAjaranRapor/PesertaDidikRapor">Peserta
+                                    Didik</ion-breadcrumb>
+                                <ion-breadcrumb style="font-size: 1em;"
+                                    href="/pages/Rapor/TahunAjaranRapor/PesertaDidikRapor/InputNilaiPesertaDidikRapor">Detail</ion-breadcrumb>
+                                <ion-breadcrumb style="font-size: 1em;"
+                                    href="/pages/Rapor/TahunAjaranRapor/PesertaDidikRapor/InputNilaiPesertaDidikRapor/InputRapor">Input</ion-breadcrumb>
+                            </ion-breadcrumbs>
+
+                            <h5 style="margin-left: 11px;">Input E - Rapor</h5>
                         </ion-title>
                     </ion-col>
-                    <ion-col size-sm="9" size="10" size-xl="6">
+                    <ion-col size-sm="6" size="10">
                         <ion-row class="ion-align-items-center ion-justify-content-end goright mt-2"
                             style="margin-right: 20px;">
                             <div class="btn-group dropstart mb-1 ms-2" style="content: inherit;">
                                 <button class="btn dropdown-toggle text-info text-gradient" type="button"
                                     data-bs-toggle="dropdown" aria-expanded="true"
                                     style="background-color: transparent;">
-                                    Hi User 13141
+                                    Hi {{ username }}
                                 </button>
                                 <ul class="dropdown-menu dropdown-menu-dark">
-                                    <li><a class="dropdown-item" href="javascript: doSomethingLogout()">Logout</a></li>
+                                    <li><a class="dropdown-item" href="javascript: doSomethingLogout()"
+                                            @click="del()">Logout</a></li>
                                 </ul>
                             </div>
-                            <div class="nav-icon">
+                            <div v-if="is_admin == 'true'" class="nav-icon">
                                 <a href="/SignUp">
                                     <ion-icon class="iconButton text-info text-gradient"
                                         src="assets/icon/signup.svg"></ion-icon>
                                 </a>
+                                <a href="/SignUp" class="d-none d-sm-inline-block mb-1 text-info text-gradient"
+                                    style="text-decoration: none;">&nbsp;Add User</a>
                             </div>
-                            <a href="/SignUp" class="d-none d-sm-inline-block mb-1 text-info text-gradient"
-                                style="text-decoration: none;">&nbsp;Add User</a>
                             <div>&nbsp;</div>
                         </ion-row>
                     </ion-col>
@@ -2485,7 +2499,9 @@
                     <div>
                         <ion-row class="ion-justify-content-center row-button mt-4 mb-3">
                             <ion-col size="6" size-sm="2">
-                                <a class="btn btn-danger" href="/pages/Rapor/TahunAjaranRapor/PesertaDidikRapor/InputNilaiPesertaDidikRapor" role="button">Batalkan</a>
+                                <a class="btn btn-danger"
+                                    href="/pages/Rapor/TahunAjaranRapor/PesertaDidikRapor/InputNilaiPesertaDidikRapor"
+                                    role="button">Batalkan</a>
                             </ion-col>
                             <ion-col size="6" size-sm="2">
                                 <a class="btn btn-primary" role="button"
@@ -2507,6 +2523,7 @@ import {
     IonCard, IonCardContent, IonCardTitle
     // IonSearchbar 
 } from '@ionic/vue';
+import axios from "axios";
 
 export default defineComponent({
     name: 'PesertaDidikPage',
@@ -2522,7 +2539,29 @@ export default defineComponent({
         IonRow,
         IonCard, IonCardContent, IonCardTitle
         // IonSearchbar
-    }
+    },
+    data() {
+        return {
+            username: localStorage.getItem('username'),
+            is_admin: localStorage.getItem('is_admin')
+        };
+    },
+    methods: {
+        del() {
+            let headers = {
+                Authorization: "Bearer " + localStorage.getItem("access_token"),
+            };
+
+            axios.delete("http://localhost:5000/API/auth/logout", { headers })
+                .then((response) => {
+                    console.log(response);
+                    localStorage.clear()
+                })
+                .catch(error => {
+                    console.log(error.response.data);
+                });
+        },
+    },
 });
 </script>
 
