@@ -17,47 +17,25 @@
             </ion-title>
           </ion-col>
           <ion-col size-sm="6" size="10">
-            <ion-row
-              class="ion-align-items-center ion-justify-content-end goright mt-2"
-              style="margin-right: 20px"
-            >
-              <div
-                class="btn-group dropstart mb-1 ms-2"
-                style="content: inherit"
-              >
-                <button
-                  class="btn dropdown-toggle text-info text-gradient"
-                  type="button"
-                  data-bs-toggle="dropdown"
-                  aria-expanded="true"
-                  style="background-color: transparent"
-                >
-                  Hi User 13141
+            <ion-row class="ion-align-items-center ion-justify-content-end goright mt-2" style="margin-right: 20px">
+              <div class="btn-group dropstart mb-1 ms-2" style="content: inherit">
+                <button class="btn dropdown-toggle text-info text-gradient" type="button" data-bs-toggle="dropdown"
+                  aria-expanded="true" style="background-color: transparent">
+                  Hi {{ username }}
                 </button>
                 <ul class="dropdown-menu dropdown-menu-dark">
                   <li>
-                    <a
-                      class="dropdown-item"
-                      href="javascript: doSomethingLogout()"
-                      >Logout</a
-                    >
+                    <a class="dropdown-item" href="javascript: doSomethingLogout()" @click="del()">Logout</a>
                   </li>
                 </ul>
               </div>
-              <div class="nav-icon">
+              <div v-if="is_admin == 'true'" class="nav-icon">
                 <a href="/SignUp">
-                  <ion-icon
-                    class="iconButton text-info text-gradient"
-                    src="assets/icon/signup.svg"
-                  ></ion-icon>
+                  <ion-icon class="iconButton text-info text-gradient" src="assets/icon/signup.svg"></ion-icon>
                 </a>
               </div>
-              <a
-                href="/SignUp"
-                class="d-none d-sm-inline-block mb-1 text-info text-gradient"
-                style="text-decoration: none"
-                >&nbsp;Add User</a
-              >
+              <a href="/SignUp" class="d-none d-sm-inline-block mb-1 text-info text-gradient"
+                style="text-decoration: none">&nbsp;Add User</a>
               <div>&nbsp;</div>
             </ion-row>
           </ion-col>
@@ -75,11 +53,7 @@
         <ion-card-content class="d-grid gap-3">
           <ion-item fill="outline">
             <ion-label position="floating">Nama Peserta Didik</ion-label>
-            <ion-input
-              placeholder="Masukkan Nama Peserta Didik"
-              v-model="nama"
-              required
-            ></ion-input>
+            <ion-input placeholder="Masukkan Nama Peserta Didik" v-model="nama" required></ion-input>
           </ion-item>
           <ion-radio-group class="row justify-content-around" v-model="status">
             <ion-list-header class="col-12 col-sm-4">
@@ -94,10 +68,7 @@
               <ion-radio value="Alumni"></ion-radio>
             </ion-item>
           </ion-radio-group>
-          <ion-radio-group
-            class="row justify-content-around"
-            v-model="jenis_kelamin"
-          >
+          <ion-radio-group class="row justify-content-around" v-model="jenis_kelamin">
             <ion-list-header class="col-12 col-sm-4">
               <ion-label class="h5"> Jenis Kelamin </ion-label>
             </ion-list-header>
@@ -112,162 +83,78 @@
           </ion-radio-group>
           <ion-item fill="outline">
             <ion-label position="floating">Tahun Ajaran</ion-label>
-            <ion-input
-              placeholder="Masukkan Tahun Ajaran"
-              v-model="tahun_ajaran"
-              required
-            ></ion-input>
+            <ion-input placeholder="Masukkan Tahun Ajaran" v-model="tahun_ajaran" required></ion-input>
           </ion-item>
           <ion-item fill="outline">
             <ion-label position="floating">NISN</ion-label>
-            <ion-input
-              placeholder="Masukkan NISN"
-              v-model="nisn"
-              required
-            ></ion-input>
+            <ion-input placeholder="Masukkan NISN" v-model="nisn" required></ion-input>
           </ion-item>
           <ion-item fill="outline">
             <ion-label position="floating">NIK</ion-label>
-            <ion-input
-              placeholder="Masukkan NIK"
-              v-model="nik"
-              required
-            ></ion-input> </ion-item
-          ><ion-item fill="outline">
+            <ion-input placeholder="Masukkan NIK" v-model="nik" required></ion-input> </ion-item><ion-item
+            fill="outline">
             <ion-label position="floating">NO. KK</ion-label>
-            <ion-input
-              placeholder="Masukkan NO. KK"
-              v-model="no_kk"
-              required
-            ></ion-input> </ion-item
-          ><ion-item fill="outline">
+            <ion-input placeholder="Masukkan NO. KK" v-model="no_kk" required></ion-input> </ion-item><ion-item
+            fill="outline">
             <ion-label position="floating">Tingkat Kelas</ion-label>
-            <ion-input
-              placeholder="Masukkan Tingkat Kelas"
-              v-model="tingkat_kelas"
-              required
-            ></ion-input> </ion-item
-          ><ion-item fill="outline">
+            <ion-input placeholder="Masukkan Tingkat Kelas" v-model="tingkat_kelas" required></ion-input>
+          </ion-item><ion-item fill="outline">
             <ion-label position="floating">Tanggal Masuk</ion-label>
-            <ion-input
-              placeholder="Masukkan Tanggal Masuk"
-              type="date"
-              v-model="tanggal_masuk"
-              required
-            ></ion-input> </ion-item
-          ><ion-item fill="outline">
+            <ion-input placeholder="Masukkan Tanggal Masuk" type="date" v-model="tanggal_masuk" required></ion-input>
+          </ion-item><ion-item fill="outline">
             <ion-label position="floating">Tanggal Lulus</ion-label>
-            <ion-input
-              placeholder="Masukkan Tanggal Lulus"
-              type="date"
-              v-model="tanggal_lulus"
-              required
-            ></ion-input> </ion-item
-          ><ion-item fill="outline">
+            <ion-input placeholder="Masukkan Tanggal Lulus" type="date" v-model="tanggal_lulus" required></ion-input>
+          </ion-item><ion-item fill="outline">
             <ion-label position="floating">Nomor Induk (NIPD)</ion-label>
-            <ion-input
-              placeholder="Masukkan Nomor Induk (NIPD)"
-              v-model="nomor_induk"
-              required
-            ></ion-input>
+            <ion-input placeholder="Masukkan Nomor Induk (NIPD)" v-model="nomor_induk" required></ion-input>
           </ion-item>
           <ion-item fill="outline">
             <ion-label position="floating">Tinggi Badan</ion-label>
-            <ion-input
-              placeholder="Masukkan Tinggi Badan"
-              v-model="tinggi_badan"
-              required
-            ></ion-input>
+            <ion-input placeholder="Masukkan Tinggi Badan" v-model="tinggi_badan" required></ion-input>
           </ion-item>
           <ion-item fill="outline">
             <ion-label position="floating">Berat Badan</ion-label>
-            <ion-input
-              placeholder="Masukkan Berat Badan"
-              v-model="berat_badan"
-              required
-            ></ion-input>
+            <ion-input placeholder="Masukkan Berat Badan" v-model="berat_badan" required></ion-input>
           </ion-item>
           <ion-item fill="outline">
             <ion-label position="floating">Lingkar Kepala</ion-label>
-            <ion-input
-              placeholder="Masukkan Lingkar Kepala"
-              v-model="lingkar_kepala"
-              required
-            ></ion-input>
+            <ion-input placeholder="Masukkan Lingkar Kepala" v-model="lingkar_kepala" required></ion-input>
           </ion-item>
           <ion-item fill="outline">
             <ion-label position="floating">Alergi</ion-label>
-            <ion-input
-              placeholder="Masukkan Alergi"
-              v-model="alergi"
-              required
-            ></ion-input>
+            <ion-input placeholder="Masukkan Alergi" v-model="alergi" required></ion-input>
           </ion-item>
           <ion-item fill="outline">
             <ion-label position="floating">Nama Ayah</ion-label>
-            <ion-input
-              placeholder="Masukkan Nama Ayah"
-              v-model="nama_ayah"
-              required
-            ></ion-input>
+            <ion-input placeholder="Masukkan Nama Ayah" v-model="nama_ayah" required></ion-input>
           </ion-item>
           <ion-item fill="outline">
             <ion-label position="floating">Nomor Telepon Ayah</ion-label>
-            <ion-input
-              placeholder="Masukkan Nomor Telepon Ayah"
-              v-model="no_telp_ayah"
-              required
-            ></ion-input>
+            <ion-input placeholder="Masukkan Nomor Telepon Ayah" v-model="no_telp_ayah" required></ion-input>
           </ion-item>
           <ion-item fill="outline">
             <ion-label position="floating">Nama Ibu</ion-label>
-            <ion-input
-              placeholder="Masukkan Nama Ibu"
-              v-model="nama_ibu"
-              required
-            ></ion-input>
+            <ion-input placeholder="Masukkan Nama Ibu" v-model="nama_ibu" required></ion-input>
           </ion-item>
           <ion-item fill="outline">
             <ion-label position="floating">Nomor Telepon Ibu</ion-label>
-            <ion-input
-              placeholder="Masukkan Nomor Telepon Ibu"
-              v-model="no_telp_ibu"
-              required
-            ></ion-input>
+            <ion-input placeholder="Masukkan Nomor Telepon Ibu" v-model="no_telp_ibu" required></ion-input>
           </ion-item>
           <ion-item fill="outline">
             <ion-label position="floating">Pekerjaan Ayah</ion-label>
-            <ion-input
-              placeholder="Masukkan Pekerjaan Ayah"
-              v-model="pekerjaan_ayah"
-              required
-            ></ion-input>
+            <ion-input placeholder="Masukkan Pekerjaan Ayah" v-model="pekerjaan_ayah" required></ion-input>
           </ion-item>
           <ion-item fill="outline">
             <ion-label position="floating">Pekerjaan Ibu</ion-label>
-            <ion-input
-              placeholder="Masukkan Pekerjaan Ibu"
-              v-model="pekerjaan_ibu"
-              required
-            ></ion-input>
+            <ion-input placeholder="Masukkan Pekerjaan Ibu" v-model="pekerjaan_ibu" required></ion-input>
           </ion-item>
           <div>
             <ion-row class="ion-justify-content-center row-button">
               <ion-col size="6" size-sm="2">
-                <a
-                  class="btn btn-danger"
-                  href="/pages/PesertaDidik"
-                  role="button"
-                  >Batalkan</a
-                >
+                <a class="btn btn-danger" href="/pages/PesertaDidik" role="button">Batalkan</a>
               </ion-col>
               <ion-col size="6" size-sm="2">
-                <a
-                  class="btn btn-success"
-                  role="button"
-                  @click="submitForm()"
-                  >Tambah</a
-                >
+                <a class="btn btn-success" role="button" @click="submitForm()">Tambah</a>
               </ion-col>
             </ion-row>
           </div>
@@ -340,15 +227,31 @@ export default defineComponent({
       berat_badan: "",
       lingkar_kepala: "",
       alergi: "",
-      nama_ayah : "",
-      nama_ibu : "",
-      pekerjaan_ayah : "",
-      pekerjaan_ibu : "",
-      no_telp_ayah : "",
-      no_telp_ibu : "",
+      nama_ayah: "",
+      nama_ibu: "",
+      pekerjaan_ayah: "",
+      pekerjaan_ibu: "",
+      no_telp_ayah: "",
+      no_telp_ibu: "",
+      username: localStorage.getItem('username'),
+      is_admin: localStorage.getItem('is_admin')
     };
   },
   methods: {
+    del() {
+      let headers = {
+        Authorization: "Bearer " + localStorage.getItem("access_token"),
+      };
+
+      axios.delete("http://localhost:5000/API/auth/logout", { headers })
+        .then((response) => {
+          console.log(response);
+          localStorage.clear()
+        })
+        .catch(error => {
+          console.log(error.response.data);
+        });
+    },
     submitForm() {
       const json = JSON.stringify({
         nama: this.nama,
@@ -366,12 +269,12 @@ export default defineComponent({
         berat_badan: this.berat_badan,
         lingkar_kepala: this.lingkar_kepala,
         alergi: this.lingkar_kepala,
-        nama_ayah : this.nama_ayah,
-        nama_ibu : this.nama_ibu,
-        pekerjaan_ayah : this.pekerjaan_ayah,
-        pekerjaan_ibu : this.pekerjaan_ibu,
-        no_telp_ayah : this.no_telp_ayah,
-        no_telp_ibu : this.no_telp_ibu,
+        nama_ayah: this.nama_ayah,
+        nama_ibu: this.nama_ibu,
+        pekerjaan_ayah: this.pekerjaan_ayah,
+        pekerjaan_ibu: this.pekerjaan_ibu,
+        no_telp_ayah: this.no_telp_ayah,
+        no_telp_ibu: this.no_telp_ibu,
       });
       console.log(json);
       axios
@@ -411,7 +314,7 @@ a .iconButton {
   font-size: 20px;
 }
 
-ion-breadcrumb{
+ion-breadcrumb {
   font-size: 1em;
 }
 
@@ -438,7 +341,7 @@ ion-breadcrumb{
 /* small laptop dimension */
 
 @media only screen and (max-width: 1280px) {
-  .btn-search:focus ~ .input-search {
+  .btn-search:focus~.input-search {
     width: 250px;
   }
 
@@ -450,7 +353,7 @@ ion-breadcrumb{
 /* tablet dimension */
 
 @media only screen and (max-width: 990px) {
-  .btn-search:focus ~ .input-search {
+  .btn-search:focus~.input-search {
     width: 200px;
   }
 
@@ -476,7 +379,7 @@ ion-breadcrumb{
     right: 34%;
   }
 
-  .btn-search:focus ~ .input-search {
+  .btn-search:focus~.input-search {
     width: 200px;
   }
 
@@ -493,7 +396,7 @@ ion-breadcrumb{
     right: 41%;
   }
 
-  .btn-search:focus ~ .input-search {
+  .btn-search:focus~.input-search {
     width: 180px;
   }
 
@@ -513,7 +416,7 @@ ion-breadcrumb{
     right: 50%;
   }
 
-  .btn-search:focus ~ .input-search {
+  .btn-search:focus~.input-search {
     width: 150px;
   }
 
