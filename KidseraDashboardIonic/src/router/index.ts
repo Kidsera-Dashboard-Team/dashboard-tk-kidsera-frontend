@@ -69,15 +69,18 @@ const routes: Array<RouteRecordRaw> = [
     component: () => import("../views/SarprasPage.vue"),
   },
   {
-    path: "/pages/Sarpras/DetailSarpras",
+    props: true,
+    path: "/pages/Sarpras/DetailSarpras/:id",
     component: () => import("../views/DetailSarprasPage.vue"),
   },
   {
-    path: "/pages/Sarpras/DetailSarpras/TambahFasilitasSarpras",
+    props: true,
+    path: "/pages/Sarpras/DetailSarpras/TambahFasilitasSarpras/:id/:nama_ruang",
     component: () => import("../views/TambahFasilitasSarprasPage.vue"),
   },
   {
-    path: "/pages/Sarpras/DetailSarpras/EditSarpras",
+    props: true,
+    path: "/pages/Sarpras/DetailSarpras/EditSarpras/:id/:id_ruang",
     component: () => import("../views/EditSarprasPage.vue"),
   },
   {
