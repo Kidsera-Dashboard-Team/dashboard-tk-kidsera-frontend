@@ -47,15 +47,10 @@
       <ion-card class="mt-4 p-3 rounded text-center card-form">
         <ion-card-header>
           <ion-card-title>
-            <h4>Tambah Fasilitas Ruang</h4>
+            <h4>Tambah Fasilitas Ruang {{ nama_ruang }}</h4>
           </ion-card-title>
         </ion-card-header>
         <ion-card-content class="d-grid gap-3">
-          <ion-item fill="outline" lines="none">
-            <ion-label position="floating" :readonly="true" class="mb-5">Nama Ruang -> Ruang {{ nama_ruang }}
-            </ion-label>
-            <!-- <ion-input placeholder="Masukkan Fasilitas" ></ion-input> -->
-          </ion-item>
           <ion-item fill="outline">
             <ion-label position="floating">Fasilitas</ion-label>
             <ion-input placeholder="Masukkan Fasilitas" v-model="nama" required></ion-input>
