@@ -69,7 +69,7 @@
                   <th scope="col" class="text-center text-secondary opacity-7">Jenis</th>
                   <th scope="col" class="text-center text-secondary opacity-7">Jumlah</th>
                   <!-- <th scope="col" class="text-center text-secondary opacity-7">Created Date</th> -->
-                  <th scope="col" class="text-center text-secondary opacity-7">Aksi</th>
+                  <th scope="col" class="text-center text-secondary opacity-7" v-if="is_admin == 'true'">Aksi</th>
                 </tr>
               </thead>
               <tbody v-for="i in fasilSarpras" :key="i._id">
