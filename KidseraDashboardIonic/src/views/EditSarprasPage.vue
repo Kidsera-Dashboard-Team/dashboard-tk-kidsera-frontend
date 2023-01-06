@@ -11,7 +11,7 @@
               <ion-breadcrumbs :max-items="4" :items-after-collapse="2" class="p-0">
                 <ion-breadcrumb style="font-size: 1em;" href="/Pages">Pages</ion-breadcrumb>
                 <ion-breadcrumb style="font-size: 1em;" href="/pages/Sarpras">Sarana & Prasarana</ion-breadcrumb>
-                <ion-breadcrumb style="font-size: 1em;" href="/pages/Sarpras/DetailSarpras">Detail</ion-breadcrumb>
+                <ion-breadcrumb style="font-size: 1em;" @click="router.push('/pages/Sarpras/DetailSarpras/' + this.id_ruang)">Detail</ion-breadcrumb>
                 <ion-breadcrumb style="font-size: 1em;"
                   href="/pages/Sarpras/DetailSarpras/EditSarpras">Edit</ion-breadcrumb>
               </ion-breadcrumbs>
