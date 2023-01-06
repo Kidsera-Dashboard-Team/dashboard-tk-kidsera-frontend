@@ -51,8 +51,10 @@
               </ion-card-title>
             </ion-col>
             <ion-col size-xl="6" size-md="6" size-xs="auto">
+             <div v-if="is_admin == 'true'">
               <a @click="router.push('/pages/Sarpras/DetailSarpras/TambahFasilitasSarpras/' + this.id + '/' + namaRuang)"
                 class="btn btn-success float-end tambah">Tambah Fasilitas</a>
+             </div>
             </ion-col>
           </ion-row>
         </ion-card-header>
@@ -76,7 +78,7 @@
                   <td class="text-center">{{ i.jenis }}</td>
                   <td class="text-center">{{ i.jumlah }}</td>
                   <!-- <td class="text-center">2 Desember 2022</td> -->
-                  <td class="text-center">
+                  <td class="text-center" v-if="is_admin == 'true'">
                     <button type="button" class="btn btn-warning btn-sm text-uppercase text-white fw-bold p-2"
                       @click="router.push('/pages/Sarpras/DetailSarpras/EditSarpras/' + i._id.$oid + '/' + this.id)">Edit</button>
                     <button type="button" class="btn btn-danger btn-sm text-uppercase text-white fw-bold p-2 ms-2"

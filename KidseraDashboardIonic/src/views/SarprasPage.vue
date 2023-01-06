@@ -94,8 +94,10 @@
               </ion-card-title>
             </ion-col>
             <ion-col size-xl="6" size-md="6" size-xs="auto">
+             <div v-if="is_admin == 'true'">
               <a class="btn btn-success float-end tambah" data-bs-toggle="collapse" href="#tambahRuangan" role="button"
                 aria-expanded="false" aria-controls="tambahRuangan">Tambah Ruang</a>
+             </div>
               <!-- href="/pages/Sarpras/TambahSarprasRuangan" -->
             </ion-col>
           </ion-row>
