@@ -211,6 +211,12 @@ export default defineComponent({
     };
   },
 
+  mounted: function() {
+    if(this.username == null) {
+      window.location.href = "/SignIn";
+    }
+  },
+
   methods: {
     del() {
       let headers = {

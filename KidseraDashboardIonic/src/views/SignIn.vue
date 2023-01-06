@@ -37,7 +37,7 @@
                     <ion-label>Ingatkan Saya</ion-label>
                   </ion-item>
 
-                  <ion-button expand="block" shape="round" color="primary" href="javascript: doSomething()"
+                  <ion-button expand="block" shape="round" color="primary"
                     class="bg-gradient-info w-100 mt-4 mb-0 text-white" @click="submit()">
                     <ion-label>Masuk</ion-label>
                   </ion-button>
@@ -109,9 +109,16 @@ export default defineComponent({
             console.log(response)
             console.log(response.data.access_token)
 
-            localStorage.setItem('access_token', response.data.access_token)
-            localStorage.setItem('is_admin', response.data.is_admin)
-            localStorage.setItem('username', response.data.username)
+            if(response.data.success == 1) {
+              localStorage.setItem('access_token', response.data.access_token)
+              localStorage.setItem('is_admin', response.data.is_admin)
+              localStorage.setItem('username', response.data.username)
+              window.location.href = "/";
+            }
+            else {
+              alert(response.data.message);
+            }
+
           })
           .catch(error => {
             console.log(error.response.data);
