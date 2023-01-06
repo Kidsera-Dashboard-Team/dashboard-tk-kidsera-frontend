@@ -51,8 +51,10 @@
               </ion-card-title>
             </ion-col>
             <ion-col size-xl="6" size-md="6" size-xs="auto">
-              <a href="/pages/TenagaKependidikan/TambahTenagaKependidikan" class="btn btn-success float-end">Tambah
-                Data</a>
+              <div v-if="is_admin == 'true'">
+                <a href="/pages/TenagaKependidikan/TambahTenagaKependidikan" class="btn btn-success float-end">Tambah
+                  Data</a>
+              </div>
             </ion-col>
           </ion-row>
         </ion-card-header>
@@ -76,12 +78,16 @@
                   <td class="text-center">{{ guru.no_hp }}</td>
                   <td class="text-center">{{ guru.email }}</td>
                   <td class="text-center">
-                    <button type="button" class="btn btn-primary btn-sm text-uppercase text-white fw-bold p-2"
+                    <div class="d-flex ms-5">
+                      <button type="button" class="btn btn-primary btn-sm text-uppercase text-white fw-bold p-2"
                       @click="router.push('/pages/TenagaKependidikan/DetailTenagaKependidikan/' + guru._id.$oid)">View</button>
-                    <button type="button" class="btn btn-warning btn-sm text-uppercase text-white fw-bold p-2 ms-2"
-                      @click="router.push('/pages/TenagaKependidikan/EditTenagaKependidikan/' + guru._id.$oid)">Edit</button>
-                    <button type="button" class="btn btn-danger btn-sm text-uppercase text-white fw-bold p-2 ms-2"
-                      @click="delTendik(guru._id.$oid)">Delete</button>
+                      <div v-if="is_admin == 'true'">
+                        <button type="button" class="btn btn-warning btn-sm text-uppercase text-white fw-bold p-2 ms-2"
+                          @click="router.push('/pages/TenagaKependidikan/EditTenagaKependidikan/' + guru._id.$oid)">Edit</button>
+                        <button type="button" class="btn btn-danger btn-sm text-uppercase text-white fw-bold p-2 ms-2"
+                          @click="delTendik(guru._id.$oid)">Delete</button>
+                      </div>
+                    </div>
                   </td>
                 </tr>
               </tbody>
@@ -99,8 +105,10 @@
               </ion-card-title>
             </ion-col>
             <ion-col size-xl="6" size-md="6" size-xs="auto">
-              <a href="/pages/TenagaKependidikan/TambahTenagaKependidikanNonGuru"
-                class="btn btn-success float-end">Tambah Data</a>
+              <div v-if="is_admin == 'true'">
+                <a href="/pages/TenagaKependidikan/TambahTenagaKependidikanNonGuru"
+                  class="btn btn-success float-end">Tambah Data</a>
+              </div>
             </ion-col>
           </ion-row>
         </ion-card-header>
@@ -124,12 +132,16 @@
                   <td class="text-center">{{ nonGuru.no_hp }}</td>
                   <td class="text-center">{{ nonGuru.email }}</td>
                   <td class="text-center">
-                    <button type="button" class="btn btn-primary btn-sm text-uppercase text-white fw-bold p-2"
-                      @click="router.push('/pages/TenagaKependidikan/DetailTenagaKependidikan/' + nonGuru._id.$oid)">View</button>
-                    <button type="button" class="btn btn-warning btn-sm text-uppercase text-white fw-bold p-2 ms-2"
-                      @click="router.push('/pages/TenagaKependidikan/EditTenagaKependidikan/' + nonGuru._id.$oid)">Edit</button>
-                    <button type="button" class="btn btn-danger btn-sm text-uppercase text-white fw-bold p-2 ms-2"
-                      @click="delTendik(nonGuru._id.$oid)" >Delete</button>
+                    <div class="d-flex ms-5">
+                      <button type="button" class="btn btn-primary btn-sm text-uppercase text-white fw-bold p-2"
+                        @click="router.push('/pages/TenagaKependidikan/DetailTenagaKependidikan/' + nonGuru._id.$oid)">View</button>
+                      <div v-if="is_admin == 'true'">
+                        <button type="button" class="btn btn-warning btn-sm text-uppercase text-white fw-bold p-2 ms-2"
+                          @click="router.push('/pages/TenagaKependidikan/EditTenagaKependidikan/' + nonGuru._id.$oid)">Edit</button>
+                        <button type="button" class="btn btn-danger btn-sm text-uppercase text-white fw-bold p-2 ms-2"
+                          @click="delTendik(nonGuru._id.$oid)" >Delete</button>
+                      </div>
+                    </div>
                   </td>
                 </tr>
               </tbody>
@@ -184,24 +196,47 @@ export default defineComponent({
 
   mounted:
     function () {
+      let headers = {
+        Authorization: "Bearer " + localStorage.getItem("access_token"),
+      };
+
       axios
-        .get("http://localhost:5000/API/tendik/guru")
+        .get("http://localhost:5000/API/tendik/guru", { headers })
         .then((response) => {
           this.guruList = response.data;
-          console.log(response);
+          console.log(response.data);
         })
         .catch((error) => {
-          console.log(error.response.data);
+          let status = error.response.data.msg;
+          if(status == "Missing Authorization Header") {
+            alert("Anda belum login");
+            window.location.href = "/SignIn";
+          }
+          else if(status == "Token has expired") {
+            alert("Sesi telah berakhir, silahkan login kembali");
+            window.location.href = "/SignIn";
+          }
         });
 
       axios
-        .get("http://localhost:5000/API/tendik/nonguru")
+        .get("http://localhost:5000/API/tendik/nonguru", { headers })
         .then((response) => {
           this.nonGuruList = response.data;
-          console.log(response);
+          console.log(response.data);
         })
         .catch((error) => {
-          console.log(error.response.data);
+          let status = error.response.data.msg;
+          if(status == "Missing Authorization Header") {
+            alert("Anda belum login");
+            window.location.href = "/SignIn";
+          }
+          else if(status == "Token has expired") {
+            alert("Sesi telah berakhir, silahkan login kembali");
+            window.location.href = "/SignIn";
+          }
+          // console.log(error.response.data);
+          // console.log(error.response.data.msg);
+          // window.location.href = "/SignIn";
         });
     },
 
@@ -216,9 +251,17 @@ export default defineComponent({
         .then((response) => {
           console.log(response);
           localStorage.clear();
+          window.location.href = "/SignIn";
         })
         .catch((error) => {
-          console.log(error.response.data);
+          let status = error.response.data.msg;
+          if(status == "Missing Authorization Header") {
+            alert("Anda belum login");
+          }
+          else if(status == "Token has expired") {
+            alert("Sesi telah berakhir, silahkan login kembali");
+          }
+          window.location.href = "/SignIn";
         });
     },
     delTendik(id) {
@@ -233,9 +276,16 @@ export default defineComponent({
           window.location.reload();
         })
         .catch((error) => {
-          console.log(error.response.data);
+          let status = error.response.data.msg;
+          if(status == "Missing Authorization Header") {
+            alert("Anda belum login");
+            window.location.href = "/SignIn";
+          }
+          else if(status == "Token has expired") {
+            alert("Sesi telah berakhir, silahkan login kembali");
+            window.location.href = "/SignIn";
+          }
         });
-
     }
   },
 });
