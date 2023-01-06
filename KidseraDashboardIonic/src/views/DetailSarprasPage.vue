@@ -66,7 +66,7 @@
                   <th scope="col" class="text-center text-secondary opacity-7">Fasilitas</th>
                   <th scope="col" class="text-center text-secondary opacity-7">Jenis</th>
                   <th scope="col" class="text-center text-secondary opacity-7">Jumlah</th>
-                  <th scope="col" class="text-center text-secondary opacity-7">Created Date</th>
+                  <!-- <th scope="col" class="text-center text-secondary opacity-7">Created Date</th> -->
                   <th scope="col" class="text-center text-secondary opacity-7">Aksi</th>
                 </tr>
               </thead>
@@ -75,7 +75,7 @@
                   <td class="text-center">{{ i.nama }}</td>
                   <td class="text-center">{{ i.jenis }}</td>
                   <td class="text-center">{{ i.jumlah }}</td>
-                  <td class="text-center">2 Desember 2022</td>
+                  <!-- <td class="text-center">2 Desember 2022</td> -->
                   <td class="text-center">
                     <button type="button" class="btn btn-warning btn-sm text-uppercase text-white fw-bold p-2"
                       @click="router.push('/pages/Sarpras/DetailSarpras/EditSarpras/' + i._id.$oid + '/' + this.id)">Edit</button>
