@@ -249,16 +249,8 @@ export default defineComponent({
           console.log(response);
           localStorage.clear()
         })
-        .catch((error) => {
-          let status = error.response.data.msg;
-          if (status == "Missing Authorization Header") {
-            alert("Anda belum login");
-            window.location.href = "/SignIn";
-          }
-          else if (status == "Token has expired") {
-            alert("Sesi telah berakhir, silahkan login kembali");
-            window.location.href = "/SignIn";
-          }
+        .catch(error => {
+          console.log(error.response.data);
         });
     },
     submitForm() {
@@ -298,16 +290,8 @@ export default defineComponent({
         .then(response => {
           console.log(response);
         })
-        .catch((error) => {
-          let status = error.response.data.msg;
-          if (status == "Missing Authorization Header") {
-            alert("Anda belum login");
-            window.location.href = "/SignIn";
-          }
-          else if (status == "Token has expired") {
-            alert("Sesi telah berakhir, silahkan login kembali");
-            window.location.href = "/SignIn";
-          }
+        .catch(error => {
+          console.log(error.response.data);
         });
     },
   },
