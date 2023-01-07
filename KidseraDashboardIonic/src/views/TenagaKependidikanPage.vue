@@ -73,14 +73,14 @@
               </thead>
               <tbody v-for="guru in guruList" :key="guru._id">
                 <tr>
-                  <td scope="row">{{ guru.nama }}</td>
+                  <td class="w-25" scope="row">{{ guru.nama }}</td>
                   <td class="text-center">{{ guru.jenis_kelamin }}</td>
                   <td class="text-center">{{ guru.no_hp }}</td>
                   <td class="text-center">{{ guru.email }}</td>
                   <td class="text-center">
                     <div class="d-flex ms-5">
                       <button type="button" class="btn btn-primary btn-sm text-uppercase text-white fw-bold p-2"
-                      @click="router.push('/pages/TenagaKependidikan/DetailTenagaKependidikan/' + guru._id.$oid)">View</button>
+                        @click="router.push('/pages/TenagaKependidikan/DetailTenagaKependidikan/' + guru._id.$oid)">View</button>
                       <div v-if="is_admin == 'true'">
                         <button type="button" class="btn btn-warning btn-sm text-uppercase text-white fw-bold p-2 ms-2"
                           @click="router.push('/pages/TenagaKependidikan/EditTenagaKependidikan/' + guru._id.$oid)">Edit</button>
@@ -127,7 +127,7 @@
               </thead>
               <tbody v-for="nonGuru in nonGuruList" :key="nonGuru._id">
                 <tr>
-                  <td scope="row">{{ nonGuru.nama }}</td>
+                  <td class="w-25" scope="row">{{ nonGuru.nama }}</td>
                   <td class="text-center">{{ nonGuru.jenis_kelamin }}</td>
                   <td class="text-center">{{ nonGuru.no_hp }}</td>
                   <td class="text-center">{{ nonGuru.email }}</td>
@@ -139,7 +139,7 @@
                         <button type="button" class="btn btn-warning btn-sm text-uppercase text-white fw-bold p-2 ms-2"
                           @click="router.push('/pages/TenagaKependidikan/EditTenagaKependidikan/' + nonGuru._id.$oid)">Edit</button>
                         <button type="button" class="btn btn-danger btn-sm text-uppercase text-white fw-bold p-2 ms-2"
-                          @click="delTendik(nonGuru._id.$oid)" >Delete</button>
+                          @click="delTendik(nonGuru._id.$oid)">Delete</button>
                       </div>
                     </div>
                   </td>
@@ -208,11 +208,11 @@ export default defineComponent({
         })
         .catch((error) => {
           let status = error.response.data.msg;
-          if(status == "Missing Authorization Header") {
+          if (status == "Missing Authorization Header") {
             alert("Anda belum login");
             window.location.href = "/SignIn";
           }
-          else if(status == "Token has expired") {
+          else if (status == "Token has expired") {
             alert("Sesi telah berakhir, silahkan login kembali");
             window.location.href = "/SignIn";
           }
@@ -226,11 +226,11 @@ export default defineComponent({
         })
         .catch((error) => {
           let status = error.response.data.msg;
-          if(status == "Missing Authorization Header") {
+          if (status == "Missing Authorization Header") {
             alert("Anda belum login");
             window.location.href = "/SignIn";
           }
-          else if(status == "Token has expired") {
+          else if (status == "Token has expired") {
             alert("Sesi telah berakhir, silahkan login kembali");
             window.location.href = "/SignIn";
           }
@@ -255,10 +255,10 @@ export default defineComponent({
         })
         .catch((error) => {
           let status = error.response.data.msg;
-          if(status == "Missing Authorization Header") {
+          if (status == "Missing Authorization Header") {
             alert("Anda belum login");
           }
-          else if(status == "Token has expired") {
+          else if (status == "Token has expired") {
             alert("Sesi telah berakhir, silahkan login kembali");
           }
           window.location.href = "/SignIn";
@@ -277,11 +277,11 @@ export default defineComponent({
         })
         .catch((error) => {
           let status = error.response.data.msg;
-          if(status == "Missing Authorization Header") {
+          if (status == "Missing Authorization Header") {
             alert("Anda belum login");
             window.location.href = "/SignIn";
           }
-          else if(status == "Token has expired") {
+          else if (status == "Token has expired") {
             alert("Sesi telah berakhir, silahkan login kembali");
             window.location.href = "/SignIn";
           }
@@ -336,39 +336,6 @@ a .iconButton {
   font-size: 18px;
   letter-spacing: 2px;
   font-weight: 100;
-}
-
-.btn-search {
-  width: 40px;
-  height: 40px;
-  border-style: none;
-  font-size: 20px;
-  font-weight: bold;
-  outline: none;
-  cursor: pointer;
-  border-radius: 50%;
-  position: absolute;
-  right: 0px;
-  color: black;
-  background-color: transparent;
-  pointer-events: painted;
-  top: -1.5px;
-}
-
-.btn-search:focus~.input-search {
-  width: 230px;
-  border-radius: 10px;
-  background-color: white;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.5);
-  transition: all 500ms cubic-bezier(0, 0.11, 0.35, 2);
-}
-
-.input-search:focus {
-  width: 230px;
-  border-radius: 0px;
-  background-color: transparent;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.5);
-  transition: all 500ms cubic-bezier(0, 0.11, 0.35, 2);
 }
 
 .text-info {
