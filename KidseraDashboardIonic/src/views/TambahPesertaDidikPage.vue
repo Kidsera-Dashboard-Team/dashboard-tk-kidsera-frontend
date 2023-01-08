@@ -454,11 +454,13 @@ export default defineComponent({
               "Access-Control-Allow-Origin": "*",
               "Access-Control-Allow-Credentials": "true",
               "Content-Type": "application/json",
+              "Authorization": "Bearer " + localStorage.getItem('access_token')
             },
             withCredentials: true,
           })
           .then((response) => {
             console.log(response);
+            window.location.href = "/pages/PesertaDidik";
           })
           .catch((error) => {
             let status = error.response.data.msg;

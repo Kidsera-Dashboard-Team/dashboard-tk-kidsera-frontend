@@ -183,6 +183,7 @@ export default defineComponent({
     return {
       username: localStorage.getItem('username'),
       is_admin: localStorage.getItem('is_admin'),
+      auth: "Bearer " + localStorage.getItem('access_token'),
       nama: "",
       jenis_kelamin: "",
       ttl: "",
@@ -197,8 +198,11 @@ export default defineComponent({
   },
 
   mounted: function () {
+    let headers = {
+      Authorization: "Bearer " + localStorage.getItem("access_token"),
+    };
     axios
-      .get("http://localhost:5000/API/tendik/" + this.id)
+      .get("http://localhost:5000/API/tendik/" + this.id, { headers })
       .then((response) => {
         this.nama = response.data.nama;
         this.jenis_kelamin = response.data.jenis_kelamin;

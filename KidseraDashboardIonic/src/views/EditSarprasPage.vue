@@ -143,8 +143,11 @@ export default defineComponent({
   props: ["id", "id_ruang"],
   
   mounted: function () {
+    let headers = {
+      Authorization: "Bearer " + localStorage.getItem("access_token"),
+    };
     axios
-      .get("http://localhost:5000/API/sarpras_detail/" + this.id)
+      .get("http://localhost:5000/API/sarpras_detail/" + this.id, { headers })
       .then((response) => {
         console.log(response.data);
         this.nama = response.data.nama;

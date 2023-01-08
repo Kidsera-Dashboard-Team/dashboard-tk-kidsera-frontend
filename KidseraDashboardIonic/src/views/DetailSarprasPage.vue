@@ -148,8 +148,11 @@ export default defineComponent({
 
   props: ["id"],
   mounted: function () {
+    let headers = {
+      Authorization: "Bearer " + localStorage.getItem("access_token"),
+    };
     axios
-      .get("http://localhost:5000/API/sarpras/" + this.id)
+      .get("http://localhost:5000/API/sarpras/" + this.id, { headers })
       .then((response) => {
         this.fasilSarpras = response.data['sarpras'];
         this.namaRuang = response.data['nama_ruangan']

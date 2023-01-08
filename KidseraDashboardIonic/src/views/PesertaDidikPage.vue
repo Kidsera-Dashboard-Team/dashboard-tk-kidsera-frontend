@@ -82,8 +82,8 @@
                   </thead>
                   <tbody v-for="result in results" :key="result._id">
                     <tr v-on:click="
-  router.push('/pages/PesertaDidik/' + result._id.$oid)
-">
+                      router.push('/pages/PesertaDidik/' + result._id.$oid)
+                    ">
                       <td class="align-middle">
                         <div class="d-flex px-3 py-1">
                           <div>
@@ -107,18 +107,17 @@
                       </td>
                       <td class="align-middle text-center">
                         <span class="text-dark text-xs font-weight-bold">{{
-    result.tingkat_kelas
-                          }}</span>
+                          result.tingkat_kelas
+                        }}</span>
                       </td>
                       <td class="align-middle text-center justify-content-evenly">
                         <!-- <a href="javascript:;" class="text-secondary font-weight-bold text-xs"
                                                     data-toggle="tooltip" data-original-title="Edit user">
                                                     Edit
                                                 </a> -->
-                        <a href="/pages/PesertaDidik/EditPesertaDidik"><button type="button"
-                            class="btn btn-warning me-3 text-white action-button">
-                            &nbsp;&nbsp;&nbsp;Edit&nbsp;&nbsp;&nbsp;
-                          </button></a>
+                        <button type="button" class="btn btn-warning me-3 text-white action-button" @click="router.push('/pages/PesertaDidik/EditPesertaDidik/' + result._id.$oid)">
+                          &nbsp;&nbsp;&nbsp;Edit&nbsp;&nbsp;&nbsp;
+                        </button>
                         <a href=""><button type="button" class="btn btn-danger text-white action-button" href="/pages">
                             Delete
                           </button></a>
@@ -178,8 +177,11 @@ export default defineComponent({
     };
   },
   mounted: function () {
+    let headers = {
+      Authorization: "Bearer " + localStorage.getItem("access_token"),
+    };
     axios
-      .get("http://localhost:5000/API/students")
+      .get("http://localhost:5000/API/students", { headers })
       .then((response) => {
         this.results = response.data;
         console.log(response);

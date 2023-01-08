@@ -191,8 +191,12 @@ export default defineComponent({
   },
 
   mounted: function () {
+    let headers = {
+      Authorization: "Bearer " + localStorage.getItem("access_token"),
+    };
+
     axios
-      .get("http://localhost:5000/API/ruangan")
+      .get("http://localhost:5000/API/ruangan", { headers })
       .then((response) => {
         this.listRuang = response.data;
         console.log(response.data);
