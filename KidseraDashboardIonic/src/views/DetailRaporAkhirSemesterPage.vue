@@ -2097,7 +2097,7 @@ export default defineComponent({
   },
   mounted: function () {
     axios
-      .get("http://localhost:5000/API/rapor/detail/" + this.id_siswa + "/akhir_semester/" + this.semester)
+      .get("http://31.187.72.73/API/rapor/detail/" + this.id_siswa + "/akhir_semester/" + this.semester)
       .then((response) => {
         this.results = response.data.rapor[0].nilai;
         this.aaa = this.results[0][0].a;
@@ -2193,22 +2193,23 @@ export default defineComponent({
         Authorization: "Bearer " + localStorage.getItem("access_token"),
       };
 
-      axios.delete("http://localhost:5000/API/auth/logout", { headers })
+      axios
+        .delete("http://31.187.72.73/API/auth/logout", { headers })
         .then((response) => {
           console.log(response);
           localStorage.clear();
           alert("Anda berhasil keluar");
+          window.location.href = "/SignIn";
         })
         .catch((error) => {
           let status = error.response.data.msg;
           if (status == "Missing Authorization Header") {
             alert("Anda belum login");
-            window.location.href = "/SignIn";
           }
           else if (status == "Token has expired") {
             alert("Sesi telah berakhir, silahkan login kembali");
-            window.location.href = "/SignIn";
           }
+          window.location.href = "/SignIn";
         });
     },
   },

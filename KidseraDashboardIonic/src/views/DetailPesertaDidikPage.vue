@@ -73,18 +73,18 @@
               </ion-col>
               <ion-col size="4" style="line-height: 2.5" class="text-dark fw-bold text-center form2">
                 <ul>
-                  <li>{{results.jenis_kelamin}}</li>
-                  <li>{{results.nisn}}</li>
-                  <li>{{results.nik}}</li>
-                  <li>{{results.no_kk}}</li>
-                  <li>{{results.tingkat_kelas}}</li>
-                  <li>{{results.tahun_ajaran}}</li>
-                  <li>{{results.tanggal_masuk}}</li>
-                  <li>{{results.tanggal_lulus}}</li>
-                  <li>{{results.status}}</li>
-                  <li>{{results.tinggi_badan}}</li>
-                  <li>{{results.lingkar_kepala}}</li>
-                  <li>{{results.alergi}}</li>
+                  <li>{{ results.jenis_kelamin }}</li>
+                  <li>{{ results.nisn }}</li>
+                  <li>{{ results.nik }}</li>
+                  <li>{{ results.no_kk }}</li>
+                  <li>{{ results.tingkat_kelas }}</li>
+                  <li>{{ results.tahun_ajaran }}</li>
+                  <li>{{ results.tanggal_masuk }}</li>
+                  <li>{{ results.tanggal_lulus }}</li>
+                  <li>{{ results.status }}</li>
+                  <li>{{ results.tinggi_badan }}</li>
+                  <li>{{ results.lingkar_kepala }}</li>
+                  <li>{{ results.alergi }}</li>
                 </ul>
               </ion-col>
             </ion-row>
@@ -136,11 +136,11 @@ export default defineComponent({
   },
   mounted: function () {
     let headers = {
-        Authorization: "Bearer " + localStorage.getItem("access_token"),
-      };
+      Authorization: "Bearer " + localStorage.getItem("access_token"),
+    };
 
     axios
-      .get("http://localhost:5000/API/students/" + this.id, { headers })
+      .get("http://31.187.72.73/API/students/" + this.id, { headers })
       .then((response) => {
         this.results = response.data;
         console.log(response);
@@ -155,22 +155,23 @@ export default defineComponent({
         Authorization: "Bearer " + localStorage.getItem("access_token"),
       };
 
-      axios.delete("http://localhost:5000/API/auth/logout", { headers })
+      axios
+        .delete("http://31.187.72.73/API/auth/logout", { headers })
         .then((response) => {
           console.log(response);
           localStorage.clear();
           alert("Anda berhasil keluar");
+          window.location.href = "/SignIn";
         })
         .catch((error) => {
           let status = error.response.data.msg;
           if (status == "Missing Authorization Header") {
             alert("Anda belum login");
-            window.location.href = "/SignIn";
           }
           else if (status == "Token has expired") {
             alert("Sesi telah berakhir, silahkan login kembali");
-            window.location.href = "/SignIn";
           }
+          window.location.href = "/SignIn";
         });
     },
   },

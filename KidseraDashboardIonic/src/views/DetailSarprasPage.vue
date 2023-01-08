@@ -11,7 +11,8 @@
               <ion-breadcrumbs :max-items="4" :items-after-collapse="2" class="p-0">
                 <ion-breadcrumb style="font-size: 1em;" href="/Pages">Pages</ion-breadcrumb>
                 <ion-breadcrumb style="font-size: 1em;" href="/pages/Sarpras">Sarana & Prasarana</ion-breadcrumb>
-                <ion-breadcrumb style="font-size: 1em;" @click="router.push('/pages/Sarpras/DetailSarpras/' + this.id)">Detail</ion-breadcrumb>
+                <ion-breadcrumb style="font-size: 1em;"
+                  @click="router.push('/pages/Sarpras/DetailSarpras/' + this.id)">Detail</ion-breadcrumb>
               </ion-breadcrumbs>
               <h5 style="margin-left: 11px;">Detail Sarana & Prasarana</h5>
             </ion-title>
@@ -51,10 +52,10 @@
               </ion-card-title>
             </ion-col>
             <ion-col size-xl="6" size-md="6" size-xs="auto">
-             <div v-if="is_admin == 'true'">
-              <a @click="router.push('/pages/Sarpras/DetailSarpras/TambahFasilitasSarpras/' + this.id + '/' + namaRuang)"
-                class="btn btn-success float-end tambah">Tambah Fasilitas</a>
-             </div>
+              <div v-if="is_admin == 'true'">
+                <a @click="router.push('/pages/Sarpras/DetailSarpras/TambahFasilitasSarpras/' + this.id + '/' + namaRuang)"
+                  class="btn btn-success float-end tambah">Tambah Fasilitas</a>
+              </div>
             </ion-col>
           </ion-row>
         </ion-card-header>
@@ -152,7 +153,7 @@ export default defineComponent({
       Authorization: "Bearer " + localStorage.getItem("access_token"),
     };
     axios
-      .get("http://localhost:5000/API/sarpras/" + this.id, { headers })
+      .get("http://31.187.72.73/API/sarpras/" + this.id, { headers })
       .then((response) => {
         this.fasilSarpras = response.data['sarpras'];
         this.namaRuang = response.data['nama_ruangan']
@@ -178,22 +179,23 @@ export default defineComponent({
         Authorization: "Bearer " + localStorage.getItem("access_token"),
       };
 
-      axios.delete("http://localhost:5000/API/auth/logout", { headers })
+      axios
+        .delete("http://31.187.72.73/API/auth/logout", { headers })
         .then((response) => {
           console.log(response);
           localStorage.clear();
           alert("Anda berhasil keluar");
+          window.location.href = "/SignIn";
         })
         .catch((error) => {
           let status = error.response.data.msg;
           if (status == "Missing Authorization Header") {
             alert("Anda belum login");
-            window.location.href = "/SignIn";
           }
           else if (status == "Token has expired") {
             alert("Sesi telah berakhir, silahkan login kembali");
-            window.location.href = "/SignIn";
           }
+          window.location.href = "/SignIn";
         });
     },
 
@@ -203,7 +205,7 @@ export default defineComponent({
       };
 
       axios
-        .delete("http://localhost:5000/API/sarpras_detail/" + id, { headers })
+        .delete("http://31.187.72.73/API/sarpras_detail/" + id, { headers })
         .then((response) => {
           console.log(response);
           window.location.reload();

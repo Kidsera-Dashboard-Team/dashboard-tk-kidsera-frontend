@@ -18,7 +18,8 @@
           <ion-col size-sm="6" size="10">
             <ion-row class="ion-align-items-center ion-justify-content-end goright mt-2" style="margin-right: 20px">
               <div class="btn-group dropstart mb-1 ms-2" style="content: inherit">
-                <button class="btn dropdown-toggle text-info text-gradient" type="button" data-bs-toggle="dropdown" aria-expanded="true" style="background-color: transparent">
+                <button class="btn dropdown-toggle text-info text-gradient" type="button" data-bs-toggle="dropdown"
+                  aria-expanded="true" style="background-color: transparent">
                   Hi {{ username }}
                 </button>
                 <ul class="dropdown-menu dropdown-menu-dark">
@@ -31,7 +32,8 @@
                 <a href="/SignUp">
                   <ion-icon class="iconButton text-info text-gradient" src="assets/icon/signup.svg"></ion-icon>
                 </a>
-                <a href="/SignUp" class="d-none d-sm-inline-block mb-1 text-info text-gradient" style="text-decoration: none">&nbsp;Add User</a>
+                <a href="/SignUp" class="d-none d-sm-inline-block mb-1 text-info text-gradient"
+                  style="text-decoration: none">&nbsp;Add User</a>
               </div>
               <div>&nbsp;</div>
             </ion-row>
@@ -43,7 +45,8 @@
     <ion-content :fullscreen="true">
       <ion-grid>
         <ion-row>
-          <ion-card class="card-content w-100" style="box-shadow: 0px 20px 27px rgba(0, 0, 0, 0.05); border-radius: 15px">
+          <ion-card class="card-content w-100"
+            style="box-shadow: 0px 20px 27px rgba(0, 0, 0, 0.05); border-radius: 15px">
             <ion-card-header class="ion-text-justify">
               <ion-row class="ion-justify-content-between">
                 <ion-col size-xl="6" size-md="6" size-xs="12">
@@ -52,7 +55,8 @@
                   </ion-card-title>
                 </ion-col>
                 <ion-col size-xl="6" size-md="6" size-xs="auto">
-                  <a href="/pages/rombonganbelajar/TambahRombonganBelajar" class="btn btn-success float-end tambah">Tambah Rombel</a>
+                  <a href="/pages/rombonganbelajar/TambahRombonganBelajar"
+                    class="btn btn-success float-end tambah">Tambah Rombel</a>
                 </ion-col>
               </ion-row>
             </ion-card-header>
@@ -60,13 +64,9 @@
             <ion-card-content>
               <ion-grid>
                 <div class="container" style="flex-wrap: wrap; display: flex">
-                  <div
-                    @click="() => router.push('/pages/RombonganBelajar/' + year(result))"
-                    class="card-content"
-                    style="width: 25%; padding: 0; flex-wrap: wrap; display: flex"
-                    v-for="result in results"
-                    :key="result._id"
-                  >
+                  <div @click="() => router.push('/pages/RombonganBelajar/' + year(result))" class="card-content"
+                    style="width: 25%; padding: 0; flex-wrap: wrap; display: flex" v-for="result in results"
+                    :key="result._id">
                     <ion-card class="card-content-judul">
                       <ion-card-header class="ion-margin text-center">
                         <ion-card-title>
@@ -119,7 +119,7 @@ export default defineComponent({
     };
 
     axios
-      .get("http://localhost:5000/API/rombel", { headers })
+      .get("http://31.187.72.73/API/rombel", { headers })
       .then((response) => {
         this.results = response.data;
         console.log(response);
@@ -149,7 +149,7 @@ export default defineComponent({
       };
 
       axios
-        .delete("http://localhost:5000/API/auth/logout", { headers })
+        .delete("http://31.187.72.73/API/auth/logout", { headers })
         .then((response) => {
           console.log(response);
           localStorage.clear();
@@ -236,7 +236,7 @@ th {
   white-space: nowrap;
 }
 
-.tables > :not(:last-child) > :last-child > * {
+.tables> :not(:last-child)> :last-child>* {
   border-bottom-color: black;
 }
 
@@ -273,6 +273,7 @@ card-content {
 /* Laptop Large Above dimension */
 
 @media only screen and (min-width: 1280px) {
+
   th,
   td {
     width: 160px;
@@ -285,8 +286,7 @@ card-content {
 
 /* tablet dimension */
 
-@media only screen and (min-width: 990px) {
-}
+@media only screen and (min-width: 990px) {}
 
 /* large phone dimension */
 
@@ -315,9 +315,7 @@ card-content {
 
 /* small phone dimension */
 
-@media only screen and (max-width: 376px) {
-}
+@media only screen and (max-width: 376px) {}
 
-@media only screen and (max-width: 320px) {
-}
+@media only screen and (max-width: 320px) {}
 </style>

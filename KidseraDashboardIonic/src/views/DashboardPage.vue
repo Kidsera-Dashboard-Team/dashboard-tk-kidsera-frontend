@@ -50,7 +50,9 @@
               <ion-row class="ion-align-items-center m-0">
                 <ion-col size="8">
                   <ion-card-header>
-                    <ion-card-subtitle class="text-sm mb-0 text-capitalize font-weight-bold overflow-hidden text-overflow"> Jumlah TK A</ion-card-subtitle>
+                    <ion-card-subtitle
+                      class="text-sm mb-0 text-capitalize font-weight-bold overflow-hidden text-overflow"> Jumlah TK
+                      A</ion-card-subtitle>
                     <ion-card-title class="font-weight-bolder mb-0">{{ datas.siswa_A }}</ion-card-title>
                   </ion-card-header>
                 </ion-col>
@@ -66,7 +68,9 @@
               <ion-row class="ion-align-items-center">
                 <ion-col size="8">
                   <ion-card-header>
-                    <ion-card-subtitle class="text-sm mb-0 text-capitalize font-weight-bold overflow-hidden text-overflow">Jumlah TK B</ion-card-subtitle>
+                    <ion-card-subtitle
+                      class="text-sm mb-0 text-capitalize font-weight-bold overflow-hidden text-overflow">Jumlah TK
+                      B</ion-card-subtitle>
                     <ion-card-title>{{ datas.siswa_B }}</ion-card-title>
                   </ion-card-header>
                 </ion-col>
@@ -82,7 +86,9 @@
               <ion-row class="ion-align-items-center">
                 <ion-col size="8">
                   <ion-card-header>
-                    <ion-card-subtitle class="text-sm mb-0 text-capitalize font-weight-bold overflow-hidden text-overflow">Jumlah Siswa Laki-laki</ion-card-subtitle>
+                    <ion-card-subtitle
+                      class="text-sm mb-0 text-capitalize font-weight-bold overflow-hidden text-overflow">Jumlah Siswa
+                      Laki-laki</ion-card-subtitle>
                     <ion-card-title>{{ datas.siswa_laki }}</ion-card-title>
                   </ion-card-header>
                 </ion-col>
@@ -98,7 +104,9 @@
               <ion-row class="ion-align-items-center">
                 <ion-col size="8">
                   <ion-card-header>
-                    <ion-card-subtitle class="text-sm mb-0 text-capitalize font-weight-bold overflow-hidden text-overflow">Jumlah Siswa Perempuan</ion-card-subtitle>
+                    <ion-card-subtitle
+                      class="text-sm mb-0 text-capitalize font-weight-bold overflow-hidden text-overflow">Jumlah Siswa
+                      Perempuan</ion-card-subtitle>
                     <ion-card-title>{{ datas.siswa_perempuan }}</ion-card-title>
                   </ion-card-header>
                 </ion-col>
@@ -193,6 +201,7 @@
 import { defineComponent, onMounted, ref } from "vue";
 import { IonButtons, IonContent, IonMenuButton, IonPage, IonTitle, IonToolbar, IonCol, IonGrid, IonRow, IonBreadcrumb, IonBreadcrumbs } from "@ionic/vue";
 import axios from "axios";
+import Swal from 'sweetalert2'
 
 export default defineComponent({
   name: "DashboardPage",
@@ -229,7 +238,7 @@ export default defineComponent({
     };
 
     axios
-      .get("http://localhost:5000/API/", { headers })
+      .get("http://31.187.72.73/API/", { headers })
       .then((response) => {
         this.datas = response.data;
         this.info = this.datas.info[0];
@@ -254,22 +263,23 @@ export default defineComponent({
         Authorization: "Bearer " + localStorage.getItem("access_token"),
       };
 
-      axios.delete("http://localhost:5000/API/auth/logout", { headers })
+      axios
+        .delete("http://31.187.72.73/API/auth/logout", { headers })
         .then((response) => {
           console.log(response);
           localStorage.clear();
           alert("Anda berhasil keluar");
+          window.location.href = "/SignIn";
         })
         .catch((error) => {
           let status = error.response.data.msg;
           if (status == "Missing Authorization Header") {
             alert("Anda belum login");
-            window.location.href = "/SignIn";
           }
           else if (status == "Token has expired") {
             alert("Sesi telah berakhir, silahkan login kembali");
-            window.location.href = "/SignIn";
           }
+          window.location.href = "/SignIn";
         });
     },
   },

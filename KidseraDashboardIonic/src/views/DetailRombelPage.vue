@@ -20,7 +20,8 @@
           <ion-col size-sm="6" size="10">
             <ion-row class="ion-align-items-center ion-justify-content-end goright mt-2" style="margin-right: 20px">
               <div class="btn-group dropstart mb-1 ms-2" style="content: inherit">
-                <button class="btn dropdown-toggle text-info text-gradient" type="button" data-bs-toggle="dropdown" aria-expanded="true" style="background-color: transparent">
+                <button class="btn dropdown-toggle text-info text-gradient" type="button" data-bs-toggle="dropdown"
+                  aria-expanded="true" style="background-color: transparent">
                   Hi {{ username }}
                 </button>
                 <ul class="dropdown-menu dropdown-menu-dark">
@@ -31,7 +32,8 @@
                 <a href="/SignUp">
                   <ion-icon class="iconButton text-info text-gradient" src="assets/icon/signup.svg"></ion-icon>
                 </a>
-                <a href="/SignUp" class="d-none d-sm-inline-block mb-1 text-info text-gradient" style="text-decoration: none">&nbsp;Add User</a>
+                <a href="/SignUp" class="d-none d-sm-inline-block mb-1 text-info text-gradient"
+                  style="text-decoration: none">&nbsp;Add User</a>
               </div>
               <div>&nbsp;</div>
             </ion-row>
@@ -41,11 +43,9 @@
     </ion-toolbar>
 
     <ion-content :fullscreen="true">
-      <ion-row class="mt-3 mx-2"
-        ><!-- <div class="row mt-3 mx-2"> -->
+      <ion-row class="mt-3 mx-2"><!-- <div class="row mt-3 mx-2"> -->
         <ion-col>
-          <ion-card class="mb-4 border-0"
-            ><!-- <div class="card mb-4 border-0"> -->
+          <ion-card class="mb-4 border-0"><!-- <div class="card mb-4 border-0"> -->
             <ion-row>
               <ion-col>
                 <h3 class="px-3 py-3 title-table">Detail Rombongan Belajar</h3>
@@ -69,18 +69,21 @@
                 </ion-row>
               </ion-col>
               <ion-col class="text-end my-auto me-5">
-                <a :href="'/pages/rombonganbelajar/' + tahun + '/' + kelas + '/edit'" class="btn btn-success tambah"> Tambah Data</a>
+                <a :href="'/pages/rombonganbelajar/' + tahun + '/' + kelas + '/edit'" class="btn btn-success tambah">
+                  Tambah Data</a>
               </ion-col>
             </ion-row>
-            <ion-card-content class="px-0 pt-0 pb-2"
-              ><!-- <div > -->
+            <ion-card-content class="px-0 pt-0 pb-2"><!-- <div > -->
               <div class="table-responsive p-0">
-                <table style="table-layout: fixed" class="table table-hover align-items-center mb-0 display" id="table-rombongan-belajar">
+                <table style="table-layout: fixed" class="table table-hover align-items-center mb-0 display"
+                  id="table-rombongan-belajar">
                   <thead>
                     <tr>
                       <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-4">ID Siswa</th>
-                      <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-4 text-center">Nama</th>
-                      <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Jenis Kelamin</th>
+                      <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-4 text-center">
+                        Nama</th>
+                      <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Jenis
+                        Kelamin</th>
                     </tr>
                   </thead>
                   <tbody v-for="result in results.list_siswa" :key="result._id">
@@ -144,7 +147,7 @@ export default defineComponent({
   },
   mounted: function () {
     axios
-      .get("http://localhost:5000/API/rombel/" + this.tahun + "/" + this.kelas)
+      .get("http://31.187.72.73/API/rombel/" + this.tahun + "/" + this.kelas)
       .then((response) => {
         this.results = response.data;
         this.results.ruangan = response.data.rombel.ruangan;
@@ -163,7 +166,7 @@ export default defineComponent({
       };
 
       axios
-        .delete("http://localhost:5000/API/auth/logout", { headers })
+        .delete("http://31.187.72.73/API/auth/logout", { headers })
         .then((response) => {
           console.log(response);
           localStorage.clear();
@@ -245,7 +248,7 @@ a .iconButton {
   top: -1.5px;
 }
 
-.btn-search:focus ~ .input-search {
+.btn-search:focus~.input-search {
   width: 400px;
   border-radius: 10px;
   background-color: white;
@@ -316,7 +319,7 @@ th {
   white-space: nowrap;
 }
 
-.tables > :not(:last-child) > :last-child > * {
+.tables> :not(:last-child)> :last-child>* {
   border-bottom-color: black;
 }
 
@@ -333,7 +336,7 @@ td {
 
 /* small laptop dimension */
 @media only screen and (max-width: 1280px) {
-  .btn-search:focus ~ .input-search {
+  .btn-search:focus~.input-search {
     width: 250px;
   }
 
@@ -355,7 +358,7 @@ td {
 
 /* tablet dimension */
 @media only screen and (max-width: 990px) {
-  .btn-search:focus ~ .input-search {
+  .btn-search:focus~.input-search {
     width: 200px;
   }
 
@@ -408,7 +411,7 @@ td {
     right: 34%;
   }
 
-  .btn-search:focus ~ .input-search {
+  .btn-search:focus~.input-search {
     width: 200px;
   }
 
@@ -424,7 +427,7 @@ td {
     right: 41%;
   }
 
-  .btn-search:focus ~ .input-search {
+  .btn-search:focus~.input-search {
     width: 180px;
   }
 
@@ -439,7 +442,7 @@ td {
     right: 50%;
   }
 
-  .btn-search:focus ~ .input-search {
+  .btn-search:focus~.input-search {
     width: 150px;
   }
 

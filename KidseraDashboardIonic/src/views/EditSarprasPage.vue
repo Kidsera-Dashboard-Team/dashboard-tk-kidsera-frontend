@@ -11,7 +11,8 @@
               <ion-breadcrumbs :max-items="4" :items-after-collapse="2" class="p-0">
                 <ion-breadcrumb style="font-size: 1em;" href="/Pages">Pages</ion-breadcrumb>
                 <ion-breadcrumb style="font-size: 1em;" href="/pages/Sarpras">Sarana & Prasarana</ion-breadcrumb>
-                <ion-breadcrumb style="font-size: 1em;" @click="router.push('/pages/Sarpras/DetailSarpras/' + this.id_ruang)">Detail</ion-breadcrumb>
+                <ion-breadcrumb style="font-size: 1em;"
+                  @click="router.push('/pages/Sarpras/DetailSarpras/' + this.id_ruang)">Detail</ion-breadcrumb>
                 <ion-breadcrumb style="font-size: 1em;"
                   href="/pages/Sarpras/DetailSarpras/EditSarpras">Edit</ion-breadcrumb>
               </ion-breadcrumbs>
@@ -55,7 +56,9 @@
               </ion-card-header>
               <ion-card-content class="d-grid gap-3">
                 <ion-item fill="outline" lines="none">
-                  <ion-label position="floating" :readonly="true" class="mb-5">Nama Fasilitas -> Fasilitas {{ nama }}</ion-label>
+                  <ion-label position="floating" :readonly="true" class="mb-5">Nama Fasilitas -> Fasilitas {{
+                    nama
+                  }}</ion-label>
                   <!-- <ion-input placeholder="Masukkan Fasilitas" ></ion-input> -->
                 </ion-item>
                 <ion-item fill="outline">
@@ -67,7 +70,8 @@
                   <ion-input placeholder="Masukkan Jumlah" v-model="jumlah" required></ion-input>
                 </ion-item>
                 <div>
-                  <a class="btn btn-danger" role="button" @click="router.push('/pages/Sarpras/DetailSarpras/' + this.id_ruang)">Batalkan</a>
+                  <a class="btn btn-danger" role="button"
+                    @click="router.push('/pages/Sarpras/DetailSarpras/' + this.id_ruang)">Batalkan</a>
                   <a class="btn btn-primary" role="button" @click="editSarpras()">Simpan</a>
                 </div>
               </ion-card-content>
@@ -141,18 +145,18 @@ export default defineComponent({
   },
 
   props: ["id", "id_ruang"],
-  
+
   mounted: function () {
     let headers = {
       Authorization: "Bearer " + localStorage.getItem("access_token"),
     };
     axios
-      .get("http://localhost:5000/API/sarpras_detail/" + this.id, { headers })
+      .get("http://31.187.72.73/API/sarpras_detail/" + this.id, { headers })
       .then((response) => {
         console.log(response.data);
         this.nama = response.data.nama;
         this.jenis = response.data.jenis;
-        this.jumlah = response.data.jumlah; 
+        this.jumlah = response.data.jumlah;
       })
       .catch((error) => {
         let status = error.response.data.msg;
@@ -173,22 +177,23 @@ export default defineComponent({
         Authorization: "Bearer " + localStorage.getItem("access_token"),
       };
 
-      axios.delete("http://localhost:5000/API/auth/logout", { headers })
+      axios
+        .delete("http://31.187.72.73/API/auth/logout", { headers })
         .then((response) => {
           console.log(response);
           localStorage.clear();
           alert("Anda berhasil keluar");
+          window.location.href = "/SignIn";
         })
         .catch((error) => {
           let status = error.response.data.msg;
           if (status == "Missing Authorization Header") {
             alert("Anda belum login");
-            window.location.href = "/SignIn";
           }
           else if (status == "Token has expired") {
             alert("Sesi telah berakhir, silahkan login kembali");
-            window.location.href = "/SignIn";
           }
+          window.location.href = "/SignIn";
         });
     },
 
@@ -200,7 +205,7 @@ export default defineComponent({
       });
       console.log(json);
       axios
-        .put("http://localhost:5000/API/sarpras_detail/" + this.id, json, {
+        .put("http://31.187.72.73/API/sarpras_detail/" + this.id, json, {
           headers: {
             "Access-Control-Allow-Origin": "*",
             "Access-Control-Allow-Credentials": "true",

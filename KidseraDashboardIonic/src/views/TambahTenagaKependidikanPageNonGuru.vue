@@ -80,7 +80,8 @@
                 </ion-item>
                 <ion-item fill="outline">
                   <ion-label position="floating">Pendidikan Terakhir</ion-label>
-                  <ion-input placeholder="Masukkan Pendidikan Terakhir" v-model="pendidikan_terakhir" required></ion-input>
+                  <ion-input placeholder="Masukkan Pendidikan Terakhir" v-model="pendidikan_terakhir"
+                    required></ion-input>
                 </ion-item>
                 <ion-item fill="outline">
                   <ion-label position="floating">Tahun Ajaran</ion-label>
@@ -96,8 +97,8 @@
                       <a class="btn btn-danger" href="/pages/TenagaKependidikan" role="button">Batalkan</a>
                     </ion-col>
                     <ion-col size="6" size-sm="2">
-                      <a class="btn btn-success" role="button"
-                        href="/pages/TenagaKependidikan" @click="submitForm()">Tambah</a>
+                      <a class="btn btn-success" role="button" href="/pages/TenagaKependidikan"
+                        @click="submitForm()">Tambah</a>
                     </ion-col>
                   </ion-row>
                 </div>
@@ -175,22 +176,23 @@ export default defineComponent({
         Authorization: "Bearer " + localStorage.getItem("access_token"),
       };
 
-      axios.delete("http://localhost:5000/API/auth/logout", { headers })
+      axios
+        .delete("http://31.187.72.73/API/auth/logout", { headers })
         .then((response) => {
           console.log(response);
           localStorage.clear();
           alert("Anda berhasil keluar");
+          window.location.href = "/SignIn";
         })
         .catch((error) => {
           let status = error.response.data.msg;
           if (status == "Missing Authorization Header") {
             alert("Anda belum login");
-            window.location.href = "/SignIn";
           }
           else if (status == "Token has expired") {
             alert("Sesi telah berakhir, silahkan login kembali");
-            window.location.href = "/SignIn";
           }
+          window.location.href = "/SignIn";
         });
     },
 
@@ -208,7 +210,7 @@ export default defineComponent({
       });
       console.log(json);
       axios
-        .post("http://localhost:5000/API/tendik/nonguru", json, {
+        .post("http://31.187.72.73/API/tendik/nonguru", json, {
           headers: {
             "Access-Control-Allow-Origin": "*",
             "Access-Control-Allow-Credentials": "true",

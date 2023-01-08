@@ -53,8 +53,7 @@
         <ion-card-content class="d-grid gap-3">
           <ion-item fill="outline">
             <ion-label position="floating">Tahun Ajaran</ion-label>
-            <ion-input v-model="formData.tahun_ajaran" placeholder="Masukkan Tahun Ajaran"
-              required></ion-input>
+            <ion-input v-model="formData.tahun_ajaran" placeholder="Masukkan Tahun Ajaran" required></ion-input>
             <ion-note color="danger" v-for="error in v$.tahun_ajaran.$errors" :key="error.$uid">
               {{ error.$message }}
             </ion-note>
@@ -171,22 +170,23 @@ export default defineComponent({
         Authorization: "Bearer " + localStorage.getItem("access_token"),
       };
 
-      axios.delete("http://localhost:5000/API/auth/logout", { headers })
+      axios
+        .delete("http://31.187.72.73/API/auth/logout", { headers })
         .then((response) => {
           console.log(response);
           localStorage.clear();
           alert("Anda berhasil keluar");
+          window.location.href = "/SignIn";
         })
         .catch((error) => {
           let status = error.response.data.msg;
           if (status == "Missing Authorization Header") {
             alert("Anda belum login");
-            window.location.href = "/SignIn";
           }
           else if (status == "Token has expired") {
             alert("Sesi telah berakhir, silahkan login kembali");
-            window.location.href = "/SignIn";
           }
+          window.location.href = "/SignIn";
         });
     },
   },
@@ -204,7 +204,7 @@ export default defineComponent({
       });
       console.log(json);
       await axios
-        .post("http://localhost:5000/API/rombel", json, {
+        .post("http://31.187.72.73/API/rombel", json, {
           headers: {
             "Access-Control-Allow-Origin": "*",
             "Access-Control-Allow-Credentials": "true",
@@ -215,7 +215,7 @@ export default defineComponent({
         .then((response) => {
           console.log(response);
           alert("Success");
-            window.location.href = "/pages/Rombel/";
+          window.location.href = "/pages/Rombel/";
         })
         .catch((error) => {
           let status = error.response.data.msg;
@@ -228,32 +228,32 @@ export default defineComponent({
             window.location.href = "/SignIn";
           }
         });
-        console.log(json);
-        await axios
-          .post("http://localhost:5000/API/rombel", json, {
-            headers: {
-              "Access-Control-Allow-Origin": "*",
-              "Access-Control-Allow-Credentials": "true",
-              "Content-Type": "application/json",
-            },
-            withCredentials: true,
-          })
-          .then((response) => {
-            console.log(response);
-          })
-          .catch((error) => {
-            let status = error.response.data.msg;
-            if (status == "Missing Authorization Header") {
-              alert("Anda belum login");
-              window.location.href = "/SignIn";
-            }
-            else if (status == "Token has expired") {
-              alert("Sesi telah berakhir, silahkan login kembali");
-              window.location.href = "/SignIn";
-            }
-          });
-      }
-    },
+      console.log(json);
+      await axios
+        .post("http://31.187.72.73/API/rombel", json, {
+          headers: {
+            "Access-Control-Allow-Origin": "*",
+            "Access-Control-Allow-Credentials": "true",
+            "Content-Type": "application/json",
+          },
+          withCredentials: true,
+        })
+        .then((response) => {
+          console.log(response);
+        })
+        .catch((error) => {
+          let status = error.response.data.msg;
+          if (status == "Missing Authorization Header") {
+            alert("Anda belum login");
+            window.location.href = "/SignIn";
+          }
+          else if (status == "Token has expired") {
+            alert("Sesi telah berakhir, silahkan login kembali");
+            window.location.href = "/SignIn";
+          }
+        });
+    }
+  },
 });
 </script>
 

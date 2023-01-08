@@ -10,8 +10,10 @@
             <ion-title class="d-none d-lg-inline-block mt-1" size="small">
               <ion-breadcrumbs :max-items="4" :items-after-collapse="2" class="p-0">
                 <ion-breadcrumb style="font-size: 1em" href="/Pages">Pages</ion-breadcrumb>
-                <ion-breadcrumb style="font-size: 1em" href="/pages/TenagaKependidikan">Tenaga Kependidikan</ion-breadcrumb>
-                <ion-breadcrumb style="font-size: 1em" href="/pages/TenagaKependidikan/TambahTenagaKependidikan">Tambah</ion-breadcrumb>
+                <ion-breadcrumb style="font-size: 1em" href="/pages/TenagaKependidikan">Tenaga
+                  Kependidikan</ion-breadcrumb>
+                <ion-breadcrumb style="font-size: 1em"
+                  href="/pages/TenagaKependidikan/TambahTenagaKependidikan">Tambah</ion-breadcrumb>
               </ion-breadcrumbs>
               <h5 style="margin-left: 11px">Tambah Tenaga Kependidikan Guru</h5>
             </ion-title>
@@ -19,7 +21,8 @@
           <ion-col size-sm="6" size="10">
             <ion-row class="ion-align-items-center ion-justify-content-end goright mt-2" style="margin-right: 20px">
               <div class="btn-group dropstart mb-1 ms-2" style="content: inherit">
-                <button class="btn dropdown-toggle text-info text-gradient" type="button" data-bs-toggle="dropdown" aria-expanded="true" style="background-color: transparent">
+                <button class="btn dropdown-toggle text-info text-gradient" type="button" data-bs-toggle="dropdown"
+                  aria-expanded="true" style="background-color: transparent">
                   Hi {{ username }}
                 </button>
                 <ul class="dropdown-menu dropdown-menu-dark">
@@ -32,7 +35,8 @@
                     <ion-icon class="iconButton text-info text-gradient" src="assets/icon/signup.svg"></ion-icon>
                   </a>
                 </div>
-                <a href="/SignUp" class="d-none d-sm-inline-block mb-1 text-info text-gradient" style="text-decoration: none">&nbsp;Add User</a>
+                <a href="/SignUp" class="d-none d-sm-inline-block mb-1 text-info text-gradient"
+                  style="text-decoration: none">&nbsp;Add User</a>
               </div>
               <div>&nbsp;</div>
             </ion-row>
@@ -55,62 +59,64 @@
                 <ion-item fill="outline">
                   <ion-label position="floating">Nama</ion-label>
                   <ion-input placeholder="Masukkan Nama" v-model="formData.nama" required></ion-input>
-                   <ion-note color="danger" v-for="error in v$.nama.$errors" :key="error.$uid">
+                  <ion-note color="danger" v-for="error in v$.nama.$errors" :key="error.$uid">
                     {{ error.$message }}
                   </ion-note>
                 </ion-item>
                 <ion-item fill="outline">
                   <ion-label position="floating">Jenis Kelamin</ion-label>
                   <ion-input placeholder="Masukkan Jenis Kelamin" v-model="formData.jenis_kelamin" required></ion-input>
-                   <ion-note color="danger" v-for="error in v$.jenis_kelamin.$errors" :key="error.$uid">
+                  <ion-note color="danger" v-for="error in v$.jenis_kelamin.$errors" :key="error.$uid">
                     {{ error.$message }}
                   </ion-note>
                 </ion-item>
                 <ion-item fill="outline">
                   <ion-label position="floating">Tempat, Tanggal Lahir</ion-label>
                   <ion-input placeholder="Masukkan Tempat, Tanggal Lahir" v-model="formData.ttl" required></ion-input>
-                   <ion-note color="danger" v-for="error in v$.ttl.$errors" :key="error.$uid">
+                  <ion-note color="danger" v-for="error in v$.ttl.$errors" :key="error.$uid">
                     {{ error.$message }}
                   </ion-note>
                 </ion-item>
                 <ion-item fill="outline">
                   <ion-label position="floating">Alamat</ion-label>
                   <ion-input placeholder="Masukkan Alamat" v-model="formData.alamat" required></ion-input>
-                   <ion-note color="danger" v-for="error in v$.alamat.$errors" :key="error.$uid">
+                  <ion-note color="danger" v-for="error in v$.alamat.$errors" :key="error.$uid">
                     {{ error.$message }}
                   </ion-note>
                 </ion-item>
                 <ion-item fill="outline">
                   <ion-label position="floating">No. HP</ion-label>
                   <ion-input placeholder="Masukkan No. HP" v-model="formData.no_hp" required></ion-input>
-                   <ion-note color="danger" v-for="error in v$.no_hp.$errors" :key="error.$uid">
+                  <ion-note color="danger" v-for="error in v$.no_hp.$errors" :key="error.$uid">
                     {{ error.$message }}
                   </ion-note>
                 </ion-item>
                 <ion-item fill="outline">
                   <ion-label position="floating">Email</ion-label>
                   <ion-input placeholder="Masukkan Email" v-model="formData.email" required></ion-input>
-                   <ion-note color="danger" v-for="error in v$.email.$errors" :key="error.$uid">
+                  <ion-note color="danger" v-for="error in v$.email.$errors" :key="error.$uid">
                     {{ error.$message }}
                   </ion-note>
                 </ion-item>
                 <ion-item fill="outline">
                   <ion-label position="floating">Pendidikan Terakhir</ion-label>
-                  <ion-input placeholder="Masukkan Pendidikan Terakhir" v-model="formData.pendidikan_terakhir" required></ion-input>
-                   <ion-note color="danger" v-for="error in v$.pendidikan_terakhir.$errors" :key="error.$uid">
+                  <ion-input placeholder="Masukkan Pendidikan Terakhir" v-model="formData.pendidikan_terakhir"
+                    required></ion-input>
+                  <ion-note color="danger" v-for="error in v$.pendidikan_terakhir.$errors" :key="error.$uid">
                     {{ error.$message }}
                   </ion-note>
                 </ion-item>
                 <ion-item fill="outline">
                   <ion-label position="floating">Tahun Ajaran</ion-label>
                   <ion-input placeholder="Masukkan Tahun Ajaran" v-model="formData.tahun_ajaran" required></ion-input>
-                <ion-note color="danger" v-for="error in v$.tahun_ajaran.$errors" :key="error.$uid">
+                  <ion-note color="danger" v-for="error in v$.tahun_ajaran.$errors" :key="error.$uid">
                     {{ error.$message }}
                   </ion-note>
                 </ion-item>
                 <ion-item fill="outline">
                   <ion-label position="floating">Kelas Mengajar</ion-label>
-                  <ion-input placeholder="Masukkan Kelas Mengajar" v-model="formData.kelas_mengajar" required></ion-input>
+                  <ion-input placeholder="Masukkan Kelas Mengajar" v-model="formData.kelas_mengajar"
+                    required></ion-input>
                   <ion-note color="danger" v-for="error in v$.kelas_mengajar.$errors" :key="error.$uid">
                     {{ error.$message }}
                   </ion-note>
@@ -252,7 +258,7 @@ export default defineComponent({
       };
 
       axios
-        .delete("http://localhost:5000/API/auth/logout", { headers })
+        .delete("http://31.187.72.73/API/auth/logout", { headers })
         .then((response) => {
           console.log(response);
           localStorage.clear();
@@ -290,7 +296,7 @@ export default defineComponent({
         });
         console.log(json);
         axios
-          .post("http://localhost:5000/API/tendik/guru", json, {
+          .post("http://31.187.72.73/API/tendik/guru", json, {
             headers: {
               "Access-Control-Allow-Origin": "*",
               "Access-Control-Allow-Credentials": "true",
@@ -385,7 +391,7 @@ a .iconButton {
   top: -1.5px;
 }
 
-.btn-search:focus ~ .input-search {
+.btn-search:focus~.input-search {
   width: 230px;
   border-radius: 10px;
   background-color: white;
@@ -424,7 +430,7 @@ a .iconButton {
 /* small laptop dimension */
 
 @media only screen and (max-width: 1280px) {
-  .btn-search:focus ~ .input-search {
+  .btn-search:focus~.input-search {
     width: 250px;
   }
 
@@ -436,7 +442,7 @@ a .iconButton {
 /* tablet dimension */
 
 @media only screen and (max-width: 990px) {
-  .btn-search:focus ~ .input-search {
+  .btn-search:focus~.input-search {
     width: 200px;
   }
 
@@ -462,7 +468,7 @@ a .iconButton {
     right: 34%;
   }
 
-  .btn-search:focus ~ .input-search {
+  .btn-search:focus~.input-search {
     width: 200px;
   }
 
@@ -479,7 +485,7 @@ a .iconButton {
     right: 41%;
   }
 
-  .btn-search:focus ~ .input-search {
+  .btn-search:focus~.input-search {
     width: 180px;
   }
 
@@ -494,7 +500,7 @@ a .iconButton {
     right: 50%;
   }
 
-  .btn-search:focus ~ .input-search {
+  .btn-search:focus~.input-search {
     width: 150px;
   }
 

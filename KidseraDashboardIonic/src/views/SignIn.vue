@@ -5,49 +5,50 @@
       <div id="container">
         <ion-grid>
           <ion-row class="ion-text-justify ion-justify-content-start">
-              <ion-card class="card-background">
+            <ion-card class="card-background">
+              <ion-card-header>
                 <ion-card-header>
-                  <ion-card-header>
-                    <ion-card-title class="text-dark">
-                      <h3 class="text-info text-gradient"><b>Sign In to <br> Kidsera Dashboard</b></h3>
-                    </ion-card-title>
-                  </ion-card-header>
-                  <ion-card-content>Masukkan username dan Password <br> untuk masuk</ion-card-content>
+                  <ion-card-title class="text-dark">
+                    <h3 class="text-info text-gradient"><b>Sign In to <br> Kidsera Dashboard</b></h3>
+                  </ion-card-title>
                 </ion-card-header>
+                <ion-card-content>Masukkan username dan Password <br> untuk masuk</ion-card-content>
+              </ion-card-header>
 
-                <ion-card-content class="mb-3">
-                  <ion-item lines="none">
-                    <ion-label position="stacked" class="mb-3"><b>Username</b></ion-label>
-                    <ion-item fill="outline" ref="item">
-                      <ion-input type="email" placeholder="Username" @ionBlur="markTouched" v-model="data.username" required>
-                      </ion-input>
-                      <ion-note slot="helper">Masukkan username yang valid</ion-note>
-                      <ion-note slot="error">Username tidak valid</ion-note>
-                    </ion-item>
+              <ion-card-content class="mb-3">
+                <ion-item lines="none">
+                  <ion-label position="stacked" class="mb-3"><b>Username</b></ion-label>
+                  <ion-item fill="outline" ref="item">
+                    <ion-input type="email" placeholder="Username" @ionBlur="markTouched" v-model="data.username"
+                      required>
+                    </ion-input>
+                    <ion-note slot="helper">Masukkan username yang valid</ion-note>
+                    <ion-note slot="error">Username tidak valid</ion-note>
                   </ion-item>
-                  <ion-item lines="none">
-                    <ion-label position="stacked" class="mb-3"><b>Password</b></ion-label>
-                    <ion-item fill="outline">
-                      <ion-input type="password" placeholder="Password" v-model="data.password" required></ion-input>
-                    </ion-item>
+                </ion-item>
+                <ion-item lines="none">
+                  <ion-label position="stacked" class="mb-3"><b>Password</b></ion-label>
+                  <ion-item fill="outline">
+                    <ion-input type="password" placeholder="Password" v-model="data.password" required></ion-input>
                   </ion-item>
+                </ion-item>
 
-                  <ion-item lines="none">
-                    <ion-toggle color="tertiary" :checked="true"></ion-toggle>
-                    <ion-label>Ingatkan Saya</ion-label>
-                  </ion-item>
+                <ion-item lines="none">
+                  <ion-toggle color="tertiary" :checked="true"></ion-toggle>
+                  <ion-label>Ingatkan Saya</ion-label>
+                </ion-item>
 
-                  <ion-button expand="block" shape="round" color="primary"
-                    class="bg-gradient-info w-100 mt-4 mb-0 text-white" @click="submit()">
-                    <ion-label>Masuk</ion-label>
-                  </ion-button>
-                </ion-card-content>
-              </ion-card>
-            
-              <div class="oblique position-absolute me-n8 d-none d-lg-block">
-                <div class="bg-cover position-absolute fixed-top ms-auto z-index-0 ms-n6"
-                  style="background-color: #857B7B; height: 115%;"></div>
-              </div>
+                <ion-button expand="block" shape="round" color="primary"
+                  class="bg-gradient-info w-100 mt-4 mb-0 text-white" @click="submit()">
+                  <ion-label>Masuk</ion-label>
+                </ion-button>
+              </ion-card-content>
+            </ion-card>
+
+            <div class="oblique position-absolute me-n8 d-none d-lg-block">
+              <div class="bg-cover position-absolute fixed-top ms-auto z-index-0 ms-n6"
+                style="background-color: #857B7B; height: 115%;"></div>
+            </div>
           </ion-row>
         </ion-grid>
 
@@ -87,58 +88,58 @@ export default defineComponent({
     IonToggle,
     IonNote
   },
-    setup() {
-      const data = reactive({
-        username: '',
-        password: '',
-      });
+  setup() {
+    const data = reactive({
+      username: '',
+      password: '',
+    });
 
-      const router = useRouter();
+    const router = useRouter();
 
-      const submit = () => {
-        axios
-          .post("http://localhost:5000/API/auth/login", JSON.stringify(data), {
-            headers: {
-              "Access-Control-Allow-Origin": "*",
-              "Access-Control-Allow-Credentials": "true",
-              "Content-Type": "application/json",
-            },
-            withCredentials: true
-          })
-          .then(response => {
-            console.log(response)
-            console.log(response.data.access_token)
+    const submit = () => {
+      axios
+        .post("http://31.187.72.73/API/auth/login", JSON.stringify(data), {
+          headers: {
+            "Access-Control-Allow-Origin": "*",
+            "Access-Control-Allow-Credentials": "true",
+            "Content-Type": "application/json",
+          },
+          withCredentials: true
+        })
+        .then(response => {
+          console.log(response)
+          console.log(response.data.access_token)
 
-            if(response.data.success == 1) {
-              localStorage.setItem('access_token', response.data.access_token)
-              localStorage.setItem('is_admin', response.data.is_admin)
-              localStorage.setItem('username', response.data.username)
-              window.location.href = "/";
-            }
-            else {
-              alert(response.data.message);
-            }
+          if (response.data.success == 1) {
+            localStorage.setItem('access_token', response.data.access_token)
+            localStorage.setItem('is_admin', response.data.is_admin)
+            localStorage.setItem('username', response.data.username)
+            window.location.href = "/";
+          }
+          else {
+            alert(response.data.message);
+          }
 
-          })
-          .catch((error) => {
-            let status = error.response.data.msg;
-            if (status == "Missing Authorization Header") {
-              alert("Anda belum login");
-              window.location.href = "/SignIn";
-            }
-            else if (status == "Token has expired") {
-              alert("Sesi telah berakhir, silahkan login kembali");
-              window.location.href = "/SignIn";
-            }
-          });
+        })
+        .catch((error) => {
+          let status = error.response.data.msg;
+          if (status == "Missing Authorization Header") {
+            alert("Anda belum login");
+            window.location.href = "/SignIn";
+          }
+          else if (status == "Token has expired") {
+            alert("Sesi telah berakhir, silahkan login kembali");
+            window.location.href = "/SignIn";
+          }
+        });
 
-      };
+    };
 
-      return {
-        data,
-        submit
-      }
-   },
+    return {
+      data,
+      submit
+    }
+  },
   methods: {
     validateEmail(email) {
       return email.match(/^(?=.{1,254}$)(?=.{1,64}@)[a-zA-Z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-zA-Z0-9!#$%&'*+/=?^_`{|}~-]+)*@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/);
