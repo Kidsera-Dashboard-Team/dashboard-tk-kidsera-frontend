@@ -280,9 +280,6 @@ export default defineComponent({
     IonRadioGroup,
   },
   setup() {
-    username: localStorage.getItem('username'),
-    is_admin: localStorage.getItem('is_admin'),
-
     const formData = reactive({
       nama: "",
       status: "",
@@ -387,6 +384,13 @@ export default defineComponent({
     const v$ = useVuelidate(rules, formData);
 
     return { formData, v$ };
+  },
+   data() {
+    return {
+      username: localStorage.getItem('username'),
+      is_admin: localStorage.getItem('is_admin'),
+      dataTendik: [],
+    };
   },
   methods: {
      del() {
