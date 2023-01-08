@@ -70,7 +70,7 @@
                   </thead>
                   <tbody v-for="result in results" :key="result._id">
                     <tr>
-                      <td class="align-middle">
+                      <td class="align-middle text-center">
                         <div class="d-flex px-3 py-1">
                           <div>
                             <!-- <img src="../assets/img/team-2.jpg" class="avatar avatar-sm me-3" -->
@@ -83,8 +83,8 @@
                           </div>
                         </div>
                       </td>
-                      <td class="align-middle">
-                        <p class="text-xs font-weight-bold mb-0 ps-3">
+                      <td class="align-middle text-center">
+                        <p class="text-xs font-weight-bold mb-0">
                           {{ result.jenis_kelamin }}
                         </p>
                       </td>
@@ -99,10 +99,28 @@
                                                     data-toggle="tooltip" data-original-title="Edit user">
                                                     Edit
                                                 </a> -->
-                        <button type="button" class="btn btn-warning me-3 text-white action-button" @click="router.push('/pages/PesertaDidik/EditPesertaDidik/' + result._id.$oid)">
+                        <!-- <button type="button" class="btn btn-primary btn-sm text-uppercase text-white fw-bold p-2" v-on:click="router.push('/pages/PesertaDidik/' + result._id.$oid)">View</button>
+                        <button type="button" class="btn btn-warning me-3 text-white action-button"
+                          @click="router.push('/pages/PesertaDidik/EditPesertaDidik/' + result._id.$oid)">
                           &nbsp;&nbsp;&nbsp;Edit&nbsp;&nbsp;&nbsp;
                         </button>
-                        <button type="button" class="btn btn-danger text-white action-button" @click="delPesertaDidik(result._id.$oid)">Delete</button>
+                        <button type="button" class="btn btn-danger text-white action-button" @click="delPesertaDidik(result._id.$oid)">Delete</button> -->
+                        <div class="d-flex ms-5">
+                          <button type="button" class="btn btn-primary btn-sm text-uppercase text-white fw-bold p-2" 
+                          @click="router.push('/pages/PesertaDidik/' + result._id.$oid)">
+                            View
+                          </button>
+                          <div v-if="is_admin == 'true'">
+                            <button
+                              type="button"
+                              class="btn btn-warning btn-sm text-uppercase text-white fw-bold p-2 ms-2"
+                              @click="router.push('/pages/PesertaDidik/EditPesertaDidik/' + result._id.$oid)"
+                            >
+                              Edit
+                            </button>
+                            <button type="button" class="btn btn-danger btn-sm text-uppercase text-white fw-bold p-2 ms-2" @click="delPesertaDidik(result._id.$oid)">Delete</button>
+                          </div>
+                        </div>
                       </td>
                     </tr>
                   </tbody>
@@ -163,6 +181,9 @@ export default defineComponent({
           window.location.href = "/SignIn";
         }
       });
+
+
+      
   },
   setup() {
     const router = useRouter();

@@ -65,7 +65,6 @@
                   <li>Rombongan Belajar :</li>
                   <li>Tanggal Masuk :</li>
                   <li>Tanggal Keluar :</li>
-                  <li>NIPD :</li>
                   <li>Status ;</li>
                   <li>Tinggi Badan :</li>
                   <li>Lingkar Kepala :</li>
@@ -74,24 +73,22 @@
               </ion-col>
               <ion-col size="4" style="line-height: 2.5" class="text-dark fw-bold text-center form2">
                 <ul>
-                  <li>Jenis Kelamin :</li>
-                  <li>NISN :</li>
-                  <li>NIK :</li>
-                  <li>NO.KK :</li>
-                  <li>Tingkat Kelas :</li>
-                  <li>Rombongan Belajar :</li>
-                  <li>Tanggal Masuk :</li>
-                  <li>Tanggal Keluar :</li>
-                  <li>NIPD :</li>
-                  <li>Status ;</li>
-                  <li>Tinggi Badan :</li>
-                  <li>Lingkar Kepala :</li>
-                  <li>Alergi :</li>
+                  <li>{{results.jenis_kelamin}}</li>
+                  <li>{{results.nisn}}</li>
+                  <li>{{results.nik}}</li>
+                  <li>{{results.no_kk}}</li>
+                  <li>{{results.tingkat_kelas}}</li>
+                  <li>{{results.tahun_ajaran}}</li>
+                  <li>{{results.tanggal_masuk}}</li>
+                  <li>{{results.tanggal_lulus}}</li>
+                  <li>{{results.status}}</li>
+                  <li>{{results.tinggi_badan}}</li>
+                  <li>{{results.lingkar_kepala}}</li>
+                  <li>{{results.alergi}}</li>
                 </ul>
               </ion-col>
             </ion-row>
             <ion-card-content class="px-0 pt-0 pb-2"> </ion-card-content>
-            {{ results }}
           </ion-card>
         </ion-col>
       </ion-row>
@@ -138,8 +135,12 @@ export default defineComponent({
     };
   },
   mounted: function () {
+    let headers = {
+        Authorization: "Bearer " + localStorage.getItem("access_token"),
+      };
+
     axios
-      .get("http://localhost:5000/API/students/" + this.id)
+      .get("http://localhost:5000/API/students/" + this.id, { headers })
       .then((response) => {
         this.results = response.data;
         console.log(response);

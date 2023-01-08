@@ -132,7 +132,7 @@
                   <td class="text-center">{{ nonGuru.no_hp }}</td>
                   <td class="text-center">{{ nonGuru.email }}</td>
                   <td class="text-center">
-                    <div class="d-flex ms-5">
+                    <div class="d-flex ms-4">
                       <button type="button" class="btn btn-primary btn-sm text-uppercase text-white fw-bold p-2"
                         @click="router.push('/pages/TenagaKependidikan/DetailTenagaKependidikan/' + nonGuru._id.$oid)">View</button>
                       <div v-if="is_admin == 'true'">
@@ -287,7 +287,7 @@ export default defineComponent({
             window.location.href = "/SignIn";
           }
         });
-    }
+    },
   },
 });
 </script>

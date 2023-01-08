@@ -412,8 +412,12 @@ export default defineComponent({
   },
   props: ["id"],
   mounted: function () {
+    let headers = {
+      Authorization: "Bearer " + localStorage.getItem("access_token"),
+    };
+
     axios
-      .get("http://localhost:5000/API/students/" + this.id)
+      .get("http://localhost:5000/API/students/" + this.id, { headers })
       .then((response) => {
         this.formData.nama = response.data.nama;
         this.formData.jenis_kelamin = response.data.jenis_kelamin;
@@ -467,56 +471,63 @@ export default defineComponent({
           }
         });
     },
-    submitForm() {
-      const json = JSON.stringify({
-        nama: this.nama,
-        jenis_kelamin: this.jenis_kelamin,
-        nik: this.nik,
-        nisn: this.nisn,
-        no_kk: this.no_kk,
-        tingkat_kelas: this.tingkat_kelas,
-        tahun_ajaran: this.tahun_ajaran,
-        tanggal_masuk: this.tanggal_masuk,
-        tanggal_lulus: this.tanggal_lulus,
-        nomor_induk: this.nomor_induk,
-        status: this.status,
-        tinggi_badan: this.tinggi_badan,
-        berat_badan: this.berat_badan,
-        lingkar_kepala: this.lingkar_kepala,
-        alergi: this.lingkar_kepala,
-        nama_ayah: this.nama_ayah,
-        nama_ibu: this.nama_ibu,
-        pekerjaan_ayah: this.pekerjaan_ayah,
-        pekerjaan_ibu: this.pekerjaan_ibu,
-        no_telp_ayah: this.no_telp_ayah,
-        no_telp_ibu: this.no_telp_ibu,
-      });
-      console.log(json);
-      axios
-        .put("http://localhost:5000/API/students/" + this.id, json, {
-          headers: {
-            "Access-Control-Allow-Origin": "*",
-            "Access-Control-Allow-Credentials": "true",
-            "Content-Type": "application/json",
-            Authorization: "Bearer " + localStorage.getItem("access_token"),
-          },
-          withCredentials: true,
-        })
-        .then(function (response) {
-          console.log(response);
-          alert("Success");
-          window.location.href = "/pages/PesertaDidik";
-        })
-        .catch((error) => {
-          let status = error.response.data.msg;
-          if (status == "Missing Authorization Header") {
-            alert("Anda belum login");
-            window.location.href = "/SignIn";
-          } else if (status == "Token has expired") {
-            alert("Sesi telah berakhir, silahkan login kembali");
-            window.location.href = "/SignIn";
-          }
+    async submitForm() {
+      const result = await this.v$.$validate();
+
+      if (!result) {
+        console.log(result);
+        alert("failed");
+      } else {
+        const json = JSON.stringify({
+          nama: this.formData.nama,
+          status: this.formData.status,
+          jenis_kelamin: this.formData.jenis_kelamin,
+          tahun_ajaran: this.formData.tahun_ajaran,
+          nik: this.formData.nik,
+          nisn: this.formData.nisn,
+          no_kk: this.formData.no_kk,
+          tingkat_kelas: this.formData.tingkat_kelas,
+          tanggal_masuk: this.formData.tanggal_masuk,
+          tanggal_lulus: this.formData.tanggal_lulus,
+          nomor_induk: this.formData.nomor_induk,
+          tinggi_badan: this.formData.tinggi_badan,
+          berat_badan: this.formData.berat_badan,
+          lingkar_kepala: this.formData.lingkar_kepala,
+          alergi: this.formData.lingkar_kepala,
+          nama_ayah: this.formData.nama_ayah,
+          nama_ibu: this.formData.nama_ibu,
+          pekerjaan_ayah: this.formData.pekerjaan_ayah,
+          pekerjaan_ibu: this.formData.pekerjaan_ibu,
+          no_telp_ayah: this.formData.no_telp_ayah,
+          no_telp_ibu: this.formData.no_telp_ibu,
         });
+        console.log(json);
+        await axios
+          .post("http://localhost:5000/API/students", json, {
+            headers: {
+              "Access-Control-Allow-Origin": "*",
+              "Access-Control-Allow-Credentials": "true",
+              "Content-Type": "application/json",
+              Authorization: "Bearer " + localStorage.getItem("access_token"),
+            },
+            withCredentials: true,
+          })
+          .then((response) => {
+            console.log(response);
+            alert("Success");
+            window.location.href = "/pages/PesertaDidik";
+          })
+          .catch((error) => {
+            let status = error.response.data.msg;
+            if (status == "Missing Authorization Header") {
+              alert("Anda belum login");
+              window.location.href = "/SignIn";
+            } else if (status == "Token has expired") {
+              alert("Sesi telah berakhir, silahkan login kembali");
+              window.location.href = "/SignIn";
+            }
+          });
+      }
     },
   },
 });
