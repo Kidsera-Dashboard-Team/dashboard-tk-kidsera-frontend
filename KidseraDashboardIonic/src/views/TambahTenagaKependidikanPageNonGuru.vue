@@ -10,12 +10,12 @@
             <ion-title class="d-none d-lg-inline-block mt-1" size="small">
               <ion-breadcrumbs :max-items="4" :items-after-collapse="2" class="p-0">
                 <ion-breadcrumb style="font-size: 1em;" href="/Pages">Pages</ion-breadcrumb>
-                <ion-breadcrumb style="font-size: 1em;" href="/pages/Sarpras">Sarana & Prasarana</ion-breadcrumb>
-                <ion-breadcrumb style="font-size: 1em;" @click="router.push('/pages/Sarpras/DetailSarpras/' + this.id)">Detail</ion-breadcrumb>
+                <ion-breadcrumb style="font-size: 1em;" href="/pages/TenagaKependidikan">Tenaga
+                  Kependidikan</ion-breadcrumb>
                 <ion-breadcrumb style="font-size: 1em;"
-                  href="/pages/Sarpras/DetailSarpras/TambahFasilitasSarpras">Tambah</ion-breadcrumb>
+                  href="/pages/TenagaKependidikan/TambahTenagaKependidikan">Tambah</ion-breadcrumb>
               </ion-breadcrumbs>
-              <h5 style="margin-left: 11px;">Tambah Fasilitas Sarana & Prasarana</h5>
+              <h5 style="margin-left: 11px;">Tambah Tenaga Kependidikan Non-Guru</h5>
             </ion-title>
           </ion-col>
           <ion-col size-sm="6" size="10">
@@ -44,38 +44,68 @@
     </ion-toolbar>
 
     <ion-content :fullscreen="true">
-      <ion-card class="mt-4 p-3 rounded text-center card-form">
-        <ion-card-header>
-          <ion-card-title>
-            <h4>Tambah Fasilitas Ruang {{ nama_ruang }}</h4>
-          </ion-card-title>
-        </ion-card-header>
-        <ion-card-content class="d-grid gap-3">
-          <ion-item fill="outline">
-            <ion-label position="floating">Fasilitas</ion-label>
-            <ion-input placeholder="Masukkan Fasilitas" v-model="nama" required></ion-input>
-          </ion-item>
-          <ion-item fill="outline">
-            <ion-label position="floating">Jenis</ion-label>
-            <ion-input placeholder="Masukkan Jenis" v-model="jenis" required></ion-input>
-          </ion-item>
-          <ion-item fill="outline">
-            <ion-label position="floating">Jumlah</ion-label>
-            <ion-input placeholder="Masukkan Jumlah" v-model="jumlah" required></ion-input>
-          </ion-item>
-          <div>
-            <ion-row class="ion-justify-content-center row-button">
-              <ion-col size="6" size-sm="2">
-                <a class="btn btn-danger" @click="router.push('/pages/Sarpras/DetailSarpras/' + this.id)" role="button">Batalkan</a>
-              </ion-col>
-              <ion-col size="6" size-sm="2">
-                <a class="btn btn-success" role="button"
-                  @click="tambahSarpras()">Tambah</a>
-              </ion-col>
-            </ion-row>
-          </div>
-        </ion-card-content>
-      </ion-card>
+      <ion-grid>
+        <ion-row>
+          <ion-col size-xl="12" size="12">
+            <ion-card class="m-5 p-3 rounded text-center">
+              <ion-card-header>
+                <ion-card-title>
+                  <h4>Tambah Data Tenaga Kependidikan Non-Guru</h4>
+                </ion-card-title>
+              </ion-card-header>
+              <ion-card-content class="d-grid gap-3">
+                <ion-item fill="outline">
+                  <ion-label position="floating">Nama</ion-label>
+                  <ion-input placeholder="Masukkan Nama" v-model="nama" required></ion-input>
+                </ion-item>
+                <ion-item fill="outline">
+                  <ion-label position="floating">Jenis Kelamin</ion-label>
+                  <ion-input placeholder="Masukkan Jenis Kelamin" v-model="jenis_kelamin" required></ion-input>
+                </ion-item>
+                <ion-item fill="outline">
+                  <ion-label position="floating">Tempat, Tanggal Lahir</ion-label>
+                  <ion-input placeholder="Masukkan Tempat, Tanggal Lahir" v-model="ttl" required></ion-input>
+                </ion-item>
+                <ion-item fill="outline">
+                  <ion-label position="floating">Alamat</ion-label>
+                  <ion-input placeholder="Masukkan Alamat" v-model="alamat" required></ion-input>
+                </ion-item>
+                <ion-item fill="outline">
+                  <ion-label position="floating">No. HP</ion-label>
+                  <ion-input placeholder="Masukkan No. HP" v-model="no_hp" required></ion-input>
+                </ion-item>
+                <ion-item fill="outline">
+                  <ion-label position="floating">Email</ion-label>
+                  <ion-input placeholder="Masukkan Email" v-model="email" required></ion-input>
+                </ion-item>
+                <ion-item fill="outline">
+                  <ion-label position="floating">Pendidikan Terakhir</ion-label>
+                  <ion-input placeholder="Masukkan Pendidikan Terakhir" v-model="pendidikan_terakhir" required></ion-input>
+                </ion-item>
+                <ion-item fill="outline">
+                  <ion-label position="floating">Tahun Ajaran</ion-label>
+                  <ion-input placeholder="Masukkan Tahun Ajaran" v-model="tahun_ajaran" required></ion-input>
+                </ion-item>
+                <ion-item fill="outline">
+                  <ion-label position="floating">Kelas Mengajar</ion-label>
+                  <ion-input placeholder="Masukkan Kelas Mengajar" v-model="kelas_mengajar" required></ion-input>
+                </ion-item>
+                <div>
+                  <ion-row class="ion-justify-content-center row-button">
+                    <ion-col size="6" size-sm="2">
+                      <a class="btn btn-danger" href="/pages/TenagaKependidikan" role="button">Batalkan</a>
+                    </ion-col>
+                    <ion-col size="6" size-sm="2">
+                      <a class="btn btn-success" role="button"
+                        href="/pages/TenagaKependidikan" @click="submitForm()">Tambah</a>
+                    </ion-col>
+                  </ion-row>
+                </div>
+              </ion-card-content>
+            </ion-card>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
     </ion-content>
   </ion-page>
 </template>
@@ -101,7 +131,6 @@ import {
   IonLabel
 } from '@ionic/vue';
 import axios from "axios";
-import { useRouter } from "vue-router";
 
 export default defineComponent({
   name: 'DashboardPage',
@@ -124,24 +153,21 @@ export default defineComponent({
     IonLabel
   },
 
-  setup() {
-    const router = useRouter();
-    return {
-      router,
-    }
-  },
-
   data() {
     return {
       username: localStorage.getItem('username'),
       is_admin: localStorage.getItem('is_admin'),
       nama: "",
-      jenis: "",
-      jumlah: "",
+      jenis_kelamin: "",
+      ttl: "",
+      alamat: "",
+      no_hp: "",
+      email: "",
+      pendidikan_terakhir: "",
+      tahun_ajaran: "",
+      kelas_mengajar: "",
     };
   },
-
-  props: ["id", "nama_ruang"],
 
   methods: {
     del() {
@@ -167,15 +193,21 @@ export default defineComponent({
         });
     },
 
-    tambahSarpras() {
+    submitForm() {
       const json = JSON.stringify({
         nama: this.nama,
-        jenis: this.jenis,
-        jumlah: this.jumlah,
+        jenis_kelamin: this.jenis_kelamin,
+        ttl: this.ttl,
+        alamat: this.alamat,
+        no_hp: this.no_hp,
+        email: this.email,
+        pendidikan_terakhir: this.pendidikan_terakhir,
+        tahun_ajaran: this.tahun_ajaran,
+        kelas_mengajar: this.kelas_mengajar,
       });
       console.log(json);
       axios
-        .post("http://localhost:5000/API/sarpras/" + this.id, json, {
+        .post("http://localhost:5000/API/tendik/nonguru", json, {
           headers: {
             "Access-Control-Allow-Origin": "*",
             "Access-Control-Allow-Credentials": "true",
@@ -186,7 +218,6 @@ export default defineComponent({
         })
         .then(response => {
           console.log(response);
-          window.location.href = "/pages/Sarpras/DetailSarpras/" + this.id;
         })
         .catch((error) => {
           let status = error.response.data.msg;
@@ -199,7 +230,7 @@ export default defineComponent({
             window.location.href = "/SignIn";
           }
         });
-    }
+    },
   },
 });
 </script>
@@ -370,11 +401,6 @@ a .iconButton {
   .input-search:focus {
     width: 180px;
   }
-
-  .btn {
-    width: 100px;
-    margin: 0;
-  }
 }
 
 @media only screen and (max-width: 320px) {
@@ -389,11 +415,6 @@ a .iconButton {
 
   .input-search:focus {
     width: 150px;
-  }
-
-  .card-form {
-    width: 90%;
-    margin: auto;
   }
 }
 

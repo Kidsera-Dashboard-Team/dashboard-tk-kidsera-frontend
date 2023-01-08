@@ -17,47 +17,26 @@
             </ion-title>
           </ion-col>
           <ion-col size-sm="6" size="10">
-            <ion-row
-              class="ion-align-items-center ion-justify-content-end goright mt-2"
-              style="margin-right: 20px"
-            >
-              <div
-                class="btn-group dropstart mb-1 ms-2"
-                style="content: inherit"
-              >
-                <button
-                  class="btn dropdown-toggle text-info text-gradient"
-                  type="button"
-                  data-bs-toggle="dropdown"
-                  aria-expanded="true"
-                  style="background-color: transparent"
-                >
-                  Hi User 13141
+            <ion-row class="ion-align-items-center ion-justify-content-end goright mt-2" style="margin-right: 20px">
+              <div class="btn-group dropstart mb-1 ms-2" style="content: inherit">
+                <button class="btn dropdown-toggle text-info text-gradient" type="button" data-bs-toggle="dropdown"
+                  aria-expanded="true" style="background-color: transparent">
+                  Hi {{ username }}
                 </button>
                 <ul class="dropdown-menu dropdown-menu-dark">
                   <li>
-                    <a
-                      class="dropdown-item"
-                      href="javascript: doSomethingLogout()"
-                      >Logout</a
-                    >
+                    <a class="dropdown-item" href="javascript: doSomethingLogout()" @click="del()">Logout</a>
                   </li>
                 </ul>
               </div>
-              <div class="nav-icon">
+              <div v-if="is_admin == 'true'" class="nav-icon">
                 <a href="/SignUp">
-                  <ion-icon
-                    class="iconButton text-info text-gradient"
-                    src="assets/icon/signup.svg"
-                  ></ion-icon>
+                  <ion-icon class="iconButton text-info text-gradient" src="assets/icon/signup.svg"></ion-icon>
                 </a>
+
+                <a href="/SignUp" class="d-none d-sm-inline-block mb-1 text-info text-gradient"
+                  style="text-decoration: none">&nbsp;Add User</a>
               </div>
-              <a
-                href="/SignUp"
-                class="d-none d-sm-inline-block mb-1 text-info text-gradient"
-                style="text-decoration: none"
-                >&nbsp;Add User</a
-              >
               <div>&nbsp;</div>
             </ion-row>
           </ion-col>
@@ -76,11 +55,7 @@
             </ion-row>
             <h2 class="text-center mt-1 mb-4">Nama Aku</h2>
             <ion-row class="mx-auto form-container">
-              <ion-col
-                size="4"
-                style="line-height: 2.5"
-                class="text-dark text-center form1"
-              >
+              <ion-col size="4" style="line-height: 2.5" class="text-dark text-center form1">
                 <ul>
                   <li>Jenis Kelamin :</li>
                   <li>NISN :</li>
@@ -97,11 +72,7 @@
                   <li>Alergi :</li>
                 </ul>
               </ion-col>
-              <ion-col
-                size="4"
-                style="line-height: 2.5"
-                class="text-dark fw-bold text-center form2"
-              >
+              <ion-col size="4" style="line-height: 2.5" class="text-dark fw-bold text-center form2">
                 <ul>
                   <li>Jenis Kelamin :</li>
                   <li>NISN :</li>
@@ -120,7 +91,7 @@
               </ion-col>
             </ion-row>
             <ion-card-content class="px-0 pt-0 pb-2"> </ion-card-content>
-            {{results}}
+            {{ results }}
           </ion-card>
         </ion-col>
       </ion-row>
@@ -162,11 +133,13 @@ export default defineComponent({
   data() {
     return {
       results: [],
+      username: localStorage.getItem('username'),
+      is_admin: localStorage.getItem('is_admin')
     };
   },
   mounted: function () {
     axios
-      .get("http://localhost:5000/API/students/"+this.id)
+      .get("http://localhost:5000/API/students/" + this.id)
       .then((response) => {
         this.results = response.data;
         console.log(response);
@@ -174,6 +147,30 @@ export default defineComponent({
       .catch((error) => {
         console.log(error.response.data);
       });
+  },
+  methods: {
+    del() {
+      let headers = {
+        Authorization: "Bearer " + localStorage.getItem("access_token"),
+      };
+
+      axios.delete("http://localhost:5000/API/auth/logout", { headers })
+        .then((response) => {
+          console.log(response);
+          localStorage.clear()
+        })
+        .catch((error) => {
+          let status = error.response.data.msg;
+          if (status == "Missing Authorization Header") {
+            alert("Anda belum login");
+            window.location.href = "/SignIn";
+          }
+          else if (status == "Token has expired") {
+            alert("Sesi telah berakhir, silahkan login kembali");
+            window.location.href = "/SignIn";
+          }
+        });
+    },
   },
 });
 </script>
@@ -192,67 +189,6 @@ a .iconButton {
   font-size: 18px;
 }
 
-/* Searchbar Style */
-.search-box {
-  width: fit-content;
-  height: fit-content;
-  position: relative;
-  color: black;
-}
-
-.input-search {
-  height: 40px;
-  width: 50px;
-  border-style: none;
-  padding: 10px;
-  font-size: 18px;
-  letter-spacing: 2px;
-  outline: none;
-  border-radius: 25px;
-  transition: all 0.5s ease-in-out;
-  background-color: transparent;
-  padding-right: 40px;
-  color: black;
-}
-
-.input-search::placeholder {
-  color: rgba(0, 0, 0, 0.5);
-  font-size: 18px;
-  letter-spacing: 2px;
-  font-weight: 100;
-}
-
-.btn-search {
-  width: 40px;
-  height: 40px;
-  border-style: none;
-  font-size: 20px;
-  font-weight: bold;
-  outline: none;
-  cursor: pointer;
-  border-radius: 50%;
-  position: absolute;
-  right: 0px;
-  color: black;
-  background-color: transparent;
-  pointer-events: painted;
-}
-
-.btn-search:focus ~ .input-search {
-  width: 400px;
-  border-radius: 10px;
-  background-color: white;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.5);
-  transition: all 500ms cubic-bezier(0, 0.11, 0.35, 2);
-}
-
-.input-search:focus {
-  width: 400px;
-  border-radius: 0px;
-  background-color: transparent;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.5);
-  transition: all 500ms cubic-bezier(0, 0.11, 0.35, 2);
-}
 
 .text-info {
   color: #17c1e8 !important;
@@ -291,7 +227,7 @@ a .iconButton {
 
 /* small laptop dimension */
 @media only screen and (max-width: 1280px) {
-  .btn-search:focus ~ .input-search {
+  .btn-search:focus~.input-search {
     width: 250px;
   }
 
@@ -302,7 +238,7 @@ a .iconButton {
 
 /* tablet dimension */
 @media only screen and (max-width: 990px) {
-  .btn-search:focus ~ .input-search {
+  .btn-search:focus~.input-search {
     width: 180px;
   }
 
@@ -341,7 +277,7 @@ a .iconButton {
     right: 34%;
   }
 
-  .btn-search:focus ~ .input-search {
+  .btn-search:focus~.input-search {
     width: 200px;
   }
 
@@ -357,7 +293,7 @@ a .iconButton {
     right: 41%;
   }
 
-  .btn-search:focus ~ .input-search {
+  .btn-search:focus~.input-search {
     width: 180px;
   }
 
@@ -372,7 +308,7 @@ a .iconButton {
     right: 50%;
   }
 
-  .btn-search:focus ~ .input-search {
+  .btn-search:focus~.input-search {
     width: 150px;
   }
 

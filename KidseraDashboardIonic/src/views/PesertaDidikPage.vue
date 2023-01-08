@@ -5,58 +5,36 @@
         <ion-menu-button color="primary"></ion-menu-button>
       </ion-buttons>
       <ion-grid>
-         <ion-row class="ion-justify-content-between ion-align-items-center">
+        <ion-row class="ion-justify-content-between ion-align-items-center">
           <ion-col size="6">
             <ion-title class="d-none d-lg-inline-block mt-1" size="small">
-                <ion-breadcrumbs :max-items="4" :items-after-collapse="2" class="p-0">
-                  <ion-breadcrumb style="font-size: 1em;" href="/Pages">Pages</ion-breadcrumb>
-                  <ion-breadcrumb style="font-size: 1em;" href="/pages/PesertaDidik">Peserta Didik</ion-breadcrumb>
-                </ion-breadcrumbs>
-                <h5 style="margin-left: 11px;">Peserta Didik</h5>
+              <ion-breadcrumbs :max-items="4" :items-after-collapse="2" class="p-0">
+                <ion-breadcrumb style="font-size: 1em;" href="/Pages">Pages</ion-breadcrumb>
+                <ion-breadcrumb style="font-size: 1em;" href="/pages/PesertaDidik">Peserta Didik</ion-breadcrumb>
+              </ion-breadcrumbs>
+              <h5 style="margin-left: 11px;">Peserta Didik</h5>
             </ion-title>
           </ion-col>
           <ion-col size-sm="6" size="10">
-            <ion-row
-              class="ion-align-items-center ion-justify-content-end goright mt-2"
-              style="margin-right: 20px"
-            >
-              <div
-                class="btn-group dropstart mb-1 ms-2"
-                style="content: inherit"
-              >
-                <button
-                  class="btn dropdown-toggle text-info text-gradient"
-                  type="button"
-                  data-bs-toggle="dropdown"
-                  aria-expanded="true"
-                  style="background-color: transparent"
-                >
-                  Hi User 13141
+            <ion-row class="ion-align-items-center ion-justify-content-end goright mt-2" style="margin-right: 20px">
+              <div class="btn-group dropstart mb-1 ms-2" style="content: inherit">
+                <button class="btn dropdown-toggle text-info text-gradient" type="button" data-bs-toggle="dropdown"
+                  aria-expanded="true" style="background-color: transparent">
+                  Hi {{ username }}
                 </button>
                 <ul class="dropdown-menu dropdown-menu-dark">
                   <li>
-                    <a
-                      class="dropdown-item"
-                      href="javascript: doSomethingLogout()"
-                      >Logout</a
-                    >
+                    <a class="dropdown-item" href="javascript: doSomethingLogout()" @click="del()">Logout</a>
                   </li>
                 </ul>
               </div>
-              <div class="nav-icon">
+              <div v-if="is_admin == 'true'" class="nav-icon">
                 <a href="/SignUp">
-                  <ion-icon
-                    class="iconButton text-info text-gradient"
-                    src="assets/icon/signup.svg"
-                  ></ion-icon>
+                  <ion-icon class="iconButton text-info text-gradient" src="assets/icon/signup.svg"></ion-icon>
                 </a>
+                <a href="/SignUp" class="d-none d-sm-inline-block mb-1 text-info text-gradient"
+                  style="text-decoration: none">&nbsp;Add User</a>
               </div>
-              <a
-                href="/SignUp"
-                class="d-none d-sm-inline-block mb-1 text-info text-gradient"
-                style="text-decoration: none"
-                >&nbsp;Add User</a
-              >
               <div>&nbsp;</div>
             </ion-row>
           </ion-col>
@@ -65,73 +43,47 @@
     </ion-toolbar>
 
     <ion-content :fullscreen="true">
-      <ion-row class="mt-3 mx-2"
-        ><!-- <div class="row mt-3 mx-2"> -->
+      <ion-row class="mt-3 mx-2"><!-- <div class="row mt-3 mx-2"> -->
         <ion-col>
-          <ion-card class="mb-4 border-0"
-            ><!-- <div class="card mb-4 border-0"> -->
+          <ion-card class="mb-4 border-0"><!-- <div class="card mb-4 border-0"> -->
             <ion-row>
               <ion-col>
                 <h3 class="px-3 py-3 title-table text-black">Peserta Didik</h3>
               </ion-col>
-              <ion-col class="text-end my-auto me-5"
-                ><!-- <div class="col text-end my-auto me-5"> -->
-                <a
-                  href="/pages/PesertaDidik/TambahPesertaDidik"
-                  class="btn btn-success tambah"
-                >
-                  Tambah Data</a
-                >
+              <ion-col class="text-end my-auto me-5"><!-- <div class="col text-end my-auto me-5"> -->
+                <a href="/pages/PesertaDidik/TambahPesertaDidik" class="btn btn-success tambah">
+                  Tambah Data</a>
               </ion-col>
             </ion-row>
-            <ion-card-content class="px-0 pt-0 pb-2"
-              ><!-- <div > -->
+            <ion-card-content class="px-0 pt-0 pb-2"><!-- <div > -->
               <div class="table-responsive p-0">
-                <table
-                  style="table-layout: fixed"
-                  id="table-peserta-didik"
-                  class="table table-hover align-items-center mb-0 display"
-                >
+                <table style="table-layout: fixed" id="table-peserta-didik"
+                  class="table table-hover align-items-center mb-0 display">
                   <thead>
                     <tr>
-                      <th
-                        width="25%"
-                        class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-4"
-                      >
+                      <th width="25%" class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-4">
                         Nama
                       </th>
-                      <th
-                        width="20%"
-                        class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-4"
-                      >
+                      <th width="20%" class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-4">
                         Jenis Kelamin
                       </th>
-                      <th
-                        width="15%"
-                        class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7"
-                      >
+                      <th width="15%"
+                        class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
                         NISN
                       </th>
-                      <th
-                        width="20%"
-                        class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7"
-                      >
+                      <th width="20%"
+                        class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
                         Kelas
                       </th>
-                      <th
-                        width="30%"
-                        class="text-secondary opacity-7 text-center"
-                      >
+                      <th width="30%" class="text-secondary opacity-7 text-center">
                         Aksi
                       </th>
                     </tr>
                   </thead>
                   <tbody v-for="result in results" :key="result._id">
-                    <tr
-                      v-on:click="
-                        router.push('/pages/PesertaDidik/' + result._id.$oid)
-                      "
-                    >
+                    <tr v-on:click="
+                      router.push('/pages/PesertaDidik/' + result._id.$oid)
+                    ">
                       <td class="align-middle">
                         <div class="d-flex px-3 py-1">
                           <div>
@@ -158,30 +110,24 @@
                           result.tingkat_kelas
                         }}</span>
                       </td>
-                      <td
-                        class="align-middle text-center justify-content-evenly"
-                      >
+                      <td class="align-middle text-center justify-content-evenly">
                         <!-- <a href="javascript:;" class="text-secondary font-weight-bold text-xs"
                                                     data-toggle="tooltip" data-original-title="Edit user">
                                                     Edit
                                                 </a> -->
-                        <a href="/pages/PesertaDidik/EditPesertaDidik"
-                          ><button
-                            type="button"
-                            class="btn btn-warning me-3 text-white action-button"
-                          >
+                        <a href="/pages/PesertaDidik/EditPesertaDidik"><button type="button"
+                            class="btn btn-warning me-3 text-white action-button">
                             &nbsp;&nbsp;&nbsp;Edit&nbsp;&nbsp;&nbsp;
-                          </button></a
-                        >
-                        <a href=""
-                          ><button
-                            type="button"
-                            class="btn btn-danger text-white action-button"
-                            href="/pages"
-                          >
+                          </button></a>
+                        <a href=""><button type="button" class="btn btn-danger text-white action-button" href="/pages">
                             Delete
-                          </button></a
-                        >
+                          </button></a>
+                        <!-- <button type="button" class="btn btn-primary btn-sm text-uppercase text-white fw-bold p-2"
+                          @click="router.push('/pages/TenagaKependidikan/DetailTenagaKependidikan/' + nonGuru._id.$oid)">View</button>
+                        <button type="button" class="btn btn-warning btn-sm text-uppercase text-white fw-bold p-2 ms-2"
+                          @click="router.push('/pages/TenagaKependidikan/EditTenagaKependidikan/' + nonGuru._id.$oid)">Edit</button>
+                        <button type="button" class="btn btn-danger btn-sm text-uppercase text-white fw-bold p-2 ms-2"
+                          @click="delTendik(nonGuru._id.$oid)">Delete</button> -->
                       </td>
                     </tr>
                   </tbody>
@@ -227,6 +173,8 @@ export default defineComponent({
   data() {
     return {
       results: [],
+      username: localStorage.getItem('username'),
+      is_admin: localStorage.getItem('is_admin')
     };
   },
   mounted: function () {
@@ -246,6 +194,22 @@ export default defineComponent({
     return {
       router,
     };
+  },
+  methods: {
+    del() {
+      let headers = {
+        Authorization: "Bearer " + localStorage.getItem("access_token"),
+      };
+
+      axios.delete("http://localhost:5000/API/auth/logout", { headers })
+        .then((response) => {
+          console.log(response);
+          localStorage.clear()
+        })
+        .catch(error => {
+          console.log(error.response.data);
+        });
+    },
   },
 });
 </script>
@@ -311,7 +275,7 @@ a .iconButton {
   top: -3px;
 }
 
-.btn-search:focus ~ .input-search {
+.btn-search:focus~.input-search {
   width: 300px;
   border-radius: 10px;
   background-color: #fff;
@@ -372,7 +336,7 @@ th {
   white-space: nowrap;
 }
 
-.tables > :not(:last-child) > :last-child > * {
+.tables> :not(:last-child)> :last-child>* {
   border-bottom-color: black;
 }
 
@@ -388,7 +352,7 @@ td {
 
 /* small laptop dimension */
 @media only screen and (max-width: 1280px) {
-  .btn-search:focus ~ .input-search {
+  .btn-search:focus~.input-search {
     width: 250px;
   }
 
@@ -410,7 +374,7 @@ td {
 
 /* tablet dimension */
 @media only screen and (max-width: 990px) {
-  .btn-search:focus ~ .input-search {
+  .btn-search:focus~.input-search {
     width: 200px;
   }
 
@@ -463,7 +427,7 @@ td {
     right: 34%;
   }
 
-  .btn-search:focus ~ .input-search {
+  .btn-search:focus~.input-search {
     width: 200px;
   }
 
@@ -479,7 +443,7 @@ td {
     right: 41%;
   }
 
-  .btn-search:focus ~ .input-search {
+  .btn-search:focus~.input-search {
     width: 180px;
   }
 
@@ -494,7 +458,7 @@ td {
     right: 50%;
   }
 
-  .btn-search:focus ~ .input-search {
+  .btn-search:focus~.input-search {
     width: 150px;
   }
 

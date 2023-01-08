@@ -56,7 +56,7 @@ export default defineComponent({
     const selectedIndex = ref(0);
     const appPages = [
       {
-        title: 'Dashboard',
+        title: 'Home',
         url: '/pages/Dashboard',
         iosIcon: 'assets/icon/home.svg',
         mdIcon: 'assets/icon/home.svg'

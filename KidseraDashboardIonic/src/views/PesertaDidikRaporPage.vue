@@ -9,53 +9,27 @@
           <ion-col size="3" size-xl="6">
             <ion-title class="d-none d-lg-inline-block" size="small"
               ><span style="opacity: 50%">Pages</span> / E - Rapor <br />
-              <span style="font-size: 18px; letter-spacing: 2.5px"
-                >E - Rapor</span
-              >
+              <span style="font-size: 18px; letter-spacing: 2.5px">E - Rapor</span>
             </ion-title>
           </ion-col>
           <ion-col size-sm="9" size="10" size-xl="6">
-            <ion-row
-              class="ion-align-items-center ion-justify-content-end goright mt-2"
-              style="margin-right: 20px"
-            >
-              <div
-                class="btn-group dropstart mb-1 ms-2"
-                style="content: inherit"
-              >
-                <button
-                  class="btn dropdown-toggle text-info text-gradient"
-                  type="button"
-                  data-bs-toggle="dropdown"
-                  aria-expanded="true"
-                  style="background-color: transparent"
-                >
+            <ion-row class="ion-align-items-center ion-justify-content-end goright mt-2" style="margin-right: 20px">
+              <div class="btn-group dropstart mb-1 ms-2" style="content: inherit">
+                <button class="btn dropdown-toggle text-info text-gradient" type="button" data-bs-toggle="dropdown" aria-expanded="true" style="background-color: transparent">
                   Hi User 13141
                 </button>
                 <ul class="dropdown-menu dropdown-menu-dark">
                   <li>
-                    <a
-                      class="dropdown-item"
-                      href="javascript: doSomethingLogout()"
-                      >Logout</a
-                    >
+                    <a class="dropdown-item" href="javascript: doSomethingLogout()">Logout</a>
                   </li>
                 </ul>
               </div>
               <div class="nav-icon">
                 <a href="/SignUp">
-                  <ion-icon
-                    class="iconButton text-info text-gradient"
-                    src="assets/icon/signup.svg"
-                  ></ion-icon>
+                  <ion-icon class="iconButton text-info text-gradient" src="assets/icon/signup.svg"></ion-icon>
                 </a>
               </div>
-              <a
-                href="/SignUp"
-                class="d-none d-sm-inline-block mb-1 text-info text-gradient"
-                style="text-decoration: none"
-                >&nbsp;Add User</a
-              >
+              <a href="/SignUp" class="d-none d-sm-inline-block mb-1 text-info text-gradient" style="text-decoration: none">&nbsp;Add User</a>
               <div>&nbsp;</div>
             </ion-row>
           </ion-col>
@@ -78,24 +52,13 @@
         <ion-card-content>
           <!-- <ion-searchbar show-cancel-button="focus" placeholder="Show on Focus"></ion-searchbar> -->
           <div class="table-responsive">
-            <table
-              class="table table-borderless table-hover display"
-              id="table-rapor"
-            >
+            <table class="table table-borderless table-hover display" id="table-rapor">
               <thead>
                 <tr>
-                  <th scope="col" class="text-center text-secondary opacity-7">
-                    Nama
-                  </th>
-                  <th scope="col" class="text-center text-secondary opacity-7">
-                    Jenis Kelamin
-                  </th>
-                  <th scope="col" class="text-center text-secondary opacity-7">
-                    NISN
-                  </th>
-                  <th scope="col" class="text-center text-secondary opacity-7">
-                    Aksi
-                  </th>
+                  <th scope="col" class="text-center text-secondary opacity-7">Nama</th>
+                  <th scope="col" class="text-center text-secondary opacity-7">Jenis Kelamin</th>
+                  <th scope="col" class="text-center text-secondary opacity-7">NISN</th>
+                  <th scope="col" class="text-center text-secondary opacity-7">Aksi</th>
                 </tr>
               </thead>
               <tbody v-for="result in results.list_siswa" :key="result._id">
@@ -107,9 +70,7 @@
                     <button
                       type="button"
                       class="btn btn-warning btn-sm text-uppercase text-white fw-bold p-2"
-                       v-on:click="
-                        router.push('/pages/Rapor/' + tahun + '/' + kelas + '/' + result._id.$oid)
-                      "
+                      v-on:click="router.push('/pages/Rapor/' + tahun + '/' + kelas + '/' + result._id.$oid)"
                     >
                       Input
                     </button>
@@ -119,7 +80,7 @@
             </table>
           </div>
 
-          <!-- <nav aria-label="Page navigation example">
+          <!-- <nav aria-label="Page navigation example">    
                         <ul class="pagination">
                             <li class="page-item"><a class="page-link" href="#">Previous</a></li>
                             <li class="page-item"><a class="page-link" href="/pages/Sarpras/DetailSarpras">1</a></li>
@@ -139,46 +100,40 @@ import { useRouter } from "vue-router";
 import axios from "axios";
 import { defineComponent } from "vue";
 import {
-  IonButtons,
-  IonContent,
-  IonMenuButton,
-  IonPage,
-  IonTitle,
-  IonToolbar,
-  IonCol,
-  IonGrid,
-  IonRow,
-  // IonSearchbar
-} from "@ionic/vue";
+    IonButtons, IonContent, IonMenuButton, IonPage, IonTitle, IonToolbar, IonCol, IonGrid, IonRow,
+    // IonSearchbar
+} from '@ionic/vue';
+import axios from "axios";
 
 export default defineComponent({
-  name: "PesertaDidikPage",
-  components: {
-    IonButtons,
-    IonContent,
-    IonMenuButton,
-    IonPage,
-    IonTitle,
-    IonToolbar,
-    IonCol,
-    IonGrid,
-    IonRow,
-    // IonSearchbar
-  },
-  props: ["tahun", "kelas"],
-  data() {
-    return {
-      results: [],
-    };
-  },
-  setup() {
+    name: 'PesertaDidikPage',
+    components: {
+        IonButtons,
+        IonContent,
+        IonMenuButton,
+        IonPage,
+        IonTitle,
+        IonToolbar,
+        IonCol,
+        IonGrid,
+        IonRow,
+        // IonSearchbar
+    },
+     setup() {
     const router = useRouter();
 
     return {
       router,
     };
   },
-  mounted: function () {
+    props: ["tahun", "kelas"],
+    data() {
+        return {
+            username: localStorage.getItem('username'),
+            is_admin: localStorage.getItem('is_admin')
+        };
+    },
+     mounted: function () {
     axios
       .get("http://localhost:5000/API/rombel/" + this.tahun + "/" + this.kelas)
       .then((response) => {
@@ -189,6 +144,23 @@ export default defineComponent({
         console.error(error.response.data);
       });
   },
+    methods: {
+        del() {
+            let headers = {
+                Authorization: "Bearer " + localStorage.getItem("access_token"),
+            };
+
+            axios.delete("http://localhost:5000/API/auth/logout", { headers })
+                .then((response) => {
+                    console.log(response);
+                    localStorage.clear()
+                })
+                .catch(error => {
+                    console.log(error.response.data);
+                });
+        },
+    },
+>>>>>>> 953870ed8913b64d46c03a33e6da209eac1ed47b
 });
 </script>
 

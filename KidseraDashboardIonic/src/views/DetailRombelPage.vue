@@ -1,183 +1,131 @@
 <template>
-  <ion-page>
-    <ion-toolbar>
-      <ion-buttons slot="start">
-        <ion-menu-button color="primary"></ion-menu-button>
-      </ion-buttons>
-      <ion-grid>
-        <ion-row class="ion-justify-content-between ion-align-items-center">
-          <ion-col size="6">
-            <ion-title class="d-none d-lg-inline-block mt-1" size="small">
-              <ion-breadcrumbs
-                :max-items="4"
-                :items-after-collapse="2"
-                class="p-0"
-              >
-                <ion-breadcrumb style="font-size: 1em" href="/Pages"
-                  >Pages</ion-breadcrumb
-                >
-                <ion-breadcrumb
-                  style="font-size: 1em"
-                  href="/pages/RombonganBelajar"
-                  >Rombongan Belajar</ion-breadcrumb
-                >
-                <ion-breadcrumb
-                  style="font-size: 1em"
-                  href="javascript:history.back()"
-                  >Tahun Ajaran</ion-breadcrumb
-                >
-                <ion-breadcrumb
-                  style="font-size: 1em"
-                  href="/pages/RombonganBelajar/:tahun/A"
-                  >Detail</ion-breadcrumb
-                >
-              </ion-breadcrumbs>
-              <h5 style="margin-left: 11px">Detail Rombongan Belajar</h5>
-            </ion-title>
-          </ion-col>
-          <ion-col size-sm="6" size="10">
-            <ion-row
-              class="ion-align-items-center ion-justify-content-end goright mt-2"
-              style="margin-right: 20px"
-            >
-              <div
-                class="btn-group dropstart mb-1 ms-2"
-                style="content: inherit"
-              >
-                <button
-                  class="btn dropdown-toggle text-info text-gradient"
-                  type="button"
-                  data-bs-toggle="dropdown"
-                  aria-expanded="true"
-                  style="background-color: transparent"
-                >
-                  Hi User 13141
-                </button>
-                <ul class="dropdown-menu dropdown-menu-dark">
-                  <li>
-                    <a
-                      class="dropdown-item"
-                      href="javascript: doSomethingLogout()"
-                      >Logout</a
-                    >
-                  </li>
-                </ul>
-              </div>
-              <div class="nav-icon">
-                <a href="/SignUp">
-                  <ion-icon
-                    class="iconButton text-info text-gradient"
-                    src="assets/icon/signup.svg"
-                  ></ion-icon>
-                </a>
-              </div>
-              <a
-                href="/SignUp"
-                class="d-none d-sm-inline-block mb-1 text-info text-gradient"
-                style="text-decoration: none"
-                >&nbsp;Add User</a
-              >
-              <div>&nbsp;</div>
-            </ion-row>
-          </ion-col>
-        </ion-row>
-      </ion-grid>
-    </ion-toolbar>
+    <ion-page>
+        <ion-toolbar>
+            <ion-buttons slot="start">
+                <ion-menu-button color="primary"></ion-menu-button>
+            </ion-buttons>
+            <ion-grid>
+                <ion-row class="ion-justify-content-between ion-align-items-center">
+                    <ion-col size="6">
+                        <ion-title class="d-none d-lg-inline-block mt-1" size="small">
+                            <ion-breadcrumbs :max-items="4" :items-after-collapse="2" class="p-0">
+                                <ion-breadcrumb style="font-size: 1em;" href="/Pages">Pages</ion-breadcrumb>
+                                <ion-breadcrumb style="font-size: 1em;" href="/pages/RombonganBelajar">Rombongan
+                                    Belajar</ion-breadcrumb>
+                                <ion-breadcrumb style="font-size: 1em;" href="javascript:history.back()">Tahun
+                                    Ajaran</ion-breadcrumb>
+                                <ion-breadcrumb style="font-size: 1em;"
+                                    href="/pages/RombonganBelajar/:tahun/A">Detail</ion-breadcrumb>
+                            </ion-breadcrumbs>
+                            <h5 style="margin-left: 11px;">Detail Rombongan Belajar</h5>
+                        </ion-title>
+                    </ion-col>
+                    <ion-col size-sm="6" size="10">
+                        <ion-row class="ion-align-items-center ion-justify-content-end goright mt-2"
+                            style="margin-right: 20px;">
+                            <div class="btn-group dropstart mb-1 ms-2" style="content: inherit;">
+                                <button class="btn dropdown-toggle text-info text-gradient" type="button"
+                                    data-bs-toggle="dropdown" aria-expanded="true"
+                                    style="background-color: transparent;">
+                                    Hi {{ username }}
+                                </button>
+                                <ul class="dropdown-menu dropdown-menu-dark">
+                                    <li><a class="dropdown-item" href="javascript: doSomethingLogout()" @click="del()">Logout</a></li>
+                                </ul>
+                            </div>
+                            <div v-if="is_admin == 'true'" class="nav-icon">
+                                <a href="/SignUp">
+                                    <ion-icon class="iconButton text-info text-gradient"
+                                        src="assets/icon/signup.svg"></ion-icon>
+                                </a>
+                                <a href="/SignUp" class="d-none d-sm-inline-block mb-1 text-info text-gradient"
+                                    style="text-decoration: none;">&nbsp;Add User</a>
+                            </div>
+                            <div>&nbsp;</div>
+                        </ion-row>
+                    </ion-col>
+                </ion-row>
+            </ion-grid>
+        </ion-toolbar>
 
-    <ion-content :fullscreen="true">
-      <ion-row class="mt-3 mx-2"
-        ><!-- <div class="row mt-3 mx-2"> -->
-        <ion-col>
-          <ion-card class="mb-4 border-0"
-            ><!-- <div class="card mb-4 border-0"> -->
-            <ion-row>
-              <ion-col>
-                <h3 class="px-3 py-3 title-table">Detail Rombongan Belajar</h3>
-                <ion-row>
-                  <ion-col size="4" class="ms-3">
-                    <ul>
-                      <li>Tahun Ajaran :</li>
+        <ion-content :fullscreen="true">
+            <ion-row class="mt-3 mx-2"><!-- <div class="row mt-3 mx-2"> -->
+                <ion-col>
+                    <ion-card class="mb-4 border-0"><!-- <div class="card mb-4 border-0"> -->
+                        <ion-row>
+                            <ion-col>
+                                <h3 class="px-3 py-3 title-table">Detail Rombongan Belajar</h3>
+                                <ion-row>
+                                    <ion-col size="4" class="ms-3">
+                                        <ul>
+                                            <li>Tahun Ajaran :</li>
                       <li>Wali Kelas :</li>
                       <li>Jumlah Anak :</li>
                       <li>Ruang Kelas &nbsp;:</li>
-                    </ul>
-                  </ion-col>
-                  <ion-col size="3">
-                    <ul>
-                      <li>{{ results.tahun_ajaran }}</li>
+                                        </ul>
+                                    </ion-col>
+                                    <ion-col size="3">
+                                        <ul>
+                                             <li>{{ results.tahun_ajaran }}</li>
                       <li>{{ results.wali }}</li>
                       <li>{{ results.countsiswa }}</li>
                       <li>{{ results.ruangan }}</li>
-                    </ul>
-                  </ion-col>
-                </ion-row>
-              </ion-col>
-              <ion-col size-xl="6" size-md="6" size-xs="auto">
-                 <a
-                    :href="'/pages/rombonganbelajar/' + tahun +'/'+ kelas+'/edit'"
-                    class="btn btn-success float-end tambah"
-                    >Tambah Rombel</a
-                  >
-                </ion-col>
-            </ion-row>
-            <ion-card-content class="px-0 pt-0 pb-2"
-              ><!-- <div > -->
-              <div class="table-responsive p-0">
-                <table
-                  style="table-layout: fixed"
-                  class="table table-hover align-items-center mb-0 display"
-                  id="table-rombongan-belajar"
-                >
-                  <thead>
-                    <tr>
-                      <th
-                        class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-4"
-                      >
-                        ID Siswa
-                      </th>
-                      <th
-                        class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-4 text-center"
-                      >
-                        Nama
-                      </th>
-                      <th
-                        class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7"
-                      >
-                        Jenis Kelamin
-                      </th>
-                    </tr>
-                  </thead>
-                  <tbody v-for="result in results.list_siswa" :key="result._id">
-                    <tr
-                      onclick="window.location='/pages/rombonganbelajar/detail';"
-                    >
-                      <td class="align-middle">
-                        <div class="d-flex px-3 py-1">
-                          <div>
-                            <!-- <img src="../assets/img/team-2.jpg" class="avatar avatar-sm me-3" -->
-                            <!-- alt="user1"> -->
-                          </div>
-                          <div class="justify-content-center">
-                            <h6 class="mb-0 text-sm td-name">
-                              {{ result._id.$oid }}
-                            </h6>
-                          </div>
-                        </div>
-                      </td>
-                      <td class="align-middle">
-                        <p class="text-xs font-weight-bold mb-0 text-center">
-                          {{ result.nama }}
-                        </p>
-                      </td>
-                      <td class="align-middle text-center text-sm">
-                        <span class="">{{ result.jenis_kelamin}}</span>
-                      </td>
-                    </tr>
-                  </tbody>
-                </table>
-              </div>
-            </ion-card-content>
-          </ion-card>
+                                        </ul>
+                                    </ion-col>
+                                </ion-row>
+                            </ion-col>
+                            <ion-col class="text-end my-auto me-5">
+                            <div class="col text-end my-auto me-5">
+                                <a :href="'/pages/rombonganbelajar/' + tahun +'/'+ kelas+'/edit'" class="btn btn-success tambah"> Tambah Data</a>
+                            </ion-col>
+                        </ion-row>
+                        <ion-card-content class="px-0 pt-0 pb-2"><!-- <div > -->
+                            <div class="table-responsive p-0">
+                                <table style="table-layout:fixed;"
+                                    class="table table-hover align-items-center mb-0 display"
+                                    id="table-rombongan-belajar">
+                                    <thead>
+                                        <tr>
+                                            <th
+                                                class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-4">
+                                                ID Siswa
+                                            </th>
+                                            <th
+                                                class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-4 text-center">
+                                                Nama</th>
+                                            <th
+                                                class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                                                Jenis Kelamin</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody v-for="result in results.list_siswa" :key="result._id">
+                                        <tr onclick="window.location='/pages/rombonganbelajar/detail';">
+                                            <td class="align-middle">
+                                                <div class="d-flex px-3 py-1">
+                                                    <div>
+                                                        <!-- <img src="../assets/img/team-2.jpg" class="avatar avatar-sm me-3" -->
+                                                        <!-- alt="user1"> -->
+                                                    </div>
+                                                    <div class="justify-content-center">
+                                                        <h6 class="mb-0 text-sm td-name">                          {{ result.nama }}
+</h6>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <td class="align-middle">
+                                                <p class="text-xs font-weight-bold mb-0 text-center">Manager</p>
+                                            </td>
+                                            <td class="align-middle text-center text-sm">
+                                                <span class="">1313621000</span>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </ion-card-content>
+                    </ion-card>
+               
+            
         </ion-col>
       </ion-row>
       <!-- {{ results.list_siswa}} -->
@@ -186,40 +134,35 @@
 </template>
 
 <script lang="ts">
-import { defineComponent } from "vue";
+
+import { defineComponent } from 'vue';
+import { IonButtons, IonContent, IonMenuButton, IonPage, IonTitle, IonToolbar, IonCol, IonGrid, IonRow } from '@ionic/vue';
 import axios from "axios";
-import {
-  IonButtons,
-  IonContent,
-  IonMenuButton,
-  IonPage,
-  IonTitle,
-  IonToolbar,
-  IonCol,
-  IonGrid,
-  IonRow,
-} from "@ionic/vue";
 
 export default defineComponent({
-  name: "DetailRombonganBelajar",
-  components: {
-    IonButtons,
-    IonContent,
-    IonMenuButton,
-    IonPage,
-    IonTitle,
-    IonToolbar,
-    IonCol,
-    IonGrid,
-    IonRow,
-  },
+    name: 'DetailRombonganBelajar',
+    components: {
+        IonButtons,
+        IonContent,
+        IonMenuButton,
+        IonPage,
+        IonTitle,
+        IonToolbar,
+        IonCol,
+        IonGrid,
+        IonRow
+    },
   props: ["tahun", "kelas"],
-  data() {
-    return {
-      results: [],
-    };
-  },
-  mounted: function () {
+
+    data() {
+        return {
+            username: localStorage.getItem('username'),
+            is_admin: localStorage.getItem('is_admin'),
+            results: [],
+
+        };
+    },
+     mounted: function () {
     axios
       .get("http://localhost:5000/API/rombel/" + this.tahun + "/" + this.kelas)
       .then((response) => {
@@ -233,13 +176,30 @@ export default defineComponent({
         console.error(error.response.data);
       });
   },
-  //   setup() {
-  //     const router = useRouter();
+    methods: {
+        del() {
+            let headers = {
+                Authorization: "Bearer " + localStorage.getItem("access_token"),
+            };
 
-  //     return {
-  //       router,
-  //     };
-  //   },
+            axios.delete("http://localhost:5000/API/auth/logout", { headers })
+                .then((response) => {
+                    console.log(response);
+                    localStorage.clear()
+                })
+                .catch((error) => {
+                    let status = error.response.data.msg;
+                    if (status == "Missing Authorization Header") {
+                        alert("Anda belum login");
+                        window.location.href = "/SignIn";
+                    }
+                    else if (status == "Token has expired") {
+                        alert("Sesi telah berakhir, silahkan login kembali");
+                        window.location.href = "/SignIn";
+                    }
+                });
+        },
+    },
 });
 </script>
 
@@ -256,6 +216,7 @@ a .iconButton {
   margin-left: 20px;
   font-size: 20px;
 }
+
 
 /* Searchbar Style */
 .search-box {
@@ -319,6 +280,7 @@ a .iconButton {
   border-bottom: 1px solid rgba(255, 255, 255, 0.5);
   transition: all 500ms cubic-bezier(0, 0.11, 0.35, 2);
 }
+
 
 .text-info {
   color: #17c1e8 !important;

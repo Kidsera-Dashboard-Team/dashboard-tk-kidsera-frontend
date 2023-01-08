@@ -1,224 +1,95 @@
 <template>
-    <ion-page>
-        <ion-toolbar>
-            <ion-buttons slot="start">
-                <ion-menu-button color="primary"></ion-menu-button>
-            </ion-buttons>
-            <ion-grid>
-                <ion-row class="ion-justify-content-between">
-                    <ion-col size="3" size-xl="6">
-                        <ion-title class="d-none d-xl-inline-block" size="small"><span
-                                style="opacity: 50%;">Pages</span> / Detail Sarana & Prasarana <br> <span
-                                style="font-size: 18px; letter-spacing: 3.5px;">Detail Sarana & Prasarana</span>
-                        </ion-title>
-                    </ion-col>
-                    <ion-col size-sm="9" size="10" size-xl="6">
-                        <ion-row class="ion-align-items-center ion-justify-content-end goright mt-2"
-                            style="margin-right: 20px;">
-                            <div class="btn-group dropstart mb-1 ms-2" style="content: inherit;">
-                                <button class="btn dropdown-toggle text-info text-gradient" type="button"
-                                    data-bs-toggle="dropdown" aria-expanded="true"
-                                    style="background-color: transparent;">
-                                    Hi User 13141
-                                </button>
-                                <ul class="dropdown-menu dropdown-menu-dark">
-                                    <li><a class="dropdown-item" href="javascript: doSomethingLogout()">Logout</a></li>
-                                </ul>
-                            </div>
-                            <div class="nav-icon">
-                                <a href="/SignUp">
-                                    <ion-icon class="iconButton text-info text-gradient"
-                                        src="assets/icon/signup.svg"></ion-icon>
-                                </a>
-                            </div>
-                            <a href="/SignUp" class="d-none d-sm-inline-block mb-1 text-info text-gradient"
-                                style="text-decoration: none;">&nbsp;Add User</a>
-                            <div>&nbsp;</div>
-                        </ion-row>
-                    </ion-col>
-                </ion-row>
-            </ion-grid>
-        </ion-toolbar>
+  <ion-page>
+    <ion-toolbar>
+      <ion-buttons slot="start">
+        <ion-menu-button color="primary"></ion-menu-button>
+      </ion-buttons>
+      <ion-grid>
+        <ion-row class="ion-justify-content-between ion-align-items-center">
+          <ion-col size="6">
+            <ion-title class="d-none d-lg-inline-block mt-1" size="small">
+              <ion-breadcrumbs :max-items="4" :items-after-collapse="2" class="p-0">
+                <ion-breadcrumb style="font-size: 1em;" href="/Pages">Pages</ion-breadcrumb>
+                <ion-breadcrumb style="font-size: 1em;" href="/pages/Sarpras">Sarana & Prasarana</ion-breadcrumb>
+                <ion-breadcrumb style="font-size: 1em;" @click="router.push('/pages/Sarpras/DetailSarpras/' + this.id)">Detail</ion-breadcrumb>
+              </ion-breadcrumbs>
+              <h5 style="margin-left: 11px;">Detail Sarana & Prasarana</h5>
+            </ion-title>
+          </ion-col>
+          <ion-col size-sm="6" size="10">
+            <ion-row class="ion-align-items-center ion-justify-content-end goright mt-2" style="margin-right: 20px;">
+              <div class="btn-group dropstart mb-1 ms-2" style="content: inherit;">
+                <button class="btn dropdown-toggle text-info text-gradient" type="button" data-bs-toggle="dropdown"
+                  aria-expanded="true" style="background-color: transparent;">Hi {{ username }} </button>
+                <ul class="dropdown-menu dropdown-menu-dark">
+                  <li><a class="dropdown-item" href="javascript: doSomethingLogout()" @click="del()">Logout</a></li>
+                </ul>
+              </div>
+              <div v-if="is_admin == 'true'" class="d-flex">
+                <div class="nav-icon">
+                  <a href="/SignUp">
+                    <ion-icon class="iconButton text-info text-gradient" src="assets/icon/signup.svg"></ion-icon>
+                  </a>
+                </div>
+                <a href="/SignUp" class="d-none d-sm-inline-block mb-1 text-info text-gradient"
+                  style="text-decoration: none;">&nbsp;Add User</a>
+              </div>
+              <div>&nbsp;</div>
+            </ion-row>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-toolbar>
 
-        <ion-content :fullscreen="true">
-            <ion-card class="rounded card-content mt-3 mx-3">
-                <ion-card-header class="ion-text-justify">
-                    <ion-row class="ion-justify-content-between">
-                        <ion-col size-xl="6" size-md="6" size-xs="12">
-                            <ion-card-title>
-                                <h4 class="text-dalem">Sarana & Prasarana Ruang ... </h4>
-                            </ion-card-title>
-                        </ion-col>
-                        <ion-col size-xl="6" size-md="6" size-xs="auto">
-                            <a href="/pages/Sarpras/DetailSarpras/TambahFasilitasSarpras"
-                                class="btn btn-success float-end tambah">Tambah Fasilitas</a>
-                        </ion-col>
-                    </ion-row>
-                </ion-card-header>
+    <ion-content :fullscreen="true">
+      <ion-card class="rounded card-content mt-3 mx-3">
+        <ion-card-header class="ion-text-justify">
+          <ion-row class="ion-justify-content-between">
+            <ion-col size-xl="6" size-md="6" size-xs="12">
+              <ion-card-title>
+                <h4 class="text-dalem">Sarana & Prasarana Ruang {{ namaRuang }} </h4>
+              </ion-card-title>
+            </ion-col>
+            <ion-col size-xl="6" size-md="6" size-xs="auto">
+             <div v-if="is_admin == 'true'">
+              <a @click="router.push('/pages/Sarpras/DetailSarpras/TambahFasilitasSarpras/' + this.id + '/' + namaRuang)"
+                class="btn btn-success float-end tambah">Tambah Fasilitas</a>
+             </div>
+            </ion-col>
+          </ion-row>
+        </ion-card-header>
 
-                <ion-card-content>
-                    <!-- <ion-searchbar show-cancel-button="focus" placeholder="Show on Focus"></ion-searchbar> -->
-                    <div class="table-responsive">
-                        <table class="table table-borderless table-hover display" id="table-sarpras">
-                            <thead>
-                                <tr>
-                                    <th scope="col" class="text-center text-secondary opacity-7">Fasilitas</th>
-                                    <th scope="col" class="text-center text-secondary opacity-7">Jenis</th>
-                                    <th scope="col" class="text-center text-secondary opacity-7">Jumlah</th>
-                                    <th scope="col" class="text-center text-secondary opacity-7">Created Date</th>
-                                    <th scope="col" class="text-center text-secondary opacity-7">Aksi</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td class="text-center">Kursi</td>
-                                    <td class="text-center">Sarana</td>
-                                    <td class="text-center">10</td>
-                                    <td class="text-center">2 Desember 2022</td>
-                                    <td class="text-center"><a href="/pages/Sarpras/DetailSarpras/EditSarpras"><button
-                                                type="button"
-                                                class="btn btn-warning btn-sm text-uppercase text-white fw-bold p-2">Edit</button></a>
-                                        <a href=""><button type="button"
-                                                class="btn btn-danger btn-sm text-uppercase text-white fw-bold p-2 ms-2">Delete</button></a>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td class="text-center">Meja</td>
-                                    <td class="text-center">Sarana</td>
-                                    <td class="text-center">10</td>
-                                    <td class="text-center">2 Desember 2022</td>
-                                    <td class="text-center"><a href="/pages/Sarpras/DetailSarpras/EditSarpras"><button
-                                                type="button"
-                                                class="btn btn-warning btn-sm text-uppercase text-white fw-bold p-2">Edit</button></a>
-                                        <a href=""><button type="button"
-                                                class="btn btn-danger btn-sm text-uppercase text-white fw-bold p-2 ms-2">Delete</button></a>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td class="text-center">Buku Tulis</td>
-                                    <td class="text-center">ATK</td>
-                                    <td class="text-center">10</td>
-                                    <td class="text-center">2 Desember 2022</td>
-                                    <td class="text-center"><a href="/pages/Sarpras/DetailSarpras/EditSarpras"><button
-                                                type="button"
-                                                class="btn btn-warning btn-sm text-uppercase text-white fw-bold p-2">Edit</button></a>
-                                        <a href=""><button type="button"
-                                                class="btn btn-danger btn-sm text-uppercase text-white fw-bold p-2 ms-2">Delete</button></a>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td class="text-center">Puzle</td>
-                                    <td class="text-center">Alat Permainan Edukatif</td>
-                                    <td class="text-center">1</td>
-                                    <td class="text-center">2 Desember 2022</td>
-                                    <td class="text-center"><a href="/pages/Sarpras/DetailSarpras/EditSarpras"><button
-                                                type="button"
-                                                class="btn btn-warning btn-sm text-uppercase text-white fw-bold p-2">Edit</button></a>
-                                        <a href=""><button type="button"
-                                                class="btn btn-danger btn-sm text-uppercase text-white fw-bold p-2 ms-2">Delete</button></a>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td class="text-center">Kursi</td>
-                                    <td class="text-center">Sarana</td>
-                                    <td class="text-center">10</td>
-                                    <td class="text-center">2 Desember 2022</td>
-                                    <td class="text-center"><a href="/pages/Sarpras/DetailSarpras/EditSarpras"><button
-                                                type="button"
-                                                class="btn btn-warning btn-sm text-uppercase text-white fw-bold p-2">Edit</button></a>
-                                        <a href=""><button type="button"
-                                                class="btn btn-danger btn-sm text-uppercase text-white fw-bold p-2 ms-2">Delete</button></a>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td class="text-center">Meja</td>
-                                    <td class="text-center">Sarana</td>
-                                    <td class="text-center">10</td>
-                                    <td class="text-center">2 Desember 2022</td>
-                                    <td class="text-center"><a href="/pages/Sarpras/DetailSarpras/EditSarpras"><button
-                                                type="button"
-                                                class="btn btn-warning btn-sm text-uppercase text-white fw-bold p-2">Edit</button></a>
-                                        <a href=""><button type="button"
-                                                class="btn btn-danger btn-sm text-uppercase text-white fw-bold p-2 ms-2">Delete</button></a>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td class="text-center">Buku Tulis</td>
-                                    <td class="text-center">ATK</td>
-                                    <td class="text-center">10</td>
-                                    <td class="text-center">2 Desember 2022</td>
-                                    <td class="text-center"><a href="/pages/Sarpras/DetailSarpras/EditSarpras"><button
-                                                type="button"
-                                                class="btn btn-warning btn-sm text-uppercase text-white fw-bold p-2">Edit</button></a>
-                                        <a href=""><button type="button"
-                                                class="btn btn-danger btn-sm text-uppercase text-white fw-bold p-2 ms-2">Delete</button></a>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td class="text-center">Puzle</td>
-                                    <td class="text-center">Alat Permainan Edukatif</td>
-                                    <td class="text-center">1</td>
-                                    <td class="text-center">2 Desember 2022</td>
-                                    <td class="text-center"><a href="/pages/Sarpras/DetailSarpras/EditSarpras"><button
-                                                type="button"
-                                                class="btn btn-warning btn-sm text-uppercase text-white fw-bold p-2">Edit</button></a>
-                                        <a href=""><button type="button"
-                                                class="btn btn-danger btn-sm text-uppercase text-white fw-bold p-2 ms-2">Delete</button></a>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td class="text-center">Kursi</td>
-                                    <td class="text-center">Sarana</td>
-                                    <td class="text-center">10</td>
-                                    <td class="text-center">2 Desember 2022</td>
-                                    <td class="text-center"><a href="/pages/Sarpras/DetailSarpras/EditSarpras"><button
-                                                type="button"
-                                                class="btn btn-warning btn-sm text-uppercase text-white fw-bold p-2">Edit</button></a>
-                                        <a href=""><button type="button"
-                                                class="btn btn-danger btn-sm text-uppercase text-white fw-bold p-2 ms-2">Delete</button></a>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td class="text-center">Meja</td>
-                                    <td class="text-center">Sarana</td>
-                                    <td class="text-center">10</td>
-                                    <td class="text-center">2 Desember 2022</td>
-                                    <td class="text-center"><a href="/pages/Sarpras/DetailSarpras/EditSarpras"><button
-                                                type="button"
-                                                class="btn btn-warning btn-sm text-uppercase text-white fw-bold p-2">Edit</button></a>
-                                        <a href=""><button type="button"
-                                                class="btn btn-danger btn-sm text-uppercase text-white fw-bold p-2 ms-2">Delete</button></a>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td class="text-center">Buku Tulis</td>
-                                    <td class="text-center">ATK</td>
-                                    <td class="text-center">10</td>
-                                    <td class="text-center">2 Desember 2022</td>
-                                    <td class="text-center"><a href="/pages/Sarpras/DetailSarpras/EditSarpras"><button
-                                                type="button"
-                                                class="btn btn-warning btn-sm text-uppercase text-white fw-bold p-2">Edit</button></a>
-                                        <a href=""><button type="button"
-                                                class="btn btn-danger btn-sm text-uppercase text-white fw-bold p-2 ms-2">Delete</button></a>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td class="text-center">Puzle</td>
-                                    <td class="text-center">Alat Permainan Edukatif</td>
-                                    <td class="text-center">1</td>
-                                    <td class="text-center">2 Desember 2022</td>
-                                    <td class="text-center"><a href="/pages/Sarpras/DetailSarpras/EditSarpras"><button
-                                                type="button"
-                                                class="btn btn-warning btn-sm text-uppercase text-white fw-bold p-2">Edit</button></a>
-                                        <a href=""><button type="button"
-                                                class="btn btn-danger btn-sm text-uppercase text-white fw-bold p-2 ms-2">Delete</button></a>
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
+        <ion-card-content>
+          <!-- <ion-searchbar show-cancel-button="focus" placeholder="Show on Focus"></ion-searchbar> -->
+          <div class="table-responsive">
+            <table class="table table-hover display" id="table-sarpras">
+              <thead>
+                <tr>
+                  <th scope="col" class="text-center text-secondary opacity-7">Fasilitas</th>
+                  <th scope="col" class="text-center text-secondary opacity-7">Jenis</th>
+                  <th scope="col" class="text-center text-secondary opacity-7">Jumlah</th>
+                  <!-- <th scope="col" class="text-center text-secondary opacity-7">Created Date</th> -->
+                  <th scope="col" class="text-center text-secondary opacity-7" v-if="is_admin == 'true'">Aksi</th>
+                </tr>
+              </thead>
+              <tbody v-for="i in fasilSarpras" :key="i._id">
+                <tr>
+                  <td class="text-center">{{ i.nama }}</td>
+                  <td class="text-center">{{ i.jenis }}</td>
+                  <td class="text-center">{{ i.jumlah }}</td>
+                  <!-- <td class="text-center">2 Desember 2022</td> -->
+                  <td class="text-center" v-if="is_admin == 'true'">
+                    <button type="button" class="btn btn-warning btn-sm text-uppercase text-white fw-bold p-2"
+                      @click="router.push('/pages/Sarpras/DetailSarpras/EditSarpras/' + i._id.$oid + '/' + this.id)">Edit</button>
+                    <button type="button" class="btn btn-danger btn-sm text-uppercase text-white fw-bold p-2 ms-2"
+                      @click="delSarpras(i._id.$oid)">Delete</button>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
 
-                    <!-- <nav aria-label="Page navigation example">
+          <!-- <nav aria-label="Page navigation example">
                         <ul class="pagination">
                             <li class="page-item"><a class="page-link" href="#">Previous</a></li>
                             <li class="page-item"><a class="page-link" href="/pages/Sarpras/DetailSarpras">1</a></li>
@@ -227,35 +98,126 @@
                             <li class="page-item"><a class="page-link" href="#">Next</a></li>
                         </ul>
                     </nav> -->
-                </ion-card-content>
-            </ion-card>
-        </ion-content>
-    </ion-page>
+        </ion-card-content>
+      </ion-card>
+    </ion-content>
+  </ion-page>
 </template>
 
 <script lang="ts">
 import { defineComponent } from 'vue';
 import {
-    IonButtons, IonContent, IonMenuButton, IonPage, IonTitle, IonToolbar, IonCol, IonGrid, IonRow,
-    // IonSearchbar 
-    IonCard, IonCardHeader, IonCardTitle, IonCardContent, 
+  IonButtons, IonContent, IonMenuButton, IonPage, IonTitle, IonToolbar, IonCol, IonGrid, IonRow,
+  // IonSearchbar 
+  IonCard, IonCardHeader, IonCardTitle, IonCardContent,
 } from '@ionic/vue';
+import axios from "axios";
+import { useRouter } from "vue-router";
 
 export default defineComponent({
-    name: 'PesertaDidikPage',
-    components: {
-        IonButtons,
-        IonContent,
-        IonMenuButton,
-        IonPage,
-        IonTitle,
-        IonToolbar,
-        IonCol,
-        IonGrid,
-        IonRow,
-        // IonSearchbar
-        IonCard, IonCardHeader, IonCardTitle, IonCardContent, 
+  name: 'PesertaDidikPage',
+  components: {
+    IonButtons,
+    IonContent,
+    IonMenuButton,
+    IonPage,
+    IonTitle,
+    IonToolbar,
+    IonCol,
+    IonGrid,
+    IonRow,
+    // IonSearchbar
+    IonCard, IonCardHeader, IonCardTitle, IonCardContent,
+  },
+
+  data() {
+    return {
+      username: localStorage.getItem('username'),
+      is_admin: localStorage.getItem('is_admin'),
+      fasilSarpras: [],
+      namaRuang: ""
+    };
+  },
+
+  setup() {
+    const router = useRouter();
+    return {
+      router,
     }
+  },
+
+  props: ["id"],
+  mounted: function () {
+    axios
+      .get("http://localhost:5000/API/sarpras/" + this.id)
+      .then((response) => {
+        this.fasilSarpras = response.data['sarpras'];
+        this.namaRuang = response.data['nama_ruangan']
+        console.log(response.data['sarpras']);
+        console.log(response.data['nama_ruangan']);
+      })
+      .catch((error) => {
+        let status = error.response.data.msg;
+        if (status == "Missing Authorization Header") {
+          alert("Anda belum login");
+          window.location.href = "/SignIn";
+        }
+        else if (status == "Token has expired") {
+          alert("Sesi telah berakhir, silahkan login kembali");
+          window.location.href = "/SignIn";
+        }
+      });
+  },
+
+  methods: {
+    del() {
+      let headers = {
+        Authorization: "Bearer " + localStorage.getItem("access_token"),
+      };
+
+      axios.delete("http://localhost:5000/API/auth/logout", { headers })
+        .then((response) => {
+          console.log(response);
+          localStorage.clear()
+        })
+        .catch((error) => {
+          let status = error.response.data.msg;
+          if (status == "Missing Authorization Header") {
+            alert("Anda belum login");
+            window.location.href = "/SignIn";
+          }
+          else if (status == "Token has expired") {
+            alert("Sesi telah berakhir, silahkan login kembali");
+            window.location.href = "/SignIn";
+          }
+        });
+    },
+
+    delSarpras(id) {
+      let headers = {
+        Authorization: "Bearer " + localStorage.getItem("access_token"),
+      };
+
+      axios
+        .delete("http://localhost:5000/API/sarpras_detail/" + id, { headers })
+        .then((response) => {
+          console.log(response);
+          window.location.reload();
+        })
+        .catch((error) => {
+          let status = error.response.data.msg;
+          if (status == "Missing Authorization Header") {
+            alert("Anda belum login");
+            window.location.href = "/SignIn";
+          }
+          else if (status == "Token has expired") {
+            alert("Sesi telah berakhir, silahkan login kembali");
+            window.location.href = "/SignIn";
+          }
+        });
+    }
+  },
+
 });
 </script>
 
@@ -263,109 +225,110 @@ export default defineComponent({
 /* template style */
 
 ion-col {
-    padding: 0;
+  padding: 0;
 }
 
 /* Icon navbar style */
 
 a .iconButton {
-    color: #67748E;
-    text-decoration: none;
-    margin-left: 20px;
-    font-size: 20px;
+  color: #67748E;
+  text-decoration: none;
+  margin-left: 20px;
+  font-size: 20px;
 }
 
 /* Searchbar Style */
 
 .search-box {
-    width: fit-content;
-    height: fit-content;
-    position: relative;
-    color: black;
+  width: fit-content;
+  height: fit-content;
+  position: relative;
+  color: black;
 }
 
 .input-search {
-    height: 40px;
-    width: 50px;
-    border-style: none;
-    padding: 10px;
-    font-size: 18px;
-    letter-spacing: 2px;
-    outline: none;
-    border-radius: 25px;
-    transition: all .5s ease-in-out;
-    background-color: transparent;
-    padding-right: 40px;
-    color: black;
+  height: 40px;
+  width: 50px;
+  border-style: none;
+  padding: 10px;
+  font-size: 18px;
+  letter-spacing: 2px;
+  outline: none;
+  border-radius: 25px;
+  transition: all .5s ease-in-out;
+  background-color: transparent;
+  padding-right: 40px;
+  color: black;
 }
 
 .input-search::placeholder {
-    color: rgba(0, 0, 0, 0.5);
-    font-size: 18px;
-    letter-spacing: 2px;
-    font-weight: 100;
+  color: rgba(0, 0, 0, 0.5);
+  font-size: 18px;
+  letter-spacing: 2px;
+  font-weight: 100;
 }
 
 .btn-search {
-    width: 40px;
-    height: 40px;
-    border-style: none;
-    font-size: 20px;
-    font-weight: bold;
-    outline: none;
-    cursor: pointer;
-    border-radius: 50%;
-    position: absolute;
-    right: 0px;
-    color: black;
-    background-color: transparent;
-    pointer-events: painted;
-    top: -1.5px;
+  width: 40px;
+  height: 40px;
+  border-style: none;
+  font-size: 20px;
+  font-weight: bold;
+  outline: none;
+  cursor: pointer;
+  border-radius: 50%;
+  position: absolute;
+  right: 0px;
+  color: black;
+  background-color: transparent;
+  pointer-events: painted;
+  top: -1.5px;
 }
 
 .btn-search:focus~.input-search {
-    width: 230px;
-    border-radius: 10px;
-    background-color: white;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.5);
-    transition: all 500ms cubic-bezier(0, 0.110, 0.35, 2);
+  width: 230px;
+  border-radius: 10px;
+  background-color: white;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.5);
+  transition: all 500ms cubic-bezier(0, 0.110, 0.35, 2);
 }
 
 .input-search:focus {
-    width: 230px;
-    border-radius: 0px;
-    background-color: transparent;
-    border-bottom: 1px solid rgba(255, 255, 255, .5);
-    transition: all 500ms cubic-bezier(0, 0.110, 0.35, 2);
+  width: 230px;
+  border-radius: 0px;
+  background-color: transparent;
+  border-bottom: 1px solid rgba(255, 255, 255, .5);
+  transition: all 500ms cubic-bezier(0, 0.110, 0.35, 2);
 }
 
 .text-info {
-    color: #17c1e8 !important;
+  color: #17c1e8 !important;
 }
-.text-dalem{
-    color:black
+
+.text-dalem {
+  color: black
 }
 
 .text-gradient {
-    background-clip: text;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    position: relative;
-    z-index: 1;
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  position: relative;
+  z-index: 1;
 }
 
 .text-gradient.text-info {
-    background-image: linear-gradient(310deg, #2152FF, #21D4FD);
+  background-image: linear-gradient(310deg, #2152FF, #21D4FD);
 }
 
 .text-gradient.text-dark {
-    background-image: linear-gradient(310deg, #141727, #3A416F);
+  background-image: linear-gradient(310deg, #141727, #3A416F);
 }
 
 /* content style */
 
 [data-href] {
-    cursor: pointer;
+  cursor: pointer;
 }
 
 /* .table {
@@ -373,178 +336,178 @@ a .iconButton {
 } */
 
 thead th {
-    padding: 0.75rem 1rem;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    border-bottom: 1px solid lighten(black, 35%);
+  padding: 0.75rem 1rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  border-bottom: 1px solid lighten(black, 35%);
 }
 
 th {
-    font-weight: bold;
+  font-weight: bold;
 }
 
 td,
 th {
-    white-space: nowrap;
+  white-space: nowrap;
 }
 
 .tables> :not(:last-child)> :last-child>* {
-    border-bottom-color: black;
+  border-bottom-color: black;
 }
 
 td {
-    width: 100px;
+  width: 100px;
 }
 
 .tambah {
-    border-radius: 8px;
-    border: none;
-    font-weight: bold;
+  border-radius: 8px;
+  border: none;
+  font-weight: bold;
 }
 
 .slide-custom-body {
-    margin-top: 20px;
+  margin-top: 20px;
 }
 
 .slide-custom {
-    width: 90%;
-    margin: auto;
-    border-radius: 18px;
+  width: 90%;
+  margin: auto;
+  border-radius: 18px;
 }
 
 .slide-custom img {
-    width: 90%;
-    max-height: 300px;
-    object-fit: cover;
+  width: 90%;
+  max-height: 300px;
+  object-fit: cover;
 }
 
 .card-content {
-    margin: 30px 50px;
+  margin: 30px 50px;
 }
 
 .card-content-judul {
-    background: linear-gradient(135deg, #336B87 0%, #90AFC5 100%);
-    font-weight: bold;
-    border-radius: 20px;
+  background: linear-gradient(135deg, #336B87 0%, #90AFC5 100%);
+  font-weight: bold;
+  border-radius: 20px;
 }
 
 .card-content-judul:hover {
-    background: linear-gradient(135deg, #90AFC5 0%, #336B87 100%);
-    transition: 5s ease-in;
-    cursor: pointer;
+  background: linear-gradient(135deg, #90AFC5 0%, #336B87 100%);
+  transition: 5s ease-in;
+  cursor: pointer;
 }
 
 /* small laptop dimension */
 
 @media only screen and (max-width: 1280px) {
-    .btn-search:focus~.input-search {
-        width: 250px;
-    }
+  .btn-search:focus~.input-search {
+    width: 250px;
+  }
 
-    .input-search:focus {
-        width: 250px;
-    }
+  .input-search:focus {
+    width: 250px;
+  }
 
-    th,
-    td {
-        width: 160px;
-    }
+  th,
+  td {
+    width: 160px;
+  }
 
-    .action-button {
-        padding: 5px 12px;
-        font-size: 12px;
-    }
+  .action-button {
+    padding: 5px 12px;
+    font-size: 12px;
+  }
 }
 
 /* tablet dimension */
 
 @media only screen and (max-width: 990px) {
-    .btn-search:focus~.input-search {
-        width: 200px;
-    }
+  .btn-search:focus~.input-search {
+    width: 200px;
+  }
 
-    .input-search:focus {
-        width: 200px;
-    }
+  .input-search:focus {
+    width: 200px;
+  }
 
-    th,
-    td {
-        font-size: 12px;
-    }
+  th,
+  td {
+    font-size: 12px;
+  }
 }
 
 /* large phone dimension */
 
 @media only screen and (max-width: 575px) {
-    .goright {
-        position: relative;
-        left: 60px
-    }
+  .goright {
+    position: relative;
+    left: 60px
+  }
 
-    th,
-    td {
-        width: 150px;
-    }
+  th,
+  td {
+    width: 150px;
+  }
 
-    /* .title-table {
+  /* .title-table {
         font-size: 12px;
         margin-top: 10px;
     } */
-    .tambah {
-        padding: 10px;
-        font-size: 10px;
-        /* position: relative;
+  .tambah {
+    padding: 10px;
+    font-size: 10px;
+    /* position: relative;
         left: 20px;
         height: 30px; */
-    }
+  }
 }
 
 /* large phone dimension */
 
 @media only screen and (max-width: 426px) {
-    .search-box {
-        position: absolute;
-        right: 34%;
-    }
+  .search-box {
+    position: absolute;
+    right: 34%;
+  }
 
-    .btn-search:focus~.input-search {
-        width: 200px;
-    }
+  .btn-search:focus~.input-search {
+    width: 200px;
+  }
 
-    .input-search:focus {
-        width: 200px;
-    }
+  .input-search:focus {
+    width: 200px;
+  }
 }
 
 /* small phone dimension */
 
 @media only screen and (max-width: 376px) {
-    .search-box {
-        position: absolute;
-        right: 41%;
-    }
+  .search-box {
+    position: absolute;
+    right: 41%;
+  }
 
-    .btn-search:focus~.input-search {
-        width: 180px;
-    }
+  .btn-search:focus~.input-search {
+    width: 180px;
+  }
 
-    .input-search:focus {
-        width: 180px;
-    }
+  .input-search:focus {
+    width: 180px;
+  }
 }
 
 @media only screen and (max-width: 320px) {
-    .search-box {
-        position: absolute;
-        right: 50%;
-    }
+  .search-box {
+    position: absolute;
+    right: 50%;
+  }
 
-    .btn-search:focus~.input-search {
-        width: 150px;
-    }
+  .btn-search:focus~.input-search {
+    width: 150px;
+  }
 
-    .input-search:focus {
-        width: 150px;
-    }
+  .input-search:focus {
+    width: 150px;
+  }
 }
 </style>

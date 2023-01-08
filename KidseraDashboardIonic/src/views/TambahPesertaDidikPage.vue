@@ -8,64 +8,33 @@
         <ion-row class="ion-justify-content-between ion-align-items-center">
           <ion-col size="6">
             <ion-title class="d-none d-lg-inline-block mt-1" size="small">
-              <ion-breadcrumbs
-                :max-items="4"
-                :items-after-collapse="2"
-                class="p-0"
-              >
+              <ion-breadcrumbs :max-items="4" :items-after-collapse="2" class="p-0">
                 <ion-breadcrumb href="/Pages">Pages</ion-breadcrumb>
-                <ion-breadcrumb href="/pages/PesertaDidik"
-                  >Peserta Didik</ion-breadcrumb
-                >
-                <ion-breadcrumb href="/pages/PesertaDidik/TambahPesertaDidik"
-                  >Tambah</ion-breadcrumb
-                >
+                <ion-breadcrumb href="/pages/PesertaDidik">Peserta Didik</ion-breadcrumb>
+                <ion-breadcrumb href="/pages/PesertaDidik/TambahPesertaDidik">Tambah</ion-breadcrumb>
               </ion-breadcrumbs>
               <h5 style="margin-left: 11px">Tambah Peserta Didik</h5>
             </ion-title>
           </ion-col>
           <ion-col size-sm="6" size="10">
-            <ion-row
-              class="ion-align-items-center ion-justify-content-end goright mt-2"
-              style="margin-right: 20px"
-            >
-              <div
-                class="btn-group dropstart mb-1 ms-2"
-                style="content: inherit"
-              >
-                <button
-                  class="btn dropdown-toggle text-info text-gradient"
-                  type="button"
-                  data-bs-toggle="dropdown"
-                  aria-expanded="true"
-                  style="background-color: transparent"
-                >
-                  Hi User 13141
+            <ion-row class="ion-align-items-center ion-justify-content-end goright mt-2" style="margin-right: 20px">
+              <div class="btn-group dropstart mb-1 ms-2" style="content: inherit">
+                <button class="btn dropdown-toggle text-info text-gradient" type="button" data-bs-toggle="dropdown" aria-expanded="true" style="background-color: transparent">
+                  Hi {{ username }}
                 </button>
                 <ul class="dropdown-menu dropdown-menu-dark">
                   <li>
-                    <a
-                      class="dropdown-item"
-                      href="javascript: doSomethingLogout()"
-                      >Logout</a
-                    >
+                    <a class="dropdown-item" href="javascript: doSomethingLogout()" @click="del()">Logout</a>
                   </li>
                 </ul>
               </div>
-              <div class="nav-icon">
+              <div v-if="is_admin == 'true'" class="nav-icon">
                 <a href="/SignUp">
-                  <ion-icon
-                    class="iconButton text-info text-gradient"
-                    src="assets/icon/signup.svg"
-                  ></ion-icon>
+                  <ion-icon class="iconButton text-info text-gradient" src="assets/icon/signup.svg"></ion-icon>
                 </a>
+
+                <a href="/SignUp" class="d-none d-sm-inline-block mb-1 text-info text-gradient" style="text-decoration: none">&nbsp;Add User</a>
               </div>
-              <a
-                href="/SignUp"
-                class="d-none d-sm-inline-block mb-1 text-info text-gradient"
-                style="text-decoration: none"
-                >&nbsp;Add User</a
-              >
               <div>&nbsp;</div>
             </ion-row>
           </ion-col>
@@ -83,23 +52,12 @@
         <ion-card-content class="d-grid gap-3">
           <ion-item fill="outline">
             <ion-label position="floating">Nama Peserta Didik</ion-label>
-            <ion-input
-              placeholder="Masukkan Nama Peserta Didik"
-              v-model="formData.nama"
-              required
-            ></ion-input>
-            <ion-note
-              color="danger"
-              v-for="error in v$.nama.$errors"
-              :key="error.$uid"
-            >
+            <ion-input placeholder="Masukkan Nama Peserta Didik" v-model="formData.nama" required></ion-input>
+            <ion-note color="danger" v-for="error in v$.nama.$errors" :key="error.$uid">
               {{ error.$message }}
             </ion-note>
           </ion-item>
-          <ion-radio-group
-            class="row justify-content-around"
-            v-model="formData.status"
-          >
+          <ion-radio-group class="row justify-content-around" v-model="formData.status">
             <ion-list-header class="col-12 col-sm-4">
               <ion-label class="h5">Status </ion-label>
             </ion-list-header>
@@ -111,18 +69,11 @@
               <ion-label>Alumni</ion-label>
               <ion-radio value="Alumni"></ion-radio>
             </ion-item>
-            <ion-note
-              color="danger"
-              v-for="error in v$.status.$errors"
-              :key="error.$uid"
-            >
+            <ion-note color="danger" v-for="error in v$.status.$errors" :key="error.$uid">
               {{ error.$message }}
             </ion-note>
           </ion-radio-group>
-          <ion-radio-group
-            class="row justify-content-around"
-            v-model="formData.jenis_kelamin"
-          >
+          <ion-radio-group class="row justify-content-around" v-model="formData.jenis_kelamin">
             <ion-list-header class="col-12 col-sm-4">
               <ion-label class="h5"> Jenis Kelamin </ion-label>
             </ion-list-header>
@@ -134,282 +85,132 @@
               <ion-label>Perempuan</ion-label>
               <ion-radio value="Perempuan"></ion-radio>
             </ion-item>
-            <ion-note
-              color="danger"
-              v-for="error in v$.jenis_kelamin.$errors"
-              :key="error.$uid"
-            >
+            <ion-note color="danger" v-for="error in v$.jenis_kelamin.$errors" :key="error.$uid">
               {{ error.$message }}
             </ion-note>
           </ion-radio-group>
           <ion-item fill="outline">
             <ion-label position="floating">Tahun Ajaran</ion-label>
-            <ion-input
-              placeholder="Masukkan Tahun Ajaran"
-              v-model="formData.tahun_ajaran"
-              required
-            ></ion-input>
-            <ion-note
-              color="danger"
-              v-for="error in v$.tahun_ajaran.$errors"
-              :key="error.$uid"
-            >
+            <ion-input placeholder="Masukkan Tahun Ajaran" v-model="formData.tahun_ajaran" required></ion-input>
+            <ion-note color="danger" v-for="error in v$.tahun_ajaran.$errors" :key="error.$uid">
               {{ error.$message }}
             </ion-note>
           </ion-item>
           <ion-item fill="outline">
             <ion-label position="floating">NISN</ion-label>
-            <ion-input
-              placeholder="Masukkan NISN"
-              v-model="formData.nisn"
-              required
-            ></ion-input>
-            <ion-note
-              color="danger"
-              v-for="error in v$.nisn.$errors"
-              :key="error.$uid"
-            >
+            <ion-input placeholder="Masukkan NISN" v-model="formData.nisn" required></ion-input>
+            <ion-note color="danger" v-for="error in v$.nisn.$errors" :key="error.$uid">
               {{ error.$message }}
             </ion-note>
           </ion-item>
           <ion-item fill="outline">
             <ion-label position="floating">NIK</ion-label>
-            <ion-input
-              placeholder="Masukkan NIK"
-              v-model="formData.nik"
-              required
-            ></ion-input>
-            <ion-note
-              color="danger"
-              v-for="error in v$.nik.$errors"
-              :key="error.$uid"
-            >
+            <ion-input placeholder="Masukkan NIK" v-model="formData.nik" required></ion-input>
+            <ion-note color="danger" v-for="error in v$.nik.$errors" :key="error.$uid">
               {{ error.$message }}
             </ion-note> </ion-item
           ><ion-item fill="outline">
             <ion-label position="floating">NO. KK</ion-label>
-            <ion-input
-              placeholder="Masukkan NO. KK"
-              v-model="formData.no_kk"
-              required
-            ></ion-input>
-            <ion-note
-              color="danger"
-              v-for="error in v$.no_kk.$errors"
-              :key="error.$uid"
-            >
+            <ion-input placeholder="Masukkan NO. KK" v-model="formData.no_kk" required></ion-input>
+            <ion-note color="danger" v-for="error in v$.no_kk.$errors" :key="error.$uid">
               {{ error.$message }}
             </ion-note>
           </ion-item>
           <ion-item fill="outline">
             <ion-label position="floating">Tingkat Kelas</ion-label>
-            <ion-input
-              placeholder="Masukkan Tingkat Kelas"
-              v-model="formData.tingkat_kelas"
-              required
-            ></ion-input>
-            <ion-note
-              color="danger"
-              v-for="error in v$.tingkat_kelas.$errors"
-              :key="error.$uid"
-            >
+            <ion-input placeholder="Masukkan Tingkat Kelas" v-model="formData.tingkat_kelas" required></ion-input>
+            <ion-note color="danger" v-for="error in v$.tingkat_kelas.$errors" :key="error.$uid">
               {{ error.$message }}
             </ion-note>
           </ion-item>
           <ion-item fill="outline">
             <ion-label position="floating">Tanggal Masuk</ion-label>
-            <ion-input
-              placeholder="Masukkan Tanggal Masuk"
-              type="date"
-              v-model="formData.tanggal_masuk"
-              required
-            ></ion-input>
-            <ion-note
-              color="danger"
-              v-for="error in v$.tanggal_masuk.$errors"
-              :key="error.$uid"
-            >
+            <ion-input placeholder="Masukkan Tanggal Masuk" type="date" v-model="formData.tanggal_masuk" required></ion-input>
+            <ion-note color="danger" v-for="error in v$.tanggal_masuk.$errors" :key="error.$uid">
               {{ error.$message }}
             </ion-note>
           </ion-item>
           <ion-item fill="outline">
             <ion-label position="floating">Tanggal Lulus</ion-label>
-            <ion-input
-              placeholder="Masukkan Tanggal Lulus"
-              type="date"
-              v-model="formData.tanggal_lulus"
-              required
-            ></ion-input>
-            <ion-note
-              color="danger"
-              v-for="error in v$.tanggal_lulus.$errors"
-              :key="error.$uid"
-            >
+            <ion-input placeholder="Masukkan Tanggal Lulus" type="date" v-model="formData.tanggal_lulus" required></ion-input>
+            <ion-note color="danger" v-for="error in v$.tanggal_lulus.$errors" :key="error.$uid">
               {{ error.$message }}
             </ion-note>
           </ion-item>
           <ion-item fill="outline">
             <ion-label position="floating">Nomor Induk (NIK)</ion-label>
-            <ion-input
-              placeholder="Masukkan Nomor Induk (NIK)"
-              v-model="formData.nomor_induk"
-              required
-            ></ion-input>
-            <ion-note
-              color="danger"
-              v-for="error in v$.nomor_induk.$errors"
-              :key="error.$uid"
-            >
+            <ion-input placeholder="Masukkan Nomor Induk (NIK)" v-model="formData.nomor_induk" required></ion-input>
+            <ion-note color="danger" v-for="error in v$.nomor_induk.$errors" :key="error.$uid">
               {{ error.$message }}
             </ion-note>
           </ion-item>
           <ion-item fill="outline">
             <ion-label position="floating">Tinggi Badan</ion-label>
-            <ion-input
-              placeholder="Masukkan Tinggi Badan"
-              v-model="formData.tinggi_badan"
-              required
-            ></ion-input>
-            <ion-note
-              color="danger"
-              v-for="error in v$.tinggi_badan.$errors"
-              :key="error.$uid"
-            >
+            <ion-input placeholder="Masukkan Tinggi Badan" v-model="formData.tinggi_badan" required></ion-input>
+            <ion-note color="danger" v-for="error in v$.tinggi_badan.$errors" :key="error.$uid">
               {{ error.$message }}
             </ion-note>
           </ion-item>
           <ion-item fill="outline">
             <ion-label position="floating">Berat Badan</ion-label>
-            <ion-input
-              placeholder="Masukkan Berat Badan"
-              v-model="formData.berat_badan"
-              required
-            ></ion-input>
-            <ion-note
-              color="danger"
-              v-for="error in v$.berat_badan.$errors"
-              :key="error.$uid"
-            >
+            <ion-input placeholder="Masukkan Berat Badan" v-model="formData.berat_badan" required></ion-input>
+            <ion-note color="danger" v-for="error in v$.berat_badan.$errors" :key="error.$uid">
               {{ error.$message }}
             </ion-note>
           </ion-item>
           <ion-item fill="outline">
             <ion-label position="floating">Lingkar Kepala</ion-label>
-            <ion-input
-              placeholder="Masukkan Lingkar Kepala"
-              v-model="formData.lingkar_kepala"
-              required
-            ></ion-input>
-            <ion-note
-              color="danger"
-              v-for="error in v$.lingkar_kepala.$errors"
-              :key="error.$uid"
-            >
+            <ion-input placeholder="Masukkan Lingkar Kepala" v-model="formData.lingkar_kepala" required></ion-input>
+            <ion-note color="danger" v-for="error in v$.lingkar_kepala.$errors" :key="error.$uid">
               {{ error.$message }}
             </ion-note>
           </ion-item>
           <ion-item fill="outline">
             <ion-label position="floating">Alergi</ion-label>
-            <ion-input
-              placeholder="Masukkan Alergi"
-              v-model="formData.alergi"
-              required
-            ></ion-input>
-            <ion-note
-              color="danger"
-              v-for="error in v$.alergi.$errors"
-              :key="error.$uid"
-            >
+            <ion-input placeholder="Masukkan Alergi" v-model="formData.alergi" required></ion-input>
+            <ion-note color="danger" v-for="error in v$.alergi.$errors" :key="error.$uid">
               {{ error.$message }}
             </ion-note>
           </ion-item>
           <ion-item fill="outline">
             <ion-label position="floating">Nama Ayah</ion-label>
-            <ion-input
-              placeholder="Masukkan Nama Ayah"
-              v-model="formData.nama_ayah"
-              required
-            ></ion-input>
-            <ion-note
-              color="danger"
-              v-for="error in v$.nama_ayah.$errors"
-              :key="error.$uid"
-            >
+            <ion-input placeholder="Masukkan Nama Ayah" v-model="formData.nama_ayah" required></ion-input>
+            <ion-note color="danger" v-for="error in v$.nama_ayah.$errors" :key="error.$uid">
               {{ error.$message }}
             </ion-note>
           </ion-item>
           <ion-item fill="outline">
             <ion-label position="floating">Nomor Telepon Ayah</ion-label>
-            <ion-input
-              placeholder="Masukkan Nomor Telepon Ayah"
-              v-model="formData.no_telp_ayah"
-              required
-            ></ion-input>
-            <ion-note
-              color="danger"
-              v-for="error in v$.no_telp_ayah.$errors"
-              :key="error.$uid"
-            >
+            <ion-input placeholder="Masukkan Nomor Telepon Ayah" v-model="formData.no_telp_ayah" required></ion-input>
+            <ion-note color="danger" v-for="error in v$.no_telp_ayah.$errors" :key="error.$uid">
               {{ error.$message }}
             </ion-note>
           </ion-item>
           <ion-item fill="outline">
             <ion-label position="floating">Nama Ibu</ion-label>
-            <ion-input
-              placeholder="Masukkan Nama Ibu"
-              v-model="formData.nama_ibu"
-              required
-            ></ion-input>
-            <ion-note
-              color="danger"
-              v-for="error in v$.nama_ibu.$errors"
-              :key="error.$uid"
-            >
+            <ion-input placeholder="Masukkan Nama Ibu" v-model="formData.nama_ibu" required></ion-input>
+            <ion-note color="danger" v-for="error in v$.nama_ibu.$errors" :key="error.$uid">
               {{ error.$message }}
             </ion-note>
           </ion-item>
           <ion-item fill="outline">
             <ion-label position="floating">Nomor Telepon Ibu</ion-label>
-            <ion-input
-              placeholder="Masukkan Nomor Telepon Ibu"
-              v-model="formData.no_telp_ibu"
-              required
-            ></ion-input>
-            <ion-note
-              color="danger"
-              v-for="error in v$.no_telp_ibu.$errors"
-              :key="error.$uid"
-            >
+            <ion-input placeholder="Masukkan Nomor Telepon Ibu" v-model="formData.no_telp_ibu" required></ion-input>
+            <ion-note color="danger" v-for="error in v$.no_telp_ibu.$errors" :key="error.$uid">
               {{ error.$message }}
             </ion-note>
           </ion-item>
           <ion-item fill="outline">
             <ion-label position="floating">Pekerjaan Ayah</ion-label>
-            <ion-input
-              placeholder="Masukkan Pekerjaan Ayah"
-              v-model="formData.pekerjaan_ayah"
-              required
-            ></ion-input>
-            <ion-note
-              color="danger"
-              v-for="error in v$.pekerjaan_ayah.$errors"
-              :key="error.$uid"
-            >
+            <ion-input placeholder="Masukkan Pekerjaan Ayah" v-model="formData.pekerjaan_ayah" required></ion-input>
+            <ion-note color="danger" v-for="error in v$.pekerjaan_ayah.$errors" :key="error.$uid">
               {{ error.$message }}
             </ion-note>
           </ion-item>
           <ion-item fill="outline">
             <ion-label position="floating">Pekerjaan Ibu</ion-label>
-            <ion-input
-              placeholder="Masukkan Pekerjaan Ibu"
-              v-model="formData.pekerjaan_ibu"
-              required
-            ></ion-input>
-            <ion-note
-              color="danger"
-              v-for="error in v$.pekerjaan_ibu.$errors"
-              :key="error.$uid"
-            >
+            <ion-input placeholder="Masukkan Pekerjaan Ibu" v-model="formData.pekerjaan_ibu" required></ion-input>
+            <ion-note color="danger" v-for="error in v$.pekerjaan_ibu.$errors" :key="error.$uid">
               {{ error.$message }}
             </ion-note>
           </ion-item>
@@ -417,17 +218,10 @@
           <div>
             <ion-row class="ion-justify-content-center row-button">
               <ion-col size="6" size-sm="2">
-                <a
-                  class="btn btn-danger"
-                  href="/pages/PesertaDidik"
-                  role="button"
-                  >Batalkan</a
-                >
+                <a class="btn btn-danger" href="/pages/PesertaDidik" role="button">Batalkan</a>
               </ion-col>
               <ion-col size="6" size-sm="2">
-                <a class="btn btn-success" role="button" @click="submitForm()"
-                  >Tambah</a
-                >
+                <a class="btn btn-success" role="button" @click="submitForm()">Tambah</a>
               </ion-col>
             </ion-row>
           </div>
@@ -486,6 +280,9 @@ export default defineComponent({
     IonRadioGroup,
   },
   setup() {
+    username: localStorage.getItem('username'),
+    is_admin: localStorage.getItem('is_admin'),
+
     const formData = reactive({
       nama: "",
       status: "",
@@ -592,6 +389,20 @@ export default defineComponent({
     return { formData, v$ };
   },
   methods: {
+     del() {
+      let headers = {
+        Authorization: "Bearer " + localStorage.getItem("access_token"),
+      };
+
+      axios.delete("http://localhost:5000/API/auth/logout", { headers })
+        .then((response) => {
+          console.log(response);
+          localStorage.clear()
+        })
+        .catch(error => {
+          console.log(error.response.data);
+        },
+
     async submitForm() {
       const result = await this.v$.$validate();
       console.log("first" + result);
