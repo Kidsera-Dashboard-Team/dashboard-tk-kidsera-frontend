@@ -194,7 +194,7 @@ export default defineComponent({
     console.log(this.v$.tahun_ajaran.$errors[0].$message = "has been taken");
     if (!result) {
       console.log(result);
-      alert("not success");
+      alert("failed");
     } else {
       const json = JSON.stringify({
         tahun_ajaran: this.formData.tahun_ajaran,
@@ -213,6 +213,8 @@ export default defineComponent({
         })
         .then((response) => {
           console.log(response);
+          alert("Success");
+            window.location.href = "/pages/Rombel/";
         })
         .catch((error) => {
           let status = error.response.data.msg;

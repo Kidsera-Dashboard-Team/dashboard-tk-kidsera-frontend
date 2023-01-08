@@ -228,6 +228,29 @@ export default defineComponent({
           }
         });
     },
+    delPesertaDidik(id) {
+      let headers = {
+        Authorization: "Bearer " + localStorage.getItem("access_token"),
+      };
+
+      axios
+        .delete("http://localhost:5000/API/student/" + id, { headers })
+        .then((response) => {
+          console.log(response);
+          window.location.reload();
+        })
+        .catch((error) => {
+          let status = error.response.data.msg;
+          if (status == "Missing Authorization Header") {
+            alert("Anda belum login");
+            window.location.href = "/SignIn";
+          }
+          else if (status == "Token has expired") {
+            alert("Sesi telah berakhir, silahkan login kembali");
+            window.location.href = "/SignIn";
+          }
+        });
+    }
   },
 });
 </script>

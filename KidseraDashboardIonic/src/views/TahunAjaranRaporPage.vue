@@ -59,7 +59,7 @@
           <ion-grid>
             <ion-grid>
               <div class="ion-justify-content-evenly container" style="flex-wrap: wrap; display: flex">
-                <div onclick="window.location='/pages/Rapor/TahunAjaranRapor/PesertaDidikRapor';" class="card-content">
+                <div class="card-content">
                   <ion-card class="card-content-judul" @click="() => router.push('/pages/Rapor/' + tahun + '/A')">
                     <ion-card-content class="ion-margin text-center" style="margin: 70px">
                       <ion-card-title>

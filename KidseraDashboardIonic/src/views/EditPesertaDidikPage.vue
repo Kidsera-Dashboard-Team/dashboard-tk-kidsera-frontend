@@ -13,14 +13,13 @@
                 <ion-breadcrumb href="/pages/PesertaDidik">Peserta Didik</ion-breadcrumb>
                 <ion-breadcrumb href="/pages/PesertaDidik/EditPesertaDidik/">Edit</ion-breadcrumb>
               </ion-breadcrumbs>
-              <h5 style="margin-left: 11px;">Edit Peserta Didik</h5>
+              <h5 style="margin-left: 11px">Edit Peserta Didik</h5>
             </ion-title>
           </ion-col>
           <ion-col size-sm="6" size="10">
             <ion-row class="ion-align-items-center ion-justify-content-end goright mt-2" style="margin-right: 20px">
               <div class="btn-group dropstart mb-1 ms-2" style="content: inherit">
-                <button class="btn dropdown-toggle text-info text-gradient" type="button" data-bs-toggle="dropdown"
-                  aria-expanded="true" style="background-color: transparent">
+                <button class="btn dropdown-toggle text-info text-gradient" type="button" data-bs-toggle="dropdown" aria-expanded="true" style="background-color: transparent">
                   Hi {{ username }}
                 </button>
                 <ul class="dropdown-menu dropdown-menu-dark">
@@ -33,8 +32,7 @@
                 <a href="/SignUp">
                   <ion-icon class="iconButton text-info text-gradient" src="assets/icon/signup.svg"></ion-icon>
                 </a>
-                <a href="/SignUp" class="d-none d-sm-inline-block mb-1 text-info text-gradient"
-                  style="text-decoration: none">&nbsp;Add User</a>
+                <a href="/SignUp" class="d-none d-sm-inline-block mb-1 text-info text-gradient" style="text-decoration: none">&nbsp;Add User</a>
               </div>
               <div>&nbsp;</div>
             </ion-row>
@@ -90,20 +88,20 @@
           </ion-item>
           <ion-item fill="outline">
             <ion-label position="floating">NIK</ion-label>
-            <ion-input placeholder="Masukkan NIK" v-model="nik" required></ion-input> </ion-item><ion-item
-            fill="outline">
+            <ion-input placeholder="Masukkan NIK" v-model="nik" required></ion-input> </ion-item
+          ><ion-item fill="outline">
             <ion-label position="floating">NO. KK</ion-label>
-            <ion-input placeholder="Masukkan NO. KK" v-model="no_kk" required></ion-input> </ion-item><ion-item
-            fill="outline">
+            <ion-input placeholder="Masukkan NO. KK" v-model="no_kk" required></ion-input> </ion-item
+          ><ion-item fill="outline">
             <ion-label position="floating">Tingkat Kelas</ion-label>
-            <ion-input placeholder="Masukkan Tingkat Kelas" v-model="tingkat_kelas" required></ion-input>
-          </ion-item><ion-item fill="outline">
+            <ion-input placeholder="Masukkan Tingkat Kelas" v-model="tingkat_kelas" required></ion-input> </ion-item
+          ><ion-item fill="outline">
             <ion-label position="floating">Tanggal Masuk</ion-label>
-            <ion-input placeholder="Masukkan Tanggal Masuk" type="date" v-model="tanggal_masuk" required></ion-input>
-          </ion-item><ion-item fill="outline">
+            <ion-input placeholder="Masukkan Tanggal Masuk" type="date" v-model="tanggal_masuk" required></ion-input> </ion-item
+          ><ion-item fill="outline">
             <ion-label position="floating">Tanggal Lulus</ion-label>
-            <ion-input placeholder="Masukkan Tanggal Lulus" type="date" v-model="tanggal_lulus" required></ion-input>
-          </ion-item><ion-item fill="outline">
+            <ion-input placeholder="Masukkan Tanggal Lulus" type="date" v-model="tanggal_lulus" required></ion-input> </ion-item
+          ><ion-item fill="outline">
             <ion-label position="floating">Nomor Induk (NIPD)</ion-label>
             <ion-input placeholder="Masukkan Nomor Induk (NIPD)" v-model="nomor_induk" required></ion-input>
           </ion-item>
@@ -164,7 +162,9 @@
 </template>
 
 <script lang="ts">
-import { defineComponent } from "vue";
+import { defineComponent, reactive, computed } from "vue";
+import { useVuelidate } from "@vuelidate/core";
+import { required, integer } from "@vuelidate/validators";
 import {
   IonButtons,
   IonContent,
@@ -209,6 +209,112 @@ export default defineComponent({
     IonRadio,
     IonRadioGroup,
   },
+  setup() {
+    const formData = reactive({
+      nama: "",
+      status: "",
+      jenis_kelamin: "",
+      tahun_ajaran: "",
+      nik: "",
+      nisn: "",
+      no_kk: "",
+      tingkat_kelas: "",
+      tanggal_masuk: "",
+      tanggal_lulus: "",
+      nomor_induk: "",
+      tinggi_badan: "",
+      berat_badan: "",
+      lingkar_kepala: "",
+      alergi: "",
+      nama_ayah: "",
+      nama_ibu: "",
+      pekerjaan_ayah: "",
+      pekerjaan_ibu: "",
+      no_telp_ayah: "",
+      no_telp_ibu: "",
+    });
+
+    const rules = computed(() => {
+      return {
+        nama: {
+          required,
+        },
+        status: {
+          required,
+        },
+        jenis_kelamin: {
+          required,
+        },
+        nik: {
+          required,
+          integer,
+        },
+        nisn: {
+          required,
+          integer,
+        },
+        no_kk: {
+          required,
+          integer,
+        },
+        tingkat_kelas: {
+          required,
+        },
+        tahun_ajaran: {
+          required,
+        },
+        tanggal_masuk: {
+          required,
+        },
+        tanggal_lulus: {
+          required,
+        },
+        nomor_induk: {
+          required,
+          integer,
+        },
+        tinggi_badan: {
+          required,
+          integer,
+        },
+        berat_badan: {
+          required,
+          integer,
+        },
+        lingkar_kepala: {
+          required,
+          integer,
+        },
+        alergi: {
+          required,
+        },
+        nama_ayah: {
+          required,
+        },
+        nama_ibu: {
+          required,
+        },
+        pekerjaan_ayah: {
+          required,
+        },
+        pekerjaan_ibu: {
+          required,
+        },
+        no_telp_ayah: {
+          required,
+          integer,
+        },
+        no_telp_ibu: {
+          required,
+          integer,
+        },
+      };
+    });
+
+    const v$ = useVuelidate(rules, formData);
+
+    return { formData, v$ };
+  },
   data() {
     return {
       nama: "",
@@ -232,8 +338,8 @@ export default defineComponent({
       pekerjaan_ibu: "",
       no_telp_ayah: "",
       no_telp_ibu: "",
-      username: localStorage.getItem('username'),
-      is_admin: localStorage.getItem('is_admin')
+      username: localStorage.getItem("username"),
+      is_admin: localStorage.getItem("is_admin"),
     };
   },
   props: ["id"],
@@ -276,18 +382,18 @@ export default defineComponent({
         Authorization: "Bearer " + localStorage.getItem("access_token"),
       };
 
-      axios.delete("http://localhost:5000/API/auth/logout", { headers })
+      axios
+        .delete("http://localhost:5000/API/auth/logout", { headers })
         .then((response) => {
           console.log(response);
-          localStorage.clear()
+          localStorage.clear();
         })
         .catch((error) => {
           let status = error.response.data.msg;
           if (status == "Missing Authorization Header") {
             alert("Anda belum login");
             window.location.href = "/SignIn";
-          }
-          else if (status == "Token has expired") {
+          } else if (status == "Token has expired") {
             alert("Sesi telah berakhir, silahkan login kembali");
             window.location.href = "/SignIn";
           }
@@ -324,19 +430,21 @@ export default defineComponent({
             "Access-Control-Allow-Origin": "*",
             "Access-Control-Allow-Credentials": "true",
             "Content-Type": "application/json",
+            Authorization: "Bearer " + localStorage.getItem("access_token"),
           },
           withCredentials: true,
         })
         .then(function (response) {
           console.log(response);
+          alert("Success");
+          window.location.href = "/pages/PesertaDidik";
         })
         .catch((error) => {
           let status = error.response.data.msg;
           if (status == "Missing Authorization Header") {
             alert("Anda belum login");
             window.location.href = "/SignIn";
-          }
-          else if (status == "Token has expired") {
+          } else if (status == "Token has expired") {
             alert("Sesi telah berakhir, silahkan login kembali");
             window.location.href = "/SignIn";
           }
@@ -386,7 +494,7 @@ a .iconButton {
 /* small laptop dimension */
 
 @media only screen and (max-width: 1280px) {
-  .btn-search:focus~.input-search {
+  .btn-search:focus ~ .input-search {
     width: 250px;
   }
 
@@ -398,7 +506,7 @@ a .iconButton {
 /* tablet dimension */
 
 @media only screen and (max-width: 990px) {
-  .btn-search:focus~.input-search {
+  .btn-search:focus ~ .input-search {
     width: 200px;
   }
 
@@ -424,7 +532,7 @@ a .iconButton {
     right: 34%;
   }
 
-  .btn-search:focus~.input-search {
+  .btn-search:focus ~ .input-search {
     width: 200px;
   }
 
@@ -441,7 +549,7 @@ a .iconButton {
     right: 41%;
   }
 
-  .btn-search:focus~.input-search {
+  .btn-search:focus ~ .input-search {
     width: 180px;
   }
 
@@ -461,7 +569,7 @@ a .iconButton {
     right: 50%;
   }
 
-  .btn-search:focus~.input-search {
+  .btn-search:focus ~ .input-search {
     width: 150px;
   }
 
