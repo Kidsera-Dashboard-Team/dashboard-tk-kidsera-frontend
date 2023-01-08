@@ -420,7 +420,7 @@ export default defineComponent({
     };
 
     axios
-      .get("http://31.187.72.73/API/students/" + this.id, { headers })
+      .get("http://localhost:5000/API/students/" + this.id, { headers })
       .then((response) => {
         this.formData.nama = response.data.nama;
         this.formData.jenis_kelamin = response.data.jenis_kelamin;
@@ -457,21 +457,22 @@ export default defineComponent({
       };
 
       axios
-        .delete("http://31.187.72.73/API/auth/logout", { headers })
+        .delete("http://localhost:5000/API/auth/logout", { headers })
         .then((response) => {
           console.log(response);
           localStorage.clear();
           alert("Anda berhasil keluar");
+          window.location.href = "/SignIn";
         })
         .catch((error) => {
           let status = error.response.data.msg;
           if (status == "Missing Authorization Header") {
             alert("Anda belum login");
-            window.location.href = "/SignIn";
-          } else if (status == "Token has expired") {
-            alert("Sesi telah berakhir, silahkan login kembali");
-            window.location.href = "/SignIn";
           }
+          else if (status == "Token has expired") {
+            alert("Sesi telah berakhir, silahkan login kembali");
+          }
+          window.location.href = "/SignIn";
         });
     },
     async submitForm() {
@@ -506,7 +507,7 @@ export default defineComponent({
         });
         console.log(json);
         await axios
-          .put("http://31.187.72.73/API/students", json, {
+          .put("http://localhost:5000/API/students", json, {
             headers: {
               "Access-Control-Allow-Origin": "*",
               "Access-Control-Allow-Credentials": "true",

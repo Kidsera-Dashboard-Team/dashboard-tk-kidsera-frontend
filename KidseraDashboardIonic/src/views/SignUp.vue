@@ -133,7 +133,7 @@ export default defineComponent({
 
     const submit = () => {
       axios
-        .post("http://31.187.72.73/API/auth/register", JSON.stringify(data), {
+        .post("http://localhost:5000/API/auth/register", JSON.stringify(data), {
           headers: {
             "Access-Control-Allow-Origin": "*",
             "Access-Control-Allow-Credentials": "true",

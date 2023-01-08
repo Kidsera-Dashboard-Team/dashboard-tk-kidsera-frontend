@@ -70,7 +70,7 @@
               </ion-col>
               <ion-col class="text-end my-auto me-5">
                 <a :href="'/pages/rombonganbelajar/' + tahun + '/' + kelas + '/edit'" class="btn btn-success tambah">
-                  Tambah Data</a>
+                  Edit Rombel</a>
               </ion-col>
             </ion-row>
             <ion-card-content class="px-0 pt-0 pb-2"><!-- <div > -->
@@ -147,7 +147,7 @@ export default defineComponent({
   },
   mounted: function () {
     axios
-      .get("http://31.187.72.73/API/rombel/" + this.tahun + "/" + this.kelas)
+      .get("http://localhost:5000/API/rombel/" + this.tahun + "/" + this.kelas)
       .then((response) => {
         this.results = response.data;
         this.results.ruangan = response.data.rombel.ruangan;
@@ -166,21 +166,22 @@ export default defineComponent({
       };
 
       axios
-        .delete("http://31.187.72.73/API/auth/logout", { headers })
+        .delete("http://localhost:5000/API/auth/logout", { headers })
         .then((response) => {
           console.log(response);
           localStorage.clear();
           alert("Anda berhasil keluar");
+          window.location.href = "/SignIn";
         })
         .catch((error) => {
           let status = error.response.data.msg;
           if (status == "Missing Authorization Header") {
             alert("Anda belum login");
-            window.location.href = "/SignIn";
-          } else if (status == "Token has expired") {
-            alert("Sesi telah berakhir, silahkan login kembali");
-            window.location.href = "/SignIn";
           }
+          else if (status == "Token has expired") {
+            alert("Sesi telah berakhir, silahkan login kembali");
+          }
+          window.location.href = "/SignIn";
         });
     },
   },
@@ -328,7 +329,7 @@ td {
 }
 
 .tambah {
-  background: linear-gradient(135deg, #6bff25 0%, #42dd1c 100%);
+  background: #157347;
   border-radius: 8px;
   border: none;
   height: 40px;

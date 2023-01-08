@@ -448,7 +448,7 @@ export default defineComponent({
         });
         console.log(json);
         await axios
-          .post("http://31.187.72.73/API/students", json, {
+          .post("http://localhost:5000/API/students", json, {
             headers: {
               "Access-Control-Allow-Origin": "*",
               "Access-Control-Allow-Credentials": "true",
@@ -481,7 +481,7 @@ export default defineComponent({
       };
 
       axios
-        .delete("http://31.187.72.73/API/student/" + id, { headers })
+        .delete("http://localhost:5000/API/student/" + id, { headers })
         .then((response) => {
           console.log(response);
           window.location.reload();
@@ -504,7 +504,7 @@ export default defineComponent({
       };
 
       axios
-        .delete("http://31.187.72.73/API/auth/logout", { headers })
+        .delete("http://localhost:5000/API/auth/logout", { headers })
         .then((response) => {
           console.log(response);
           localStorage.clear();

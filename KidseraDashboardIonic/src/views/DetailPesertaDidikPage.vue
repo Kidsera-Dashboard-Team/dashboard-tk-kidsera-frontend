@@ -140,7 +140,7 @@ export default defineComponent({
     };
 
     axios
-      .get("http://31.187.72.73/API/students/" + this.id, { headers })
+      .get("http://localhost:5000/API/students/" + this.id, { headers })
       .then((response) => {
         this.results = response.data;
         console.log(response);
@@ -156,7 +156,7 @@ export default defineComponent({
       };
 
       axios
-        .delete("http://31.187.72.73/API/auth/logout", { headers })
+        .delete("http://localhost:5000/API/auth/logout", { headers })
         .then((response) => {
           console.log(response);
           localStorage.clear();

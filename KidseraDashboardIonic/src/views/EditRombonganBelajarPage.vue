@@ -168,7 +168,7 @@ export default defineComponent({
   },
   mounted: function () {
     axios
-      .get("http://31.187.72.73/API/rombel/" + this.tahun + "/" + this.kelas)
+      .get("http://localhost:5000/API/rombel/" + this.tahun + "/" + this.kelas)
       .then((response) => {
         this.formData.tahun_ajaran = response.data.rombel.tahun_ajaran;
         this.formData.ruangan = response.data.rombel.ruangan;
@@ -195,7 +195,7 @@ export default defineComponent({
         });
         console.log(json);
         await axios
-          .put("http://31.187.72.73/API/rombel/" + this.tahun + "/" + this.kelas, json, {
+          .put("http://localhost:5000/API/rombel/" + this.tahun + "/" + this.kelas, json, {
             headers: {
               "Access-Control-Allow-Origin": "*",
               "Access-Control-Allow-Credentials": "true",
@@ -208,7 +208,7 @@ export default defineComponent({
           .then((response) => {
             console.log(response);
             alert("Success");
-            window.location.href = "/pages/RombonganBelajar/"+ this.tahun + "/" + this.kelas;
+            window.location.href = "/pages/RombonganBelajar/" + this.tahun + "/" + this.kelas;
           })
           .catch((error) => {
             console.log(error.response);

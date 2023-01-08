@@ -235,7 +235,7 @@ export default defineComponent({
         });
         console.log(json);
         await axios
-          .post("http://31.187.72.73/API/rapor/" + this.id_siswa, json, {
+          .post("http://localhost:5000/API/rapor/" + this.id_siswa, json, {
             headers: {
               "Access-Control-Allow-Origin": "*",
               "Access-Control-Allow-Credentials": "true",
@@ -258,7 +258,7 @@ export default defineComponent({
         Authorization: "Bearer " + localStorage.getItem("access_token"),
       };
 
-      axios.delete("http://31.187.72.73/API/auth/logout", { headers })
+      axios.delete("http://localhost:5000/API/auth/logout", { headers })
         .then((response) => {
           console.log(response);
           localStorage.clear();

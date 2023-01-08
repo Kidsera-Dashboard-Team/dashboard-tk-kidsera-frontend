@@ -171,7 +171,7 @@ export default defineComponent({
     };
 
     axios
-      .get("http://31.187.72.73/API/students", { headers })
+      .get("http://localhost:5000/API/students", { headers })
       .then((response) => {
         this.results = response.data;
         console.log(response);
@@ -204,21 +204,22 @@ export default defineComponent({
       };
 
       axios
-        .delete("http://31.187.72.73/API/auth/logout", { headers })
+        .delete("http://localhost:5000/API/auth/logout", { headers })
         .then((response) => {
           console.log(response);
           localStorage.clear();
           alert("Anda berhasil keluar");
+          window.location.href = "/SignIn";
         })
         .catch((error) => {
           let status = error.response.data.msg;
           if (status == "Missing Authorization Header") {
             alert("Anda belum login");
-            window.location.href = "/SignIn";
-          } else if (status == "Token has expired") {
-            alert("Sesi telah berakhir, silahkan login kembali");
-            window.location.href = "/SignIn";
           }
+          else if (status == "Token has expired") {
+            alert("Sesi telah berakhir, silahkan login kembali");
+          }
+          window.location.href = "/SignIn";
         });
     },
     delPesertaDidik(id) {
@@ -227,7 +228,7 @@ export default defineComponent({
       };
 
       axios
-        .delete("http://31.187.72.73/API/students/" + id, { headers })
+        .delete("http://localhost:5000/API/students/" + id, { headers })
         .then((response) => {
           console.log(response);
           window.location.reload();

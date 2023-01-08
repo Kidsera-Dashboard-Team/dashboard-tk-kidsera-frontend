@@ -50,7 +50,6 @@
           <ion-item fill="outline">
             <ion-label position="floating">Tahun Ajaran</ion-label>
             <ion-input v-model="formData.tahun_ajaran" placeholder="Masukkan Tahun Ajaran" required></ion-input>
-            <ion-input v-model="formData.tahun_ajaran" placeholder="Masukkan Tahun Ajaran" required></ion-input>
             <ion-note color="danger" v-for="error in v$.tahun_ajaran.$errors" :key="error.$uid">
               {{ error.$message }}
             </ion-note>
