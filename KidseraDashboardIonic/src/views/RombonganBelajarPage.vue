@@ -13,7 +13,7 @@
                 <ion-breadcrumb style="font-size: 1em;" href="/pages/RombonganBelajar">Rombongan
                   Belajar</ion-breadcrumb>
               </ion-breadcrumbs>
-              <h5 style="margin-left: 11px;">Rombongan Belajar</h5>
+              <h5 style="margin-left: 11px">Rombongan Belajar</h5>
             </ion-title>
           </ion-col>
           <ion-col size-sm="6" size="10">
@@ -69,8 +69,10 @@
                 <div class="container" style="flex-wrap: wrap; display: flex">
                   <div @click="
                       () =>
-                        router.push('/pages/RombonganBelajar/' + result.slug)
-                    " class="card-content" style="
+                        router.push('/pages/RombonganBelajar/' + year(result))
+                    "
+                    class="card-content"
+                    style="
                       width: 25%;
                       padding: 0;
                       flex-wrap: wrap;
@@ -80,7 +82,7 @@
                       <ion-card-header class="ion-margin text-center">
                         <ion-card-title>
                           <p>Tahun Ajaran</p>
-                          <p>2022/2023</p>
+                          <p>{{ result }}</p>
                         </ion-card-title>
                       </ion-card-header>
                     </ion-card>
@@ -92,6 +94,7 @@
         </ion-row>
       </ion-grid>
     </ion-content>
+    {{ results }}
   </ion-page>
 </template>
 
@@ -130,6 +133,11 @@ export default defineComponent({
       username: localStorage.getItem('username'),
       is_admin: localStorage.getItem('is_admin')
     };
+  },
+  methods: {
+    year(e) {
+      return (e.split("/")).join("-");
+    },
   },
   mounted: function () {
     axios

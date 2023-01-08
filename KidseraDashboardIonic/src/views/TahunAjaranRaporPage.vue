@@ -1,9 +1,83 @@
 <template>
-    <ion-page>
-        <ion-toolbar>
-            <ion-buttons slot="start">
-                <ion-menu-button color="primary"></ion-menu-button>
-            </ion-buttons>
+  <ion-page>
+    <ion-toolbar>
+      <ion-buttons slot="start">
+        <ion-menu-button color="primary"></ion-menu-button>
+      </ion-buttons>
+      <ion-grid>
+        <ion-row class="ion-justify-content-between">
+          <ion-col size="3" size-xl="6">
+            <ion-title class="d-none d-lg-inline-block" size="small"
+              ><span style="opacity: 50%">Pages</span> / E - Rapor <br />
+              <span style="font-size: 18px; letter-spacing: 2.5px"
+                >E - Rapor</span
+              >
+            </ion-title>
+          </ion-col>
+          <ion-col size-sm="9" size="10" size-xl="6">
+            <ion-row
+              class="ion-align-items-center ion-justify-content-end goright mt-2"
+              style="margin-right: 20px"
+            >
+              <div
+                class="btn-group dropstart mb-1 ms-2"
+                style="content: inherit"
+              >
+                <button
+                  class="btn dropdown-toggle text-info text-gradient"
+                  type="button"
+                  data-bs-toggle="dropdown"
+                  aria-expanded="true"
+                  style="background-color: transparent"
+                >
+                  Hi User 13141
+                </button>
+                <ul class="dropdown-menu dropdown-menu-dark">
+                  <li>
+                    <a
+                      class="dropdown-item"
+                      href="javascript: doSomethingLogout()"
+                      >Logout</a
+                    >
+                  </li>
+                </ul>
+              </div>
+              <div class="nav-icon">
+                <a href="/SignUp">
+                  <ion-icon
+                    class="iconButton text-info text-gradient"
+                    src="assets/icon/signup.svg"
+                  ></ion-icon>
+                </a>
+              </div>
+              <a
+                href="/SignUp"
+                class="d-none d-sm-inline-block mb-1 text-info text-gradient"
+                style="text-decoration: none"
+                >&nbsp;Add User</a
+              >
+              <div>&nbsp;</div>
+            </ion-row>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-toolbar>
+
+    <ion-content :fullscreen="true">
+      <ion-card class="rounded card-content w-100">
+        <ion-card-header class="ion-text-justify">
+          <ion-row class="ion-justify-content-between">
+            <ion-col size-xl="6" size-md="6" size-xs="12">
+              <ion-card-title>
+                <h4 class="text-dalem">Rombongan Belajar</h4>
+                {{}}
+              </ion-card-title>
+            </ion-col>
+          </ion-row>
+        </ion-card-header>
+
+        <ion-card-content>
+          <ion-grid>
             <ion-grid>
                 <ion-row class="ion-justify-content-between ion-align-items-center">
                     <ion-col size="6">
@@ -64,7 +138,8 @@
                             <div class="ion-justify-content-evenly container" style="flex-wrap: wrap; display: flex;">
                                 <div onclick="window.location='/pages/Rapor/TahunAjaranRapor/PesertaDidikRapor';"
                                     class="card-content">
-                                    <ion-card class="card-content-judul">
+                                    <ion-card class="card-content-judul"                     @click="() => router.push('/pages/Rapor/' + tahun + '/A')"
+>
                                         <ion-card-content class="ion-margin text-center" style="margin: 70px;">
                                             <ion-card-title>
                                                 <p>TK A</p>
@@ -73,7 +148,8 @@
                                     </ion-card>
                                 </div>
                                 <div class="card-content">
-                                    <ion-card class="card-content-judul">
+                                    <ion-card class="card-content-judul"                     @click="() => router.push('/pages/Rapor/' + tahun + '/B')"
+>
                                         <ion-card-content class="ion-margin text-center" style="margin: 70px;">
                                             <a href="" class="text-decoration-none"><ion-card-title>
                                                     <p>TK B</p>
@@ -100,6 +176,7 @@
 </template>
 
 <script lang="ts">
+import { useRouter } from "vue-router";
 import { defineComponent } from 'vue';
 import { IonButtons, IonContent, IonMenuButton, IonPage, IonTitle, IonToolbar, IonCol, IonGrid, IonRow } from '@ionic/vue';
 import axios from "axios";
@@ -117,6 +194,15 @@ export default defineComponent({
         IonGrid,
         IonRow
     },
+     props: ["tahun"],
+  setup() {
+    const router = useRouter();
+
+    return {
+      router,
+    };
+  },
+  
     data() {
         return {
             username: localStorage.getItem('username'),
@@ -146,78 +232,78 @@ export default defineComponent({
 /* template style */
 
 ion-col {
-    padding: 0;
+  padding: 0;
 }
 
 /* Icon navbar style */
 
 a .iconButton {
-    color: #67748E;
-    text-decoration: none;
-    margin-left: 20px;
-    font-size: 20px;
+  color: #67748e;
+  text-decoration: none;
+  margin-left: 20px;
+  font-size: 20px;
 }
 
 .text-dalem {
-    color: black;
+  color: black;
 }
 
 .text-info {
-    color: #17c1e8 !important;
+  color: #17c1e8 !important;
 }
 
 .text-gradient {
-    background-clip: text;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    position: relative;
-    z-index: 1;
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  position: relative;
+  z-index: 1;
 }
 
 .text-gradient.text-info {
-    background-image: linear-gradient(310deg, #2152FF, #21D4FD);
+  background-image: linear-gradient(310deg, #2152ff, #21d4fd);
 }
 
 .text-gradient.text-dark {
-    background-image: linear-gradient(310deg, #141727, #3A416F);
+  background-image: linear-gradient(310deg, #141727, #3a416f);
 }
 
 /* content style */
 
 [data-href] {
-    cursor: pointer;
+  cursor: pointer;
 }
 
 thead th {
-    padding: 0.75rem 1rem;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    border-bottom: 1px solid lighten(black, 35%);
+  padding: 0.75rem 1rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  border-bottom: 1px solid lighten(black, 35%);
 }
 
 th {
-    font-weight: bold;
+  font-weight: bold;
 }
 
 td,
 th {
-    white-space: nowrap;
+  white-space: nowrap;
 }
 
 .card-content-judul {
-    background-color: #F4F0F0;
-    border: 1px solid rgba(0, 0, 0, 0.25);
-    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-    border-radius: 10px;
-    font-weight: bold;
-    color: black;
+  background-color: #f4f0f0;
+  border: 1px solid rgba(0, 0, 0, 0.25);
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 10px;
+  font-weight: bold;
+  color: black;
 }
 
 .card-content-judul:hover {
-    background: #a39797;
-    transition: 0.5s ease-in;
-    cursor: pointer;
-    color: white;
+  background: #a39797;
+  transition: 0.5s ease-in;
+  cursor: pointer;
+  color: white;
 }
 
 ion-card-title {
@@ -231,36 +317,38 @@ ion-card-title {
 /* Laptop Large Above dimension */
 
 @media only screen and (min-width: 1280px) {
-    .card-content {
-        width: 50%;
-    }
+  .card-content {
+    width: 50%;
+  }
 }
 
 /* tablet dimension */
 
-@media only screen and (min-width: 990px) {}
+@media only screen and (min-width: 990px) {
+}
 
 /* large phone dimension */
 
 @media only screen and (max-width: 575px) {
-    .goright {
-        position: relative;
-        left: 60px
-    }
-
+  .goright {
+    position: relative;
+    left: 60px;
+  }
 }
 
 /* large phone dimension */
 
 @media only screen and (max-width: 426px) {
-    .card-content {
-        width: 100%;
-    }
+  .card-content {
+    width: 100%;
+  }
 }
 
 /* small phone dimension */
 
-@media only screen and (max-width: 376px) {}
+@media only screen and (max-width: 376px) {
+}
 
-@media only screen and (max-width: 320px) {}
+@media only screen and (max-width: 320px) {
+}
 </style>

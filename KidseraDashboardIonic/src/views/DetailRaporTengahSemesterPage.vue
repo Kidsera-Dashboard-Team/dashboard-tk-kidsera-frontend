@@ -38,57 +38,44 @@
     </ion-toolbar>
 
     <ion-content :fullscreen="true">
-      <ion-card class="rounded card-content mt-3 mx-4">
-        <ion-card-header class="ion-text-justify">
-          <ion-row class="ion-justify-content-between">
-            <ion-col size-xl="6" size-md="6" size-xs="12">
-              <ion-card-title>
-                <h4 class="text-dalem">Input E-Rapor Peserta Didik ...</h4>
-              </ion-card-title>
-            </ion-col>
-          </ion-row>
-        </ion-card-header>
-
+      <ion-card>
         <ion-card-content>
-          <!-- <ion-searchbar show-cancel-button="focus" placeholder="Show on Focus"></ion-searchbar> -->
-          <div class="table-responsive">
-            <table class="table table-borderless table-hover display" id="table-rapor">
-              <thead>
-                <tr>
-                  <th scope="col" class="text-center text-secondary opacity-7">Nama</th>
-                  <th scope="col" class="text-center text-secondary opacity-7">Jenis Kelamin</th>
-                  <th scope="col" class="text-center text-secondary opacity-7">NISN</th>
-                  <th scope="col" class="text-center text-secondary opacity-7">Aksi</th>
-                </tr>
-              </thead>
-              <tbody v-for="result in results.list_siswa" :key="result._id">
-                <tr>
-                  <td class="text-center">{{ result.nama }}</td>
-                  <td class="text-center">{{ result.jenis_kelamin }}</td>
-                  <td class="text-center">{{ result.nisn }}</td>
-                  <td class="text-center">
-                    <button
-                      type="button"
-                      class="btn btn-warning btn-sm text-uppercase text-white fw-bold p-2"
-                      v-on:click="router.push('/pages/Rapor/' + tahun + '/' + kelas + '/' + result._id.$oid)"
-                    >
-                      Input
-                    </button>
-                  </td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
+          <!-- Aspek Perkembangan dan Pencapaiannya -->
+          <ion-card-title class="text-dark mt-3">Aspek Perkembangan dan Pencapaiannya</ion-card-title>
+          <ol class="list-group">
+            <li class="list-group-item d-flex justify-content-between align-items-start">
+              <div class="ms-2 me-auto">
+                <ol class="list-group">
+                  <li class="list-group-item">
+                    Moral dan nilai-nilai Agama<br />
+                    <ion-textarea class="custom-textarea" placeholder="Type something here" v-model="text1" readonly></ion-textarea>
+                  </li>
+                  <li class="list-group-item">
+                    Motorik Kasar dan Motorik Halus<br />
+                    <ion-textarea class="custom-textarea" placeholder="Type something here" v-model="text2" readonly></ion-textarea>
+                  </li>
+                  <li class="list-group-item">
+                    Bahasa<br />
+                    <ion-textarea class="custom-textarea" placeholder="Type something here" v-model="text3" readonly></ion-textarea>
+                  </li>
+                  <li class="list-group-item">
+                    Kognitif<br />
+                    <ion-textarea class="custom-textarea" placeholder="Type something here" v-model="text4" readonly></ion-textarea>
+                  </li>
+                  <li class="list-group-item">
+                    Sosial-emosional<br />
+                    <ion-textarea class="custom-textarea" placeholder="Type something here" v-model="text5" readonly></ion-textarea>
+                  </li>
+                  <li class="list-group-item">
+                    Seni<br />
+                    <ion-textarea class="custom-textarea" placeholder="Type something here" v-model="text6" readonly></ion-textarea>
+                  </li>
+                </ol>
+              </div>
+              <!-- <span class="badge bg-primary rounded-pill">14</span> -->
+            </li>
+          </ol>
 
-          <!-- <nav aria-label="Page navigation example">    
-                        <ul class="pagination">
-                            <li class="page-item"><a class="page-link" href="#">Previous</a></li>
-                            <li class="page-item"><a class="page-link" href="/pages/Sarpras/DetailSarpras">1</a></li>
-                            <li class="page-item"><a class="page-link" href="#">2</a></li>
-                            <li class="page-item"><a class="page-link" href="#">3</a></li>
-                            <li class="page-item"><a class="page-link" href="#">Next</a></li>
-                        </ul>
-                    </nav> -->
         </ion-card-content>
       </ion-card>
     </ion-content>
@@ -96,71 +83,74 @@
 </template>
 
 <script lang="ts">
-import { useRouter } from "vue-router";
+import { defineComponent, reactive, computed } from "vue";
+import { useVuelidate } from "@vuelidate/core";
 import axios from "axios";
-import { defineComponent } from "vue";
+import { required, integer } from "@vuelidate/validators";
 import {
-    IonButtons, IonContent, IonMenuButton, IonPage, IonTitle, IonToolbar, IonCol, IonGrid, IonRow,
-    // IonSearchbar
-} from '@ionic/vue';
-import axios from "axios";
+  IonButtons,
+  IonContent,
+  IonMenuButton,
+  IonPage,
+  IonTitle,
+  IonToolbar,
+  IonCol,
+  IonGrid,
+  IonRow,
+  IonCard,
+  IonCardContent,
+  IonCardTitle,
+  IonTextarea,
+  // IonSearchbar
+} from "@ionic/vue";
 
 export default defineComponent({
-    name: 'PesertaDidikPage',
-    components: {
-        IonButtons,
-        IonContent,
-        IonMenuButton,
-        IonPage,
-        IonTitle,
-        IonToolbar,
-        IonCol,
-        IonGrid,
-        IonRow,
-        // IonSearchbar
-    },
-     setup() {
-    const router = useRouter();
-
+  name: "PesertaDidikPage",
+  components: {
+    IonButtons,
+    IonContent,
+    IonMenuButton,
+    IonPage,
+    IonTitle,
+    IonToolbar,
+    IonCol,
+    IonGrid,
+    IonRow,
+    IonCard,
+    IonCardContent,
+    IonCardTitle,
+    IonTextarea,
+    // IonSearchbar
+  },
+  props: ["tahun", "kelas", "id_siswa", "semester"],
+  data() {
     return {
-      router,
+      results: [],
+      text1: "",
+      text2: "",
+      text3: "",
+      text4: "",
+      text5: "",
+      text6: "",
     };
   },
-    props: ["tahun", "kelas"],
-    data() {
-        return {
-            username: localStorage.getItem('username'),
-            is_admin: localStorage.getItem('is_admin')
-        };
-    },
-     mounted: function () {
+  mounted: function () {
     axios
-      .get("http://localhost:5000/API/rombel/" + this.tahun + "/" + this.kelas)
+      .get("http://localhost:5000/API/rapor/detail/" + this.id_siswa + "/tengah_semester/" + this.semester)
       .then((response) => {
-        this.results = response.data;
-        console.log(response);
+        this.results = response.data.rapor[0].nilai;
+        this.text1 = this.results[0][0].text1;
+        this.text2 = this.results[0][0].text2;
+        this.text3 = this.results[0][0].text3;
+        this.text4 = this.results[0][0].text4;
+        this.text5 = this.results[0][0].text5;
+        this.text6 = this.results[0][0].text6;
+        console.log(response.data.rapor[0].nilai);
       })
       .catch(function (error) {
         console.error(error.response.data);
       });
   },
-    methods: {
-        del() {
-            let headers = {
-                Authorization: "Bearer " + localStorage.getItem("access_token"),
-            };
-
-            axios.delete("http://localhost:5000/API/auth/logout", { headers })
-                .then((response) => {
-                    console.log(response);
-                    localStorage.clear()
-                })
-                .catch(error => {
-                    console.log(error.response.data);
-                });
-        },
-    },
->>>>>>> 953870ed8913b64d46c03a33e6da209eac1ed47b
 });
 </script>
 
@@ -169,6 +159,16 @@ export default defineComponent({
 
 ion-col {
   padding: 0;
+}
+
+/* Textarea style */
+ion-textarea.custom-textarea {
+  --background: #373737;
+  --color: #fff;
+  --padding-end: 10px;
+  --padding-start: 10px;
+  --placeholder-color: #ddd;
+  --placeholder-opacity: 0.8;
 }
 
 /* Icon navbar style */
@@ -265,63 +265,18 @@ a .iconButton {
 }
 
 /* content style */
-.text-dalem {
-  color: black;
-}
 
 [data-href] {
   cursor: pointer;
 }
 
-/* .table {
-    border-collapse: inherit;
-} */
-
-thead th {
-  padding: 0.75rem 1rem;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  border-bottom: 1px solid lighten(black, 35%);
+.noted {
+  font-size: 12px;
 }
 
-th {
-  font-weight: bold;
-}
-
-td,
-th {
-  white-space: nowrap;
-}
-
-.tables > :not(:last-child) > :last-child > * {
-  border-bottom-color: black;
-}
-
-td {
-  width: 100px;
-}
-
-.tambah {
-  background: linear-gradient(135deg, #3a416f 0%, #141727 100%);
-  border-radius: 8px;
-  border: none;
-  font-weight: bold;
-}
-
-.slide-custom-body {
-  margin-top: 20px;
-}
-
-.slide-custom {
-  width: 90%;
-  margin: auto;
-  border-radius: 18px;
-}
-
-.slide-custom img {
-  width: 90%;
-  max-height: 300px;
-  object-fit: cover;
+.noted ul li {
+  list-style-type: none;
+  list-style: none;
 }
 
 /* small laptop dimension */

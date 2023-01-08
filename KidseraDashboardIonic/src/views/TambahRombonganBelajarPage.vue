@@ -48,49 +48,112 @@
         </ion-toolbar>
 
         <ion-content :fullscreen="true">
-            <ion-card class="mt-4 p-3 rounded text-center card-form">
-                <ion-card-header>
-                    <ion-card-title>
-                        <h4>Tambah Rombongan Belajar</h4>
-                    </ion-card-title>
-                </ion-card-header>
-                <ion-card-content class="d-grid gap-3">
-                    <ion-item fill="outline">
-                        <ion-label position="floating">Tahun Ajaran</ion-label>
-                        <ion-input placeholder="Masukkan Tahun Ajaran" required></ion-input>
-                    </ion-item>
-                    <ion-item fill="outline">
-                        <ion-label position="floating">Wali Kelas</ion-label>
-                        <ion-input placeholder="Masukkan Wali Kelas" required></ion-input>
-                    </ion-item>
-                    <ion-item fill="outline">
-                        <ion-label position="floating">Ruang Kelas</ion-label>
-                        <ion-input placeholder="Masukkan Ruang Kelas" required></ion-input>
-                    </ion-item>
-                    <ion-item fill="outline">
-                        <ion-label position="floating">Nama Rombongan Belajar</ion-label>
-                        <ion-input placeholder="Masukkan Nama Rombongan Belajar" required></ion-input>
-                    </ion-item>
-                    <div>
-                        <ion-row class="ion-justify-content-center row-button">
-                            <ion-col size="6" size-sm="2">
-                                <a class="btn btn-danger" href="/pages/RombonganBelajar" role="button">Batalkan</a>
-                            </ion-col>
-                            <ion-col size="6" size-sm="2">
-                                <a class="btn btn-success" role="button"
-                                    href="javascript: doSomethingForAddRombonganBelajar()">Tambah</a>
-                            </ion-col>
-                        </ion-row>
-                    </div>
-                </ion-card-content>
-            </ion-card>
-        </ion-content>
+      <ion-card class="mt-4 p-3 rounded text-center card-form">
+        <ion-card-header>
+          <ion-card-title>
+            <h4>Tambah Rombongan Belajar</h4>
+          </ion-card-title>
+        </ion-card-header>
+        <ion-card-content class="d-grid gap-3">
+          <ion-item fill="outline">
+            <ion-label position="floating">Tahun Ajaran</ion-label>
+            <ion-input type="date"
+              v-model="formData.tahun_ajaran"
+              placeholder="Masukkan Tahun Ajaran"
+              required
+            ></ion-input>
+             <ion-note
+              color="danger"
+              v-for="error in v$.tahun_ajaran.$errors"
+              :key="error.$uid"
+            >
+              {{ error.$message }}
+            </ion-note>
+          </ion-item>
+          <ion-item fill="outline">
+            <ion-label position="floating">Ruang Kelas</ion-label>
+            <ion-input
+              v-model="formData.ruangan"
+              placeholder="Masukkan Ruang Kelas"
+              required
+            ></ion-input>
+            <ion-note
+              color="danger"
+              v-for="error in v$.ruangan.$errors"
+              :key="error.$uid"
+            >
+              {{ error.$message }}
+            </ion-note>
+          </ion-item>
+          <ion-item fill="outline">
+            <ion-label position="floating">Kelas</ion-label>
+            <ion-input
+              v-model="formData.kelas"
+              placeholder="Masukkan Nama Rombongan Belajar"
+              required
+            ></ion-input>
+            <ion-note
+              color="danger"
+              v-for="error in v$.kelas.$errors"
+              :key="error.$uid"
+            >
+              {{ error.$message }}
+            </ion-note>
+          </ion-item>
+          <div>
+            <ion-row class="ion-justify-content-center row-button">
+              <ion-col size="6" size-sm="2">
+                <a
+                  class="btn btn-danger"
+                  href="/pages/RombonganBelajar"
+                  role="button"
+                  >Batalkan</a
+                >
+              </ion-col>
+              <ion-col size="6" size-sm="2">
+                <a
+                  class="btn btn-success"
+                  role="button"
+                  @click="submitForm()"
+                  >Tambah</a
+                >
+              </ion-col>
+            </ion-row>
+          </div>
+        </ion-card-content>
+      </ion-card>
+    </ion-content>
     </ion-page>
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue';
+import { defineComponent, reactive, computed } from "vue";
+import axios from "axios";
+import { useVuelidate } from "@vuelidate/core";
+import { required } from "@vuelidate/validators";
 import {
+  IonButtons,
+  IonContent,
+  IonMenuButton,
+  IonPage,
+  IonTitle,
+  IonToolbar,
+  IonCol,
+  IonGrid,
+  IonRow,
+  IonCard,
+  IonCardContent,
+  IonCardHeader,
+  IonCardTitle,
+  IonInput,
+  IonItem,
+  IonLabel,
+  // IonDatetime, IonDatetimeButton, IonModal
+} from "@ionic/vue";
+
+export default defineComponent({
+  name: "DashboardPage",
+  components: {
     IonButtons,
     IonContent,
     IonMenuButton,
@@ -136,6 +199,31 @@ export default defineComponent({
             is_admin: localStorage.getItem('is_admin')
         };
     },
+    setup() {
+    const formData = reactive({
+      tahun_ajaran: "",
+      ruangan: "",
+      kelas: "",
+    });
+
+    const rules = computed(() => {
+      return {
+        tahun_ajaran: {
+          required,
+        },
+        ruangan: {
+          required,
+        },
+        kelas: {
+          required,
+        },
+      };
+    });
+
+    const v$ = useVuelidate(rules, formData);
+
+    return { formData, v$ };
+  },
     methods: {
         del() {
             let headers = {
@@ -152,6 +240,36 @@ export default defineComponent({
                 });
         },
     },
+     async submitForm() {
+      const result = await this.v$.$validate();
+      console.log(this.v$.tahun_ajaran.$errors[0].$message = "has been taken");
+      if (!result) {
+        console.log(result);
+        alert("not success");
+      } else {
+        const json = JSON.stringify({
+          tahun_ajaran: this.formData.tahun_ajaran,
+          ruangan: this.formData.ruangan,
+          kelas: this.formData.kelas,
+        });
+        console.log(json);
+        await axios
+          .post("http://localhost:5000/API/rombel", json, {
+            headers: {
+              "Access-Control-Allow-Origin": "*",
+              "Access-Control-Allow-Credentials": "true",
+              "Content-Type": "application/json",
+            },
+            withCredentials: true,
+          })
+          .then((response) => {
+            console.log(response);
+          })
+          .catch((error) => {
+            console.log(error.response);
+          });
+      }
+    },
 });
 </script>
 
@@ -159,235 +277,235 @@ export default defineComponent({
 /* template style */
 
 ion-col {
-    padding: 0;
+  padding: 0;
 }
 
 /* Icon navbar style */
 
 a .iconButton {
-    color: #67748E;
-    text-decoration: none;
-    /* margin-left: 20px; */
-    margin-right: -13px;
-    font-size: 20px;
+  color: #67748e;
+  text-decoration: none;
+  /* margin-left: 20px; */
+  margin-right: -13px;
+  font-size: 20px;
 }
 
 /* Searchbar Style */
 
 .search-box {
-    width: fit-content;
-    height: fit-content;
-    position: relative;
-    color: black;
+  width: fit-content;
+  height: fit-content;
+  position: relative;
+  color: black;
 }
 
 .input-search {
-    height: 40px;
-    width: 50px;
-    border-style: none;
-    padding: 10px;
-    font-size: 18px;
-    letter-spacing: 2px;
-    outline: none;
-    border-radius: 25px;
-    transition: all .5s ease-in-out;
-    background-color: transparent;
-    padding-right: 40px;
-    color: black;
+  height: 40px;
+  width: 50px;
+  border-style: none;
+  padding: 10px;
+  font-size: 18px;
+  letter-spacing: 2px;
+  outline: none;
+  border-radius: 25px;
+  transition: all 0.5s ease-in-out;
+  background-color: transparent;
+  padding-right: 40px;
+  color: black;
 }
 
 .input-search::placeholder {
-    color: rgba(0, 0, 0, 0.5);
-    font-size: 18px;
-    letter-spacing: 2px;
-    font-weight: 100;
+  color: rgba(0, 0, 0, 0.5);
+  font-size: 18px;
+  letter-spacing: 2px;
+  font-weight: 100;
 }
 
 .btn-search {
-    width: 40px;
-    height: 40px;
-    border-style: none;
-    font-size: 20px;
-    font-weight: bold;
-    outline: none;
-    cursor: pointer;
-    border-radius: 50%;
-    position: absolute;
-    right: 0px;
-    color: black;
-    background-color: transparent;
-    pointer-events: painted;
-    top: -1.5px;
+  width: 40px;
+  height: 40px;
+  border-style: none;
+  font-size: 20px;
+  font-weight: bold;
+  outline: none;
+  cursor: pointer;
+  border-radius: 50%;
+  position: absolute;
+  right: 0px;
+  color: black;
+  background-color: transparent;
+  pointer-events: painted;
+  top: -1.5px;
 }
 
-.btn-search:focus~.input-search {
-    width: 230px;
-    border-radius: 10px;
-    background-color: white;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.5);
-    transition: all 500ms cubic-bezier(0, 0.110, 0.35, 2);
+.btn-search:focus ~ .input-search {
+  width: 230px;
+  border-radius: 10px;
+  background-color: white;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.5);
+  transition: all 500ms cubic-bezier(0, 0.11, 0.35, 2);
 }
 
 .input-search:focus {
-    width: 230px;
-    border-radius: 0px;
-    background-color: transparent;
-    border-bottom: 1px solid rgba(255, 255, 255, .5);
-    transition: all 500ms cubic-bezier(0, 0.110, 0.35, 2);
+  width: 230px;
+  border-radius: 0px;
+  background-color: transparent;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.5);
+  transition: all 500ms cubic-bezier(0, 0.11, 0.35, 2);
 }
 
 .text-info {
-    color: #17c1e8 !important;
+  color: #17c1e8 !important;
 }
 
 .text-gradient {
-    background-clip: text;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    position: relative;
-    z-index: 1;
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  position: relative;
+  z-index: 1;
 }
 
 .text-gradient.text-info {
-    background-image: linear-gradient(310deg, #2152FF, #21D4FD);
+  background-image: linear-gradient(310deg, #2152ff, #21d4fd);
 }
 
 .text-gradient.text-dark {
-    background-image: linear-gradient(310deg, #141727, #3A416F);
+  background-image: linear-gradient(310deg, #141727, #3a416f);
 }
 
 /* small laptop dimension */
 
 @media only screen and (max-width: 1280px) {
-    .btn-search:focus~.input-search {
-        width: 250px;
-    }
+  .btn-search:focus ~ .input-search {
+    width: 250px;
+  }
 
-    .input-search:focus {
-        width: 250px;
-    }
+  .input-search:focus {
+    width: 250px;
+  }
 }
 
 /* tablet dimension */
 
 @media only screen and (max-width: 990px) {
-    .btn-search:focus~.input-search {
-        width: 200px;
-    }
+  .btn-search:focus ~ .input-search {
+    width: 200px;
+  }
 
-    .input-search:focus {
-        width: 200px;
-    }
+  .input-search:focus {
+    width: 200px;
+  }
 }
 
 /* large phone dimension */
 
 @media only screen and (max-width: 575px) {
-    .goright {
-        position: relative;
-        left: 60px
-    }
+  .goright {
+    position: relative;
+    left: 60px;
+  }
 }
 
 /* large phone dimension */
 
 @media only screen and (max-width: 426px) {
-    .search-box {
-        position: absolute;
-        right: 34%;
-    }
+  .search-box {
+    position: absolute;
+    right: 34%;
+  }
 
-    .btn-search:focus~.input-search {
-        width: 200px;
-    }
+  .btn-search:focus ~ .input-search {
+    width: 200px;
+  }
 
-    .input-search:focus {
-        width: 200px;
-    }
+  .input-search:focus {
+    width: 200px;
+  }
 }
 
 /* small phone dimension */
 
 @media only screen and (max-width: 376px) {
-    .search-box {
-        position: absolute;
-        right: 41%;
-    }
+  .search-box {
+    position: absolute;
+    right: 41%;
+  }
 
-    .btn-search:focus~.input-search {
-        width: 180px;
-    }
+  .btn-search:focus ~ .input-search {
+    width: 180px;
+  }
 
-    .input-search:focus {
-        width: 180px;
-    }
+  .input-search:focus {
+    width: 180px;
+  }
 
-    .btn {
-        width: 100px;
-        margin: 0;
-    }
+  .btn {
+    width: 100px;
+    margin: 0;
+  }
 }
 
 @media only screen and (max-width: 320px) {
-    .search-box {
-        position: absolute;
-        right: 50%;
-    }
+  .search-box {
+    position: absolute;
+    right: 50%;
+  }
 
-    .btn-search:focus~.input-search {
-        width: 150px;
-    }
+  .btn-search:focus ~ .input-search {
+    width: 150px;
+  }
 
-    .input-search:focus {
-        width: 150px;
-    }
+  .input-search:focus {
+    width: 150px;
+  }
 
-    .card-form {
-        width: 90%;
-        margin: auto;
-    }
+  .card-form {
+    width: 90%;
+    margin: auto;
+  }
 }
 
 /* content card style */
 
 ion-checkbox {
-    --size: 32px;
-    --background-checked: #6815ec;
+  --size: 32px;
+  --background-checked: #6815ec;
 }
 
 ion-checkbox::part(container) {
-    border-radius: 6px;
-    border: 2px solid #6815ec;
+  border-radius: 6px;
+  border: 2px solid #6815ec;
 }
 
 ion-searchbar {
-    --border-radius: 12px;
-    width: 40%;
+  --border-radius: 12px;
+  width: 40%;
 }
 
 a {
-    color: white;
-    text-decoration: none;
-    margin-left: 20px;
+  color: white;
+  text-decoration: none;
+  margin-left: 20px;
 }
 
 ion-icon {
-    color: black;
+  color: black;
 }
 
 ion-card-title,
 ion-card-subtitle {
-    color: black;
-    font-size: 13px;
+  color: black;
+  font-size: 13px;
 }
 
 @media only screen and (max-width: 320px) {
-    ion-checkbox {
-        --size: 15px;
-    }
+  ion-checkbox {
+    --size: 15px;
+  }
 
-    .checkbox-custom ion-item {
-        font-size: 20px !important;
-    }
+  .checkbox-custom ion-item {
+    font-size: 20px !important;
+  }
 }
 </style>

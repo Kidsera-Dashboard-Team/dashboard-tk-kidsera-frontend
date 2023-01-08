@@ -58,22 +58,25 @@
                                 <ion-row>
                                     <ion-col size="4" class="ms-3">
                                         <ul>
-                                            <li>Wali Kelas :</li>
-                                            <li>Jumlah Anak :</li>
-                                            <li>Ruang Kelas &nbsp;:</li>
+                                            <li>Tahun Ajaran :</li>
+                      <li>Wali Kelas :</li>
+                      <li>Jumlah Anak :</li>
+                      <li>Ruang Kelas &nbsp;:</li>
                                         </ul>
                                     </ion-col>
                                     <ion-col size="3">
                                         <ul>
-                                            <li>Jenny Doe</li>
-                                            <li>18</li>
-                                            <li>A0001</li>
+                                             <li>{{ results.tahun_ajaran }}</li>
+                      <li>{{ results.wali }}</li>
+                      <li>{{ results.countsiswa }}</li>
+                      <li>{{ results.ruangan }}</li>
                                         </ul>
                                     </ion-col>
                                 </ion-row>
                             </ion-col>
-                            <ion-col class="text-end my-auto me-5"><!-- <div class="col text-end my-auto me-5"> -->
-                                <!-- <a href="/pages/TambahPesertaDidik" class="btn btn-success tambah"> Tambah Data</a> -->
+                            <ion-col class="text-end my-auto me-5">
+                            <div class="col text-end my-auto me-5">
+                                <a :href="'/pages/rombonganbelajar/' + tahun +'/'+ kelas+'/edit'" class="btn btn-success tambah"> Tambah Data</a>
                             </ion-col>
                         </ion-row>
                         <ion-card-content class="px-0 pt-0 pb-2"><!-- <div > -->
@@ -95,7 +98,7 @@
                                                 Jenis Kelamin</th>
                                         </tr>
                                     </thead>
-                                    <tbody>
+                                    <tbody v-for="result in results.list_siswa" :key="result._id">
                                         <tr onclick="window.location='/pages/rombonganbelajar/detail';">
                                             <td class="align-middle">
                                                 <div class="d-flex px-3 py-1">
@@ -104,7 +107,8 @@
                                                         <!-- alt="user1"> -->
                                                     </div>
                                                     <div class="justify-content-center">
-                                                        <h6 class="mb-0 text-sm td-name">John Michael</h6>
+                                                        <h6 class="mb-0 text-sm td-name">                          {{ result.nama }}
+</h6>
                                                     </div>
                                                 </div>
                                             </td>
@@ -120,13 +124,17 @@
                             </div>
                         </ion-card-content>
                     </ion-card>
-                </ion-col>
-            </ion-row>
-        </ion-content>
-    </ion-page>
+               
+            
+        </ion-col>
+      </ion-row>
+      <!-- {{ results.list_siswa}} -->
+    </ion-content>
+  </ion-page>
 </template>
 
 <script lang="ts">
+
 import { defineComponent } from 'vue';
 import { IonButtons, IonContent, IonMenuButton, IonPage, IonTitle, IonToolbar, IonCol, IonGrid, IonRow } from '@ionic/vue';
 import axios from "axios";
@@ -144,15 +152,30 @@ export default defineComponent({
         IonGrid,
         IonRow
     },
-    props: ["kelas"],
+  props: ["tahun", "kelas"],
 
     data() {
         return {
             username: localStorage.getItem('username'),
-            is_admin: localStorage.getItem('is_admin')
+            is_admin: localStorage.getItem('is_admin'),
+            results: [],
+
         };
     },
-
+     mounted: function () {
+    axios
+      .get("http://localhost:5000/API/rombel/" + this.tahun + "/" + this.kelas)
+      .then((response) => {
+        this.results = response.data;
+        this.results.ruangan = response.data.rombel.ruangan;
+        this.results.tahun_ajaran = response.data.rombel.tahun_ajaran;
+        this.results.countsiswa = response.data.list_siswa.length;
+        console.log(response);
+      })
+      .catch(function (error) {
+        console.error(error.response.data);
+      });
+  },
     methods: {
         del() {
             let headers = {
@@ -183,201 +206,266 @@ export default defineComponent({
 <style scoped>
 /* template style */
 ion-col {
-    padding: 0;
+  padding: 0;
 }
 
 /* Icon navbar style */
 a .iconButton {
-    color: #67748E;
-    text-decoration: none;
-    margin-left: 20px;
-    font-size: 20px;
+  color: #67748e;
+  text-decoration: none;
+  margin-left: 20px;
+  font-size: 20px;
 }
 
+
+/* Searchbar Style */
+.search-box {
+  width: fit-content;
+  height: fit-content;
+  position: relative;
+  color: black;
+}
+
+.input-search {
+  height: 40px;
+  width: 50px;
+  border-style: none;
+  padding: 10px;
+  font-size: 18px;
+  letter-spacing: 2px;
+  outline: none;
+  border-radius: 25px;
+  transition: all 0.5s ease-in-out;
+  background-color: transparent;
+  padding-right: 40px;
+  color: black;
+}
+
+.input-search::placeholder {
+  color: rgba(0, 0, 0, 0.5);
+  font-size: 18px;
+  letter-spacing: 2px;
+  font-weight: 100;
+}
+
+.btn-search {
+  width: 40px;
+  height: 40px;
+  border-style: none;
+  font-size: 20px;
+  font-weight: bold;
+  outline: none;
+  cursor: pointer;
+  border-radius: 50%;
+  position: absolute;
+  right: 0px;
+  color: black;
+  background-color: transparent;
+  pointer-events: painted;
+  top: -1.5px;
+}
+
+.btn-search:focus ~ .input-search {
+  width: 400px;
+  border-radius: 10px;
+  background-color: white;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.5);
+  transition: all 500ms cubic-bezier(0, 0.11, 0.35, 2);
+}
+
+.input-search:focus {
+  width: 400px;
+  border-radius: 0px;
+  background-color: transparent;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.5);
+  transition: all 500ms cubic-bezier(0, 0.11, 0.35, 2);
+}
+
+
 .text-info {
-    color: #17c1e8 !important;
+  color: #17c1e8 !important;
 }
 
 .text-gradient {
-    background-clip: text;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    position: relative;
-    z-index: 1;
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  position: relative;
+  z-index: 1;
 }
 
 .text-gradient.text-info {
-    background-image: linear-gradient(310deg, #2152FF, #21D4FD);
+  background-image: linear-gradient(310deg, #2152ff, #21d4fd);
 }
 
 .text-gradient.text-dark {
-    background-image: linear-gradient(310deg, #141727, #3A416F);
+  background-image: linear-gradient(310deg, #141727, #3a416f);
 }
 
 /* content style */
 [data-href] {
-    cursor: pointer;
+  cursor: pointer;
 }
 
 li {
-    list-style: none;
-    font-size: 20px;
+  list-style: none;
+  font-size: 20px;
 }
 
 ul {
-    padding: 0;
-    margin: 0;
+  padding: 0;
+  margin: 0;
 }
 
 .table {
-    border-collapse: inherit;
+  border-collapse: inherit;
 }
 
 thead th {
-    padding: 0.75rem 1rem;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    border-bottom: 1px solid lighten(black, 35%);
+  padding: 0.75rem 1rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  border-bottom: 1px solid lighten(black, 35%);
 }
 
 th {
-    font-weight: bold;
+  font-weight: bold;
 }
 
 td,
 th {
-    white-space: nowrap;
+  white-space: nowrap;
 }
 
-.tables> :not(:last-child)> :last-child>* {
-    border-bottom-color: black;
+.tables > :not(:last-child) > :last-child > * {
+  border-bottom-color: black;
 }
 
 td {
-    width: 100px;
+  width: 100px;
 }
 
 .tambah {
-    background: linear-gradient(135deg, #6BFF25 0%, #42DD1C 100%);
-    border-radius: 8px;
-    border: none;
-    height: 40px;
+  background: linear-gradient(135deg, #6bff25 0%, #42dd1c 100%);
+  border-radius: 8px;
+  border: none;
+  height: 40px;
 }
 
 /* small laptop dimension */
 @media only screen and (max-width: 1280px) {
-    .btn-search:focus~.input-search {
-        width: 250px;
-    }
+  .btn-search:focus ~ .input-search {
+    width: 250px;
+  }
 
-    .input-search:focus {
-        width: 250px;
-    }
+  .input-search:focus {
+    width: 250px;
+  }
 
-    th,
-    td,
-    .td-name {
-        width: 160px;
-    }
+  th,
+  td,
+  .td-name {
+    width: 160px;
+  }
 
-    .action-button {
-        padding: 5px 12px;
-        font-size: 12px;
-    }
+  .action-button {
+    padding: 5px 12px;
+    font-size: 12px;
+  }
 }
 
 /* tablet dimension */
 @media only screen and (max-width: 990px) {
-    .btn-search:focus~.input-search {
-        width: 200px;
-    }
+  .btn-search:focus ~ .input-search {
+    width: 200px;
+  }
 
-    .input-search:focus {
-        width: 200px;
-    }
+  .input-search:focus {
+    width: 200px;
+  }
 
-    th,
-    td,
-    .td-name {
-        font-size: 12px;
-    }
+  th,
+  td,
+  .td-name {
+    font-size: 12px;
+  }
 }
 
 /* large phone dimension */
 @media only screen and (max-width: 575px) {
-    .goright {
-        position: relative;
-        left: 60px
-    }
+  .goright {
+    position: relative;
+    left: 60px;
+  }
 
-    th,
-    td,
-    .td-name {
-        width: 150px;
-    }
+  th,
+  td,
+  .td-name {
+    width: 150px;
+  }
 
-    .title-table {
-        font-size: 12px;
-        margin-top: 10px;
-    }
+  .title-table {
+    font-size: 12px;
+    margin-top: 10px;
+  }
 
-    .tambah {
-        padding: 10px;
-        font-size: 10px;
-        position: relative;
-        left: 20px;
-        height: 30px;
-    }
+  .tambah {
+    padding: 10px;
+    font-size: 10px;
+    position: relative;
+    left: 20px;
+    height: 30px;
+  }
 }
 
 /* large phone dimension */
 @media only screen and (max-width: 426px) {
-    .form {
-        font-size: 10px;
-    }
+  .form {
+    font-size: 10px;
+  }
 
-    .search-box {
-        position: absolute;
-        right: 34%;
-    }
+  .search-box {
+    position: absolute;
+    right: 34%;
+  }
 
-    .btn-search:focus~.input-search {
-        width: 200px;
-    }
+  .btn-search:focus ~ .input-search {
+    width: 200px;
+  }
 
-    .input-search:focus {
-        width: 200px;
-    }
+  .input-search:focus {
+    width: 200px;
+  }
 }
 
 /* small phone dimension */
 @media only screen and (max-width: 376px) {
-    .search-box {
-        position: absolute;
-        right: 41%;
-    }
+  .search-box {
+    position: absolute;
+    right: 41%;
+  }
 
-    .btn-search:focus~.input-search {
-        width: 180px;
-    }
+  .btn-search:focus ~ .input-search {
+    width: 180px;
+  }
 
-    .input-search:focus {
-        width: 180px;
-    }
+  .input-search:focus {
+    width: 180px;
+  }
 }
 
 @media only screen and (max-width: 320px) {
-    .search-box {
-        position: absolute;
-        right: 50%;
-    }
+  .search-box {
+    position: absolute;
+    right: 50%;
+  }
 
-    .btn-search:focus~.input-search {
-        width: 150px;
-    }
+  .btn-search:focus ~ .input-search {
+    width: 150px;
+  }
 
-    .input-search:focus {
-        width: 150px;
-    }
+  .input-search:focus {
+    width: 150px;
+  }
 }
 </style>
