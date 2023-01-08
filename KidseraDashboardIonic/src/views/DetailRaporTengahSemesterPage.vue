@@ -16,20 +16,23 @@
             <ion-row class="ion-align-items-center ion-justify-content-end goright mt-2" style="margin-right: 20px">
               <div class="btn-group dropstart mb-1 ms-2" style="content: inherit">
                 <button class="btn dropdown-toggle text-info text-gradient" type="button" data-bs-toggle="dropdown" aria-expanded="true" style="background-color: transparent">
-                  Hi User 13141
+                  Hi {{ username }}
                 </button>
                 <ul class="dropdown-menu dropdown-menu-dark">
                   <li>
-                    <a class="dropdown-item" href="javascript: doSomethingLogout()">Logout</a>
+                    <a class="dropdown-item" @click="del()">Logout</a>
                   </li>
                 </ul>
               </div>
-              <div class="nav-icon">
-                <a href="/SignUp">
-                  <ion-icon class="iconButton text-info text-gradient" src="assets/icon/signup.svg"></ion-icon>
-                </a>
+              <div v-if="is_admin == 'true'" class="d-flex">
+                <div class="nav-icon">
+                  <a href="/SignUp">
+                    <ion-icon class="iconButton text-info text-gradient" src="assets/icon/signup.svg"></ion-icon>
+                  </a>
+                </div>
+                <a href="/SignUp" class="d-none d-sm-inline-block mb-1 text-info text-gradient"
+                  style="text-decoration: none">&nbsp;Add User</a>
               </div>
-              <a href="/SignUp" class="d-none d-sm-inline-block mb-1 text-info text-gradient" style="text-decoration: none">&nbsp;Add User</a>
               <div>&nbsp;</div>
             </ion-row>
           </ion-col>
@@ -125,6 +128,8 @@ export default defineComponent({
   props: ["tahun", "kelas", "id_siswa", "semester"],
   data() {
     return {
+      username: localStorage.getItem('username'),
+      is_admin: localStorage.getItem('is_admin'),
       results: [],
       text1: "",
       text2: "",
@@ -150,6 +155,31 @@ export default defineComponent({
       .catch(function (error) {
         console.error(error.response.data);
       });
+  },
+  methods: {
+    del() {
+      let headers = {
+        Authorization: "Bearer " + localStorage.getItem("access_token"),
+      };
+
+      axios.delete("http://localhost:5000/API/auth/logout", { headers })
+        .then((response) => {
+          console.log(response);
+          localStorage.clear();
+          alert("Anda berhasil keluar");
+        })
+        .catch((error) => {
+          let status = error.response.data.msg;
+          if (status == "Missing Authorization Header") {
+            alert("Anda belum login");
+            window.location.href = "/SignIn";
+          }
+          else if (status == "Token has expired") {
+            alert("Sesi telah berakhir, silahkan login kembali");
+            window.location.href = "/SignIn";
+          }
+        });
+    },
   },
 });
 </script>

@@ -24,7 +24,7 @@
                 <button class="btn dropdown-toggle text-info text-gradient" type="button" data-bs-toggle="dropdown"
                   aria-expanded="true" style="background-color: transparent;">Hi {{ username }} </button>
                 <ul class="dropdown-menu dropdown-menu-dark">
-                  <li><a class="dropdown-item" href="javascript: doSomethingLogout()" @click="del()">Logout</a></li>
+                  <li><a class="dropdown-item" @click="del()">Logout</a></li>
                 </ul>
               </div>
               <div v-if="is_admin == 'true'" class="d-flex">
@@ -164,7 +164,8 @@ export default defineComponent({
       axios.delete("http://localhost:5000/API/auth/logout", { headers })
         .then((response) => {
           console.log(response);
-          localStorage.clear()
+          localStorage.clear();
+          alert("Anda berhasil keluar");
         })
         .catch((error) => {
           let status = error.response.data.msg;

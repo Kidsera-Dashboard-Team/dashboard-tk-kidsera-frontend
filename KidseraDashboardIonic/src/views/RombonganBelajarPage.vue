@@ -25,7 +25,7 @@
                 </button>
                 <ul class="dropdown-menu dropdown-menu-dark">
                   <li>
-                    <a class="dropdown-item" href="javascript: doSomethingLogout()" @click="del()">Logout</a>
+                    <a class="dropdown-item" @click="del()">Logout</a>
                   </li>
                 </ul>
               </div>
@@ -133,8 +133,12 @@ export default defineComponent({
     };
   },
   mounted: function () {
+    let headers = {
+      Authorization: "Bearer " + localStorage.getItem("access_token"),
+    };
+
     axios
-      .get("http://localhost:5000/API/rombel")
+      .get("http://localhost:5000/API/rombel", { headers })
       .then((response) => {
         this.results = response.data;
         console.log(response);
@@ -167,7 +171,8 @@ export default defineComponent({
       axios.delete("http://localhost:5000/API/auth/logout", { headers })
         .then((response) => {
           console.log(response);
-          localStorage.clear()
+          localStorage.clear();
+          alert("Anda berhasil keluar");
         })
         .catch((error) => {
           let status = error.response.data.msg;

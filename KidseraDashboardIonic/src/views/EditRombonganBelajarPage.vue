@@ -17,10 +17,22 @@
             </ion-title>
           </ion-col>
           <ion-col size-sm="6" size="10">
-            <ion-row class="ion-align-items-center ion-justify-content-end goright mt-2" style="margin-right: 20px">
-              <div class="btn-group dropstart mb-1 ms-2" style="content: inherit">
-                <button class="btn dropdown-toggle text-info text-gradient" type="button" data-bs-toggle="dropdown" aria-expanded="true" style="background-color: transparent">
-                  Hi User 13141
+            <ion-row
+              class="ion-align-items-center ion-justify-content-end goright mt-2"
+              style="margin-right: 20px"
+            >
+              <div
+                class="btn-group dropstart mb-1 ms-2"
+                style="content: inherit"
+              >
+                <button
+                  class="btn dropdown-toggle text-info text-gradient"
+                  type="button"
+                  data-bs-toggle="dropdown"
+                  aria-expanded="true"
+                  style="background-color: transparent"
+                >
+                  Hi {{ username }}
                 </button>
                 <ul class="dropdown-menu dropdown-menu-dark">
                   <li>

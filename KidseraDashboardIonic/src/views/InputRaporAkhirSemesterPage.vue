@@ -1,263 +1,257 @@
 <template>
-  <ion-page>
-    <ion-toolbar>
-      <ion-buttons slot="start">
-        <ion-menu-button color="primary"></ion-menu-button>
-      </ion-buttons>
-      <ion-grid>
-        <ion-row class="ion-justify-content-between ion-align-items-center">
-          <ion-col size="6">
-            <ion-title class="d-none d-lg-inline-block mt-1" size="small">
-              <ion-breadcrumbs :max-items="4" :items-after-collapse="2" class="p-0">
-                <ion-breadcrumb style="font-size: 1em" href="/Pages">Pages</ion-breadcrumb>
-                <ion-breadcrumb style="font-size: 1em" href="/pages/Rapor">E - Rapor</ion-breadcrumb>
-                <ion-breadcrumb style="font-size: 1em" href="/pages/Rapor/TahunAjaranRapor">Tahun Ajaran </ion-breadcrumb>
-                <ion-breadcrumb style="font-size: 1em" href="/pages/Rapor/TahunAjaranRapor/PesertaDidikRapor">Peserta Didik </ion-breadcrumb>
-                <ion-breadcrumb style="font-size: 1em" href="/pages/Rapor/TahunAjaranRapor/PesertaDidikRapor/InputNilaiPesertaDidikRapor">Detail</ion-breadcrumb>
-                <ion-breadcrumb style="font-size: 1em" href="/pages/Rapor/TahunAjaranRapor/PesertaDidikRapor/InputNilaiPesertaDidikRapor/InputRapor">Input</ion-breadcrumb>
-              </ion-breadcrumbs>
-
-              <h5 style="margin-left: 11px">Input E - Rapor</h5>
-            </ion-title>
-          </ion-col>
-          <ion-col size-sm="6" size="10">
-            <ion-row class="ion-align-items-center ion-justify-content-end goright mt-2" style="margin-right: 20px">
-              <div class="btn-group dropstart mb-1 ms-2" style="content: inherit">
-                <button class="btn dropdown-toggle text-info text-gradient" type="button" data-bs-toggle="dropdown" aria-expanded="true" style="background-color: transparent">
-                  Hi {{ username }}
-                </button>
-                <ul class="dropdown-menu dropdown-menu-dark">
-                  <li><a class="dropdown-item" href="javascript: doSomethingLogout()" @click="del()">Logout</a></li>
-                </ul>
-              </div>
-              <div v-if="is_admin == 'true'" class="nav-icon">
-                <a href="/SignUp">
-                  <ion-icon class="iconButton text-info text-gradient" src="assets/icon/signup.svg"></ion-icon>
-                </a>
-                <a href="/SignUp" class="d-none d-sm-inline-block mb-1 text-info text-gradient" style="text-decoration: none">&nbsp;Add User</a>
-              </div>
-              <div>&nbsp;</div>
-            </ion-row>
-          </ion-col>
-        </ion-row>
-      </ion-grid>
-    </ion-toolbar>
-
-    <ion-content :fullscreen="true">
-      <ion-card>
-        <ion-card-content>
-          <div class="text-dark noted">
-            <ul>
-              <li><strong>BB</strong> : Belum Berkembang</li>
-              <li><strong>MB</strong> : Mulai Berkembang</li>
-              <li><strong>BSH</strong> : Berkembang Sesuai Harapan</li>
-              <li><strong>BSB</strong> : Berkembang Sangat Baik</li>
-            </ul>
-          </div>
-          <!-- nilai agama dan moral -->
-          <ion-card-title class="text-dark">NILAI AGAMA DAN MORAL</ion-card-title>
-          <ol class="list-group list-group-numbered">
-            <li class="list-group-item d-flex justify-content-between align-items-start">
-              <div class="ms-2 me-auto">
-                <div class="fw-bold">Nilai Agama</div>
-                <ol class="list-group list-group-numbered">
-                  <li class="list-group-item">
-                    Mengenal agama yang dianut <br />
-                    <div class="form-check form-check-inline">
-                      <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1" v-model="formData.aaa" value="1" />
-                      <label class="form-check-label" for="flexRadioDefault1"> BB </label>
+    <ion-page>
+        <ion-toolbar>
+            <ion-buttons slot="start">
+                <ion-menu-button color="primary"></ion-menu-button>
+            </ion-buttons>
+            <ion-grid>
+                <ion-row class="ion-justify-content-between ion-align-items-center">
+                    <ion-col size="6">
+                        <ion-title class="d-none d-lg-inline-block mt-1" size="small">
+                            <ion-breadcrumbs :max-items="4" :items-after-collapse="2" class="p-0">
+                                <ion-breadcrumb style="font-size: 1em;" href="/Pages">Pages</ion-breadcrumb>
+                                <ion-breadcrumb style="font-size: 1em;" href="/pages/Rapor">E - Rapor</ion-breadcrumb>
+                                <ion-breadcrumb style="font-size: 1em;" href="/pages/Rapor/TahunAjaranRapor">Tahun Ajaran
+                                </ion-breadcrumb>
+                                <ion-breadcrumb style="font-size: 1em;" href="/pages/Rapor/TahunAjaranRapor/PesertaDidikRapor">Peserta Didik
+                                </ion-breadcrumb>
+                                <ion-breadcrumb style="font-size: 1em;" href="/pages/Rapor/TahunAjaranRapor/PesertaDidikRapor/InputNilaiPesertaDidikRapor">Detail</ion-breadcrumb>
+                                <ion-breadcrumb style="font-size: 1em;" href="/pages/Rapor/TahunAjaranRapor/PesertaDidikRapor/InputNilaiPesertaDidikRapor/InputRapor">Input</ion-breadcrumb>
+                            </ion-breadcrumbs>
+    
+                            <h5 style="margin-left: 11px;">Input E - Rapor</h5>
+                        </ion-title>
+                    </ion-col>
+                    <ion-col size-sm="6" size="10">
+                        <ion-row class="ion-align-items-center ion-justify-content-end goright mt-2" style="margin-right: 20px;">
+                            <div class="btn-group dropstart mb-1 ms-2" style="content: inherit;">
+                                <button class="btn dropdown-toggle text-info text-gradient" type="button" data-bs-toggle="dropdown" aria-expanded="true" style="background-color: transparent;">
+                                        Hi {{ username }}
+                                    </button>
+                                <ul class="dropdown-menu dropdown-menu-dark">
+                                    <li><a class="dropdown-item" @click="del()">Logout</a></li>
+                                </ul>
+                            </div>
+                            <div v-if="is_admin == 'true'" class="nav-icon">
+                                <a href="/SignUp">
+                                    <ion-icon class="iconButton text-info text-gradient" src="assets/icon/signup.svg"></ion-icon>
+                                </a>
+                                <a href="/SignUp" class="d-none d-sm-inline-block mb-1 text-info text-gradient" style="text-decoration: none;">&nbsp;Add User</a>
+                            </div>
+                            <div>&nbsp;</div>
+                        </ion-row>
+                    </ion-col>
+                </ion-row>
+            </ion-grid>
+        </ion-toolbar>
+    
+        <ion-content :fullscreen="true">
+            <ion-card>
+                <ion-card-content>
+                    <div class="text-dark noted">
+                        <ul>
+                            <li><strong>BB</strong> : Belum Berkembang</li>
+                            <li><strong>MB</strong> : Mulai Berkembang</li>
+                            <li><strong>BSH</strong> : Berkembang Sesuai Harapan</li>
+                            <li><strong>BSB</strong> : Berkembang Sangat Baik</li>
+                        </ul>
                     </div>
-                    <div class="form-check form-check-inline">
-                      <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" v-model="formData.aaa" value="2" />
-                      <label class="form-check-label" for="flexRadioDefault2"> MB </label>
-                    </div>
-                    <div class="form-check form-check-inline">
-                      <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault3" v-model="formData.aaa" value="3" />
-                      <label class="form-check-label" for="flexRadioDefault3"> BSH </label>
-                    </div>
-                    <div class="form-check form-check-inline">
-                      <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault4" v-model="formData.aaa" value="4" />
-                      <label class="form-check-label" for="flexRadioDefault4"> BSB </label>
-                    </div>
-                    <ion-note color="danger" v-for="error in v$.aaa.$errors" :key="error.$uid">
-                      <br />
-                      {{ error.$message }}
-                    </ion-note>
-                  </li>
-                  <li class="list-group-item">
-                    Mengerjakan Ibadah <br />
-                    <div class="form-check form-check-inline">
-                      <input class="form-check-input" type="radio" name="flexRadioDefault2" id="flexRadioDefault5" v-model="formData.aab" value="1" />
-                      <label class="form-check-label" for="flexRadioDefault5"> BB </label>
-                    </div>
-                    <div class="form-check form-check-inline">
-                      <input class="form-check-input" type="radio" name="flexRadioDefault2" id="flexRadioDefault6" v-model="formData.aab" value="2" />
-                      <label class="form-check-label" for="flexRadioDefault6"> MB </label>
-                    </div>
-                    <div class="form-check form-check-inline">
-                      <input class="form-check-input" type="radio" name="flexRadioDefault2" id="flexRadioDefault7" v-model="formData.aab" value="3" />
-                      <label class="form-check-label" for="flexRadioDefault7"> BSH </label>
-                    </div>
-                    <div class="form-check form-check-inline">
-                      <input class="form-check-input" type="radio" name="flexRadioDefault2" id="flexRadioDefault8" v-model="formData.aab" value="4" />
-                      <label class="form-check-label" for="flexRadioDefault8"> BSB </label>
-                    </div>
-                    <ion-note color="danger" v-for="error in v$.aab.$errors" :key="error.$uid">
-                      <br />
-                      {{ error.$message }}
-                    </ion-note>
-                  </li>
-                  <li class="list-group-item">
-                    Terbiasa rasa syukur terhadap ciptaan Allah <br />
-                    <div class="form-check form-check-inline">
-                      <input class="form-check-input" type="radio" name="flexRadioDefault3" id="flexRadioDefault9" v-model="formData.aac" value="1" />
-                      <label class="form-check-label" for="flexRadioDefault9"> BB </label>
-                    </div>
-                    <div class="form-check form-check-inline">
-                      <input class="form-check-input" type="radio" name="flexRadioDefault3" id="flexRadioDefault10" v-model="formData.aac" value="2" />
-                      <label class="form-check-label" for="flexRadioDefault10"> MB </label>
-                    </div>
-                    <div class="form-check form-check-inline">
-                      <input class="form-check-input" type="radio" name="flexRadioDefault3" id="flexRadioDefault11" v-model="formData.aac" value="3" />
-                      <label class="form-check-label" for="flexRadioDefault11"> BSH </label>
-                    </div>
-                    <div class="form-check form-check-inline">
-                      <input class="form-check-input" type="radio" name="flexRadioDefault3" id="flexRadioDefault12" v-model="formData.aac" value="4" />
-                      <label class="form-check-label" for="flexRadioDefault12"> BSB </label>
-                    </div>
-                    <ion-note color="danger" v-for="error in v$.aac.$errors" :key="error.$uid">
-                      <br />
-                      {{ error.$message }}
-                    </ion-note>
-                  </li>
-                  <li class="list-group-item">
-                    Mengucapkan doa-doa pendek dan ibadah harian <br />
-                    <div class="form-check form-check-inline">
-                      <input class="form-check-input" type="radio" name="flexRadioDefault4" id="flexRadioDefault13" v-model="formData.aad" value="1" />
-                      <label class="form-check-label" for="flexRadioDefault13"> BB </label>
-                    </div>
-                    <div class="form-check form-check-inline">
-                      <input class="form-check-input" type="radio" name="flexRadioDefault4" id="flexRadioDefault14" v-model="formData.aad" value="2" />
-                      <label class="form-check-label" for="flexRadioDefault14"> MB </label>
-                    </div>
-                    <div class="form-check form-check-inline">
-                      <input class="form-check-input" type="radio" name="flexRadioDefault4" id="flexRadioDefault15" v-model="formData.aad" value="3" />
-                      <label class="form-check-label" for="flexRadioDefault15"> BSH </label>
-                    </div>
-                    <div class="form-check form-check-inline">
-                      <input class="form-check-input" type="radio" name="flexRadioDefault4" id="flexRadioDefault16" v-model="formData.aad" value="4" />
-                      <label class="form-check-label" for="flexRadioDefault16"> BSB </label>
-                    </div>
-                    <ion-note color="danger" v-for="error in v$.aad.$errors" :key="error.$uid">
-                      <br />
-                      {{ error.$message }}
-                    </ion-note>
-                  </li>
-                  <li class="list-group-item">
-                    Menyebutkan hari - hari besar agama <br />
-                    <div class="form-check form-check-inline">
-                      <input class="form-check-input" type="radio" name="flexRadioDefault5" id="flexRadioDefault17" v-model="formData.aae" value="1" />
-                      <label class="form-check-label" for="flexRadioDefault17"> BB </label>
-                    </div>
-                    <div class="form-check form-check-inline">
-                      <input class="form-check-input" type="radio" name="flexRadioDefault5" id="flexRadioDefault18" v-model="formData.aae" value="2" />
-                      <label class="form-check-label" for="flexRadioDefault18"> MB </label>
-                    </div>
-                    <div class="form-check form-check-inline">
-                      <input class="form-check-input" type="radio" name="flexRadioDefault5" id="flexRadioDefault19" v-model="formData.aae" value="3" />
-                      <label class="form-check-label" for="flexRadioDefault19"> BSH </label>
-                    </div>
-                    <div class="form-check form-check-inline">
-                      <input class="form-check-input" type="radio" name="flexRadioDefault5" id="flexRadioDefault20" v-model="formData.aae" value="4" />
-                      <label class="form-check-label" for="flexRadioDefault20"> BSB </label>
-                    </div>
-                    <ion-note color="danger" v-for="error in v$.aae.$errors" :key="error.$uid">
-                      <br />
-                      {{ error.$message }}
-                    </ion-note>
-                  </li>
-                </ol>
-              </div>
-              <!-- <span class="badge bg-primary rounded-pill">14</span> -->
-            </li>
-            <li class="list-group-item d-flex justify-content-between align-items-start">
-              <div class="ms-2 me-auto">
-                <div class="fw-bold">Nilai Moral</div>
-                <ol class="list-group list-group-numbered">
-                  <li class="list-group-item">
-                    Menghormati agama orang lain (toleransi) <br />
-                    <div class="form-check form-check-inline">
-                      <input class="form-check-input" type="radio" name="flexRadioDefault6" id="flexRadioDefault21" v-model="formData.aba" value="1" />
-                      <label class="form-check-label" for="flexRadioDefault21"> BB </label>
-                    </div>
-                    <div class="form-check form-check-inline">
-                      <input class="form-check-input" type="radio" name="flexRadioDefault6" id="flexRadioDefault22" v-model="formData.aba" value="2" />
-                      <label class="form-check-label" for="flexRadioDefault22"> MB </label>
-                    </div>
-                    <div class="form-check form-check-inline">
-                      <input class="form-check-input" type="radio" name="flexRadioDefault6" id="flexRadioDefault23" v-model="formData.aba" value="3" />
-                      <label class="form-check-label" for="flexRadioDefault23"> BSH </label>
-                    </div>
-                    <div class="form-check form-check-inline">
-                      <input class="form-check-input" type="radio" name="flexRadioDefault6" id="flexRadioDefault24" v-model="formData.aba" value="4" />
-                      <label class="form-check-label" for="flexRadioDefault24"> BSB </label>
-                    </div>
-                    <ion-note color="danger" v-for="error in v$.aba.$errors" :key="error.$uid">
-                      <br />
-                      {{ error.$message }}
-                    </ion-note>
-                  </li>
-                  <li class="list-group-item">
-                    Terbiasa menjaga kebersihan diri dan lingkungan <br />
-                    <div class="form-check form-check-inline">
-                      <input class="form-check-input" type="radio" name="flexRadioDefault7" id="flexRadioDefault25" v-model="formData.abb" value="1" />
-                      <label class="form-check-label" for="flexRadioDefault25"> BB </label>
-                    </div>
-                    <div class="form-check form-check-inline">
-                      <input class="form-check-input" type="radio" name="flexRadioDefault7" id="flexRadioDefault26" v-model="formData.abb" value="2" />
-                      <label class="form-check-label" for="flexRadioDefault26"> MB </label>
-                    </div>
-                    <div class="form-check form-check-inline">
-                      <input class="form-check-input" type="radio" name="flexRadioDefault7" id="flexRadioDefault27" v-model="formData.abb" value="3" />
-                      <label class="form-check-label" for="flexRadioDefault27"> BSH </label>
-                    </div>
-                    <div class="form-check form-check-inline">
-                      <input class="form-check-input" type="radio" name="flexRadioDefault7" id="flexRadioDefault28" v-model="formData.abb" value="4" />
-                      <label class="form-check-label" for="flexRadioDefault28"> BSB </label>
-                    </div>
-                    <ion-note color="danger" v-for="error in v$.abb.$errors" :key="error.$uid">
-                      <br />
-                      {{ error.$message }}
-                    </ion-note>
-                  </li>
-                  <li class="list-group-item">
-                    Terbiasa menjaga kebersihan diri dan lingkungan <br />
-                    <div class="form-check form-check-inline">
-                      <input class="form-check-input" type="radio" name="flexRadioDefault8" id="flexRadioDefault29" v-model="formData.abc" value="1" />
-                      <label class="form-check-label" for="flexRadioDefault29"> BB </label>
-                    </div>
-                    <div class="form-check form-check-inline">
-                      <input class="form-check-input" type="radio" name="flexRadioDefault8" id="flexRadioDefault30" v-model="formData.abc" value="2" />
-                      <label class="form-check-label" for="flexRadioDefault30"> MB </label>
-                    </div>
-                    <div class="form-check form-check-inline">
-                      <input class="form-check-input" type="radio" name="flexRadioDefault8" id="flexRadioDefault31" v-model="formData.abc" value="3" />
-                      <label class="form-check-label" for="flexRadioDefault31"> BSH </label>
-                    </div>
-                    <div class="form-check form-check-inline">
-                      <input class="form-check-input" type="radio" name="flexRadioDefault8" id="flexRadioDefault32" v-model="formData.abc" value="4" />
-                      <label class="form-check-label" for="flexRadioDefault32"> BSB </label>
-                    </div>
-                    <ion-note color="danger" v-for="error in v$.abc.$errors" :key="error.$uid">
-                      <br />
-                      {{ error.$message }}
-                    </ion-note>
-                  </li>
-                </ol>
-              </div>
-              <!-- <span class="badge bg-primary rounded-pill">14</span> -->
-            </li>
-            <!-- <li class="list-group-item d-flex justify-content-between align-items-start">
+                    <!-- nilai agama dan moral -->
+                    <ion-card-title class="text-dark">NILAI AGAMA DAN MORAL</ion-card-title>
+                    <ol class="list-group list-group-numbered">
+                        <li class="list-group-item d-flex justify-content-between align-items-start">
+                            <div class="ms-2 me-auto">
+                                <div class="fw-bold">Nilai Agama</div>
+                                <ol class="list-group list-group-numbered">
+                                    <li class="list-group-item">
+                                        Mengenal agama yang dianut <br />
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1" v-model="formData.aaa" value="1" />
+                                            <label class="form-check-label" for="flexRadioDefault1"> BB </label>
+                                        </div>
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" v-model="formData.aaa" value="2" />
+                                            <label class="form-check-label" for="flexRadioDefault2"> MB </label>
+                                        </div>
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault3" v-model="formData.aaa" value="3" />
+                                            <label class="form-check-label" for="flexRadioDefault3"> BSH </label>
+                                        </div>
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault4" v-model="formData.aaa" value="4" />
+                                            <label class="form-check-label" for="flexRadioDefault4"> BSB </label>
+                                        </div>
+                                        <ion-note color="danger" v-for="error in v$.aaa.$errors" :key="error.$uid">
+                                            <br /> {{ error.$message }}
+                                        </ion-note>
+                                    </li>
+                                    <li class="list-group-item">
+                                        Mengerjakan Ibadah <br />
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="radio" name="flexRadioDefault2" id="flexRadioDefault5" v-model="formData.aab" value="1" />
+                                            <label class="form-check-label" for="flexRadioDefault5"> BB </label>
+                                        </div>
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="radio" name="flexRadioDefault2" id="flexRadioDefault6" v-model="formData.aab" value="2" />
+                                            <label class="form-check-label" for="flexRadioDefault6"> MB </label>
+                                        </div>
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="radio" name="flexRadioDefault2" id="flexRadioDefault7" v-model="formData.aab" value="3" />
+                                            <label class="form-check-label" for="flexRadioDefault7"> BSH </label>
+                                        </div>
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="radio" name="flexRadioDefault2" id="flexRadioDefault8" v-model="formData.aab" value="4" />
+                                            <label class="form-check-label" for="flexRadioDefault8"> BSB </label>
+                                        </div>
+                                        <ion-note color="danger" v-for="error in v$.aab.$errors" :key="error.$uid">
+                                            <br /> {{ error.$message }}
+                                        </ion-note>
+                                    </li>
+                                    <li class="list-group-item">
+                                        Terbiasa rasa syukur terhadap ciptaan Allah <br />
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="radio" name="flexRadioDefault3" id="flexRadioDefault9" v-model="formData.aac" value="1" />
+                                            <label class="form-check-label" for="flexRadioDefault9"> BB </label>
+                                        </div>
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="radio" name="flexRadioDefault3" id="flexRadioDefault10" v-model="formData.aac" value="2" />
+                                            <label class="form-check-label" for="flexRadioDefault10"> MB </label>
+                                        </div>
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="radio" name="flexRadioDefault3" id="flexRadioDefault11" v-model="formData.aac" value="3" />
+                                            <label class="form-check-label" for="flexRadioDefault11"> BSH </label>
+                                        </div>
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="radio" name="flexRadioDefault3" id="flexRadioDefault12" v-model="formData.aac" value="4" />
+                                            <label class="form-check-label" for="flexRadioDefault12"> BSB </label>
+                                        </div>
+                                        <ion-note color="danger" v-for="error in v$.aac.$errors" :key="error.$uid">
+                                            <br /> {{ error.$message }}
+                                        </ion-note>
+                                    </li>
+                                    <li class="list-group-item">
+                                        Mengucapkan doa-doa pendek dan ibadah harian <br />
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="radio" name="flexRadioDefault4" id="flexRadioDefault13" v-model="formData.aad" value="1" />
+                                            <label class="form-check-label" for="flexRadioDefault13"> BB </label>
+                                        </div>
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="radio" name="flexRadioDefault4" id="flexRadioDefault14" v-model="formData.aad" value="2" />
+                                            <label class="form-check-label" for="flexRadioDefault14"> MB </label>
+                                        </div>
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="radio" name="flexRadioDefault4" id="flexRadioDefault15" v-model="formData.aad" value="3" />
+                                            <label class="form-check-label" for="flexRadioDefault15"> BSH </label>
+                                        </div>
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="radio" name="flexRadioDefault4" id="flexRadioDefault16" v-model="formData.aad" value="4" />
+                                            <label class="form-check-label" for="flexRadioDefault16"> BSB </label>
+                                        </div>
+                                        <ion-note color="danger" v-for="error in v$.aad.$errors" :key="error.$uid">
+                                            <br /> {{ error.$message }}
+                                        </ion-note>
+                                    </li>
+                                    <li class="list-group-item">
+                                        Menyebutkan hari - hari besar agama <br />
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="radio" name="flexRadioDefault5" id="flexRadioDefault17" v-model="formData.aae" value="1" />
+                                            <label class="form-check-label" for="flexRadioDefault17"> BB </label>
+                                        </div>
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="radio" name="flexRadioDefault5" id="flexRadioDefault18" v-model="formData.aae" value="2" />
+                                            <label class="form-check-label" for="flexRadioDefault18"> MB </label>
+                                        </div>
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="radio" name="flexRadioDefault5" id="flexRadioDefault19" v-model="formData.aae" value="3" />
+                                            <label class="form-check-label" for="flexRadioDefault19"> BSH </label>
+                                        </div>
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="radio" name="flexRadioDefault5" id="flexRadioDefault20" v-model="formData.aae" value="4" />
+                                            <label class="form-check-label" for="flexRadioDefault20"> BSB </label>
+                                        </div>
+                                        <ion-note color="danger" v-for="error in v$.aae.$errors" :key="error.$uid">
+                                            <br /> {{ error.$message }}
+                                        </ion-note>
+                                    </li>
+                                </ol>
+                            </div>
+                            <!-- <span class="badge bg-primary rounded-pill">14</span> -->
+                        </li>
+                        <li class="list-group-item d-flex justify-content-between align-items-start">
+                            <div class="ms-2 me-auto">
+                                <div class="fw-bold">Nilai Moral</div>
+                                <ol class="list-group list-group-numbered">
+                                    <li class="list-group-item">
+                                        Menghormati agama orang lain (toleransi) <br />
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="radio" name="flexRadioDefault6" id="flexRadioDefault21" v-model="formData.aba" value="1" />
+                                            <label class="form-check-label" for="flexRadioDefault21"> BB </label>
+                                        </div>
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="radio" name="flexRadioDefault6" id="flexRadioDefault22" v-model="formData.aba" value="2" />
+                                            <label class="form-check-label" for="flexRadioDefault22"> MB </label>
+                                        </div>
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="radio" name="flexRadioDefault6" id="flexRadioDefault23" v-model="formData.aba" value="3" />
+                                            <label class="form-check-label" for="flexRadioDefault23"> BSH </label>
+                                        </div>
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="radio" name="flexRadioDefault6" id="flexRadioDefault24" v-model="formData.aba" value="4" />
+                                            <label class="form-check-label" for="flexRadioDefault24"> BSB </label>
+                                        </div>
+                                        <ion-note color="danger" v-for="error in v$.aba.$errors" :key="error.$uid">
+                                            <br /> {{ error.$message }}
+                                        </ion-note>
+                                    </li>
+                                    <li class="list-group-item">
+                                        Terbiasa menjaga kebersihan diri dan lingkungan <br />
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="radio" name="flexRadioDefault7" id="flexRadioDefault25" v-model="formData.abb" value="1" />
+                                            <label class="form-check-label" for="flexRadioDefault25"> BB </label>
+                                        </div>
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="radio" name="flexRadioDefault7" id="flexRadioDefault26" v-model="formData.abb" value="2" />
+                                            <label class="form-check-label" for="flexRadioDefault26"> MB </label>
+                                        </div>
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="radio" name="flexRadioDefault7" id="flexRadioDefault27" v-model="formData.abb" value="3" />
+                                            <label class="form-check-label" for="flexRadioDefault27"> BSH </label>
+                                        </div>
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="radio" name="flexRadioDefault7" id="flexRadioDefault28" v-model="formData.abb" value="4" />
+                                            <label class="form-check-label" for="flexRadioDefault28"> BSB </label>
+                                        </div>
+                                        <ion-note color="danger" v-for="error in v$.abb.$errors" :key="error.$uid">
+                                            <br /> {{ error.$message }}
+                                        </ion-note>
+                                    </li>
+                                    <li class="list-group-item">
+                                        Terbiasa menjaga kebersihan diri dan lingkungan <br />
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="radio" name="flexRadioDefault8" id="flexRadioDefault29" v-model="formData.abc" value="1" />
+                                            <label class="form-check-label" for="flexRadioDefault29"> BB </label>
+                                        </div>
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="radio" name="flexRadioDefault8" id="flexRadioDefault30" v-model="formData.abc" value="2" />
+                                            <label class="form-check-label" for="flexRadioDefault30"> MB </label>
+                                        </div>
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="radio" name="flexRadioDefault8" id="flexRadioDefault31" v-model="formData.abc" value="3" />
+                                            <label class="form-check-label" for="flexRadioDefault31"> BSH </label>
+                                        </div>
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="radio" name="flexRadioDefault8" id="flexRadioDefault32" v-model="formData.abc" value="4" />
+                                            <label class="form-check-label" for="flexRadioDefault32"> BSB </label>
+                                        </div>
+                                        <ion-note color="danger" v-for="error in v$.abc.$errors" :key="error.$uid">
+                                            <br /> {{ error.$message }}
+                                        </ion-note>
+                                    </li>
+                                </ol>
+                            </div>
+                            <!-- <span class="badge bg-primary rounded-pill">14</span> -->
+                        </li>
+                        <!-- <li class="list-group-item d-flex justify-content-between align-items-start">
                                     <div class="ms-2 me-auto">
                                         <div class="fw-bold">Subheading</div>
                                         Content for list item
@@ -2492,24 +2486,25 @@ export default defineComponent({
         Authorization: "Bearer " + localStorage.getItem("access_token"),
       };
 
-      axios
-        .delete("http://localhost:5000/API/auth/logout", { headers })
-        .then((response) => {
-          console.log(response);
-          localStorage.clear();
-        })
-        .catch((error) => {
-          let status = error.response.data.msg;
-          if (status == "Missing Authorization Header") {
-            alert("Anda belum login");
-            window.location.href = "/SignIn";
-          } else if (status == "Token has expired") {
-            alert("Sesi telah berakhir, silahkan login kembali");
-            window.location.href = "/SignIn";
-          }
-        });
+            axios.delete("http://localhost:5000/API/auth/logout", { headers })
+                .then((response) => {
+                    console.log(response);
+                    localStorage.clear();
+          alert("Anda berhasil keluar");
+                })
+                .catch((error) => {
+                    let status = error.response.data.msg;
+                    if (status == "Missing Authorization Header") {
+                        alert("Anda belum login");
+                        window.location.href = "/SignIn";
+                    }
+                    else if (status == "Token has expired") {
+                        alert("Sesi telah berakhir, silahkan login kembali");
+                        window.location.href = "/SignIn";
+                    }
+                });
+        },
     },
-  },
 });
 </script>
 

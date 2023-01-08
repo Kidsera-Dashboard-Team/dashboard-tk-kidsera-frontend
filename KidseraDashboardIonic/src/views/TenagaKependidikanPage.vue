@@ -22,7 +22,7 @@
                 <button class="btn dropdown-toggle text-info text-gradient" type="button" data-bs-toggle="dropdown"
                   aria-expanded="true" style="background-color: transparent">Hi {{ username }}</button>
                 <ul class="dropdown-menu dropdown-menu-dark">
-                  <li><a class="dropdown-item" href="javascript: doSomethingLogout()" @click="del()">Logout</a></li>
+                  <li><a class="dropdown-item" @click="del()">Logout</a></li>
                 </ul>
               </div>
               <div v-if="is_admin == 'true'" class="d-flex">
@@ -251,6 +251,7 @@ export default defineComponent({
         .then((response) => {
           console.log(response);
           localStorage.clear();
+          alert("Anda berhasil keluar");
           window.location.href = "/SignIn";
         })
         .catch((error) => {

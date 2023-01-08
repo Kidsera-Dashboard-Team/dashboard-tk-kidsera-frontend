@@ -23,10 +23,10 @@
               <div class="btn-group dropstart mb-1 ms-2" style="content: inherit;">
                 <button class="btn dropdown-toggle text-info text-gradient" type="button" data-bs-toggle="dropdown"
                   aria-expanded="true" style="background-color: transparent;">
-                  Hi User 13141
+                  Hi {{ username }}
                 </button>
                 <ul class="dropdown-menu dropdown-menu-dark">
-                  <li><a class="dropdown-item" href="javascript: doSomethingLogout()" @click="del()">Logout</a></li>
+                  <li><a class="dropdown-item" @click="del()">Logout</a></li>
                 </ul>
               </div>
               <div v-if="is_admin == 'true'" class="nav-icon">
@@ -53,7 +53,7 @@
         <ion-card-content class="d-grid gap-3">
           <ion-item fill="outline">
             <ion-label position="floating">Tahun Ajaran</ion-label>
-            <ion-input type="date" v-model="formData.tahun_ajaran" placeholder="Masukkan Tahun Ajaran"
+            <ion-input v-model="formData.tahun_ajaran" placeholder="Masukkan Tahun Ajaran"
               required></ion-input>
             <ion-note color="danger" v-for="error in v$.tahun_ajaran.$errors" :key="error.$uid">
               {{ error.$message }}
@@ -174,7 +174,8 @@ export default defineComponent({
       axios.delete("http://localhost:5000/API/auth/logout", { headers })
         .then((response) => {
           console.log(response);
-          localStorage.clear()
+          localStorage.clear();
+          alert("Anda berhasil keluar");
         })
         .catch((error) => {
           let status = error.response.data.msg;
@@ -227,8 +228,32 @@ export default defineComponent({
             window.location.href = "/SignIn";
           }
         });
-    }
-  },
+        console.log(json);
+        await axios
+          .post("http://localhost:5000/API/rombel", json, {
+            headers: {
+              "Access-Control-Allow-Origin": "*",
+              "Access-Control-Allow-Credentials": "true",
+              "Content-Type": "application/json",
+            },
+            withCredentials: true,
+          })
+          .then((response) => {
+            console.log(response);
+          })
+          .catch((error) => {
+            let status = error.response.data.msg;
+            if (status == "Missing Authorization Header") {
+              alert("Anda belum login");
+              window.location.href = "/SignIn";
+            }
+            else if (status == "Token has expired") {
+              alert("Sesi telah berakhir, silahkan login kembali");
+              window.location.href = "/SignIn";
+            }
+          });
+      }
+    },
 });
 </script>
 
