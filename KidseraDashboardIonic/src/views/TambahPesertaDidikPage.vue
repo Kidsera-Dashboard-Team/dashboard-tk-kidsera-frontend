@@ -13,13 +13,14 @@
                 <ion-breadcrumb href="/pages/PesertaDidik">Peserta Didik</ion-breadcrumb>
                 <ion-breadcrumb href="/pages/PesertaDidik/TambahPesertaDidik">Tambah</ion-breadcrumb>
               </ion-breadcrumbs>
-              <h5 style="margin-left: 11px">Tambah Peserta Didik</h5>
+              <h5 style="margin-left: 11px;">Tambah Peserta Didik</h5>
             </ion-title>
           </ion-col>
           <ion-col size-sm="6" size="10">
             <ion-row class="ion-align-items-center ion-justify-content-end goright mt-2" style="margin-right: 20px">
               <div class="btn-group dropstart mb-1 ms-2" style="content: inherit">
-                <button class="btn dropdown-toggle text-info text-gradient" type="button" data-bs-toggle="dropdown" aria-expanded="true" style="background-color: transparent">
+                <button class="btn dropdown-toggle text-info text-gradient" type="button" data-bs-toggle="dropdown"
+                  aria-expanded="true" style="background-color: transparent">
                   Hi {{ username }}
                 </button>
                 <ul class="dropdown-menu dropdown-menu-dark">
@@ -33,7 +34,8 @@
                   <ion-icon class="iconButton text-info text-gradient" src="assets/icon/signup.svg"></ion-icon>
                 </a>
 
-                <a href="/SignUp" class="d-none d-sm-inline-block mb-1 text-info text-gradient" style="text-decoration: none">&nbsp;Add User</a>
+                <a href="/SignUp" class="d-none d-sm-inline-block mb-1 text-info text-gradient"
+                  style="text-decoration: none">&nbsp;Add User</a>
               </div>
               <div>&nbsp;</div>
             </ion-row>
@@ -108,8 +110,7 @@
             <ion-input placeholder="Masukkan NIK" v-model="formData.nik" required></ion-input>
             <ion-note color="danger" v-for="error in v$.nik.$errors" :key="error.$uid">
               {{ error.$message }}
-            </ion-note> </ion-item
-          ><ion-item fill="outline">
+            </ion-note> </ion-item><ion-item fill="outline">
             <ion-label position="floating">NO. KK</ion-label>
             <ion-input placeholder="Masukkan NO. KK" v-model="formData.no_kk" required></ion-input>
             <ion-note color="danger" v-for="error in v$.no_kk.$errors" :key="error.$uid">
@@ -125,14 +126,16 @@
           </ion-item>
           <ion-item fill="outline">
             <ion-label position="floating">Tanggal Masuk</ion-label>
-            <ion-input placeholder="Masukkan Tanggal Masuk" type="date" v-model="formData.tanggal_masuk" required></ion-input>
+            <ion-input placeholder="Masukkan Tanggal Masuk" type="date" v-model="formData.tanggal_masuk"
+              required></ion-input>
             <ion-note color="danger" v-for="error in v$.tanggal_masuk.$errors" :key="error.$uid">
               {{ error.$message }}
             </ion-note>
           </ion-item>
           <ion-item fill="outline">
             <ion-label position="floating">Tanggal Lulus</ion-label>
-            <ion-input placeholder="Masukkan Tanggal Lulus" type="date" v-model="formData.tanggal_lulus" required></ion-input>
+            <ion-input placeholder="Masukkan Tanggal Lulus" type="date" v-model="formData.tanggal_lulus"
+              required></ion-input>
             <ion-note color="danger" v-for="error in v$.tanggal_lulus.$errors" :key="error.$uid">
               {{ error.$message }}
             </ion-note>
@@ -387,10 +390,30 @@ export default defineComponent({
   },
   data() {
     return {
-      username: localStorage.getItem("username"),
-      is_admin: localStorage.getItem("is_admin"),
-      dataTendik: [],
-    }
+      nama: "",
+      jenis_kelamin: "",
+      nik: "",
+      nisn: "",
+      no_kk: "",
+      tingkat_kelas: "",
+      tahun_ajaran: "",
+      tanggal_masuk: "",
+      tanggal_lulus: "",
+      nomor_induk: "",
+      status: "",
+      tinggi_badan: "",
+      berat_badan: "",
+      lingkar_kepala: "",
+      alergi: "",
+      nama_ayah: "",
+      nama_ibu: "",
+      pekerjaan_ayah: "",
+      pekerjaan_ibu: "",
+      no_telp_ayah: "",
+      no_telp_ibu: "",
+      username: localStorage.getItem('username'),
+      is_admin: localStorage.getItem('is_admin')
+    };
   },
   methods: {
     async submitForm() {
@@ -438,7 +461,15 @@ export default defineComponent({
             console.log(response);
           })
           .catch((error) => {
-            console.log(error.response);
+            let status = error.response.data.msg;
+            if (status == "Missing Authorization Header") {
+              alert("Anda belum login");
+              window.location.href = "/SignIn";
+            }
+            else if (status == "Token has expired") {
+              alert("Sesi telah berakhir, silahkan login kembali");
+              window.location.href = "/SignIn";
+            }
           });
       }
     },
@@ -454,7 +485,15 @@ export default defineComponent({
           localStorage.clear();
         })
         .catch((error) => {
-          console.log(error.response.data);
+          let status = error.response.data.msg;
+          if (status == "Missing Authorization Header") {
+            alert("Anda belum login");
+            window.location.href = "/SignIn";
+          }
+          else if (status == "Token has expired") {
+            alert("Sesi telah berakhir, silahkan login kembali");
+            window.location.href = "/SignIn";
+          }
         });
     },
   },
@@ -505,7 +544,7 @@ ion-breadcrumb {
 /* small laptop dimension */
 
 @media only screen and (max-width: 1280px) {
-  .btn-search:focus ~ .input-search {
+  .btn-search:focus~.input-search {
     width: 250px;
   }
 
@@ -517,7 +556,7 @@ ion-breadcrumb {
 /* tablet dimension */
 
 @media only screen and (max-width: 990px) {
-  .btn-search:focus ~ .input-search {
+  .btn-search:focus~.input-search {
     width: 200px;
   }
 
@@ -543,7 +582,7 @@ ion-breadcrumb {
     right: 34%;
   }
 
-  .btn-search:focus ~ .input-search {
+  .btn-search:focus~.input-search {
     width: 200px;
   }
 
@@ -560,7 +599,7 @@ ion-breadcrumb {
     right: 41%;
   }
 
-  .btn-search:focus ~ .input-search {
+  .btn-search:focus~.input-search {
     width: 180px;
   }
 
@@ -580,7 +619,7 @@ ion-breadcrumb {
     right: 50%;
   }
 
-  .btn-search:focus ~ .input-search {
+  .btn-search:focus~.input-search {
     width: 150px;
   }
 

@@ -82,8 +82,8 @@
                   </thead>
                   <tbody v-for="result in results" :key="result._id">
                     <tr v-on:click="
-                      router.push('/pages/PesertaDidik/' + result._id.$oid)
-                    ">
+  router.push('/pages/PesertaDidik/' + result._id.$oid)
+">
                       <td class="align-middle">
                         <div class="d-flex px-3 py-1">
                           <div>
@@ -107,8 +107,8 @@
                       </td>
                       <td class="align-middle text-center">
                         <span class="text-dark text-xs font-weight-bold">{{
-                          result.tingkat_kelas
-                        }}</span>
+    result.tingkat_kelas
+                          }}</span>
                       </td>
                       <td class="align-middle text-center justify-content-evenly">
                         <!-- <a href="javascript:;" class="text-secondary font-weight-bold text-xs"
@@ -185,7 +185,15 @@ export default defineComponent({
         console.log(response);
       })
       .catch((error) => {
-        console.log(error.response.data);
+        let status = error.response.data.msg;
+        if (status == "Missing Authorization Header") {
+          alert("Anda belum login");
+          window.location.href = "/SignIn";
+        }
+        else if (status == "Token has expired") {
+          alert("Sesi telah berakhir, silahkan login kembali");
+          window.location.href = "/SignIn";
+        }
       });
   },
   setup() {
@@ -206,8 +214,16 @@ export default defineComponent({
           console.log(response);
           localStorage.clear()
         })
-        .catch(error => {
-          console.log(error.response.data);
+        .catch((error) => {
+          let status = error.response.data.msg;
+          if (status == "Missing Authorization Header") {
+            alert("Anda belum login");
+            window.location.href = "/SignIn";
+          }
+          else if (status == "Token has expired") {
+            alert("Sesi telah berakhir, silahkan login kembali");
+            window.location.href = "/SignIn";
+          }
         });
     },
   },

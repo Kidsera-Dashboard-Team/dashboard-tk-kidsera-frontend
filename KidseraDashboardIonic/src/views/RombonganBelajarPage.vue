@@ -13,7 +13,7 @@
                 <ion-breadcrumb style="font-size: 1em;" href="/pages/RombonganBelajar">Rombongan
                   Belajar</ion-breadcrumb>
               </ion-breadcrumbs>
-              <h5 style="margin-left: 11px">Rombongan Belajar</h5>
+              <h5 style="margin-left: 11px;">Rombongan Belajar</h5>
             </ion-title>
           </ion-col>
           <ion-col size-sm="6" size="10">
@@ -68,11 +68,9 @@
               <ion-grid>
                 <div class="container" style="flex-wrap: wrap; display: flex">
                   <div @click="
-                      () =>
-                        router.push('/pages/RombonganBelajar/' + year(result))
-                    "
-                    class="card-content"
-                    style="
+  () =>
+    router.push('/pages/RombonganBelajar/' + year(result))
+" class="card-content" style="
                       width: 25%;
                       padding: 0;
                       flex-wrap: wrap;
@@ -141,8 +139,16 @@ export default defineComponent({
         this.results = response.data;
         console.log(response);
       })
-      .catch(function (error) {
-        console.error(error.response.data);
+      .catch((error) => {
+        let status = error.response.data.msg;
+        if (status == "Missing Authorization Header") {
+          alert("Anda belum login");
+          window.location.href = "/SignIn";
+        }
+        else if (status == "Token has expired") {
+          alert("Sesi telah berakhir, silahkan login kembali");
+          window.location.href = "/SignIn";
+        }
       });
   },
   setup() {
@@ -163,8 +169,16 @@ export default defineComponent({
           console.log(response);
           localStorage.clear()
         })
-        .catch(error => {
-          console.log(error.response.data);
+        .catch((error) => {
+          let status = error.response.data.msg;
+          if (status == "Missing Authorization Header") {
+            alert("Anda belum login");
+            window.location.href = "/SignIn";
+          }
+          else if (status == "Token has expired") {
+            alert("Sesi telah berakhir, silahkan login kembali");
+            window.location.href = "/SignIn";
+          }
         });
     },
     year(e) {

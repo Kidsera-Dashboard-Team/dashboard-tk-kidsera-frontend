@@ -5,31 +5,38 @@
         <ion-menu-button color="primary"></ion-menu-button>
       </ion-buttons>
       <ion-grid>
-        <ion-row class="ion-justify-content-between">
-          <ion-col size="3" size-xl="6">
-            <ion-title class="d-none d-lg-inline-block" size="small"
-              ><span style="opacity: 50%">Pages</span> / E - Rapor <br />
-              <span style="font-size: 18px; letter-spacing: 2.5px">E - Rapor</span>
+        <ion-row class="ion-justify-content-between ion-align-items-center">
+          <ion-col size="6">
+            <ion-title class="d-none d-lg-inline-block mt-1" size="small">
+              <ion-breadcrumbs :max-items="4" :items-after-collapse="2" class="p-0">
+                <ion-breadcrumb style="font-size: 1em;" href="/Pages">Pages</ion-breadcrumb>
+                <ion-breadcrumb style="font-size: 1em;" href="/pages/Rapor">E - Rapor</ion-breadcrumb>
+                <ion-breadcrumb style="font-size: 1em;" href="/pages/Rapor/TahunAjaranRapor">Tahun
+                  Ajaran</ion-breadcrumb>
+                <ion-breadcrumb style="font-size: 1em;" href="/pages/Rapor/TahunAjaranRapor/PesertaDidikRapor">Peserta
+                  Didik</ion-breadcrumb>
+              </ion-breadcrumbs>
+              <h5 style="margin-left: 11px;">Peserta Didik E - Rapor</h5>
             </ion-title>
           </ion-col>
-          <ion-col size-sm="9" size="10" size-xl="6">
-            <ion-row class="ion-align-items-center ion-justify-content-end goright mt-2" style="margin-right: 20px">
-              <div class="btn-group dropstart mb-1 ms-2" style="content: inherit">
-                <button class="btn dropdown-toggle text-info text-gradient" type="button" data-bs-toggle="dropdown" aria-expanded="true" style="background-color: transparent">
-                  Hi User 13141
+          <ion-col size-sm="6" size="10">
+            <ion-row class="ion-align-items-center ion-justify-content-end goright mt-2" style="margin-right: 20px;">
+              <div class="btn-group dropstart mb-1 ms-2" style="content: inherit;">
+                <button class="btn dropdown-toggle text-info text-gradient" type="button" data-bs-toggle="dropdown"
+                  aria-expanded="true" style="background-color: transparent;">
+                  Hi {{ username }}
                 </button>
                 <ul class="dropdown-menu dropdown-menu-dark">
-                  <li>
-                    <a class="dropdown-item" href="javascript: doSomethingLogout()">Logout</a>
-                  </li>
+                  <li><a class="dropdown-item" href="javascript: doSomethingLogout()" @click="del()">Logout</a></li>
                 </ul>
               </div>
-              <div class="nav-icon">
+              <div v-if="is_admin == 'true'" class="nav-icon">
                 <a href="/SignUp">
                   <ion-icon class="iconButton text-info text-gradient" src="assets/icon/signup.svg"></ion-icon>
                 </a>
+                <a href="/SignUp" class="d-none d-sm-inline-block mb-1 text-info text-gradient"
+                  style="text-decoration: none;">&nbsp;Add User</a>
               </div>
-              <a href="/SignUp" class="d-none d-sm-inline-block mb-1 text-info text-gradient" style="text-decoration: none">&nbsp;Add User</a>
               <div>&nbsp;</div>
             </ion-row>
           </ion-col>
@@ -67,11 +74,8 @@
                   <td class="text-center">{{ result.jenis_kelamin }}</td>
                   <td class="text-center">{{ result.nisn }}</td>
                   <td class="text-center">
-                    <button
-                      type="button"
-                      class="btn btn-warning btn-sm text-uppercase text-white fw-bold p-2"
-                      v-on:click="router.push('/pages/Rapor/' + tahun + '/' + kelas + '/' + result._id.$oid)"
-                    >
+                    <button type="button" class="btn btn-warning btn-sm text-uppercase text-white fw-bold p-2"
+                      v-on:click="router.push('/pages/Rapor/' + tahun + '/' + kelas + '/' + result._id.$oid)">
                       Input
                     </button>
                   </td>
@@ -97,42 +101,42 @@
 
 <script lang="ts">
 import { useRouter } from "vue-router";
-import axios from "axios";
 import { defineComponent } from "vue";
 import {
-    IonButtons, IonContent, IonMenuButton, IonPage, IonTitle, IonToolbar, IonCol, IonGrid, IonRow,
-    // IonSearchbar
+  IonButtons, IonContent, IonMenuButton, IonPage, IonTitle, IonToolbar, IonCol, IonGrid, IonRow,
+  // IonSearchbar
 } from '@ionic/vue';
+import axios from "axios";
 
 export default defineComponent({
-    name: 'PesertaDidikPage',
-    components: {
-        IonButtons,
-        IonContent,
-        IonMenuButton,
-        IonPage,
-        IonTitle,
-        IonToolbar,
-        IonCol,
-        IonGrid,
-        IonRow,
-        // IonSearchbar
-    },
-     setup() {
+  name: 'PesertaDidikPage',
+  components: {
+    IonButtons,
+    IonContent,
+    IonMenuButton,
+    IonPage,
+    IonTitle,
+    IonToolbar,
+    IonCol,
+    IonGrid,
+    IonRow,
+    // IonSearchbar
+  },
+  setup() {
     const router = useRouter();
 
     return {
       router,
     };
   },
-    props: ["tahun", "kelas"],
-    data() {
-        return {
-            username: localStorage.getItem('username'),
-            is_admin: localStorage.getItem('is_admin')
-        };
-    },
-     mounted: function () {
+  props: ["tahun", "kelas"],
+  data() {
+    return {
+      username: localStorage.getItem('username'),
+      is_admin: localStorage.getItem('is_admin')
+    };
+  },
+  mounted: function () {
     axios
       .get("http://localhost:5000/API/rombel/" + this.tahun + "/" + this.kelas)
       .then((response) => {
@@ -143,22 +147,30 @@ export default defineComponent({
         console.error(error.response.data);
       });
   },
-    methods: {
-        del() {
-            let headers = {
-                Authorization: "Bearer " + localStorage.getItem("access_token"),
-            };
+  methods: {
+    del() {
+      let headers = {
+        Authorization: "Bearer " + localStorage.getItem("access_token"),
+      };
 
-            axios.delete("http://localhost:5000/API/auth/logout", { headers })
-                .then((response) => {
-                    console.log(response);
-                    localStorage.clear()
-                })
-                .catch(error => {
-                    console.log(error.response.data);
-                });
-        },
+      axios.delete("http://localhost:5000/API/auth/logout", { headers })
+        .then((response) => {
+          console.log(response);
+          localStorage.clear()
+        })
+        .catch((error) => {
+          let status = error.response.data.msg;
+          if (status == "Missing Authorization Header") {
+            alert("Anda belum login");
+            window.location.href = "/SignIn";
+          }
+          else if (status == "Token has expired") {
+            alert("Sesi telah berakhir, silahkan login kembali");
+            window.location.href = "/SignIn";
+          }
+        });
     },
+  },
 });
 </script>
 
@@ -226,7 +238,7 @@ a .iconButton {
   top: -1.5px;
 }
 
-.btn-search:focus ~ .input-search {
+.btn-search:focus~.input-search {
   width: 230px;
   border-radius: 10px;
   background-color: white;
@@ -291,7 +303,7 @@ th {
   white-space: nowrap;
 }
 
-.tables > :not(:last-child) > :last-child > * {
+.tables> :not(:last-child)> :last-child>* {
   border-bottom-color: black;
 }
 
@@ -325,7 +337,7 @@ td {
 /* small laptop dimension */
 
 @media only screen and (max-width: 1280px) {
-  .btn-search:focus ~ .input-search {
+  .btn-search:focus~.input-search {
     width: 250px;
   }
 
@@ -347,7 +359,7 @@ td {
 /* tablet dimension */
 
 @media only screen and (max-width: 990px) {
-  .btn-search:focus ~ .input-search {
+  .btn-search:focus~.input-search {
     width: 200px;
   }
 
@@ -395,7 +407,7 @@ td {
     right: 34%;
   }
 
-  .btn-search:focus ~ .input-search {
+  .btn-search:focus~.input-search {
     width: 200px;
   }
 
@@ -412,7 +424,7 @@ td {
     right: 41%;
   }
 
-  .btn-search:focus ~ .input-search {
+  .btn-search:focus~.input-search {
     width: 180px;
   }
 
@@ -427,7 +439,7 @@ td {
     right: 50%;
   }
 
-  .btn-search:focus ~ .input-search {
+  .btn-search:focus~.input-search {
     width: 150px;
   }
 
