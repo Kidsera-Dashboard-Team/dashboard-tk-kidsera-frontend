@@ -9,20 +9,19 @@
           <ion-col size="6">
             <ion-title class="d-none d-lg-inline-block mt-1" size="small">
               <ion-breadcrumbs :max-items="4" :items-after-collapse="2" class="p-0">
-                <ion-breadcrumb style="font-size: 1em;" href="/Pages">Pages</ion-breadcrumb>
-                <ion-breadcrumb style="font-size: 1em;" href="/pages/TenagaKependidikan">Tenaga
-                  Kependidikan</ion-breadcrumb>
-                <ion-breadcrumb style="font-size: 1em;"
-                  href="/pages/TenagaKependidikan/TambahTenagaKependidikan">Tambah</ion-breadcrumb>
+                <ion-breadcrumb style="font-size: 1em" href="/Pages">Pages</ion-breadcrumb>
+                <ion-breadcrumb style="font-size: 1em" href="/pages/TenagaKependidikan">Tenaga Kependidikan</ion-breadcrumb>
+                <ion-breadcrumb style="font-size: 1em" href="/pages/TenagaKependidikan/TambahTenagaKependidikan">Tambah</ion-breadcrumb>
               </ion-breadcrumbs>
-              <h5 style="margin-left: 11px;">Tambah Tenaga Kependidikan Non-Guru</h5>
+              <h5 style="margin-left: 11px">Tambah Tenaga Kependidikan Non-Guru</h5>
             </ion-title>
           </ion-col>
           <ion-col size-sm="6" size="10">
-            <ion-row class="ion-align-items-center ion-justify-content-end goright mt-2" style="margin-right: 20px;">
-              <div class="btn-group dropstart mb-1 ms-2" style="content: inherit;">
-                <button class="btn dropdown-toggle text-info text-gradient" type="button" data-bs-toggle="dropdown"
-                  aria-expanded="true" style="background-color: transparent;">Hi {{ username }} </button>
+            <ion-row class="ion-align-items-center ion-justify-content-end goright mt-2" style="margin-right: 20px">
+              <div class="btn-group dropstart mb-1 ms-2" style="content: inherit">
+                <button class="btn dropdown-toggle text-info text-gradient" type="button" data-bs-toggle="dropdown" aria-expanded="true" style="background-color: transparent">
+                  Hi {{ username }}
+                </button>
                 <ul class="dropdown-menu dropdown-menu-dark">
                   <li><a class="dropdown-item" @click="del()">Logout</a></li>
                 </ul>
@@ -33,8 +32,7 @@
                     <ion-icon class="iconButton text-info text-gradient" src="assets/icon/signup.svg"></ion-icon>
                   </a>
                 </div>
-                <a href="/SignUp" class="d-none d-sm-inline-block mb-1 text-info text-gradient"
-                  style="text-decoration: none;">&nbsp;Add User</a>
+                <a href="/SignUp" class="d-none d-sm-inline-block mb-1 text-info text-gradient" style="text-decoration: none">&nbsp;Add User</a>
               </div>
               <div>&nbsp;</div>
             </ion-row>
@@ -56,49 +54,75 @@
               <ion-card-content class="d-grid gap-3">
                 <ion-item fill="outline">
                   <ion-label position="floating">Nama</ion-label>
-                  <ion-input placeholder="Masukkan Nama" v-model="nama" required></ion-input>
+                  <ion-input placeholder="Masukkan Nama" v-model="formData.nama" required></ion-input>
+                  <ion-note color="danger" v-for="error in v$.nama.$errors" :key="error.$uid">
+                    {{ error.$message }}
+                  </ion-note>
                 </ion-item>
                 <ion-item fill="outline">
                   <ion-label position="floating">Jenis Kelamin</ion-label>
-                  <ion-input placeholder="Masukkan Jenis Kelamin" v-model="jenis_kelamin" required></ion-input>
+                  <ion-input placeholder="Masukkan Jenis Kelamin" v-model="formData.jenis_kelamin" required></ion-input>
+                  <ion-note color="danger" v-for="error in v$.jenis_kelamin.$errors" :key="error.$uid">
+                    {{ error.$message }}
+                  </ion-note>
                 </ion-item>
                 <ion-item fill="outline">
                   <ion-label position="floating">Tempat, Tanggal Lahir</ion-label>
-                  <ion-input placeholder="Masukkan Tempat, Tanggal Lahir" v-model="ttl" required></ion-input>
+                  <ion-input placeholder="Masukkan Tempat, Tanggal Lahir" v-model="formData.ttl" required></ion-input>
+                  <ion-note color="danger" v-for="error in v$.ttl.$errors" :key="error.$uid">
+                    {{ error.$message }}
+                  </ion-note>
                 </ion-item>
                 <ion-item fill="outline">
                   <ion-label position="floating">Alamat</ion-label>
-                  <ion-input placeholder="Masukkan Alamat" v-model="alamat" required></ion-input>
+                  <ion-input placeholder="Masukkan Alamat" v-model="formData.alamat" required></ion-input>
+                  <ion-note color="danger" v-for="error in v$.alamat.$errors" :key="error.$uid">
+                    {{ error.$message }}
+                  </ion-note>
                 </ion-item>
                 <ion-item fill="outline">
                   <ion-label position="floating">No. HP</ion-label>
-                  <ion-input placeholder="Masukkan No. HP" v-model="no_hp" required></ion-input>
+                  <ion-input placeholder="Masukkan No. HP" v-model="formData.no_hp" required></ion-input>
+                  <ion-note color="danger" v-for="error in v$.no_hp.$errors" :key="error.$uid">
+                    {{ error.$message }}
+                  </ion-note>
                 </ion-item>
                 <ion-item fill="outline">
                   <ion-label position="floating">Email</ion-label>
-                  <ion-input placeholder="Masukkan Email" v-model="email" required></ion-input>
+                  <ion-input placeholder="Masukkan Email" v-model="formData.email" required></ion-input>
+                  <ion-note color="danger" v-for="error in v$.email.$errors" :key="error.$uid">
+                    {{ error.$message }}
+                  </ion-note>
                 </ion-item>
                 <ion-item fill="outline">
                   <ion-label position="floating">Pendidikan Terakhir</ion-label>
-                  <ion-input placeholder="Masukkan Pendidikan Terakhir" v-model="pendidikan_terakhir"
-                    required></ion-input>
+                  <ion-input placeholder="Masukkan Pendidikan Terakhir" v-model="formData.pendidikan_terakhir" required></ion-input>
+                  <ion-note color="danger" v-for="error in v$.pendidikan_terakhir.$errors" :key="error.$uid">
+                    {{ error.$message }}
+                  </ion-note>
                 </ion-item>
                 <ion-item fill="outline">
                   <ion-label position="floating">Tahun Ajaran</ion-label>
-                  <ion-input placeholder="Masukkan Tahun Ajaran" v-model="tahun_ajaran" required></ion-input>
+                  <ion-input placeholder="Masukkan Tahun Ajaran" v-model="formData.tahun_ajaran" required></ion-input>
+                  <ion-note color="danger" v-for="error in v$.tahun_ajaran.$errors" :key="error.$uid">
+                    {{ error.$message }}
+                  </ion-note>
                 </ion-item>
                 <ion-item fill="outline">
                   <ion-label position="floating">Kelas Mengajar</ion-label>
-                  <ion-input placeholder="Masukkan Kelas Mengajar" v-model="kelas_mengajar" required></ion-input>
+                  <ion-input placeholder="Masukkan Kelas Mengajar" v-model="formData.kelas_mengajar" required></ion-input>
+                  <ion-note color="danger" v-for="error in v$.kelas_mengajar.$errors" :key="error.$uid">
+                    {{ error.$message }}
+                  </ion-note>
                 </ion-item>
+
                 <div>
                   <ion-row class="ion-justify-content-center row-button">
                     <ion-col size="6" size-sm="2">
                       <a class="btn btn-danger" href="/pages/TenagaKependidikan" role="button">Batalkan</a>
                     </ion-col>
                     <ion-col size="6" size-sm="2">
-                      <a class="btn btn-success" role="button" href="/pages/TenagaKependidikan"
-                        @click="submitForm()">Tambah</a>
+                      <a class="btn btn-success" role="button" @click="submitForm()">Tambah</a>
                     </ion-col>
                   </ion-row>
                 </div>
@@ -112,7 +136,9 @@
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue';
+import { defineComponent, reactive, computed } from "vue";
+import { useVuelidate } from "@vuelidate/core";
+import { required, integer } from "@vuelidate/validators";
 import {
   IonButtons,
   IonContent,
@@ -129,12 +155,12 @@ import {
   IonCardTitle,
   IonInput,
   IonItem,
-  IonLabel
-} from '@ionic/vue';
+  IonLabel,
+} from "@ionic/vue";
 import axios from "axios";
 
 export default defineComponent({
-  name: 'DashboardPage',
+  name: "DashboardPage",
   components: {
     IonButtons,
     IonContent,
@@ -151,13 +177,62 @@ export default defineComponent({
     IonCardTitle,
     IonInput,
     IonItem,
-    IonLabel
+    IonLabel,
   },
+  setup() {
+    const formData = reactive({
+      nama: "",
+      jenis_kelamin: "",
+      ttl: "",
+      alamat: "",
+      no_hp: "",
+      email: "",
+      pendidikan_terakhir: "",
+      tahun_ajaran: "",
+      kelas_mengajar: "",
+    });
 
+    const rules = computed(() => {
+      return {
+        nama: {
+          required,
+        },
+        jenis_kelamin: {
+          required,
+        },
+        ttl: {
+          required,
+        },
+        alamat: {
+          required,
+        },
+        no_hp: {
+          required,
+          integer,
+        },
+        email: {
+          required,
+        },
+        pendidikan_terakhir: {
+          required,
+        },
+        tahun_ajaran: {
+          required,
+        },
+        kelas_mengajar: {
+          required,
+        },
+      };
+    });
+
+    const v$ = useVuelidate(rules, formData);
+
+    return { formData, v$ };
+  },
   data() {
     return {
-      username: localStorage.getItem('username'),
-      is_admin: localStorage.getItem('is_admin'),
+      username: localStorage.getItem("username"),
+      is_admin: localStorage.getItem("is_admin"),
       nama: "",
       jenis_kelamin: "",
       ttl: "",
@@ -188,51 +263,58 @@ export default defineComponent({
           let status = error.response.data.msg;
           if (status == "Missing Authorization Header") {
             alert("Anda belum login");
-          }
-          else if (status == "Token has expired") {
+            window.location.href = "/SignIn";
+          } else if (status == "Token has expired") {
             alert("Sesi telah berakhir, silahkan login kembali");
           }
           window.location.href = "/SignIn";
         });
     },
+    async submitForm() {
+      const result = await this.v$.$validate();
 
-    submitForm() {
-      const json = JSON.stringify({
-        nama: this.nama,
-        jenis_kelamin: this.jenis_kelamin,
-        ttl: this.ttl,
-        alamat: this.alamat,
-        no_hp: this.no_hp,
-        email: this.email,
-        pendidikan_terakhir: this.pendidikan_terakhir,
-        tahun_ajaran: this.tahun_ajaran,
-        kelas_mengajar: this.kelas_mengajar,
-      });
-      console.log(json);
-      axios
-        .post("http://31.187.72.73/API/tendik/nonguru", json, {
-          headers: {
-            "Access-Control-Allow-Origin": "*",
-            "Access-Control-Allow-Credentials": "true",
-            "Content-Type": "application/json",
-            "Authorization": "Bearer " + localStorage.getItem("access_token"),
-          },
-          withCredentials: true,
-        })
-        .then(response => {
-          console.log(response);
-        })
-        .catch((error) => {
-          let status = error.response.data.msg;
-          if (status == "Missing Authorization Header") {
-            alert("Anda belum login");
-            window.location.href = "/SignIn";
-          }
-          else if (status == "Token has expired") {
-            alert("Sesi telah berakhir, silahkan login kembali");
-            window.location.href = "/SignIn";
-          }
+      if (!result) {
+        console.log(result);
+        alert("failed");
+      } else {
+        const json = JSON.stringify({
+          nama: this.formData.nama,
+          jenis_kelamin: this.formData.jenis_kelamin,
+          ttl: this.formData.ttl,
+          alamat: this.formData.alamat,
+          no_hp: this.formData.no_hp,
+          email: this.formData.email,
+          pendidikan_terakhir: this.formData.pendidikan_terakhir,
+          tahun_ajaran: this.formData.tahun_ajaran,
+          kelas_mengajar: this.formData.kelas_mengajar,
         });
+        console.log(json);
+        axios
+          .post("http://31.187.72.73/API/tendik/nonguru", json, {
+            headers: {
+              "Access-Control-Allow-Origin": "*",
+              "Access-Control-Allow-Credentials": "true",
+              "Content-Type": "application/json",
+              Authorization: "Bearer " + localStorage.getItem("access_token"),
+            },
+            withCredentials: true,
+          })
+          .then((response) => {
+            console.log(response);
+            alert("Success");
+            window.location.href = "/pages/TenagaKependidikan";
+          })
+          .catch((error) => {
+            let status = error.response.data.msg;
+            if (status == "Missing Authorization Header") {
+              alert("Anda belum login");
+              window.location.href = "/SignIn";
+            } else if (status == "Token has expired") {
+              alert("Sesi telah berakhir, silahkan login kembali");
+              window.location.href = "/SignIn";
+            }
+          });
+      }
     },
   },
 });
@@ -248,7 +330,7 @@ ion-col {
 /* Icon navbar style */
 
 a .iconButton {
-  color: #67748E;
+  color: #67748e;
   text-decoration: none;
   /* margin-left: 20px; */
   margin-right: -13px;
@@ -270,17 +352,17 @@ a .iconButton {
 }
 
 .text-gradient.text-info {
-  background-image: linear-gradient(310deg, #2152FF, #21D4FD);
+  background-image: linear-gradient(310deg, #2152ff, #21d4fd);
 }
 
 .text-gradient.text-dark {
-  background-image: linear-gradient(310deg, #141727, #3A416F);
+  background-image: linear-gradient(310deg, #141727, #3a416f);
 }
 
 /* small laptop dimension */
 
 @media only screen and (max-width: 1280px) {
-  .btn-search:focus~.input-search {
+  .btn-search:focus ~ .input-search {
     width: 250px;
   }
 
@@ -292,7 +374,7 @@ a .iconButton {
 /* tablet dimension */
 
 @media only screen and (max-width: 990px) {
-  .btn-search:focus~.input-search {
+  .btn-search:focus ~ .input-search {
     width: 200px;
   }
 
@@ -306,7 +388,7 @@ a .iconButton {
 @media only screen and (max-width: 575px) {
   .goright {
     position: relative;
-    left: 60px
+    left: 60px;
   }
 }
 
@@ -318,7 +400,7 @@ a .iconButton {
     right: 34%;
   }
 
-  .btn-search:focus~.input-search {
+  .btn-search:focus ~ .input-search {
     width: 200px;
   }
 
@@ -335,7 +417,7 @@ a .iconButton {
     right: 41%;
   }
 
-  .btn-search:focus~.input-search {
+  .btn-search:focus ~ .input-search {
     width: 180px;
   }
 
@@ -350,7 +432,7 @@ a .iconButton {
     right: 50%;
   }
 
-  .btn-search:focus~.input-search {
+  .btn-search:focus ~ .input-search {
     width: 150px;
   }
 

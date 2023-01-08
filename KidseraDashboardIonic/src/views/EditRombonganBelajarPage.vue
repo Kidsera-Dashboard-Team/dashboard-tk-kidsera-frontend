@@ -171,11 +171,10 @@ export default defineComponent({
       .get("http://31.187.72.73/API/rombel/" + this.tahun + "/" + this.kelas)
       .then((response) => {
         this.formData.tahun_ajaran = response.data.rombel.tahun_ajaran;
-        this.formData.ruangan = response.data.ruangan;
-        this.formData.kelas = response.data.kelas;
+        this.formData.ruangan = response.data.rombel.ruangan;
+        this.formData.kelas = response.data.rombel.kelas;
 
         console.log(response.data);
-        console.log(response);
       })
       .catch(function (error) {
         console.error(error);
@@ -196,18 +195,20 @@ export default defineComponent({
         });
         console.log(json);
         await axios
-          .put("http://31.187.72.73/API/rombel" + this.tahun + "/" + this.kelas, json, {
+          .put("http://31.187.72.73/API/rombel/" + this.tahun + "/" + this.kelas, json, {
             headers: {
               "Access-Control-Allow-Origin": "*",
               "Access-Control-Allow-Credentials": "true",
               "Content-Type": "application/json",
+              "Authorization": "Bearer " + localStorage.getItem("access_token"),
+
             },
             withCredentials: true,
           })
           .then((response) => {
             console.log(response);
             alert("Success");
-            window.location.href = "/pages/Rombel/";
+            window.location.href = "/pages/RombonganBelajar/"+ this.tahun + "/" + this.kelas;
           })
           .catch((error) => {
             console.log(error.response);
