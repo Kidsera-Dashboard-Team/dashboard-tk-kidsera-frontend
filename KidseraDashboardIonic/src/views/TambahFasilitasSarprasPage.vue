@@ -9,20 +9,20 @@
           <ion-col size="6">
             <ion-title class="d-none d-lg-inline-block mt-1" size="small">
               <ion-breadcrumbs :max-items="4" :items-after-collapse="2" class="p-0">
-                <ion-breadcrumb style="font-size: 1em;" href="/Pages">Pages</ion-breadcrumb>
-                <ion-breadcrumb style="font-size: 1em;" href="/pages/Sarpras">Sarana & Prasarana</ion-breadcrumb>
-                <ion-breadcrumb style="font-size: 1em;" @click="router.push('/pages/Sarpras/DetailSarpras/' + this.id)">Detail</ion-breadcrumb>
-                <ion-breadcrumb style="font-size: 1em;"
-                  href="/pages/Sarpras/DetailSarpras/TambahFasilitasSarpras">Tambah</ion-breadcrumb>
+                <ion-breadcrumb style="font-size: 1em" href="/Pages">Pages</ion-breadcrumb>
+                <ion-breadcrumb style="font-size: 1em" href="/pages/Sarpras">Sarana & Prasarana</ion-breadcrumb>
+                <ion-breadcrumb style="font-size: 1em" @click="router.push('/pages/Sarpras/DetailSarpras/' + this.id)">Detail</ion-breadcrumb>
+                <ion-breadcrumb style="font-size: 1em" href="/pages/Sarpras/DetailSarpras/TambahFasilitasSarpras">Tambah</ion-breadcrumb>
               </ion-breadcrumbs>
-              <h5 style="margin-left: 11px;">Tambah Fasilitas Sarana & Prasarana</h5>
+              <h5 style="margin-left: 11px">Tambah Fasilitas Sarana & Prasarana</h5>
             </ion-title>
           </ion-col>
           <ion-col size-sm="6" size="10">
-            <ion-row class="ion-align-items-center ion-justify-content-end goright mt-2" style="margin-right: 20px;">
-              <div class="btn-group dropstart mb-1 ms-2" style="content: inherit;">
-                <button class="btn dropdown-toggle text-info text-gradient" type="button" data-bs-toggle="dropdown"
-                  aria-expanded="true" style="background-color: transparent;">Hi {{ username }} </button>
+            <ion-row class="ion-align-items-center ion-justify-content-end goright mt-2" style="margin-right: 20px">
+              <div class="btn-group dropstart mb-1 ms-2" style="content: inherit">
+                <button class="btn dropdown-toggle text-info text-gradient" type="button" data-bs-toggle="dropdown" aria-expanded="true" style="background-color: transparent">
+                  Hi {{ username }}
+                </button>
                 <ul class="dropdown-menu dropdown-menu-dark">
                   <li><a class="dropdown-item" @click="del()">Logout</a></li>
                 </ul>
@@ -33,8 +33,7 @@
                     <ion-icon class="iconButton text-info text-gradient" src="assets/icon/signup.svg"></ion-icon>
                   </a>
                 </div>
-                <a href="/SignUp" class="d-none d-sm-inline-block mb-1 text-info text-gradient"
-                  style="text-decoration: none;">&nbsp;Add User</a>
+                <a href="/SignUp" class="d-none d-sm-inline-block mb-1 text-info text-gradient" style="text-decoration: none">&nbsp;Add User</a>
               </div>
               <div>&nbsp;</div>
             </ion-row>
@@ -53,15 +52,24 @@
         <ion-card-content class="d-grid gap-3">
           <ion-item fill="outline">
             <ion-label position="floating">Fasilitas</ion-label>
-            <ion-input placeholder="Masukkan Fasilitas" v-model="nama" required></ion-input>
+            <ion-input placeholder="Masukkan Fasilitas" v-model="formData.nama" required></ion-input>
+            <ion-note color="danger" v-for="error in v$.nama.$errors" :key="error.$uid">
+              {{ error.$message }}
+            </ion-note>
           </ion-item>
           <ion-item fill="outline">
             <ion-label position="floating">Jenis</ion-label>
-            <ion-input placeholder="Masukkan Jenis" v-model="jenis" required></ion-input>
+            <ion-input placeholder="Masukkan Jenis" v-model="formData.jenis" required></ion-input>
+            <ion-note color="danger" v-for="error in v$.jenis.$errors" :key="error.$uid">
+              {{ error.$message }}
+            </ion-note>
           </ion-item>
           <ion-item fill="outline">
             <ion-label position="floating">Jumlah</ion-label>
-            <ion-input placeholder="Masukkan Jumlah" v-model="jumlah" required></ion-input>
+            <ion-input placeholder="Masukkan Jumlah" v-model="formData.jumlah" required></ion-input>
+            <ion-note color="danger" v-for="error in v$.jumlah.$errors" :key="error.$uid">
+              {{ error.$message }}
+            </ion-note>
           </ion-item>
           <div>
             <ion-row class="ion-justify-content-center row-button">
@@ -69,8 +77,7 @@
                 <a class="btn btn-danger" @click="router.push('/pages/Sarpras/DetailSarpras/' + this.id)" role="button">Batalkan</a>
               </ion-col>
               <ion-col size="6" size-sm="2">
-                <a class="btn btn-success" role="button"
-                  @click="tambahSarpras()">Tambah</a>
+                <a class="btn btn-success" role="button" @click="tambahSarpras()">Tambah</a>
               </ion-col>
             </ion-row>
           </div>
@@ -81,7 +88,9 @@
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue';
+import { defineComponent, reactive, computed } from "vue";
+import { useVuelidate } from "@vuelidate/core";
+import { required, integer } from "@vuelidate/validators";
 import {
   IonButtons,
   IonContent,
@@ -98,13 +107,13 @@ import {
   IonCardTitle,
   IonInput,
   IonItem,
-  IonLabel
-} from '@ionic/vue';
+  IonLabel,
+} from "@ionic/vue";
 import axios from "axios";
 import { useRouter } from "vue-router";
 
 export default defineComponent({
-  name: 'DashboardPage',
+  name: "DashboardPage",
   components: {
     IonButtons,
     IonContent,
@@ -121,20 +130,45 @@ export default defineComponent({
     IonCardTitle,
     IonInput,
     IonItem,
-    IonLabel
+    IonLabel,
   },
 
   setup() {
     const router = useRouter();
+    const formData = reactive({
+      nama: "",
+      jenis: "",
+      jumlah: "",
+    });
+
+    const rules = computed(() => {
+      return {
+        nama: {
+          required,
+        },
+        jenis: {
+          required,
+        },
+        jumlah: {
+          required,
+          integer
+        },
+      };
+    });
+
+    const v$ = useVuelidate(rules, formData);
+
     return {
       router,
-    }
+      formData,
+      v$,
+    };
   },
 
   data() {
     return {
-      username: localStorage.getItem('username'),
-      is_admin: localStorage.getItem('is_admin'),
+      username: localStorage.getItem("username"),
+      is_admin: localStorage.getItem("is_admin"),
       nama: "",
       jenis: "",
       jumlah: "",
@@ -149,7 +183,8 @@ export default defineComponent({
         Authorization: "Bearer " + localStorage.getItem("access_token"),
       };
 
-      axios.delete("http://localhost:5000/API/auth/logout", { headers })
+      axios
+        .delete("http://localhost:5000/API/auth/logout", { headers })
         .then((response) => {
           console.log(response);
           localStorage.clear();
@@ -160,47 +195,53 @@ export default defineComponent({
           if (status == "Missing Authorization Header") {
             alert("Anda belum login");
             window.location.href = "/SignIn";
-          }
-          else if (status == "Token has expired") {
+          } else if (status == "Token has expired") {
             alert("Sesi telah berakhir, silahkan login kembali");
             window.location.href = "/SignIn";
           }
         });
     },
 
-    tambahSarpras() {
-      const json = JSON.stringify({
-        nama: this.nama,
-        jenis: this.jenis,
-        jumlah: this.jumlah,
-      });
-      console.log(json);
-      axios
-        .post("http://localhost:5000/API/sarpras/" + this.id, json, {
-          headers: {
-            "Access-Control-Allow-Origin": "*",
-            "Access-Control-Allow-Credentials": "true",
-            "Content-Type": "application/json",
-            "Authorization": "Bearer " + localStorage.getItem("access_token"),
-          },
-          withCredentials: true,
-        })
-        .then(response => {
-          console.log(response);
-          window.location.href = "/pages/Sarpras/DetailSarpras/" + this.id;
-        })
-        .catch((error) => {
-          let status = error.response.data.msg;
-          if (status == "Missing Authorization Header") {
-            alert("Anda belum login");
-            window.location.href = "/SignIn";
-          }
-          else if (status == "Token has expired") {
-            alert("Sesi telah berakhir, silahkan login kembali");
-            window.location.href = "/SignIn";
-          }
+    async tambahSarpras() {
+      const result = await this.v$.$validate();
+
+      if (!result) {
+        console.log(result);
+        alert("failed");
+      } else {
+        const json = JSON.stringify({
+          nama: this.formData.nama,
+          jenis: this.formData.jenis,
+          jumlah: this.formData.jumlah,
         });
-    }
+        console.log(json);
+        axios
+          .post("http://localhost:5000/API/sarpras/" + this.id, json, {
+            headers: {
+              "Access-Control-Allow-Origin": "*",
+              "Access-Control-Allow-Credentials": "true",
+              "Content-Type": "application/json",
+              Authorization: "Bearer " + localStorage.getItem("access_token"),
+            },
+            withCredentials: true,
+          })
+          .then((response) => {
+            console.log(response);
+            alert("Success");
+            window.location.href = "/pages/Sarpras/DetailSarpras/" + this.id;
+          })
+          .catch((error) => {
+            let status = error.response.data.msg;
+            if (status == "Missing Authorization Header") {
+              alert("Anda belum login");
+              window.location.href = "/SignIn";
+            } else if (status == "Token has expired") {
+              alert("Sesi telah berakhir, silahkan login kembali");
+              window.location.href = "/SignIn";
+            }
+          });
+      }
+    },
   },
 });
 </script>
@@ -215,7 +256,7 @@ ion-col {
 /* Icon navbar style */
 
 a .iconButton {
-  color: #67748E;
+  color: #67748e;
   text-decoration: none;
   /* margin-left: 20px; */
   margin-right: -13px;
@@ -240,7 +281,7 @@ a .iconButton {
   letter-spacing: 2px;
   outline: none;
   border-radius: 25px;
-  transition: all .5s ease-in-out;
+  transition: all 0.5s ease-in-out;
   background-color: transparent;
   padding-right: 40px;
   color: black;
@@ -270,20 +311,20 @@ a .iconButton {
   top: -1.5px;
 }
 
-.btn-search:focus~.input-search {
+.btn-search:focus ~ .input-search {
   width: 230px;
   border-radius: 10px;
   background-color: white;
   border-bottom: 1px solid rgba(255, 255, 255, 0.5);
-  transition: all 500ms cubic-bezier(0, 0.110, 0.35, 2);
+  transition: all 500ms cubic-bezier(0, 0.11, 0.35, 2);
 }
 
 .input-search:focus {
   width: 230px;
   border-radius: 0px;
   background-color: transparent;
-  border-bottom: 1px solid rgba(255, 255, 255, .5);
-  transition: all 500ms cubic-bezier(0, 0.110, 0.35, 2);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.5);
+  transition: all 500ms cubic-bezier(0, 0.11, 0.35, 2);
 }
 
 .text-info {
@@ -299,17 +340,17 @@ a .iconButton {
 }
 
 .text-gradient.text-info {
-  background-image: linear-gradient(310deg, #2152FF, #21D4FD);
+  background-image: linear-gradient(310deg, #2152ff, #21d4fd);
 }
 
 .text-gradient.text-dark {
-  background-image: linear-gradient(310deg, #141727, #3A416F);
+  background-image: linear-gradient(310deg, #141727, #3a416f);
 }
 
 /* small laptop dimension */
 
 @media only screen and (max-width: 1280px) {
-  .btn-search:focus~.input-search {
+  .btn-search:focus ~ .input-search {
     width: 250px;
   }
 
@@ -321,7 +362,7 @@ a .iconButton {
 /* tablet dimension */
 
 @media only screen and (max-width: 990px) {
-  .btn-search:focus~.input-search {
+  .btn-search:focus ~ .input-search {
     width: 200px;
   }
 
@@ -335,7 +376,7 @@ a .iconButton {
 @media only screen and (max-width: 575px) {
   .goright {
     position: relative;
-    left: 60px
+    left: 60px;
   }
 }
 
@@ -347,7 +388,7 @@ a .iconButton {
     right: 34%;
   }
 
-  .btn-search:focus~.input-search {
+  .btn-search:focus ~ .input-search {
     width: 200px;
   }
 
@@ -364,7 +405,7 @@ a .iconButton {
     right: 41%;
   }
 
-  .btn-search:focus~.input-search {
+  .btn-search:focus ~ .input-search {
     width: 180px;
   }
 
@@ -384,7 +425,7 @@ a .iconButton {
     right: 50%;
   }
 
-  .btn-search:focus~.input-search {
+  .btn-search:focus ~ .input-search {
     width: 150px;
   }
 
