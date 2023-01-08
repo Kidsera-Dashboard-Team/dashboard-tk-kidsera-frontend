@@ -16,11 +16,11 @@
             <ion-row class="ion-align-items-center ion-justify-content-end goright mt-2" style="margin-right: 20px">
               <div class="btn-group dropstart mb-1 ms-2" style="content: inherit">
                 <button class="btn dropdown-toggle text-info text-gradient" type="button" data-bs-toggle="dropdown" aria-expanded="true" style="background-color: transparent">
-                  Hi User 13141
+                  Hi {{ username }}
                 </button>
                 <ul class="dropdown-menu dropdown-menu-dark">
                   <li>
-                    <a class="dropdown-item" href="javascript: doSomethingLogout()">Logout</a>
+                    <a class="dropdown-item" @click="del()">Logout</a>
                   </li>
                 </ul>
               </div>

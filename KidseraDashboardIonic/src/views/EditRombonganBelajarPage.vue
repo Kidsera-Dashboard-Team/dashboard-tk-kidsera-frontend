@@ -46,7 +46,7 @@
                   aria-expanded="true"
                   style="background-color: transparent"
                 >
-                  Hi User 13141
+                  Hi {{ username }}
                 </button>
                 <ul class="dropdown-menu dropdown-menu-dark">
                   <li>

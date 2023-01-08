@@ -18,9 +18,10 @@
           <ion-col size-sm="8" size="10">
             <ion-row class="ion-align-items-center ion-justify-content-end goright mt-2" style="margin-right: 20px">
               <div class="btn-group dropstart mb-1 ms-2" style="content: inherit">
-                <button class="btn dropdown-toggle text-info text-gradient" type="button" data-bs-toggle="dropdown" aria-expanded="true" style="background-color: transparent">Hi {{ username }}</button>
+                <button class="btn dropdown-toggle text-info text-gradient" type="button" data-bs-toggle="dropdown"
+                  aria-expanded="true" style="background-color: transparent">Hi {{ username }}</button>
                 <ul class="dropdown-menu dropdown-menu-dark">
-                  <li><a class="dropdown-item" href="javascript: doSomethingLogout()" @click="del()">Logout</a></li>
+                  <li><a class="dropdown-item" @click="del()">Logout</a></li>
                   <!-- <li><a class="dropdown-item" href="#">Another action</a></li> -->
                   <!-- <li><a class="dropdown-item" href="#">Something else here</a></li> -->
                 </ul>
@@ -31,7 +32,8 @@
                     <ion-icon class="iconButton text-info text-gradient" src="assets/icon/signup.svg"></ion-icon>
                   </a>
                 </div>
-                <a href="/SignUp" class="d-none d-sm-inline-block mb-1 text-info text-gradient" style="text-decoration: none">&nbsp;Add User</a>
+                <a href="/SignUp" class="d-none d-sm-inline-block mb-1 text-info text-gradient"
+                  style="text-decoration: none">&nbsp;Add User</a>
               </div>
               <div>&nbsp;</div>
             </ion-row>
@@ -48,12 +50,15 @@
               <ion-row class="ion-align-items-center m-0">
                 <ion-col size="8">
                   <ion-card-header>
-                    <ion-card-subtitle class="text-sm mb-0 text-capitalize font-weight-bold overflow-hidden text-overflow"> Jumlah TK A</ion-card-subtitle>
+                    <ion-card-subtitle
+                      class="text-sm mb-0 text-capitalize font-weight-bold overflow-hidden text-overflow"> Jumlah TK
+                      A</ion-card-subtitle>
                     <ion-card-title class="font-weight-bolder mb-0">30</ion-card-title>
                   </ion-card-header>
                 </ion-col>
                 <ion-col size="4" class="text-end text-sm-center">
-                  <ion-icon src="assets/icon/gender-icon.svg" class="icon-tk" style="font-size: large; margin-right: 20px"></ion-icon>
+                  <ion-icon src="assets/icon/gender-icon.svg" class="icon-tk"
+                    style="font-size: large; margin-right: 20px"></ion-icon>
                 </ion-col>
               </ion-row>
             </ion-card>
@@ -63,12 +68,15 @@
               <ion-row class="ion-align-items-center">
                 <ion-col size="8">
                   <ion-card-header>
-                    <ion-card-subtitle class="text-sm mb-0 text-capitalize font-weight-bold overflow-hidden text-overflow">Jumlah TK B</ion-card-subtitle>
+                    <ion-card-subtitle
+                      class="text-sm mb-0 text-capitalize font-weight-bold overflow-hidden text-overflow">Jumlah TK
+                      B</ion-card-subtitle>
                     <ion-card-title>20</ion-card-title>
                   </ion-card-header>
                 </ion-col>
                 <ion-col size="4" class="text-end text-sm-center">
-                  <ion-icon src="assets/icon/gender-icon.svg" width class="icon-tk" style="font-size: large; margin-right: 20px"></ion-icon>
+                  <ion-icon src="assets/icon/gender-icon.svg" width class="icon-tk"
+                    style="font-size: large; margin-right: 20px"></ion-icon>
                 </ion-col>
               </ion-row>
             </ion-card>
@@ -78,12 +86,15 @@
               <ion-row class="ion-align-items-center">
                 <ion-col size="8">
                   <ion-card-header>
-                    <ion-card-subtitle class="text-sm mb-0 text-capitalize font-weight-bold overflow-hidden text-overflow">Jumlah Siswa Laki-laki</ion-card-subtitle>
+                    <ion-card-subtitle
+                      class="text-sm mb-0 text-capitalize font-weight-bold overflow-hidden text-overflow">Jumlah Siswa
+                      Laki-laki</ion-card-subtitle>
                     <ion-card-title>20</ion-card-title>
                   </ion-card-header>
                 </ion-col>
                 <ion-col size="4" class="text-end text-sm-center">
-                  <ion-icon src="assets/icon/laki-icon.svg" class="icon-gender" style="font-size: large; margin-right: 20px"></ion-icon>
+                  <ion-icon src="assets/icon/laki-icon.svg" class="icon-gender"
+                    style="font-size: large; margin-right: 20px"></ion-icon>
                 </ion-col>
               </ion-row>
             </ion-card>
@@ -93,12 +104,15 @@
               <ion-row class="ion-align-items-center">
                 <ion-col size="8">
                   <ion-card-header>
-                    <ion-card-subtitle class="text-sm mb-0 text-capitalize font-weight-bold overflow-hidden text-overflow">Jumlah Siswa Perempuan</ion-card-subtitle>
+                    <ion-card-subtitle
+                      class="text-sm mb-0 text-capitalize font-weight-bold overflow-hidden text-overflow">Jumlah Siswa
+                      Perempuan</ion-card-subtitle>
                     <ion-card-title>30</ion-card-title>
                   </ion-card-header>
                 </ion-col>
                 <ion-col size="4" class="text-end text-sm-center">
-                  <ion-icon src="assets/icon/perempuan-icon.svg" class="icon-gender" style="font-size: large; margin-right: 20px"></ion-icon>
+                  <ion-icon src="assets/icon/perempuan-icon.svg" class="icon-gender"
+                    style="font-size: large; margin-right: 20px"></ion-icon>
                 </ion-col>
               </ion-row>
             </ion-card>
@@ -211,8 +225,8 @@ export default defineComponent({
     };
   },
 
-  mounted: function() {
-    if(this.username == null) {
+  mounted: function () {
+    if (this.username == null) {
       window.location.href = "/SignIn";
     }
   },
@@ -226,7 +240,8 @@ export default defineComponent({
       axios.delete("http://localhost:5000/API/auth/logout", { headers })
         .then((response) => {
           console.log(response);
-          localStorage.clear()
+          localStorage.clear();
+          alert("Anda berhasil keluar");
         })
         .catch((error) => {
           let status = error.response.data.msg;
@@ -341,7 +356,7 @@ ion-card-subtitle {
 
 /* small laptop dimension */
 @media only screen and (max-width: 1280px) {
-  .btn-search:focus ~ .input-search {
+  .btn-search:focus~.input-search {
     width: 250px;
   }
 
@@ -352,7 +367,7 @@ ion-card-subtitle {
 
 /* tablet dimension */
 @media only screen and (max-width: 990px) {
-  .btn-search:focus ~ .input-search {
+  .btn-search:focus~.input-search {
     width: 280px;
   }
 
@@ -380,7 +395,7 @@ ion-card-subtitle {
     right: 34%;
   }
 
-  .btn-search:focus ~ .input-search {
+  .btn-search:focus~.input-search {
     width: 200px;
   }
 
@@ -396,7 +411,7 @@ ion-card-subtitle {
     right: 41%;
   }
 
-  .btn-search:focus ~ .input-search {
+  .btn-search:focus~.input-search {
     width: 180px;
   }
 
@@ -411,7 +426,7 @@ ion-card-subtitle {
     right: 50%;
   }
 
-  .btn-search:focus ~ .input-search {
+  .btn-search:focus~.input-search {
     width: 150px;
   }
 
