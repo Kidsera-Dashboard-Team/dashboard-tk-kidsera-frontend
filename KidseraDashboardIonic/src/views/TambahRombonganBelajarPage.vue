@@ -53,7 +53,7 @@
         <ion-card-content class="d-grid gap-3">
           <ion-item fill="outline">
             <ion-label position="floating">Tahun Ajaran</ion-label>
-            <ion-input type="date" v-model="formData.tahun_ajaran" placeholder="Masukkan Tahun Ajaran"
+            <ion-input v-model="formData.tahun_ajaran" placeholder="Masukkan Tahun Ajaran"
               required></ion-input>
             <ion-note color="danger" v-for="error in v$.tahun_ajaran.$errors" :key="error.$uid">
               {{ error.$message }}
@@ -189,44 +189,44 @@ export default defineComponent({
           }
         });
     },
-  },
-  async submitForm() {
-    const result = await this.v$.$validate();
-    console.log(this.v$.tahun_ajaran.$errors[0].$message = "has been taken");
-    if (!result) {
-      console.log(result);
-      alert("not success");
-    } else {
-      const json = JSON.stringify({
-        tahun_ajaran: this.formData.tahun_ajaran,
-        ruangan: this.formData.ruangan,
-        kelas: this.formData.kelas,
-      });
-      console.log(json);
-      await axios
-        .post("http://localhost:5000/API/rombel", json, {
-          headers: {
-            "Access-Control-Allow-Origin": "*",
-            "Access-Control-Allow-Credentials": "true",
-            "Content-Type": "application/json",
-          },
-          withCredentials: true,
-        })
-        .then((response) => {
-          console.log(response);
-        })
-        .catch((error) => {
-          let status = error.response.data.msg;
-          if (status == "Missing Authorization Header") {
-            alert("Anda belum login");
-            window.location.href = "/SignIn";
-          }
-          else if (status == "Token has expired") {
-            alert("Sesi telah berakhir, silahkan login kembali");
-            window.location.href = "/SignIn";
-          }
+    async submitForm() {
+      const result = await this.v$.$validate();
+      console.log(this.v$.tahun_ajaran.$errors[0].$message = "has been taken");
+      if (!result) {
+        console.log(result);
+        alert("not success");
+      } else {
+        const json = JSON.stringify({
+          tahun_ajaran: this.formData.tahun_ajaran,
+          ruangan: this.formData.ruangan,
+          kelas: this.formData.kelas,
         });
-    }
+        console.log(json);
+        await axios
+          .post("http://localhost:5000/API/rombel", json, {
+            headers: {
+              "Access-Control-Allow-Origin": "*",
+              "Access-Control-Allow-Credentials": "true",
+              "Content-Type": "application/json",
+            },
+            withCredentials: true,
+          })
+          .then((response) => {
+            console.log(response);
+          })
+          .catch((error) => {
+            let status = error.response.data.msg;
+            if (status == "Missing Authorization Header") {
+              alert("Anda belum login");
+              window.location.href = "/SignIn";
+            }
+            else if (status == "Token has expired") {
+              alert("Sesi telah berakhir, silahkan login kembali");
+              window.location.href = "/SignIn";
+            }
+          });
+      }
+    },
   },
 });
 </script>

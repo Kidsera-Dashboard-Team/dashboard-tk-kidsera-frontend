@@ -133,8 +133,12 @@ export default defineComponent({
     };
   },
   mounted: function () {
+    let headers = {
+      Authorization: "Bearer " + localStorage.getItem("access_token"),
+    };
+
     axios
-      .get("http://localhost:5000/API/rombel")
+      .get("http://localhost:5000/API/rombel", { headers })
       .then((response) => {
         this.results = response.data;
         console.log(response);
