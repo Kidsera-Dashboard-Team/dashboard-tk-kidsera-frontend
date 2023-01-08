@@ -506,7 +506,7 @@ export default defineComponent({
         });
         console.log(json);
         await axios
-          .post("http://31.187.72.73/API/students", json, {
+          .put("http://31.187.72.73/API/students", json, {
             headers: {
               "Access-Control-Allow-Origin": "*",
               "Access-Control-Allow-Credentials": "true",
