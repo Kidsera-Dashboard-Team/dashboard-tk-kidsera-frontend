@@ -81,9 +81,7 @@
                     </tr>
                   </thead>
                   <tbody v-for="result in results" :key="result._id">
-                    <tr v-on:click="
-                      router.push('/pages/PesertaDidik/' + result._id.$oid)
-                    ">
+                    <tr>
                       <td class="align-middle">
                         <div class="d-flex px-3 py-1">
                           <div>
@@ -107,15 +105,17 @@
                       </td>
                       <td class="align-middle text-center">
                         <span class="text-dark text-xs font-weight-bold">{{
-                          result.tingkat_kelas
-                        }}</span>
+    result.tingkat_kelas
+}}</span>
                       </td>
                       <td class="align-middle text-center justify-content-evenly">
                         <!-- <a href="javascript:;" class="text-secondary font-weight-bold text-xs"
                                                     data-toggle="tooltip" data-original-title="Edit user">
                                                     Edit
                                                 </a> -->
-                        <button type="button" class="btn btn-warning me-3 text-white action-button" @click="router.push('/pages/PesertaDidik/EditPesertaDidik/' + result._id.$oid)">
+                        <button type="button" class="btn btn-primary btn-sm text-uppercase text-white fw-bold p-2" v-on:click="router.push('/pages/PesertaDidik/' + result._id.$oid)">View</button>
+                        <button type="button" class="btn btn-warning me-3 text-white action-button"
+                          @click="router.push('/pages/PesertaDidik/EditPesertaDidik/' + result._id.$oid)">
                           &nbsp;&nbsp;&nbsp;Edit&nbsp;&nbsp;&nbsp;
                         </button>
                         <a href=""><button type="button" class="btn btn-danger text-white action-button" href="/pages">
