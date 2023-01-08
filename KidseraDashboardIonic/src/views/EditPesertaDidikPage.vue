@@ -19,7 +19,8 @@
           <ion-col size-sm="6" size="10">
             <ion-row class="ion-align-items-center ion-justify-content-end goright mt-2" style="margin-right: 20px">
               <div class="btn-group dropstart mb-1 ms-2" style="content: inherit">
-                <button class="btn dropdown-toggle text-info text-gradient" type="button" data-bs-toggle="dropdown" aria-expanded="true" style="background-color: transparent">
+                <button class="btn dropdown-toggle text-info text-gradient" type="button" data-bs-toggle="dropdown"
+                  aria-expanded="true" style="background-color: transparent">
                   Hi {{ username }}
                 </button>
                 <ul class="dropdown-menu dropdown-menu-dark">
@@ -32,7 +33,8 @@
                 <a href="/SignUp">
                   <ion-icon class="iconButton text-info text-gradient" src="assets/icon/signup.svg"></ion-icon>
                 </a>
-                <a href="/SignUp" class="d-none d-sm-inline-block mb-1 text-info text-gradient" style="text-decoration: none">&nbsp;Add User</a>
+                <a href="/SignUp" class="d-none d-sm-inline-block mb-1 text-info text-gradient"
+                  style="text-decoration: none">&nbsp;Add User</a>
               </div>
               <div>&nbsp;</div>
             </ion-row>
@@ -106,8 +108,7 @@
             <ion-input placeholder="Masukkan NIK" v-model="formData.nik" required></ion-input>
             <ion-note color="danger" v-for="error in v$.nik.$errors" :key="error.$uid">
               {{ error.$message }}
-            </ion-note> </ion-item
-          ><ion-item fill="outline">
+            </ion-note> </ion-item><ion-item fill="outline">
             <ion-label position="floating">NO. KK</ion-label>
             <ion-input placeholder="Masukkan NO. KK" v-model="formData.no_kk" required></ion-input>
             <ion-note color="danger" v-for="error in v$.no_kk.$errors" :key="error.$uid">
@@ -123,14 +124,16 @@
           </ion-item>
           <ion-item fill="outline">
             <ion-label position="floating">Tanggal Masuk</ion-label>
-            <ion-input placeholder="Masukkan Tanggal Masuk" type="date" v-model="formData.tanggal_masuk" required></ion-input>
+            <ion-input placeholder="Masukkan Tanggal Masuk" type="date" v-model="formData.tanggal_masuk"
+              required></ion-input>
             <ion-note color="danger" v-for="error in v$.tanggal_masuk.$errors" :key="error.$uid">
               {{ error.$message }}
             </ion-note>
           </ion-item>
           <ion-item fill="outline">
             <ion-label position="floating">Tanggal Lulus</ion-label>
-            <ion-input placeholder="Masukkan Tanggal Lulus" type="date" v-model="formData.tanggal_lulus" required></ion-input>
+            <ion-input placeholder="Masukkan Tanggal Lulus" type="date" v-model="formData.tanggal_lulus"
+              required></ion-input>
             <ion-note color="danger" v-for="error in v$.tanggal_lulus.$errors" :key="error.$uid">
               {{ error.$message }}
             </ion-note>
@@ -417,7 +420,7 @@ export default defineComponent({
     };
 
     axios
-      .get("http://localhost:5000/API/students/" + this.id, { headers })
+      .get("http://31.187.72.73/API/students/" + this.id, { headers })
       .then((response) => {
         this.formData.nama = response.data.nama;
         this.formData.jenis_kelamin = response.data.jenis_kelamin;
@@ -454,7 +457,7 @@ export default defineComponent({
       };
 
       axios
-        .delete("http://localhost:5000/API/auth/logout", { headers })
+        .delete("http://31.187.72.73/API/auth/logout", { headers })
         .then((response) => {
           console.log(response);
           localStorage.clear();
@@ -503,7 +506,7 @@ export default defineComponent({
         });
         console.log(json);
         await axios
-          .post("http://localhost:5000/API/students", json, {
+          .post("http://31.187.72.73/API/students", json, {
             headers: {
               "Access-Control-Allow-Origin": "*",
               "Access-Control-Allow-Credentials": "true",
@@ -573,7 +576,7 @@ a .iconButton {
 /* small laptop dimension */
 
 @media only screen and (max-width: 1280px) {
-  .btn-search:focus ~ .input-search {
+  .btn-search:focus~.input-search {
     width: 250px;
   }
 
@@ -585,7 +588,7 @@ a .iconButton {
 /* tablet dimension */
 
 @media only screen and (max-width: 990px) {
-  .btn-search:focus ~ .input-search {
+  .btn-search:focus~.input-search {
     width: 200px;
   }
 
@@ -611,7 +614,7 @@ a .iconButton {
     right: 34%;
   }
 
-  .btn-search:focus ~ .input-search {
+  .btn-search:focus~.input-search {
     width: 200px;
   }
 
@@ -628,7 +631,7 @@ a .iconButton {
     right: 41%;
   }
 
-  .btn-search:focus ~ .input-search {
+  .btn-search:focus~.input-search {
     width: 180px;
   }
 
@@ -648,7 +651,7 @@ a .iconButton {
     right: 50%;
   }
 
-  .btn-search:focus ~ .input-search {
+  .btn-search:focus~.input-search {
     width: 150px;
   }
 

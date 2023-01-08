@@ -50,6 +50,7 @@
           <ion-item fill="outline">
             <ion-label position="floating">Tahun Ajaran</ion-label>
             <ion-input v-model="formData.tahun_ajaran" placeholder="Masukkan Tahun Ajaran" required></ion-input>
+            <ion-input v-model="formData.tahun_ajaran" placeholder="Masukkan Tahun Ajaran" required></ion-input>
             <ion-note color="danger" v-for="error in v$.tahun_ajaran.$errors" :key="error.$uid">
               {{ error.$message }}
             </ion-note>
@@ -172,6 +173,7 @@ export default defineComponent({
           console.log(response);
           localStorage.clear();
           alert("Anda berhasil keluar");
+          window.location.href = "/SignIn";
         })
         .catch((error) => {
           let status = error.response.data.msg;
@@ -180,8 +182,8 @@ export default defineComponent({
             window.location.href = "/SignIn";
           } else if (status == "Token has expired") {
             alert("Sesi telah berakhir, silahkan login kembali");
-            window.location.href = "/SignIn";
           }
+          window.location.href = "/SignIn";
         });
     },
     async submitForm() {

@@ -7,15 +7,16 @@
       <ion-grid>
         <ion-row class="ion-justify-content-between">
           <ion-col size="3" size-xl="6">
-            <ion-title class="d-none d-lg-inline-block" size="small"
-              ><span style="opacity: 50%">Pages</span> / E - Rapor <br />
+            <ion-title class="d-none d-lg-inline-block" size="small"><span style="opacity: 50%">Pages</span> / E - Rapor
+              <br />
               <span style="font-size: 18px; letter-spacing: 2.5px">E - Rapor</span>
             </ion-title>
           </ion-col>
           <ion-col size-sm="9" size="10" size-xl="6">
             <ion-row class="ion-align-items-center ion-justify-content-end goright mt-2" style="margin-right: 20px">
               <div class="btn-group dropstart mb-1 ms-2" style="content: inherit">
-                <button class="btn dropdown-toggle text-info text-gradient" type="button" data-bs-toggle="dropdown" aria-expanded="true" style="background-color: transparent">
+                <button class="btn dropdown-toggle text-info text-gradient" type="button" data-bs-toggle="dropdown"
+                  aria-expanded="true" style="background-color: transparent">
                   Hi {{ username }}
                 </button>
                 <ul class="dropdown-menu dropdown-menu-dark">
@@ -51,27 +52,33 @@
                 <ol class="list-group">
                   <li class="list-group-item">
                     Moral dan nilai-nilai Agama<br />
-                    <ion-textarea class="custom-textarea" placeholder="Type something here" v-model="text1" readonly></ion-textarea>
+                    <ion-textarea class="custom-textarea" placeholder="Type something here" v-model="text1"
+                      readonly></ion-textarea>
                   </li>
                   <li class="list-group-item">
                     Motorik Kasar dan Motorik Halus<br />
-                    <ion-textarea class="custom-textarea" placeholder="Type something here" v-model="text2" readonly></ion-textarea>
+                    <ion-textarea class="custom-textarea" placeholder="Type something here" v-model="text2"
+                      readonly></ion-textarea>
                   </li>
                   <li class="list-group-item">
                     Bahasa<br />
-                    <ion-textarea class="custom-textarea" placeholder="Type something here" v-model="text3" readonly></ion-textarea>
+                    <ion-textarea class="custom-textarea" placeholder="Type something here" v-model="text3"
+                      readonly></ion-textarea>
                   </li>
                   <li class="list-group-item">
                     Kognitif<br />
-                    <ion-textarea class="custom-textarea" placeholder="Type something here" v-model="text4" readonly></ion-textarea>
+                    <ion-textarea class="custom-textarea" placeholder="Type something here" v-model="text4"
+                      readonly></ion-textarea>
                   </li>
                   <li class="list-group-item">
                     Sosial-emosional<br />
-                    <ion-textarea class="custom-textarea" placeholder="Type something here" v-model="text5" readonly></ion-textarea>
+                    <ion-textarea class="custom-textarea" placeholder="Type something here" v-model="text5"
+                      readonly></ion-textarea>
                   </li>
                   <li class="list-group-item">
                     Seni<br />
-                    <ion-textarea class="custom-textarea" placeholder="Type something here" v-model="text6" readonly></ion-textarea>
+                    <ion-textarea class="custom-textarea" placeholder="Type something here" v-model="text6"
+                      readonly></ion-textarea>
                   </li>
                 </ol>
               </div>
@@ -141,7 +148,7 @@ export default defineComponent({
   },
   mounted: function () {
     axios
-      .get("http://localhost:5000/API/rapor/detail/" + this.id_siswa + "/tengah_semester/" + this.semester)
+      .get("http://31.187.72.73/API/rapor/detail/" + this.id_siswa + "/tengah_semester/" + this.semester)
       .then((response) => {
         this.results = response.data.rapor[0].nilai;
         this.text1 = this.results[0][0].text1;
@@ -162,22 +169,23 @@ export default defineComponent({
         Authorization: "Bearer " + localStorage.getItem("access_token"),
       };
 
-      axios.delete("http://localhost:5000/API/auth/logout", { headers })
+      axios
+        .delete("http://31.187.72.73/API/auth/logout", { headers })
         .then((response) => {
           console.log(response);
           localStorage.clear();
           alert("Anda berhasil keluar");
+          window.location.href = "/SignIn";
         })
         .catch((error) => {
           let status = error.response.data.msg;
           if (status == "Missing Authorization Header") {
             alert("Anda belum login");
-            window.location.href = "/SignIn";
           }
           else if (status == "Token has expired") {
             alert("Sesi telah berakhir, silahkan login kembali");
-            window.location.href = "/SignIn";
           }
+          window.location.href = "/SignIn";
         });
     },
   },
@@ -258,7 +266,7 @@ a .iconButton {
   top: -1.5px;
 }
 
-.btn-search:focus ~ .input-search {
+.btn-search:focus~.input-search {
   width: 230px;
   border-radius: 10px;
   background-color: white;
@@ -312,7 +320,7 @@ a .iconButton {
 /* small laptop dimension */
 
 @media only screen and (max-width: 1280px) {
-  .btn-search:focus ~ .input-search {
+  .btn-search:focus~.input-search {
     width: 250px;
   }
 
@@ -334,7 +342,7 @@ a .iconButton {
 /* tablet dimension */
 
 @media only screen and (max-width: 990px) {
-  .btn-search:focus ~ .input-search {
+  .btn-search:focus~.input-search {
     width: 200px;
   }
 
@@ -382,7 +390,7 @@ a .iconButton {
     right: 34%;
   }
 
-  .btn-search:focus ~ .input-search {
+  .btn-search:focus~.input-search {
     width: 200px;
   }
 
@@ -399,7 +407,7 @@ a .iconButton {
     right: 41%;
   }
 
-  .btn-search:focus ~ .input-search {
+  .btn-search:focus~.input-search {
     width: 180px;
   }
 
@@ -414,7 +422,7 @@ a .iconButton {
     right: 50%;
   }
 
-  .btn-search:focus ~ .input-search {
+  .btn-search:focus~.input-search {
     width: 150px;
   }
 

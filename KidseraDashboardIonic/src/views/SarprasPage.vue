@@ -94,10 +94,10 @@
               </ion-card-title>
             </ion-col>
             <ion-col size-xl="6" size-md="6" size-xs="auto">
-             <div v-if="is_admin == 'true'">
-              <a class="btn btn-success float-end tambah" data-bs-toggle="collapse" href="#tambahRuangan" role="button"
-                aria-expanded="false" aria-controls="tambahRuangan">Tambah Ruang</a>
-             </div>
+              <div v-if="is_admin == 'true'">
+                <a class="btn btn-success float-end tambah" data-bs-toggle="collapse" href="#tambahRuangan"
+                  role="button" aria-expanded="false" aria-controls="tambahRuangan">Tambah Ruang</a>
+              </div>
               <!-- href="/pages/Sarpras/TambahSarprasRuangan" -->
             </ion-col>
           </ion-row>
@@ -109,7 +109,8 @@
               <div class="card-content" v-for="ruang in listRuang" :key="ruang._id">
                 <ion-card class="card-content-judul">
                   <ion-card-header class="ion-margin text-center">
-                    <a @click="router.push('/pages/Sarpras/DetailSarpras/' + ruang._id.$oid)" class="text-decoration-none">
+                    <a @click="router.push('/pages/Sarpras/DetailSarpras/' + ruang._id.$oid)"
+                      class="text-decoration-none">
                       <ion-card-title color="light">
                         Ruang {{ ruang.nama_ruangan }}
                       </ion-card-title>
@@ -128,7 +129,8 @@
           <label for="floatingInput">Nama Ruang</label>
         </div>
         <a class="btn btn-danger" href="/pages/Sarpras" role="button">Cancel</a>
-        <a class="btn btn-primary ms-2" role="button" href="javascript: doSomethingForAddSarprasRuangan()" @click="tambahRuang()">Add
+        <a class="btn btn-primary ms-2" role="button" href="javascript: doSomethingForAddSarprasRuangan()"
+          @click="tambahRuang()">Add
           Room</a>
       </div>
     </ion-content>
@@ -178,8 +180,8 @@ export default defineComponent({
     return {
       username: localStorage.getItem('username'),
       is_admin: localStorage.getItem('is_admin'),
-      listRuang : [],
-      namaRuang : ""
+      listRuang: [],
+      namaRuang: ""
     };
   },
 
@@ -196,7 +198,7 @@ export default defineComponent({
     };
 
     axios
-      .get("http://localhost:5000/API/ruangan", { headers })
+      .get("http://31.187.72.73/API/ruangan", { headers })
       .then((response) => {
         this.listRuang = response.data;
         console.log(response.data);
@@ -220,22 +222,23 @@ export default defineComponent({
         Authorization: "Bearer " + localStorage.getItem("access_token"),
       };
 
-      axios.delete("http://localhost:5000/API/auth/logout", { headers })
+      axios
+        .delete("http://31.187.72.73/API/auth/logout", { headers })
         .then((response) => {
           console.log(response);
           localStorage.clear();
           alert("Anda berhasil keluar");
+          window.location.href = "/SignIn";
         })
         .catch((error) => {
           let status = error.response.data.msg;
           if (status == "Missing Authorization Header") {
             alert("Anda belum login");
-            window.location.href = "/SignIn";
           }
           else if (status == "Token has expired") {
             alert("Sesi telah berakhir, silahkan login kembali");
-            window.location.href = "/SignIn";
           }
+          window.location.href = "/SignIn";
         });
     },
     tambahRuang() {
@@ -244,7 +247,7 @@ export default defineComponent({
       });
       console.log(json);
       axios
-        .post("http://localhost:5000/API/ruangan", json, {
+        .post("http://31.187.72.73/API/ruangan", json, {
           headers: {
             "Access-Control-Allow-Origin": "*",
             "Access-Control-Allow-Credentials": "true",

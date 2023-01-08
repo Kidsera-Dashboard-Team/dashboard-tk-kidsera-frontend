@@ -18,7 +18,8 @@
           <ion-col size-sm="6" size="10">
             <ion-row class="ion-align-items-center ion-justify-content-end goright mt-2" style="margin-right: 20px">
               <div class="btn-group dropstart mb-1 ms-2" style="content: inherit">
-                <button class="btn dropdown-toggle text-info text-gradient" type="button" data-bs-toggle="dropdown" aria-expanded="true" style="background-color: transparent">
+                <button class="btn dropdown-toggle text-info text-gradient" type="button" data-bs-toggle="dropdown"
+                  aria-expanded="true" style="background-color: transparent">
                   Hi {{ username }}
                 </button>
                 <ul class="dropdown-menu dropdown-menu-dark">
@@ -31,7 +32,8 @@
                 <a href="/SignUp">
                   <ion-icon class="iconButton text-info text-gradient" src="assets/icon/signup.svg"></ion-icon>
                 </a>
-                <a href="/SignUp" class="d-none d-sm-inline-block mb-1 text-info text-gradient" style="text-decoration: none">&nbsp;Add User</a>
+                <a href="/SignUp" class="d-none d-sm-inline-block mb-1 text-info text-gradient"
+                  style="text-decoration: none">&nbsp;Add User</a>
               </div>
               <div>&nbsp;</div>
             </ion-row>
@@ -41,30 +43,33 @@
     </ion-toolbar>
 
     <ion-content :fullscreen="true">
-      <ion-row class="mt-3 mx-2"
-        ><!-- <div class="row mt-3 mx-2"> -->
+      <ion-row class="mt-3 mx-2"><!-- <div class="row mt-3 mx-2"> -->
         <ion-col>
-          <ion-card class="mb-4 border-0"
-            ><!-- <div class="card mb-4 border-0"> -->
+          <ion-card class="mb-4 border-0"><!-- <div class="card mb-4 border-0"> -->
             <ion-row>
               <ion-col>
                 <h3 class="px-3 py-3 title-table text-black">Peserta Didik</h3>
               </ion-col>
-              <ion-col class="text-end my-auto me-5"
-                ><!-- <div class="col text-end my-auto me-5"> -->
+              <ion-col class="text-end my-auto me-5"><!-- <div class="col text-end my-auto me-5"> -->
                 <a href="/pages/PesertaDidik/TambahPesertaDidik" class="btn btn-success tambah"> Tambah Data</a>
               </ion-col>
             </ion-row>
-            <ion-card-content class="px-0 pt-0 pb-2"
-              ><!-- <div > -->
+            <ion-card-content class="px-0 pt-0 pb-2"><!-- <div > -->
               <div class="table-responsive p-0">
-                <table style="table-layout: fixed" id="table-peserta-didik" class="table table-hover align-items-center mb-0 display">
+                <table style="table-layout: fixed" id="table-peserta-didik"
+                  class="table table-hover align-items-center mb-0 display">
                   <thead>
                     <tr>
-                      <th width="25%" class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-4">Nama</th>
-                      <th width="20%" class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-4">Jenis Kelamin</th>
-                      <th width="15%" class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">NISN</th>
-                      <th width="20%" class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Kelas</th>
+                      <th width="25%" class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-4">
+                        Nama</th>
+                      <th width="20%" class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-4">
+                        Jenis Kelamin</th>
+                      <th width="15%"
+                        class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">NISN
+                      </th>
+                      <th width="20%"
+                        class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Kelas
+                      </th>
                       <th width="30%" class="text-secondary opacity-7 text-center">Aksi</th>
                     </tr>
                   </thead>
@@ -106,19 +111,19 @@
                         </button>
                         <button type="button" class="btn btn-danger text-white action-button" @click="delPesertaDidik(result._id.$oid)">Delete</button> -->
                         <div class="d-flex ms-5">
-                          <button type="button" class="btn btn-primary btn-sm text-uppercase text-white fw-bold p-2" 
-                          @click="router.push('/pages/PesertaDidik/' + result._id.$oid)">
+                          <button type="button" class="btn btn-primary btn-sm text-uppercase text-white fw-bold p-2"
+                            @click="router.push('/pages/PesertaDidik/' + result._id.$oid)">
                             View
                           </button>
                           <div v-if="is_admin == 'true'">
-                            <button
-                              type="button"
+                            <button type="button"
                               class="btn btn-warning btn-sm text-uppercase text-white fw-bold p-2 ms-2"
-                              @click="router.push('/pages/PesertaDidik/EditPesertaDidik/' + result._id.$oid)"
-                            >
+                              @click="router.push('/pages/PesertaDidik/EditPesertaDidik/' + result._id.$oid)">
                               Edit
                             </button>
-                            <button type="button" class="btn btn-danger btn-sm text-uppercase text-white fw-bold p-2 ms-2" @click="delPesertaDidik(result._id.$oid)">Delete</button>
+                            <button type="button"
+                              class="btn btn-danger btn-sm text-uppercase text-white fw-bold p-2 ms-2"
+                              @click="delPesertaDidik(result._id.$oid)">Delete</button>
                           </div>
                         </div>
                       </td>
@@ -166,7 +171,7 @@ export default defineComponent({
     };
 
     axios
-      .get("http://localhost:5000/API/students", { headers })
+      .get("http://31.187.72.73/API/students", { headers })
       .then((response) => {
         this.results = response.data;
         console.log(response);
@@ -183,7 +188,7 @@ export default defineComponent({
       });
 
 
-      
+
   },
   setup() {
     const router = useRouter();
@@ -199,7 +204,7 @@ export default defineComponent({
       };
 
       axios
-        .delete("http://localhost:5000/API/auth/logout", { headers })
+        .delete("http://31.187.72.73/API/auth/logout", { headers })
         .then((response) => {
           console.log(response);
           localStorage.clear();
@@ -222,7 +227,7 @@ export default defineComponent({
       };
 
       axios
-        .delete("http://localhost:5000/API/students/" + id, { headers })
+        .delete("http://31.187.72.73/API/students/" + id, { headers })
         .then((response) => {
           console.log(response);
           window.location.reload();
@@ -303,7 +308,7 @@ a .iconButton {
   top: -3px;
 }
 
-.btn-search:focus ~ .input-search {
+.btn-search:focus~.input-search {
   width: 300px;
   border-radius: 10px;
   background-color: #fff;
@@ -364,7 +369,7 @@ th {
   white-space: nowrap;
 }
 
-.tables > :not(:last-child) > :last-child > * {
+.tables> :not(:last-child)> :last-child>* {
   border-bottom-color: black;
 }
 
@@ -380,7 +385,7 @@ td {
 
 /* small laptop dimension */
 @media only screen and (max-width: 1280px) {
-  .btn-search:focus ~ .input-search {
+  .btn-search:focus~.input-search {
     width: 250px;
   }
 
@@ -402,7 +407,7 @@ td {
 
 /* tablet dimension */
 @media only screen and (max-width: 990px) {
-  .btn-search:focus ~ .input-search {
+  .btn-search:focus~.input-search {
     width: 200px;
   }
 
@@ -455,7 +460,7 @@ td {
     right: 34%;
   }
 
-  .btn-search:focus ~ .input-search {
+  .btn-search:focus~.input-search {
     width: 200px;
   }
 
@@ -471,7 +476,7 @@ td {
     right: 41%;
   }
 
-  .btn-search:focus ~ .input-search {
+  .btn-search:focus~.input-search {
     width: 180px;
   }
 
@@ -486,7 +491,7 @@ td {
     right: 50%;
   }
 
-  .btn-search:focus ~ .input-search {
+  .btn-search:focus~.input-search {
     width: 150px;
   }
 

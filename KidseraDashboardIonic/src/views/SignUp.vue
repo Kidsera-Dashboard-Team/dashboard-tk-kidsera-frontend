@@ -122,7 +122,7 @@ export default defineComponent({
     IonToolbar, IonCard, IonCardHeader, IonCardContent, IonCardTitle, IonGrid, IonRow, IonCol, IonInput, IonItem, IonCheckbox, IonLabel, IonButton
   },
   setup() {
-    
+
     const data = reactive({
       email: '',
       username: '',
@@ -133,7 +133,7 @@ export default defineComponent({
 
     const submit = () => {
       axios
-        .post("http://localhost:5000/API/auth/register", JSON.stringify(data), {
+        .post("http://31.187.72.73/API/auth/register", JSON.stringify(data), {
           headers: {
             "Access-Control-Allow-Origin": "*",
             "Access-Control-Allow-Credentials": "true",
@@ -164,7 +164,7 @@ export default defineComponent({
     }
 
   },
-  
+
 });
 </script>
 

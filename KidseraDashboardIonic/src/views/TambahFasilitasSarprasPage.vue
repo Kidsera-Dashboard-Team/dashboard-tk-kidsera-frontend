@@ -9,10 +9,12 @@
           <ion-col size="6">
             <ion-title class="d-none d-lg-inline-block mt-1" size="small">
               <ion-breadcrumbs :max-items="4" :items-after-collapse="2" class="p-0">
-                <ion-breadcrumb style="font-size: 1em" href="/Pages">Pages</ion-breadcrumb>
-                <ion-breadcrumb style="font-size: 1em" href="/pages/Sarpras">Sarana & Prasarana</ion-breadcrumb>
-                <ion-breadcrumb style="font-size: 1em" @click="router.push('/pages/Sarpras/DetailSarpras/' + this.id)">Detail</ion-breadcrumb>
-                <ion-breadcrumb style="font-size: 1em" href="/pages/Sarpras/DetailSarpras/TambahFasilitasSarpras">Tambah</ion-breadcrumb>
+                <ion-breadcrumb style="font-size: 1em;" href="/Pages">Pages</ion-breadcrumb>
+                <ion-breadcrumb style="font-size: 1em;" href="/pages/Sarpras">Sarana & Prasarana</ion-breadcrumb>
+                <ion-breadcrumb style="font-size: 1em;"
+                  @click="router.push('/pages/Sarpras/DetailSarpras/' + this.id)">Detail</ion-breadcrumb>
+                <ion-breadcrumb style="font-size: 1em;"
+                  href="/pages/Sarpras/DetailSarpras/TambahFasilitasSarpras">Tambah</ion-breadcrumb>
               </ion-breadcrumbs>
               <h5 style="margin-left: 11px">Tambah Fasilitas Sarana & Prasarana</h5>
             </ion-title>
@@ -74,7 +76,8 @@
           <div>
             <ion-row class="ion-justify-content-center row-button">
               <ion-col size="6" size-sm="2">
-                <a class="btn btn-danger" @click="router.push('/pages/Sarpras/DetailSarpras/' + this.id)" role="button">Batalkan</a>
+                <a class="btn btn-danger" @click="router.push('/pages/Sarpras/DetailSarpras/' + this.id)"
+                  role="button">Batalkan</a>
               </ion-col>
               <ion-col size="6" size-sm="2">
                 <a class="btn btn-success" role="button" @click="tambahSarpras()">Tambah</a>
@@ -151,7 +154,7 @@ export default defineComponent({
         },
         jumlah: {
           required,
-          integer
+          integer,
         },
       };
     });
@@ -183,12 +186,13 @@ export default defineComponent({
         Authorization: "Bearer " + localStorage.getItem("access_token"),
       };
 
-      axios
-        .delete("http://localhost:5000/API/auth/logout", { headers })
+      axios 
+        .delete("http://31.187.72.73/API/auth/logout", { headers })
         .then((response) => {
           console.log(response);
           localStorage.clear();
           alert("Anda berhasil keluar");
+          window.location.href = "/SignIn";
         })
         .catch((error) => {
           let status = error.response.data.msg;
@@ -197,8 +201,8 @@ export default defineComponent({
             window.location.href = "/SignIn";
           } else if (status == "Token has expired") {
             alert("Sesi telah berakhir, silahkan login kembali");
-            window.location.href = "/SignIn";
           }
+          window.location.href = "/SignIn";
         });
     },
 
@@ -210,13 +214,13 @@ export default defineComponent({
         alert("failed");
       } else {
         const json = JSON.stringify({
-          nama: this.formData.nama,
-          jenis: this.formData.jenis,
-          jumlah: this.formData.jumlah,
+          nama: this.nama,
+          jenis: this.jenis,
+          jumlah: this.jumlah,
         });
         console.log(json);
         axios
-          .post("http://localhost:5000/API/sarpras/" + this.id, json, {
+          .post("http://31.187.72.73/API/sarpras/" + this.id, json, {
             headers: {
               "Access-Control-Allow-Origin": "*",
               "Access-Control-Allow-Credentials": "true",
@@ -227,7 +231,6 @@ export default defineComponent({
           })
           .then((response) => {
             console.log(response);
-            alert("Success");
             window.location.href = "/pages/Sarpras/DetailSarpras/" + this.id;
           })
           .catch((error) => {
