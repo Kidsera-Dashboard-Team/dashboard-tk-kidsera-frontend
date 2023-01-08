@@ -134,11 +134,6 @@ export default defineComponent({
       is_admin: localStorage.getItem('is_admin')
     };
   },
-  methods: {
-    year(e) {
-      return (e.split("/")).join("-");
-    },
-  },
   mounted: function () {
     axios
       .get("http://localhost:5000/API/rombel")
@@ -171,6 +166,9 @@ export default defineComponent({
         .catch(error => {
           console.log(error.response.data);
         });
+    },
+    year(e) {
+      return (e.split("/")).join("-");
     },
   },
 });

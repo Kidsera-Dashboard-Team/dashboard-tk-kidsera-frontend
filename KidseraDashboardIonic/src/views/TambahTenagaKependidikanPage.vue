@@ -112,6 +112,7 @@
 </template>
 
 <script lang="ts">
+import axios from "axios";
 import { defineComponent } from 'vue';
 import {
   IonButtons,
@@ -131,7 +132,6 @@ import {
   IonItem,
   IonLabel
 } from '@ionic/vue';
-import axios from "axios";
 
 export default defineComponent({
   name: 'DashboardPage',

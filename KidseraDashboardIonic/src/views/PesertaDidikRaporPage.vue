@@ -103,7 +103,6 @@ import {
     IonButtons, IonContent, IonMenuButton, IonPage, IonTitle, IonToolbar, IonCol, IonGrid, IonRow,
     // IonSearchbar
 } from '@ionic/vue';
-import axios from "axios";
 
 export default defineComponent({
     name: 'PesertaDidikPage',
@@ -160,7 +159,6 @@ export default defineComponent({
                 });
         },
     },
->>>>>>> 953870ed8913b64d46c03a33e6da209eac1ed47b
 });
 </script>
 

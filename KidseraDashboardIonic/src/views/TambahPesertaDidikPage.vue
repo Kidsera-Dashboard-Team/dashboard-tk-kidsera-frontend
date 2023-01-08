@@ -385,28 +385,14 @@ export default defineComponent({
 
     return { formData, v$ };
   },
-   data() {
+  data() {
     return {
-      username: localStorage.getItem('username'),
-      is_admin: localStorage.getItem('is_admin'),
+      username: localStorage.getItem("username"),
+      is_admin: localStorage.getItem("is_admin"),
       dataTendik: [],
-    };
+    }
   },
   methods: {
-     del() {
-      let headers = {
-        Authorization: "Bearer " + localStorage.getItem("access_token"),
-      };
-
-      axios.delete("http://localhost:5000/API/auth/logout", { headers })
-        .then((response) => {
-          console.log(response);
-          localStorage.clear()
-        })
-        .catch(error => {
-          console.log(error.response.data);
-        },
-
     async submitForm() {
       const result = await this.v$.$validate();
       console.log("first" + result);
@@ -455,6 +441,21 @@ export default defineComponent({
             console.log(error.response);
           });
       }
+    },
+    del() {
+      let headers = {
+        Authorization: "Bearer " + localStorage.getItem("access_token"),
+      };
+
+      axios
+        .delete("http://localhost:5000/API/auth/logout", { headers })
+        .then((response) => {
+          console.log(response);
+          localStorage.clear();
+        })
+        .catch((error) => {
+          console.log(error.response.data);
+        });
     },
   },
 });

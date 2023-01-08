@@ -1,115 +1,4 @@
 <template>
-<<<<<<< HEAD
-  <ion-page>
-    <ion-toolbar>
-      <ion-buttons slot="start">
-        <ion-menu-button color="primary"></ion-menu-button>
-      </ion-buttons>
-      <ion-grid>
-        <ion-row class="ion-justify-content-between">
-          <ion-col size="3" size-xl="6">
-            <ion-title class="d-none d-lg-inline-block" size="small"
-              ><span style="opacity: 50%">Pages</span> / E - Rapor <br />
-              <span style="font-size: 18px; letter-spacing: 2.5px"
-                >E - Rapor</span
-              >
-            </ion-title>
-          </ion-col>
-          <ion-col size-sm="9" size="10" size-xl="6">
-            <ion-row
-              class="ion-align-items-center ion-justify-content-end goright mt-2"
-              style="margin-right: 20px"
-            >
-              <div
-                class="btn-group dropstart mb-1 ms-2"
-                style="content: inherit"
-              >
-                <button
-                  class="btn dropdown-toggle text-info text-gradient"
-                  type="button"
-                  data-bs-toggle="dropdown"
-                  aria-expanded="true"
-                  style="background-color: transparent"
-                >
-                  Hi User 13141
-                </button>
-                <ul class="dropdown-menu dropdown-menu-dark">
-                  <li>
-                    <a
-                      class="dropdown-item"
-                      href="javascript: doSomethingLogout()"
-                      >Logout</a
-                    >
-                  </li>
-                </ul>
-              </div>
-              <div class="nav-icon">
-                <a href="/SignUp">
-                  <ion-icon
-                    class="iconButton text-info text-gradient"
-                    src="assets/icon/signup.svg"
-                  ></ion-icon>
-                </a>
-              </div>
-              <a
-                href="/SignUp"
-                class="d-none d-sm-inline-block mb-1 text-info text-gradient"
-                style="text-decoration: none"
-                >&nbsp;Add User</a
-              >
-              <div>&nbsp;</div>
-            </ion-row>
-          </ion-col>
-        </ion-row>
-      </ion-grid>
-    </ion-toolbar>
-
-    <ion-content :fullscreen="true">
-      <ion-grid>
-        <ion-row>
-          <ion-card
-            class="card-content w-100"
-            style="
-              box-shadow: 0px 20px 27px rgba(0, 0, 0, 0.05);
-              border-radius: 15px;
-            "
-          >
-            <ion-card-header class="ion-text-justify">
-              <ion-row class="ion-justify-content-between">
-                <ion-col size-xl="6" size-md="6" size-xs="12">
-                  <ion-card-title>
-                    <h4 class="text-dalem">Rombongan Belajar</h4>
-                  </ion-card-title>
-                </ion-col>
-              </ion-row>
-            </ion-card-header>
-
-            <ion-card-content>
-              <ion-grid>
-                <div class="container" style="flex-wrap: wrap; display: flex">
-                  <div
-                    @click="
-                      () =>
-                        router.push('/pages/Rapor/' + year(result))
-                    "
-                    class="card-content"
-                    style="
-                      width: 25%;
-                      padding: 0;
-                      flex-wrap: wrap;
-                      display: flex;
-                    "
-                    v-for="result in results"
-                    :key="result._id"
-                  >
-                    <ion-card class="card-content-judul">
-                      <ion-card-header class="ion-margin text-center">
-                        <ion-card-title>
-                          <p>Tahun Ajaran</p>
-                          <p>{{ result }}</p>
-                        </ion-card-title>
-                      </ion-card-header>
-=======
     <ion-page>
         <ion-toolbar>
             <ion-buttons slot="start">
@@ -174,40 +63,26 @@
                             <ion-grid>
                                 <div class="ion-justify-content-evenly container"
                                     style="flex-wrap: wrap; display: flex;">
-                                    <div class="card-content"
-                                        onclick="window.location='/pages/Rapor/TahunAjaranRapor';">
+                                    <div
+                    @click="
+                      () =>
+                        router.push('/pages/Rapor/' + year(result))
+                    "
+                    class="card-content"
+                    style="
+                      width: 25%;
+                      padding: 0;
+                      flex-wrap: wrap;
+                      display: flex;
+                    "
+                    v-for="result in results"
+                    :key="result._id"
+                  >
                                         <ion-card class="card-content-judul">
                                             <ion-card-header class="ion-margin text-center">
                                                 <ion-card-title>
                                                     <p>Tahun Ajaran</p>
-                                                    <p>2022/2023</p>
-                                                </ion-card-title>
-                                            </ion-card-header>
-                                        </ion-card>
-                                    </div>
-                                    <div class="card-content">
-                                        <ion-card class="card-content-judul">
-                                            <ion-card-header class="ion-margin text-center"><ion-card-title>
-                                                    <p>Tahun Ajaran</p>
-                                                    <p>2022/2023</p>
-                                                </ion-card-title>
-                                            </ion-card-header>
-                                        </ion-card>
-                                    </div>
-                                    <div class="card-content">
-                                        <ion-card class="card-content-judul">
-                                            <ion-card-header class="ion-margin text-center"><ion-card-title>
-                                                    <p>Tahun Ajaran</p>
-                                                    <p>2022/2023</p>
-                                                </ion-card-title>
-                                            </ion-card-header>
-                                        </ion-card>
-                                    </div>
-                                    <div class="card-content">
-                                        <ion-card class="card-content-judul">
-                                            <ion-card-header class="ion-margin text-center"><ion-card-title>
-                                                    <p>Tahun Ajaran</p>
-                                                    <p>2022/2023</p>
+                          <p>{{ result }}</p>
                                                 </ion-card-title>
                                             </ion-card-header>
                                         </ion-card>
@@ -215,12 +90,6 @@
                                 </div>
                             </ion-grid>
                         </ion-card-content>
->>>>>>> 953870ed8913b64d46c03a33e6da209eac1ed47b
-                    </ion-card>
-                  </div>
-                </div>
-              </ion-grid>
-            </ion-card-content>
           </ion-card>
         </ion-row>
       </ion-grid>
@@ -229,67 +98,10 @@
 </template>
 
 <script lang="ts">
-<<<<<<< HEAD
 import axios from "axios";
 import { useRouter } from "vue-router";
-import { defineComponent } from "vue";
-import {
-  IonButtons,
-  IonContent,
-  IonMenuButton,
-  IonPage,
-  IonTitle,
-  IonToolbar,
-  IonCol,
-  IonGrid,
-  IonRow,
-} from "@ionic/vue";
-
-export default defineComponent({
-  name: "PesertaDidikPage",
-  components: {
-    IonButtons,
-    IonContent,
-    IonMenuButton,
-    IonPage,
-    IonTitle,
-    IonToolbar,
-    IonCol,
-    IonGrid,
-    IonRow,
-  },
-  data() {
-    return {
-      results: [],
-    };
-  },
-  methods: {
-    year(e) {
-      return e.split("/").join("-");
-    },
-  },
-  mounted: function () {
-    axios
-      .get("http://localhost:5000/API/rombel")
-      .then((response) => {
-        this.results = response.data;
-        console.log(response);
-      })
-      .catch(function (error) {
-        console.error(error.response.data);
-      });
-  },
-  setup() {
-    const router = useRouter();
-
-    return {
-      router,
-    };
-  },
-=======
 import { defineComponent } from 'vue';
 import { IonButtons, IonContent, IonMenuButton, IonPage, IonTitle, IonToolbar, IonCol, IonGrid, IonRow } from '@ionic/vue';
-import axios from "axios";
 
 export default defineComponent({
     name: 'PesertaDidikPage',
@@ -307,9 +119,28 @@ export default defineComponent({
     data() {
         return {
             username: localStorage.getItem('username'),
-            is_admin: localStorage.getItem('is_admin')
+            is_admin: localStorage.getItem('is_admin'),
+             results: [],
         };
     },
+    mounted: function () {
+    axios
+      .get("http://localhost:5000/API/rombel")
+      .then((response) => {
+        this.results = response.data;
+        console.log(response);
+      })
+      .catch(function (error) {
+        console.error(error.response.data);
+      });
+  },
+  setup() {
+    const router = useRouter();
+
+    return {
+      router,
+    };
+  },
     methods: {
         del() {
             let headers = {
@@ -325,8 +156,10 @@ export default defineComponent({
                     console.log(error.response.data);
                 });
         },
+         year(e) {
+      return e.split("/").join("-");
     },
->>>>>>> 953870ed8913b64d46c03a33e6da209eac1ed47b
+    },
 });
 </script>
 

@@ -127,8 +127,8 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, reactive, computed } from "vue";
 import axios from "axios";
+import { defineComponent, reactive, computed } from "vue";
 import { useVuelidate } from "@vuelidate/core";
 import { required } from "@vuelidate/validators";
 import {
@@ -150,28 +150,6 @@ import {
   IonLabel,
   // IonDatetime, IonDatetimeButton, IonModal
 } from "@ionic/vue";
-
-export default defineComponent({
-  name: "DashboardPage",
-  components: {
-    IonButtons,
-    IonContent,
-    IonMenuButton,
-    IonPage,
-    IonTitle,
-    IonToolbar,
-    IonCol,
-    IonGrid,
-    IonRow,
-    IonCard,
-    IonCardContent,
-    IonCardHeader,
-    IonCardTitle,
-    IonInput,
-    IonItem,
-    IonLabel
-} from '@ionic/vue';
-import axios from "axios";
 
 export default defineComponent({
     name: 'DashboardPage',
