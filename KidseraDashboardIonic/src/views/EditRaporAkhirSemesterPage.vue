@@ -2365,7 +2365,6 @@ export default defineComponent({
   methods: {
     async submitForm() {
       const result = await this.v$.$validate();
-      console.log("first" + result);
 
       if (!result) {
         console.log(result);
@@ -2462,11 +2461,15 @@ export default defineComponent({
               "Access-Control-Allow-Origin": "*",
               "Access-Control-Allow-Credentials": "true",
               "Content-Type": "application/json",
+              "Authorization": "Bearer " + localStorage.getItem('access_token')
+
             },
             withCredentials: true,
           })
           .then((response) => {
             console.log(response);
+            alert("Success");
+            window.location.href = "/pages/Rapor/" + this.tahun + "/"+ this.kelas + "/" + this.id_siswa;
           })
           .catch((error) => {
             console.log(error.response);

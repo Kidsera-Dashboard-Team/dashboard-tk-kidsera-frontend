@@ -8,24 +8,10 @@
         <ion-row class="ion-justify-content-between ion-align-items-center">
           <ion-col size="6">
             <ion-title class="d-none d-lg-inline-block mt-1" size="small">
-              <ion-breadcrumbs
-                :max-items="4"
-                :items-after-collapse="2"
-                class="p-0"
-              >
-                <ion-breadcrumb style="font-size: 1em" href="/Pages"
-                  >Pages</ion-breadcrumb
-                >
-                <ion-breadcrumb
-                  style="font-size: 1em"
-                  href="/pages/RombonganBelajar"
-                  >Rombongan Belajar</ion-breadcrumb
-                >
-                <ion-breadcrumb
-                  style="font-size: 1em"
-                  href="/pages/RombonganBelajar/TambahRombonganBelajar"
-                  >Edit</ion-breadcrumb
-                >
+              <ion-breadcrumbs :max-items="4" :items-after-collapse="2" class="p-0">
+                <ion-breadcrumb style="font-size: 1em" href="/Pages">Pages</ion-breadcrumb>
+                <ion-breadcrumb style="font-size: 1em" href="/pages/RombonganBelajar">Rombongan Belajar</ion-breadcrumb>
+                <ion-breadcrumb style="font-size: 1em" href="/pages/RombonganBelajar/TambahRombonganBelajar">Edit</ion-breadcrumb>
               </ion-breadcrumbs>
               <h5 style="margin-left: 11px">Edit Rombongan Belajar</h5>
             </ion-title>
@@ -50,28 +36,16 @@
                 </button>
                 <ul class="dropdown-menu dropdown-menu-dark">
                   <li>
-                    <a
-                      class="dropdown-item"
-                      href="javascript: doSomethingLogout()"
-                      >Logout</a
-                    >
+                    <a class="dropdown-item" href="javascript: doSomethingLogout()">Logout</a>
                   </li>
                 </ul>
               </div>
               <div class="nav-icon">
                 <a href="/SignUp">
-                  <ion-icon
-                    class="iconButton text-info text-gradient"
-                    src="assets/icon/signup.svg"
-                  ></ion-icon>
+                  <ion-icon class="iconButton text-info text-gradient" src="assets/icon/signup.svg"></ion-icon>
                 </a>
               </div>
-              <a
-                href="/SignUp"
-                class="d-none d-sm-inline-block mb-1 text-info text-gradient"
-                style="text-decoration: none"
-                >&nbsp;Add User</a
-              >
+              <a href="/SignUp" class="d-none d-sm-inline-block mb-1 text-info text-gradient" style="text-decoration: none">&nbsp;Add User</a>
               <div>&nbsp;</div>
             </ion-row>
           </ion-col>
@@ -89,66 +63,32 @@
         <ion-card-content class="d-grid gap-3">
           <ion-item fill="outline">
             <ion-label position="floating">Tahun Ajaran</ion-label>
-            <ion-input
-              v-model="formData.tahun_ajaran"
-              placeholder="Masukkan Tahun Ajaran"
-              required
-            ></ion-input>
-             <ion-note
-              color="danger"
-              v-for="error in v$.tahun_ajaran.$errors"
-              :key="error.$uid"
-            >
+            <ion-input v-model="formData.tahun_ajaran" placeholder="Masukkan Tahun Ajaran" required></ion-input>
+            <ion-note color="danger" v-for="error in v$.tahun_ajaran.$errors" :key="error.$uid">
               {{ error.$message }}
             </ion-note>
           </ion-item>
           <ion-item fill="outline">
             <ion-label position="floating">Ruang Kelas</ion-label>
-            <ion-input
-              v-model="formData.ruangan"
-              placeholder="Masukkan Ruang Kelas"
-              required
-            ></ion-input>
-            <ion-note
-              color="danger"
-              v-for="error in v$.ruangan.$errors"
-              :key="error.$uid"
-            >
+            <ion-input v-model="formData.ruangan" placeholder="Masukkan Ruang Kelas" required></ion-input>
+            <ion-note color="danger" v-for="error in v$.ruangan.$errors" :key="error.$uid">
               {{ error.$message }}
             </ion-note>
           </ion-item>
           <ion-item fill="outline">
             <ion-label position="floating">Kelas</ion-label>
-            <ion-input
-              v-model="formData.kelas"
-              placeholder="Masukkan Nama Rombongan Belajar"
-              required
-            ></ion-input>
-            <ion-note
-              color="danger"
-              v-for="error in v$.kelas.$errors"
-              :key="error.$uid"
-            >
+            <ion-input v-model="formData.kelas" placeholder="Masukkan Nama Rombongan Belajar" required></ion-input>
+            <ion-note color="danger" v-for="error in v$.kelas.$errors" :key="error.$uid">
               {{ error.$message }}
             </ion-note>
           </ion-item>
           <div>
             <ion-row class="ion-justify-content-center row-button">
               <ion-col size="6" size-sm="2">
-                <a
-                  class="btn btn-danger"
-                  href="/pages/RombonganBelajar"
-                  role="button"
-                  >Batalkan</a
-                >
+                <a class="btn btn-danger" href="/pages/RombonganBelajar" role="button">Batalkan</a>
               </ion-col>
               <ion-col size="6" size-sm="2">
-                <a
-                  class="btn btn-success"
-                  role="button"
-                  @click="submitForm()"
-                  >Tambah</a
-                >
+                <a class="btn btn-success" role="button" @click="submitForm()">Tambah</a>
               </ion-col>
             </ion-row>
           </div>
@@ -253,10 +193,10 @@ export default defineComponent({
   methods: {
     async submitForm() {
       const result = await this.v$.$validate();
-      console.log(this.v$.tahun_ajaran.$errors[0].$message = "has been taken");
+
       if (!result) {
         console.log(result);
-        alert("not success");
+        alert("failed");
       } else {
         const json = JSON.stringify({
           tahun_ajaran: this.formData.tahun_ajaran,
@@ -275,6 +215,8 @@ export default defineComponent({
           })
           .then((response) => {
             console.log(response);
+            alert("Success");
+            window.location.href = "/pages/Rombel/";
           })
           .catch((error) => {
             console.log(error.response);

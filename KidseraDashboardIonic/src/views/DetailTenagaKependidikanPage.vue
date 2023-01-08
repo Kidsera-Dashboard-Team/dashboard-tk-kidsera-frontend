@@ -132,8 +132,12 @@ export default defineComponent({
   },
   props: ["id"],
   mounted: function () {
+     let headers = {
+        Authorization: "Bearer " + localStorage.getItem("access_token"),
+      };
+
     axios
-      .get("http://localhost:5000/API/tendik/" + this.id)
+      .get("http://localhost:5000/API/tendik/" + this.id, {headers})
       .then((response) => {
         this.dataTendik = response.data;
         console.log(response);

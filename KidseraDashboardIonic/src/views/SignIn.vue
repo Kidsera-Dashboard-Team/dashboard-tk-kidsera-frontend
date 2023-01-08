@@ -19,7 +19,7 @@
                   <ion-item lines="none">
                     <ion-label position="stacked" class="mb-3"><b>Username</b></ion-label>
                     <ion-item fill="outline" ref="item">
-                      <ion-input type="email" placeholder="Username" @ionInput="validate" @ionBlur="markTouched" v-model="data.username" required>
+                      <ion-input type="email" placeholder="Username" @ionBlur="markTouched" v-model="data.username" required>
                       </ion-input>
                       <ion-note slot="helper">Masukkan username yang valid</ion-note>
                       <ion-note slot="error">Username tidak valid</ion-note>

@@ -197,7 +197,6 @@ export default defineComponent({
   methods: {
     async submitForm() {
       const result = await this.v$.$validate();
-      console.log("first" + result);
 
       if (!result) {
         console.log(result);
@@ -225,6 +224,8 @@ export default defineComponent({
           })
           .then((response) => {
             console.log(response);
+            alert("Success");
+            window.location.href = "/pages/Rapor/" + this.tahun + "/"+ this.kelas + "/" + this.id_siswa;
           })
           .catch((error) => {
             console.log(error.response);

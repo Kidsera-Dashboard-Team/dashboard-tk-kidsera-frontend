@@ -418,11 +418,10 @@ export default defineComponent({
   methods: {
     async submitForm() {
       const result = await this.v$.$validate();
-      console.log("first" + result);
 
       if (!result) {
         console.log(result);
-        alert("not success");
+        alert("failed");
       } else {
         const json = JSON.stringify({
           nama: this.formData.nama,
@@ -460,6 +459,7 @@ export default defineComponent({
           })
           .then((response) => {
             console.log(response);
+            alert("Success");
             window.location.href = "/pages/PesertaDidik";
           })
           .catch((error) => {
@@ -474,6 +474,29 @@ export default defineComponent({
             }
           });
       }
+    },
+     delPesertaDidik(id) {
+      let headers = {
+        Authorization: "Bearer " + localStorage.getItem("access_token"),
+      };
+
+      axios
+        .delete("http://localhost:5000/API/student/" + id, { headers })
+        .then((response) => {
+          console.log(response);
+          window.location.reload();
+        })
+        .catch((error) => {
+          let status = error.response.data.msg;
+          if (status == "Missing Authorization Header") {
+            alert("Anda belum login");
+            window.location.href = "/SignIn";
+          }
+          else if (status == "Token has expired") {
+            alert("Sesi telah berakhir, silahkan login kembali");
+            window.location.href = "/SignIn";
+          }
+        });
     },
     del() {
       let headers = {

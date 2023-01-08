@@ -123,6 +123,26 @@ import { defineComponent, reactive, computed } from "vue";
 import { useVuelidate } from "@vuelidate/core";
 import { required, integer } from "@vuelidate/validators";
 import {
+  IonButtons,
+  IonContent,
+  IonMenuButton,
+  IonPage,
+  IonTitle,
+  IonToolbar,
+  IonCol,
+  IonGrid,
+  IonRow,
+  IonCard,
+  IonCardContent,
+  IonCardTitle,
+  IonTextarea,
+  // IonSearchbar
+} from "@ionic/vue";
+import axios from "axios";
+
+export default defineComponent({
+  name: "PesertaDidikPage",
+  components: {
     IonButtons,
     IonContent,
     IonMenuButton,
@@ -137,112 +157,93 @@ import {
     IonCardTitle,
     IonTextarea,
     // IonSearchbar
-} from "@ionic/vue";
-import axios from "axios";
+  },
+  data() {
+    return {
+      username: localStorage.getItem("username"),
+      is_admin: localStorage.getItem("is_admin"),
+    };
+  },
+  props: ["tahun", "kelas", "id_siswa", "semester"],
+  setup() {
+    const formData = reactive({
+      text1: "",
+      text2: "",
+      text3: "",
+      text4: "",
+      text5: "",
+      text6: "",
+    });
 
-export default defineComponent({
-    name: "PesertaDidikPage",
-    components: {
-        IonButtons,
-        IonContent,
-        IonMenuButton,
-        IonPage,
-        IonTitle,
-        IonToolbar,
-        IonCol,
-        IonGrid,
-        IonRow,
-        IonCard,
-        IonCardContent,
-        IonCardTitle,
-        IonTextarea,
-        // IonSearchbar
-    },
-    data() {
-        return {
-            username: localStorage.getItem('username'),
-            is_admin: localStorage.getItem('is_admin')
-        };
-    },
-    props: ["tahun", "kelas", "id_siswa", "semester"],
-    setup() {
-        const formData = reactive({
-            text1: "",
-            text2: "",
-            text3: "",
-            text4: "",
-            text5: "",
-            text6: "",
-        });
-
-        const rules = computed(() => {
-            return {
-                text1: {
-                    required,
-                },
-                text2: {
-                    required,
-                },
-                text3: {
-                    required,
-                },
-                text4: {
-                    required,
-                },
-                text5: {
-                    required,
-                },
-                text6: {
-                    required,
-                },
-            };
-        });
-
-        const v$ = useVuelidate(rules, formData);
-
-        return { formData, v$ };
-    },
-    methods: {
-        async submitForm() {
-            const result = await this.v$.$validate();
-            console.log("first" + result);
-
-            if (!result) {
-                console.log(result);
-                alert("not success");
-            } else {
-                const json = JSON.stringify({
-                    text1: this.formData.text1,
-                    text2: this.formData.text2,
-                    text3: this.formData.text3,
-                    text4: this.formData.text4,
-                    text5: this.formData.text5,
-                    text6: this.formData.text6,
-                    periode: "tengah_semester",
-                    semester: this.semester,
-                });
-                console.log(json);
-                await axios
-                    .post("http://localhost:5000/API/rapor/" + this.id_siswa, json, {
-                        headers: {
-                            "Access-Control-Allow-Origin": "*",
-                            "Access-Control-Allow-Credentials": "true",
-                            "Content-Type": "application/json",
-                        },
-                        withCredentials: true,
-                    })
-                    .then((response) => {
-                        console.log(response);
-                    })
-                    .catch((error) => {
-                        console.log(error.response);
-                    });
-            }
+    const rules = computed(() => {
+      return {
+        text1: {
+          required,
         },
-        del() {
-            let headers = {
-                Authorization: "Bearer " + localStorage.getItem("access_token"),
-            };
+        text2: {
+          required,
+        },
+        text3: {
+          required,
+        },
+        text4: {
+          required,
+        },
+        text5: {
+          required,
+        },
+        text6: {
+          required,
+        },
+      };
+    });
+
+    const v$ = useVuelidate(rules, formData);
+
+    return { formData, v$ };
+  },
+  methods: {
+    async submitForm() {
+      const result = await this.v$.$validate();
+
+      if (!result) {
+        console.log(result);
+        alert("failed");
+      } else {
+        const json = JSON.stringify({
+          text1: this.formData.text1,
+          text2: this.formData.text2,
+          text3: this.formData.text3,
+          text4: this.formData.text4,
+          text5: this.formData.text5,
+          text6: this.formData.text6,
+          periode: "tengah_semester",
+          semester: this.semester,
+        });
+        console.log(json);
+        await axios
+          .post("http://localhost:5000/API/rapor/" + this.id_siswa, json, {
+            headers: {
+              "Access-Control-Allow-Origin": "*",
+              "Access-Control-Allow-Credentials": "true",
+              "Content-Type": "application/json",
+            },
+            withCredentials: true,
+          })
+          .then((response) => {
+            console.log(response);
+            alert("Success");
+            window.location.href = "/pages/Rapor/" + this.tahun + "/" + this.kelas + "/" + this.id_siswa;
+          })
+          .catch((error) => {
+            console.log(error.response);
+          });
+      }
+    },
+    del() {
+      let headers = {
+        Authorization: "Bearer " + localStorage.getItem("access_token"),
+      };
 
             axios.delete("http://localhost:5000/API/auth/logout", { headers })
                 .then((response) => {
@@ -262,226 +263,226 @@ export default defineComponent({
 /* template style */
 
 ion-col {
-    padding: 0;
+  padding: 0;
 }
 
 /* Textarea style */
 
 ion-textarea.custom-textarea {
-    --background: #373737;
-    --color: #fff;
-    --padding-end: 10px;
-    --padding-start: 10px;
-    --placeholder-color: #ddd;
-    --placeholder-opacity: 0.8;
+  --background: #373737;
+  --color: #fff;
+  --padding-end: 10px;
+  --padding-start: 10px;
+  --placeholder-color: #ddd;
+  --placeholder-opacity: 0.8;
 }
 
 /* Icon navbar style */
 
 a .iconButton {
-    color: #67748e;
-    text-decoration: none;
-    margin-left: 20px;
-    font-size: 20px;
+  color: #67748e;
+  text-decoration: none;
+  margin-left: 20px;
+  font-size: 20px;
 }
 
 /* Searchbar Style */
 
 .search-box {
-    width: fit-content;
-    height: fit-content;
-    position: relative;
-    color: black;
+  width: fit-content;
+  height: fit-content;
+  position: relative;
+  color: black;
 }
 
 .input-search {
-    height: 40px;
-    width: 50px;
-    border-style: none;
-    padding: 10px;
-    font-size: 18px;
-    letter-spacing: 2px;
-    outline: none;
-    border-radius: 25px;
-    transition: all 0.5s ease-in-out;
-    background-color: transparent;
-    padding-right: 40px;
-    color: black;
+  height: 40px;
+  width: 50px;
+  border-style: none;
+  padding: 10px;
+  font-size: 18px;
+  letter-spacing: 2px;
+  outline: none;
+  border-radius: 25px;
+  transition: all 0.5s ease-in-out;
+  background-color: transparent;
+  padding-right: 40px;
+  color: black;
 }
 
 .input-search::placeholder {
-    color: rgba(0, 0, 0, 0.5);
-    font-size: 18px;
-    letter-spacing: 2px;
-    font-weight: 100;
+  color: rgba(0, 0, 0, 0.5);
+  font-size: 18px;
+  letter-spacing: 2px;
+  font-weight: 100;
 }
 
 .btn-search {
-    width: 40px;
-    height: 40px;
-    border-style: none;
-    font-size: 20px;
-    font-weight: bold;
-    outline: none;
-    cursor: pointer;
-    border-radius: 50%;
-    position: absolute;
-    right: 0px;
-    color: black;
-    background-color: transparent;
-    pointer-events: painted;
-    top: -1.5px;
+  width: 40px;
+  height: 40px;
+  border-style: none;
+  font-size: 20px;
+  font-weight: bold;
+  outline: none;
+  cursor: pointer;
+  border-radius: 50%;
+  position: absolute;
+  right: 0px;
+  color: black;
+  background-color: transparent;
+  pointer-events: painted;
+  top: -1.5px;
 }
 
-.btn-search:focus~.input-search {
-    width: 230px;
-    border-radius: 10px;
-    background-color: white;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.5);
-    transition: all 500ms cubic-bezier(0, 0.11, 0.35, 2);
+.btn-search:focus ~ .input-search {
+  width: 230px;
+  border-radius: 10px;
+  background-color: white;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.5);
+  transition: all 500ms cubic-bezier(0, 0.11, 0.35, 2);
 }
 
 .input-search:focus {
-    width: 230px;
-    border-radius: 0px;
-    background-color: transparent;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.5);
-    transition: all 500ms cubic-bezier(0, 0.11, 0.35, 2);
+  width: 230px;
+  border-radius: 0px;
+  background-color: transparent;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.5);
+  transition: all 500ms cubic-bezier(0, 0.11, 0.35, 2);
 }
 
 .text-info {
-    color: #17c1e8 !important;
+  color: #17c1e8 !important;
 }
 
 .text-gradient {
-    background-clip: text;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    position: relative;
-    z-index: 1;
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  position: relative;
+  z-index: 1;
 }
 
 .text-gradient.text-info {
-    background-image: linear-gradient(310deg, #2152ff, #21d4fd);
+  background-image: linear-gradient(310deg, #2152ff, #21d4fd);
 }
 
 .text-gradient.text-dark {
-    background-image: linear-gradient(310deg, #141727, #3a416f);
+  background-image: linear-gradient(310deg, #141727, #3a416f);
 }
 
 /* content style */
 
 [data-href] {
-    cursor: pointer;
+  cursor: pointer;
 }
 
 .noted {
-    font-size: 12px;
+  font-size: 12px;
 }
 
 .noted ul li {
-    list-style-type: none;
-    list-style: none;
+  list-style-type: none;
+  list-style: none;
 }
 
 /* small laptop dimension */
 
 @media only screen and (max-width: 1280px) {
-    .btn-search:focus~.input-search {
-        width: 250px;
-    }
-    .input-search:focus {
-        width: 250px;
-    }
-    th,
-    td {
-        width: 160px;
-    }
-    .action-button {
-        padding: 5px 12px;
-        font-size: 12px;
-    }
+  .btn-search:focus ~ .input-search {
+    width: 250px;
+  }
+  .input-search:focus {
+    width: 250px;
+  }
+  th,
+  td {
+    width: 160px;
+  }
+  .action-button {
+    padding: 5px 12px;
+    font-size: 12px;
+  }
 }
 
 /* tablet dimension */
 
 @media only screen and (max-width: 990px) {
-    .btn-search:focus~.input-search {
-        width: 200px;
-    }
-    .input-search:focus {
-        width: 200px;
-    }
-    th,
-    td {
-        font-size: 12px;
-    }
+  .btn-search:focus ~ .input-search {
+    width: 200px;
+  }
+  .input-search:focus {
+    width: 200px;
+  }
+  th,
+  td {
+    font-size: 12px;
+  }
 }
 
 /* large phone dimension */
 
 @media only screen and (max-width: 575px) {
-    .goright {
-        position: relative;
-        left: 60px;
-    }
-    th,
-    td {
-        width: 150px;
-    }
-    /* .title-table {
+  .goright {
+    position: relative;
+    left: 60px;
+  }
+  th,
+  td {
+    width: 150px;
+  }
+  /* .title-table {
         font-size: 12px;
         margin-top: 10px;
     } */
-    .tambah {
-        padding: 10px;
-        font-size: 10px;
-        /* position: relative;
+  .tambah {
+    padding: 10px;
+    font-size: 10px;
+    /* position: relative;
         left: 20px;
         height: 30px; */
-    }
+  }
 }
 
 /* large phone dimension */
 
 @media only screen and (max-width: 426px) {
-    .search-box {
-        position: absolute;
-        right: 34%;
-    }
-    .btn-search:focus~.input-search {
-        width: 200px;
-    }
-    .input-search:focus {
-        width: 200px;
-    }
+  .search-box {
+    position: absolute;
+    right: 34%;
+  }
+  .btn-search:focus ~ .input-search {
+    width: 200px;
+  }
+  .input-search:focus {
+    width: 200px;
+  }
 }
 
 /* small phone dimension */
 
 @media only screen and (max-width: 376px) {
-    .search-box {
-        position: absolute;
-        right: 41%;
-    }
-    .btn-search:focus~.input-search {
-        width: 180px;
-    }
-    .input-search:focus {
-        width: 180px;
-    }
+  .search-box {
+    position: absolute;
+    right: 41%;
+  }
+  .btn-search:focus ~ .input-search {
+    width: 180px;
+  }
+  .input-search:focus {
+    width: 180px;
+  }
 }
 
 @media only screen and (max-width: 320px) {
-    .search-box {
-        position: absolute;
-        right: 50%;
-    }
-    .btn-search:focus~.input-search {
-        width: 150px;
-    }
-    .input-search:focus {
-        width: 150px;
-    }
+  .search-box {
+    position: absolute;
+    right: 50%;
+  }
+  .btn-search:focus ~ .input-search {
+    width: 150px;
+  }
+  .input-search:focus {
+    width: 150px;
+  }
 }
 </style>
