@@ -8,11 +8,21 @@
         <ion-row class="ion-justify-content-between ion-align-items-center">
           <ion-col size="6">
             <ion-title class="d-none d-lg-inline-block mt-1" size="small">
-              <ion-breadcrumbs :max-items="4" :items-after-collapse="2" class="p-0">
-                <ion-breadcrumb style="font-size: 1em;" href="/Pages">Pages</ion-breadcrumb>
-                <ion-breadcrumb style="font-size: 1em;" href="/pages/RombonganBelajar">Rombongan Belajar</ion-breadcrumb>
+              <ion-breadcrumbs
+                :max-items="4"
+                :items-after-collapse="2"
+                class="p-0"
+              >
+                <ion-breadcrumb style="font-size: 1em" href="/Pages"
+                  >Pages</ion-breadcrumb
+                >
+                <ion-breadcrumb
+                  style="font-size: 1em"
+                  href="/pages/RombonganBelajar"
+                  >Rombongan Belajar</ion-breadcrumb
+                >
               </ion-breadcrumbs>
-              <h5 style="margin-left: 11px;">Rombongan Belajar</h5>
+              <h5 style="margin-left: 11px">Rombongan Belajar</h5>
             </ion-title>
           </ion-col>
           <ion-col size-sm="6" size="10">
@@ -97,7 +107,7 @@
                   <div
                     @click="
                       () =>
-                        router.push('/pages/RombonganBelajar/' + result.slug)
+                        router.push('/pages/RombonganBelajar/' + year(result))
                     "
                     class="card-content"
                     style="
@@ -113,7 +123,7 @@
                       <ion-card-header class="ion-margin text-center">
                         <ion-card-title>
                           <p>Tahun Ajaran</p>
-                          <p>2022/2023</p>
+                          <p>{{ result }}</p>
                         </ion-card-title>
                       </ion-card-header>
                     </ion-card>
@@ -125,6 +135,7 @@
         </ion-row>
       </ion-grid>
     </ion-content>
+    {{ results }}
   </ion-page>
 </template>
 
@@ -161,6 +172,11 @@ export default defineComponent({
     return {
       results: [],
     };
+  },
+  methods: {
+    year(e) {
+      return (e.split("/")).join("-");
+    },
   },
   mounted: function () {
     axios

@@ -1,57 +1,88 @@
 <template>
   <ion-page>
-
     <ion-content :fullscreen="true">
       <div id="container">
         <ion-grid>
           <ion-row class="ion-text-justify ion-justify-content-start">
-              <ion-card class="card-background">
+            <ion-card class="card-background">
+              <ion-card-header>
                 <ion-card-header>
-                  <ion-card-header>
-                    <ion-card-title class="text-dark">
-                      <h3 class="text-info text-gradient"><b>Sign In to <br> Kidsera Dashboard</b></h3>
-                    </ion-card-title>
-                  </ion-card-header>
-                  <ion-card-content>Masukkan username dan Password <br> untuk masuk</ion-card-content>
+                  <ion-card-title class="text-dark">
+                    <h3 class="text-info text-gradient">
+                      <b
+                        >Sign In to <br />
+                        Kidsera Dashboard</b
+                      >
+                    </h3>
+                  </ion-card-title>
                 </ion-card-header>
+                <ion-card-content
+                  >Masukkan username dan Password <br />
+                  untuk masuk</ion-card-content
+                >
+              </ion-card-header>
 
-                <ion-card-content class="mb-3">
-                  <ion-item lines="none">
-                    <ion-label position="stacked" class="mb-3"><b>username</b></ion-label>
-                    <ion-item fill="outline" ref="item">
-                      <ion-input type="email" placeholder="Email" @ionInput="validate" @ionBlur="markTouched" v-model="data.username" required>
-                      </ion-input>
-                      <ion-note slot="helper">Masukkan email yang valid</ion-note>
-                      <ion-note slot="error">Email tidak valid</ion-note>
-                    </ion-item>
+              <ion-card-content class="mb-3">
+                <ion-item lines="none">
+                  <ion-label position="stacked" class="mb-3"
+                    ><b>username</b></ion-label
+                  >
+                  <ion-item fill="outline" ref="item">
+                    <ion-input
+                      type="email"
+                      placeholder="Email"
+                      @ionInput="validate"
+                      @ionBlur="markTouched"
+                      v-model="data.username"
+                      required
+                    >
+                    </ion-input>
+                    <ion-note slot="helper">Masukkan email yang valid</ion-note>
+                    <ion-note slot="error">Email tidak valid</ion-note>
                   </ion-item>
-                  <ion-item lines="none">
-                    <ion-label position="stacked" class="mb-3"><b>Password</b></ion-label>
-                    <ion-item fill="outline">
-                      <ion-input type="password" placeholder="Password" v-model="data.password" required></ion-input>
-                    </ion-item>
+                </ion-item>
+                <ion-item lines="none">
+                  <ion-label position="stacked" class="mb-3"
+                    ><b>Password</b></ion-label
+                  >
+                  <ion-item fill="outline">
+                    <ion-input
+                      type="password"
+                      placeholder="Password"
+                      v-model="data.password"
+                      required
+                    ></ion-input>
                   </ion-item>
+                </ion-item>
 
-                  <ion-item lines="none">
-                    <ion-toggle color="tertiary" :checked="true"></ion-toggle>
-                    <ion-label>Ingatkan Saya</ion-label>
-                  </ion-item>
+                <ion-item lines="none">
+                  <ion-toggle color="tertiary" :checked="true"></ion-toggle>
+                  <ion-label>Ingatkan Saya</ion-label>
+                </ion-item>
 
-                  <ion-button expand="block" shape="round" color="primary" href="javascript: doSomething()"
-                    class="bg-gradient-info w-100 mt-4 mb-0 text-white" @click="submit()">
-                    <ion-label>Masuk</ion-label>
-                  </ion-button>
-                </ion-card-content>
-              </ion-card>
-            
-              <div class="oblique position-absolute me-n8 d-none d-lg-block">
-                <div class="bg-cover position-absolute fixed-top ms-auto z-index-0 ms-n6"
-                  style="background-color: #857B7B; height: 115%;"></div>
-              </div>
+                <ion-button
+                  expand="block"
+                  shape="round"
+                  color="primary"
+                  href="javascript: doSomething()"
+                  class="bg-gradient-info w-100 mt-4 mb-0 text-white"
+                  @click="submit()"
+                >
+                  <ion-label>Masuk</ion-label>
+                </ion-button>
+              </ion-card-content>
+            </ion-card>
+
+            <div class="oblique position-absolute me-n8 d-none d-lg-block">
+              <div
+                class="bg-cover position-absolute fixed-top ms-auto z-index-0 ms-n6"
+                style="background-color: #857b7b; height: 115%"
+              ></div>
+            </div>
           </ion-row>
         </ion-grid>
 
-        <ion-toolbar class="py-5" style="top: 5rem;">
+        <ion-toolbar class="py-5" style="top: 5rem">
           <ion-title>
             <p class="mb-0 text-center">
               Copyright © {{ year() }} Ilmu Komputer UNJ.
@@ -65,85 +96,101 @@
 
 <script lang="ts">
 import {
-  IonContent, IonPage,
-  IonTitle, IonGrid, IonLabel, IonRow,
-  IonCard, IonCardHeader, IonCardTitle, IonCardContent,
-  IonItem, IonInput,
+  IonContent,
+  IonPage,
+  IonTitle,
+  IonGrid,
+  IonLabel,
+  IonRow,
+  IonCard,
+  IonCardHeader,
+  IonCardTitle,
+  IonCardContent,
+  IonItem,
+  IonInput,
   IonToggle,
-  IonNote
-} from '@ionic/vue';
-import { defineComponent } from 'vue';
-import axios from 'axios';
-import { useRouter } from 'vue-router';
+  IonNote,
+} from "@ionic/vue";
+import { defineComponent, reactive, onMounted, ref } from "vue";
+import axios from "axios";
+import { useRouter } from "vue-router";
 
 export default defineComponent({
-  name: 'SignIn',
+  name: "SignIn",
   components: {
     IonContent,
     IonPage,
-    IonTitle, IonGrid, IonLabel, IonRow,
-    IonCard, IonCardHeader, IonCardTitle, IonCardContent,
-    IonItem, IonInput,
+    IonTitle,
+    IonGrid,
+    IonLabel,
+    IonRow,
+    IonCard,
+    IonCardHeader,
+    IonCardTitle,
+    IonCardContent,
+    IonItem,
+    IonInput,
     IonToggle,
-    IonNote
+    IonNote,
   },
-    setup() {
-      const data = reactive({
-        username: '',
-        password: '',
-      });
+  setup() {
+    const data = reactive({
+      username: "",
+      password: "",
+    });
 
-      const router = useRouter();
+    const router = useRouter();
 
-      const submit = () => {
-        axios
-          .post("http://localhost:5000/API/auth/login", JSON.stringify(data), {
-            headers: {
-              "Access-Control-Allow-Origin": "*",
-              "Access-Control-Allow-Credentials": "true",
-              "Content-Type": "application/json",
-            },
-            withCredentials: true
-          })
-          .then(response => {
-            console.log(response)
-            console.log(response.data.access_token)
+    const submit = () => {
+      axios
+        .post("http://localhost:5000/API/auth/login", JSON.stringify(data), {
+          headers: {
+            "Access-Control-Allow-Origin": "*",
+            "Access-Control-Allow-Credentials": "true",
+            "Content-Type": "application/json",
+          },
+          withCredentials: true,
+        })
+        .then((response) => {
+          console.log(response);
+          console.log(response.data.access_token);
 
-            localStorage.setItem('access_token', response.data.access_token)
-            localStorage.setItem('is_admin', response.data.is_admin)
-            localStorage.setItem('username', response.data.username)
-          })
-          .catch(error => {
-            console.log(error.response.data);
-          });
+          localStorage.setItem("access_token", response.data.access_token);
+          localStorage.setItem("is_admin", response.data.is_admin);
+          localStorage.setItem("username", response.data.username);
+        })
+        .catch((error) => {
+          console.log(error.response.data);
+        });
+    };
 
-      };
-
-      return {
-        data,
-        submit
-      }
-   },
+    return {
+      data,
+      submit,
+    };
+  },
   methods: {
     validateEmail(email) {
-      return email.match(/^(?=.{1,254}$)(?=.{1,64}@)[a-zA-Z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-zA-Z0-9!#$%&'*+/=?^_`{|}~-]+)*@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/);
+      return email.match(
+        /^(?=.{1,254}$)(?=.{1,64}@)[a-zA-Z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-zA-Z0-9!#$%&'*+/=?^_`{|}~-]+)*@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/
+      );
     },
 
     validate(ev) {
       const value = ev.target.value;
 
-      this.$refs.item.$el.classList.remove('ion-valid');
-      this.$refs.item.$el.classList.remove('ion-invalid');
+      this.$refs.item.$el.classList.remove("ion-valid");
+      this.$refs.item.$el.classList.remove("ion-invalid");
 
-      if (value === '') return;
+      if (value === "") return;
 
       this.validateEmail(value)
-        ? this.$refs.item.$el.classList.add('ion-valid')
-        : this.$refs.item.$el.classList.add('ion-invalid');
+        ? this.$refs.item.$el.classList.add("ion-valid")
+        : this.$refs.item.$el.classList.add("ion-invalid");
     },
 
     markTouched() {
-      this.$refs.item.$el.classList.add('ion-touched')
+      this.$refs.item.$el.classList.add("ion-touched");
     },
 
     year() {
@@ -199,11 +246,11 @@ export default defineComponent({
 }
 
 .text-gradient.text-info {
-  background-image: linear-gradient(310deg, #2152FF, #21D4FD);
+  background-image: linear-gradient(310deg, #2152ff, #21d4fd);
 }
 
 .text-gradient.text-dark {
-  background-image: linear-gradient(310deg, #141727, #3A416F);
+  background-image: linear-gradient(310deg, #141727, #3a416f);
 }
 
 ion-card-title.text-dark {
@@ -211,7 +258,11 @@ ion-card-title.text-dark {
 }
 
 .bg-gradient-info {
-  --background-image: linear-gradient(310deg, #2152ff 0%, #21d4fd 100%) !important;
+  --background-image: linear-gradient(
+    310deg,
+    #2152ff 0%,
+    #21d4fd 100%
+  ) !important;
   /* --background: image(linear-gradient(310deg, #2152ff 0%, #21d4fd 100%)) !important; */
 }
 
@@ -230,7 +281,6 @@ ion-card-title.text-dark {
   /* top: -4rem; */
   bottom: 0;
 }
-
 
 @media screen and (max-width: 1075px) {
   .oblique {

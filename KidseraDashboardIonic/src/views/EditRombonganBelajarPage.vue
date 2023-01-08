@@ -23,16 +23,11 @@
                 >
                 <ion-breadcrumb
                   style="font-size: 1em"
-                  href="javascript:history.back()"
-                  >Tahun Ajaran</ion-breadcrumb
-                >
-                <ion-breadcrumb
-                  style="font-size: 1em"
-                  href="/pages/RombonganBelajar/:tahun/A"
-                  >Detail</ion-breadcrumb
+                  href="/pages/RombonganBelajar/TambahRombonganBelajar"
+                  >Edit</ion-breadcrumb
                 >
               </ion-breadcrumbs>
-              <h5 style="margin-left: 11px">Detail Rombongan Belajar</h5>
+              <h5 style="margin-left: 11px">Edit Rombongan Belajar</h5>
             </ion-title>
           </ion-col>
           <ion-col size-sm="6" size="10">
@@ -85,109 +80,89 @@
     </ion-toolbar>
 
     <ion-content :fullscreen="true">
-      <ion-row class="mt-3 mx-2"
-        ><!-- <div class="row mt-3 mx-2"> -->
-        <ion-col>
-          <ion-card class="mb-4 border-0"
-            ><!-- <div class="card mb-4 border-0"> -->
-            <ion-row>
-              <ion-col>
-                <h3 class="px-3 py-3 title-table">Detail Rombongan Belajar</h3>
-                <ion-row>
-                  <ion-col size="4" class="ms-3">
-                    <ul>
-                      <li>Tahun Ajaran :</li>
-                      <li>Wali Kelas :</li>
-                      <li>Jumlah Anak :</li>
-                      <li>Ruang Kelas &nbsp;:</li>
-                    </ul>
-                  </ion-col>
-                  <ion-col size="3">
-                    <ul>
-                      <li>{{ results.tahun_ajaran }}</li>
-                      <li>{{ results.wali }}</li>
-                      <li>{{ results.countsiswa }}</li>
-                      <li>{{ results.ruangan }}</li>
-                    </ul>
-                  </ion-col>
-                </ion-row>
-              </ion-col>
-              <ion-col size-xl="6" size-md="6" size-xs="auto">
-                 <a
-                    :href="'/pages/rombonganbelajar/' + tahun +'/'+ kelas+'/edit'"
-                    class="btn btn-success float-end tambah"
-                    >Tambah Rombel</a
-                  >
-                </ion-col>
-            </ion-row>
-            <ion-card-content class="px-0 pt-0 pb-2"
-              ><!-- <div > -->
-              <div class="table-responsive p-0">
-                <table
-                  style="table-layout: fixed"
-                  class="table table-hover align-items-center mb-0 display"
-                  id="table-rombongan-belajar"
+      <ion-card class="mt-4 p-3 rounded text-center card-form">
+        <ion-card-header>
+          <ion-card-title>
+            <h4>Edit Rombongan Belajar</h4>
+          </ion-card-title>
+        </ion-card-header>
+        <ion-card-content class="d-grid gap-3">
+          <ion-item fill="outline">
+            <ion-label position="floating">Tahun Ajaran</ion-label>
+            <ion-input
+              v-model="formData.tahun_ajaran"
+              placeholder="Masukkan Tahun Ajaran"
+              required
+            ></ion-input>
+             <ion-note
+              color="danger"
+              v-for="error in v$.tahun_ajaran.$errors"
+              :key="error.$uid"
+            >
+              {{ error.$message }}
+            </ion-note>
+          </ion-item>
+          <ion-item fill="outline">
+            <ion-label position="floating">Ruang Kelas</ion-label>
+            <ion-input
+              v-model="formData.ruangan"
+              placeholder="Masukkan Ruang Kelas"
+              required
+            ></ion-input>
+            <ion-note
+              color="danger"
+              v-for="error in v$.ruangan.$errors"
+              :key="error.$uid"
+            >
+              {{ error.$message }}
+            </ion-note>
+          </ion-item>
+          <ion-item fill="outline">
+            <ion-label position="floating">Kelas</ion-label>
+            <ion-input
+              v-model="formData.kelas"
+              placeholder="Masukkan Nama Rombongan Belajar"
+              required
+            ></ion-input>
+            <ion-note
+              color="danger"
+              v-for="error in v$.kelas.$errors"
+              :key="error.$uid"
+            >
+              {{ error.$message }}
+            </ion-note>
+          </ion-item>
+          <div>
+            <ion-row class="ion-justify-content-center row-button">
+              <ion-col size="6" size-sm="2">
+                <a
+                  class="btn btn-danger"
+                  href="/pages/RombonganBelajar"
+                  role="button"
+                  >Batalkan</a
                 >
-                  <thead>
-                    <tr>
-                      <th
-                        class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-4"
-                      >
-                        ID Siswa
-                      </th>
-                      <th
-                        class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-4 text-center"
-                      >
-                        Nama
-                      </th>
-                      <th
-                        class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7"
-                      >
-                        Jenis Kelamin
-                      </th>
-                    </tr>
-                  </thead>
-                  <tbody v-for="result in results.list_siswa" :key="result._id">
-                    <tr
-                      onclick="window.location='/pages/rombonganbelajar/detail';"
-                    >
-                      <td class="align-middle">
-                        <div class="d-flex px-3 py-1">
-                          <div>
-                            <!-- <img src="../assets/img/team-2.jpg" class="avatar avatar-sm me-3" -->
-                            <!-- alt="user1"> -->
-                          </div>
-                          <div class="justify-content-center">
-                            <h6 class="mb-0 text-sm td-name">
-                              {{ result._id.$oid }}
-                            </h6>
-                          </div>
-                        </div>
-                      </td>
-                      <td class="align-middle">
-                        <p class="text-xs font-weight-bold mb-0 text-center">
-                          {{ result.nama }}
-                        </p>
-                      </td>
-                      <td class="align-middle text-center text-sm">
-                        <span class="">{{ result.jenis_kelamin}}</span>
-                      </td>
-                    </tr>
-                  </tbody>
-                </table>
-              </div>
-            </ion-card-content>
-          </ion-card>
-        </ion-col>
-      </ion-row>
-      <!-- {{ results.list_siswa}} -->
+              </ion-col>
+              <ion-col size="6" size-sm="2">
+                <a
+                  class="btn btn-success"
+                  role="button"
+                  @click="submitForm()"
+                  >Tambah</a
+                >
+              </ion-col>
+            </ion-row>
+          </div>
+        </ion-card-content>
+      </ion-card>
     </ion-content>
   </ion-page>
 </template>
 
 <script lang="ts">
-import { defineComponent } from "vue";
+import { defineComponent, reactive, computed } from "vue";
 import axios from "axios";
+import { useVuelidate } from "@vuelidate/core";
+import { required } from "@vuelidate/validators";
 import {
   IonButtons,
   IonContent,
@@ -198,10 +173,18 @@ import {
   IonCol,
   IonGrid,
   IonRow,
+  IonCard,
+  IonCardContent,
+  IonCardHeader,
+  IonCardTitle,
+  IonInput,
+  IonItem,
+  IonLabel,
+  // IonDatetime, IonDatetimeButton, IonModal
 } from "@ionic/vue";
 
 export default defineComponent({
-  name: "DetailRombonganBelajar",
+  name: "DashboardPage",
   components: {
     IonButtons,
     IonContent,
@@ -212,6 +195,39 @@ export default defineComponent({
     IonCol,
     IonGrid,
     IonRow,
+    IonCard,
+    IonCardContent,
+    IonCardHeader,
+    IonCardTitle,
+    IonInput,
+    IonItem,
+    IonLabel,
+    // IonDatetime, IonDatetimeButton, IonModal
+  },
+  setup() {
+    const formData = reactive({
+      tahun_ajaran: "",
+      ruangan: "",
+      kelas: "",
+    });
+
+    const rules = computed(() => {
+      return {
+        tahun_ajaran: {
+          required,
+        },
+        ruangan: {
+          required,
+        },
+        kelas: {
+          required,
+        },
+      };
+    });
+
+    const v$ = useVuelidate(rules, formData);
+
+    return { formData, v$ };
   },
   props: ["tahun", "kelas"],
   data() {
@@ -223,41 +239,71 @@ export default defineComponent({
     axios
       .get("http://localhost:5000/API/rombel/" + this.tahun + "/" + this.kelas)
       .then((response) => {
-        this.results = response.data;
-        this.results.ruangan = response.data.rombel.ruangan;
-        this.results.tahun_ajaran = response.data.rombel.tahun_ajaran;
-        this.results.countsiswa = response.data.list_siswa.length;
+        this.formData.tahun_ajaran = response.data.rombel.tahun_ajaran;
+        this.formData.ruangan = response.data.ruangan;
+        this.formData.kelas = response.data.kelas;
+
+        console.log(response.data);
         console.log(response);
       })
       .catch(function (error) {
-        console.error(error.response.data);
+        console.error(error);
       });
   },
-  //   setup() {
-  //     const router = useRouter();
-
-  //     return {
-  //       router,
-  //     };
-  //   },
+  methods: {
+    async submitForm() {
+      const result = await this.v$.$validate();
+      console.log(this.v$.tahun_ajaran.$errors[0].$message = "has been taken");
+      if (!result) {
+        console.log(result);
+        alert("not success");
+      } else {
+        const json = JSON.stringify({
+          tahun_ajaran: this.formData.tahun_ajaran,
+          ruangan: this.formData.ruangan,
+          kelas: this.formData.kelas,
+        });
+        console.log(json);
+        await axios
+          .put("http://localhost:5000/API/rombel" + this.tahun + "/" + this.kelas, json, {
+            headers: {
+              "Access-Control-Allow-Origin": "*",
+              "Access-Control-Allow-Credentials": "true",
+              "Content-Type": "application/json",
+            },
+            withCredentials: true,
+          })
+          .then((response) => {
+            console.log(response);
+          })
+          .catch((error) => {
+            console.log(error.response);
+          });
+      }
+    },
+  },
 });
 </script>
 
 <style scoped>
 /* template style */
+
 ion-col {
   padding: 0;
 }
 
 /* Icon navbar style */
+
 a .iconButton {
   color: #67748e;
   text-decoration: none;
-  margin-left: 20px;
+  /* margin-left: 20px; */
+  margin-right: -13px;
   font-size: 20px;
 }
 
 /* Searchbar Style */
+
 .search-box {
   width: fit-content;
   height: fit-content;
@@ -305,7 +351,7 @@ a .iconButton {
 }
 
 .btn-search:focus ~ .input-search {
-  width: 400px;
+  width: 230px;
   border-radius: 10px;
   background-color: white;
   border-bottom: 1px solid rgba(255, 255, 255, 0.5);
@@ -313,7 +359,7 @@ a .iconButton {
 }
 
 .input-search:focus {
-  width: 400px;
+  width: 230px;
   border-radius: 0px;
   background-color: transparent;
   border-bottom: 1px solid rgba(255, 255, 255, 0.5);
@@ -340,57 +386,8 @@ a .iconButton {
   background-image: linear-gradient(310deg, #141727, #3a416f);
 }
 
-/* content style */
-[data-href] {
-  cursor: pointer;
-}
-
-li {
-  list-style: none;
-  font-size: 20px;
-}
-
-ul {
-  padding: 0;
-  margin: 0;
-}
-
-.table {
-  border-collapse: inherit;
-}
-
-thead th {
-  padding: 0.75rem 1rem;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  border-bottom: 1px solid lighten(black, 35%);
-}
-
-th {
-  font-weight: bold;
-}
-
-td,
-th {
-  white-space: nowrap;
-}
-
-.tables > :not(:last-child) > :last-child > * {
-  border-bottom-color: black;
-}
-
-td {
-  width: 100px;
-}
-
-.tambah {
-  background: linear-gradient(135deg, #6bff25 0%, #42dd1c 100%);
-  border-radius: 8px;
-  border: none;
-  height: 40px;
-}
-
 /* small laptop dimension */
+
 @media only screen and (max-width: 1280px) {
   .btn-search:focus ~ .input-search {
     width: 250px;
@@ -399,20 +396,10 @@ td {
   .input-search:focus {
     width: 250px;
   }
-
-  th,
-  td,
-  .td-name {
-    width: 160px;
-  }
-
-  .action-button {
-    padding: 5px 12px;
-    font-size: 12px;
-  }
 }
 
 /* tablet dimension */
+
 @media only screen and (max-width: 990px) {
   .btn-search:focus ~ .input-search {
     width: 200px;
@@ -421,47 +408,20 @@ td {
   .input-search:focus {
     width: 200px;
   }
-
-  th,
-  td,
-  .td-name {
-    font-size: 12px;
-  }
 }
 
 /* large phone dimension */
+
 @media only screen and (max-width: 575px) {
   .goright {
     position: relative;
     left: 60px;
   }
-
-  th,
-  td,
-  .td-name {
-    width: 150px;
-  }
-
-  .title-table {
-    font-size: 12px;
-    margin-top: 10px;
-  }
-
-  .tambah {
-    padding: 10px;
-    font-size: 10px;
-    position: relative;
-    left: 20px;
-    height: 30px;
-  }
 }
 
 /* large phone dimension */
-@media only screen and (max-width: 426px) {
-  .form {
-    font-size: 10px;
-  }
 
+@media only screen and (max-width: 426px) {
   .search-box {
     position: absolute;
     right: 34%;
@@ -477,6 +437,7 @@ td {
 }
 
 /* small phone dimension */
+
 @media only screen and (max-width: 376px) {
   .search-box {
     position: absolute;
@@ -489,6 +450,11 @@ td {
 
   .input-search:focus {
     width: 180px;
+  }
+
+  .btn {
+    width: 100px;
+    margin: 0;
   }
 }
 
@@ -504,6 +470,54 @@ td {
 
   .input-search:focus {
     width: 150px;
+  }
+
+  .card-form {
+    width: 90%;
+    margin: auto;
+  }
+}
+
+/* content card style */
+
+ion-checkbox {
+  --size: 32px;
+  --background-checked: #6815ec;
+}
+
+ion-checkbox::part(container) {
+  border-radius: 6px;
+  border: 2px solid #6815ec;
+}
+
+ion-searchbar {
+  --border-radius: 12px;
+  width: 40%;
+}
+
+a {
+  color: white;
+  text-decoration: none;
+  margin-left: 20px;
+}
+
+ion-icon {
+  color: black;
+}
+
+ion-card-title,
+ion-card-subtitle {
+  color: black;
+  font-size: 13px;
+}
+
+@media only screen and (max-width: 320px) {
+  ion-checkbox {
+    --size: 15px;
+  }
+
+  .checkbox-custom ion-item {
+    font-size: 20px !important;
   }
 }
 </style>

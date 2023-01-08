@@ -95,6 +95,12 @@ const routes: Array<RouteRecordRaw> = [
     component: () => import("../views/DetailRombelPage.vue"),
   },
   {
+    props: true,
+    name: "EditRombonganBelajar",
+    path: "/pages/RombonganBelajar/:tahun/:kelas/edit",
+    component: () => import("../views/EditRombonganBelajarPage.vue"),
+  },
+  {
     path: "/pages/:id",
     component: () => import("../views/Pages.vue"),
   },
@@ -103,20 +109,49 @@ const routes: Array<RouteRecordRaw> = [
     component: () => import("../views/RaporPage.vue"),
   },
   {
-    path: "/pages/Rapor/TahunAjaranRapor",
+    props:true,
+    path: "/pages/Rapor/:tahun",
     component: () => import("../views/TahunAjaranRaporPage.vue"),
   },
   {
-    path: "/pages/Rapor/TahunAjaranRapor/PesertaDidikRapor",
+    props:true,
+    path: "/pages/Rapor/:tahun/:kelas",
     component: () => import("../views/PesertaDidikRaporPage.vue"),
   },
   {
-    path: "/pages/Rapor/TahunAjaranRapor/PesertaDidikRapor/InputNilaiPesertaDidikRapor",
+    props:true,
+    path: "/pages/Rapor/:tahun/:kelas/:id_siswa",
     component: () => import("../views/InputNilaiPesertaDidikRaporPage.vue"),
   },
   {
-    path: "/pages/Rapor/TahunAjaranRapor/PesertaDidikRapor/InputNilaiPesertaDidikRapor/InputRapor",
-    component: () => import("../views/InputRaporPage.vue"),
+    props:true,
+    path: "/pages/Rapor/:tahun/:kelas/:id_siswa/tengah_semester/:semester/add",
+    component: () => import("../views/InputRaporTengahSemesterPage.vue"),
+  },
+  {
+    props:true,
+    path: "/pages/Rapor/:tahun/:kelas/:id_siswa/tengah_semester/:semester/detail",
+    component: () => import("../views/DetailRaporTengahSemesterPage.vue"),
+  },
+  {
+    props:true,
+    path: "/pages/Rapor/:tahun/:kelas/:id_siswa/tengah_semester/:semester/edit",
+    component: () => import("../views/EditRaporTengahSemesterPage.vue"),
+  },
+  {
+    props:true,
+    path: "/pages/Rapor/:tahun/:kelas/:id_siswa/akhir_semester/:semester/add",
+    component: () => import("../views/InputRaporAkhirSemesterPage.vue"),
+  },
+  {
+    props:true,
+    path: "/pages/Rapor/:tahun/:kelas/:id_siswa/akhir_semester/:semester/detail",
+    component: () => import("../views/DetailRaporAkhirSemesterPage.vue"),
+  },
+  {
+    props:true,
+    path: "/pages/Rapor/:tahun/:kelas/:id_siswa/akhir_semester/:semester/edit",
+    component: () => import("../views/EditRaporAkhirSemesterPage.vue"),
   },
 ];
 
