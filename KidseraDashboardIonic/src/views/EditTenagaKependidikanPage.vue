@@ -203,7 +203,7 @@ export default defineComponent({
       Authorization: "Bearer " + localStorage.getItem("access_token"),
     };
     axios
-      .get("http://31.187.72.73/API/tendik/" + this.id, { headers })
+      .get("http://localhost:5000/API/tendik/" + this.id, { headers })
       .then((response) => {
         this.nama = response.data.nama;
         this.jenis_kelamin = response.data.jenis_kelamin;
@@ -236,7 +236,7 @@ export default defineComponent({
         Authorization: "Bearer " + localStorage.getItem("access_token"),
       };
 
-      axios.delete("http://31.187.72.73/API/auth/logout", { headers })
+      axios.delete("http://localhost:5000/API/auth/logout", { headers })
         .then((response) => {
           console.log(response);
           localStorage.clear();
@@ -262,7 +262,7 @@ export default defineComponent({
       });
       console.log(json);
       axios
-        .put("http://31.187.72.73/API/tendik/" + this.id, json, {
+        .put("http://localhost:5000/API/tendik/" + this.id, json, {
           headers: {
             "Access-Control-Allow-Origin": "*",
             "Access-Control-Allow-Credentials": "true",

@@ -46,7 +46,7 @@
       <ion-card class="mt-4 p-3 rounded text-center card-form">
         <ion-card-header>
           <ion-card-title>
-            <h4>Tambah Peserta Didik</h4>
+            <h4>Edit Peserta Didik</h4>
           </ion-card-title>
         </ion-card-header>
         <ion-card-content class="d-grid gap-3">
@@ -222,7 +222,7 @@
                 <a class="btn btn-danger" href="/pages/PesertaDidik" role="button">Batalkan</a>
               </ion-col>
               <ion-col size="6" size-sm="2">
-                <a class="btn btn-success" role="button" @click="submitForm()">Tambah</a>
+                <a class="btn btn-success" role="button" @click="submitForm()">Edit</a>
               </ion-col>
             </ion-row>
           </div>
@@ -420,7 +420,7 @@ export default defineComponent({
     };
 
     axios
-      .get("http://31.187.72.73/API/students/" + this.id, { headers })
+      .get("http://localhost:5000/API/students/" + this.id, { headers })
       .then((response) => {
         this.formData.nama = response.data.nama;
         this.formData.jenis_kelamin = response.data.jenis_kelamin;
@@ -457,7 +457,7 @@ export default defineComponent({
       };
 
       axios
-        .delete("http://31.187.72.73/API/auth/logout", { headers })
+        .delete("http://localhost:5000/API/auth/logout", { headers })
         .then((response) => {
           console.log(response);
           localStorage.clear();
@@ -506,12 +506,12 @@ export default defineComponent({
         });
         console.log(json);
         await axios
-          .put("http://31.187.72.73/API/students", json, {
+          .put("http://localhost:5000/API/students/"+this.id, json, {
             headers: {
               "Access-Control-Allow-Origin": "*",
               "Access-Control-Allow-Credentials": "true",
               "Content-Type": "application/json",
-              Authorization: "Bearer " + localStorage.getItem("access_token"),
+              "Authorization": "Bearer " + localStorage.getItem("access_token"),
             },
             withCredentials: true,
           })

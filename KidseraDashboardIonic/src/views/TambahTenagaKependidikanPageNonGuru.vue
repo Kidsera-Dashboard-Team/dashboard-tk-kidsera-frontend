@@ -252,7 +252,7 @@ export default defineComponent({
       };
 
       axios
-        .delete("http://31.187.72.73/API/auth/logout", { headers })
+        .delete("http://localhost:5000/API/auth/logout", { headers })
         .then((response) => {
           console.log(response);
           localStorage.clear();
@@ -290,7 +290,7 @@ export default defineComponent({
         });
         console.log(json);
         axios
-          .post("http://31.187.72.73/API/tendik/nonguru", json, {
+          .post("http://localhost:5000/API/tendik/nonguru", json, {
             headers: {
               "Access-Control-Allow-Origin": "*",
               "Access-Control-Allow-Credentials": "true",

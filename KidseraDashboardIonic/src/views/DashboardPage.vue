@@ -238,7 +238,7 @@ export default defineComponent({
     };
 
     axios
-      .get("http://31.187.72.73/API/", { headers })
+      .get("http://localhost:5000/API/", { headers })
       .then((response) => {
         this.datas = response.data;
         this.info = this.datas.info[0];
@@ -264,7 +264,7 @@ export default defineComponent({
       };
 
       axios
-        .delete("http://31.187.72.73/API/auth/logout", { headers })
+        .delete("http://localhost:5000/API/auth/logout", { headers })
         .then((response) => {
           console.log(response);
           localStorage.clear();

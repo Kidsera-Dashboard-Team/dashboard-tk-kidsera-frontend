@@ -198,7 +198,7 @@ export default defineComponent({
     };
 
     axios
-      .get("http://31.187.72.73/API/ruangan", { headers })
+      .get("http://localhost:5000/API/ruangan", { headers })
       .then((response) => {
         this.listRuang = response.data;
         console.log(response.data);
@@ -223,7 +223,7 @@ export default defineComponent({
       };
 
       axios
-        .delete("http://31.187.72.73/API/auth/logout", { headers })
+        .delete("http://localhost:5000/API/auth/logout", { headers })
         .then((response) => {
           console.log(response);
           localStorage.clear();
@@ -247,7 +247,7 @@ export default defineComponent({
       });
       console.log(json);
       axios
-        .post("http://31.187.72.73/API/ruangan", json, {
+        .post("http://localhost:5000/API/ruangan", json, {
           headers: {
             "Access-Control-Allow-Origin": "*",
             "Access-Control-Allow-Credentials": "true",

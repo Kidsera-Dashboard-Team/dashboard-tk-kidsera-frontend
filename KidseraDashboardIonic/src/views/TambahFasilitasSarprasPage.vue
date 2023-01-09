@@ -187,7 +187,7 @@ export default defineComponent({
       };
 
       axios 
-        .delete("http://31.187.72.73/API/auth/logout", { headers })
+        .delete("http://localhost:5000/API/auth/logout", { headers })
         .then((response) => {
           console.log(response);
           localStorage.clear();
@@ -214,23 +214,24 @@ export default defineComponent({
         alert("failed");
       } else {
         const json = JSON.stringify({
-          nama: this.nama,
-          jenis: this.jenis,
-          jumlah: this.jumlah,
+          nama: this.formData.nama,
+          jenis: this.formData.jenis,
+          jumlah: this.formData.jumlah,
         });
         console.log(json);
         axios
-          .post("http://31.187.72.73/API/sarpras/" + this.id, json, {
+          .post("http://localhost:5000/API/sarpras/" + this.id, json, {
             headers: {
               "Access-Control-Allow-Origin": "*",
               "Access-Control-Allow-Credentials": "true",
               "Content-Type": "application/json",
-              Authorization: "Bearer " + localStorage.getItem("access_token"),
+              "Authorization": "Bearer " + localStorage.getItem("access_token"),
             },
             withCredentials: true,
           })
           .then((response) => {
             console.log(response);
+            alert("success");
             window.location.href = "/pages/Sarpras/DetailSarpras/" + this.id;
           })
           .catch((error) => {

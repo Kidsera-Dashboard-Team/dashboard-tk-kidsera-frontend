@@ -56,7 +56,7 @@
               </ion-card-header>
               <ion-card-content class="d-grid gap-3">
                 <ion-item fill="outline" lines="none">
-                  <ion-label position="floating" :readonly="true" class="mb-5">Nama Fasilitas -> Fasilitas {{
+                  <ion-label position="floating" :readonly="true" class="mb-5"> Fasilitas {{
                     nama
                   }}</ion-label>
                   <!-- <ion-input placeholder="Masukkan Fasilitas" ></ion-input> -->
@@ -151,7 +151,7 @@ export default defineComponent({
       Authorization: "Bearer " + localStorage.getItem("access_token"),
     };
     axios
-      .get("http://31.187.72.73/API/sarpras_detail/" + this.id, { headers })
+      .get("http://localhost:5000/API/sarpras_detail/" + this.id, { headers })
       .then((response) => {
         console.log(response.data);
         this.nama = response.data.nama;
@@ -178,7 +178,7 @@ export default defineComponent({
       };
 
       axios
-        .delete("http://31.187.72.73/API/auth/logout", { headers })
+        .delete("http://localhost:5000/API/auth/logout", { headers })
         .then((response) => {
           console.log(response);
           localStorage.clear();
@@ -205,7 +205,7 @@ export default defineComponent({
       });
       console.log(json);
       axios
-        .put("http://31.187.72.73/API/sarpras_detail/" + this.id, json, {
+        .put("http://localhost:5000/API/sarpras_detail/" + this.id, json, {
           headers: {
             "Access-Control-Allow-Origin": "*",
             "Access-Control-Allow-Credentials": "true",
@@ -216,6 +216,7 @@ export default defineComponent({
         })
         .then(response => {
           console.log(response);
+          alert('success');
           window.location.href = "/pages/Sarpras/DetailSarpras/" + this.id_ruang
         })
         .catch(error => {
