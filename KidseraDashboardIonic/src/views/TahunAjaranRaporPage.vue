@@ -71,18 +71,9 @@
                 <div class="card-content">
                   <ion-card class="card-content-judul" @click="() => router.push('/pages/Rapor/' + tahun + '/B')">
                     <ion-card-content class="ion-margin text-center" style="margin: 70px">
-                      <a href="" class="text-decoration-none"><ion-card-title>
+                        <ion-card-title>
                           <p>TK B</p>
-                        </ion-card-title></a>
-                    </ion-card-content>
-                  </ion-card>
-                </div>
-                <div class="card-content">
-                  <ion-card class="card-content-judul">
-                    <ion-card-content class="ion-margin text-center" style="margin: 70px">
-                      <a href="" class="text-decoration-none"><ion-card-title>
-                          <p>TK C</p>
-                        </ion-card-title></a>
+                        </ion-card-title>
                     </ion-card-content>
                   </ion-card>
                 </div>

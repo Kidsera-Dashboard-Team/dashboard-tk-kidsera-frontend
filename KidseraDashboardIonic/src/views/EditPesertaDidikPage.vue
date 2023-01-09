@@ -507,7 +507,7 @@ export default defineComponent({
         });
         console.log(json);
         await axios
-          .put("http://localhost:5000/API/students", json, {
+          .put("http://localhost:5000/API/students/" + this.id , json, {
             headers: {
               "Access-Control-Allow-Origin": "*",
               "Access-Control-Allow-Credentials": "true",

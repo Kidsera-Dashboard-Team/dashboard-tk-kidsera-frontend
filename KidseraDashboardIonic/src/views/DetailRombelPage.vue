@@ -58,7 +58,7 @@
                       <li>Ruang Kelas &nbsp;:</li>
                     </ul>
                   </ion-col>
-                  <ion-col size="3">
+                  <ion-col size="4">
                     <ul>
                       <li>{{ results.tahun_ajaran }}</li>
                       <li>{{ results.wali }}</li>
@@ -151,6 +151,7 @@ export default defineComponent({
       .then((response) => {
         this.results = response.data;
         this.results.ruangan = response.data.rombel.ruangan;
+        this.results.wali = response.data.wali_kelas.nama;
         this.results.tahun_ajaran = response.data.rombel.tahun_ajaran;
         this.results.countsiswa = response.data.list_siswa.length;
         console.log(response);
