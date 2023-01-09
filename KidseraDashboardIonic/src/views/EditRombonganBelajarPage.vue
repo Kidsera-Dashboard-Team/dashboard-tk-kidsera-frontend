@@ -208,7 +208,7 @@ export default defineComponent({
           .then((response) => {
             console.log(response);
             alert("Success");
-            window.location.href = "/pages/RombonganBelajar/"+ this.tahun + "/" + this.kelas;
+            window.location.href = "/pages/RombonganBelajar/" + this.tahun + "/" + this.kelas;
           })
           .catch((error) => {
             console.log(error.response);

@@ -462,16 +462,17 @@ export default defineComponent({
           console.log(response);
           localStorage.clear();
           alert("Anda berhasil keluar");
+          window.location.href = "/SignIn";
         })
         .catch((error) => {
           let status = error.response.data.msg;
           if (status == "Missing Authorization Header") {
             alert("Anda belum login");
-            window.location.href = "/SignIn";
-          } else if (status == "Token has expired") {
-            alert("Sesi telah berakhir, silahkan login kembali");
-            window.location.href = "/SignIn";
           }
+          else if (status == "Token has expired") {
+            alert("Sesi telah berakhir, silahkan login kembali");
+          }
+          window.location.href = "/SignIn";
         });
     },
     async submitForm() {
@@ -506,7 +507,7 @@ export default defineComponent({
         });
         console.log(json);
         await axios
-          .put("http://localhost:5000/API/students/"+this.id, json, {
+          .put("http://localhost:5000/API/students", json, {
             headers: {
               "Access-Control-Allow-Origin": "*",
               "Access-Control-Allow-Credentials": "true",
