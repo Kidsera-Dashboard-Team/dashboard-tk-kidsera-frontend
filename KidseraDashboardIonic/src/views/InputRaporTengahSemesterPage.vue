@@ -9,27 +9,21 @@
           <ion-col size="6">
             <ion-title class="d-none d-lg-inline-block mt-1" size="small">
               <ion-breadcrumbs :max-items="4" :items-after-collapse="2" class="p-0">
-                <ion-breadcrumb style="font-size: 1em;" href="/Pages">Pages</ion-breadcrumb>
-                <ion-breadcrumb style="font-size: 1em;" href="/pages/Rapor">E - Rapor</ion-breadcrumb>
-                <ion-breadcrumb style="font-size: 1em;" href="/pages/Rapor/TahunAjaranRapor">Tahun Ajaran
-                </ion-breadcrumb>
-                <ion-breadcrumb style="font-size: 1em;" href="/pages/Rapor/TahunAjaranRapor/PesertaDidikRapor">Peserta
-                  Didik
-                </ion-breadcrumb>
-                <ion-breadcrumb style="font-size: 1em;"
-                  href="/pages/Rapor/TahunAjaranRapor/PesertaDidikRapor/InputNilaiPesertaDidikRapor">Detail</ion-breadcrumb>
-                <ion-breadcrumb style="font-size: 1em;"
-                  href="/pages/Rapor/TahunAjaranRapor/PesertaDidikRapor/InputNilaiPesertaDidikRapor/InputRapor">Input</ion-breadcrumb>
+                <ion-breadcrumb style="font-size: 1em" href="/Pages">Pages</ion-breadcrumb>
+                <ion-breadcrumb style="font-size: 1em" href="/pages/Rapor">E - Rapor</ion-breadcrumb>
+                <ion-breadcrumb style="font-size: 1em" href="/pages/Rapor/TahunAjaranRapor">Tahun Ajaran </ion-breadcrumb>
+                <ion-breadcrumb style="font-size: 1em" href="/pages/Rapor/TahunAjaranRapor/PesertaDidikRapor">Peserta Didik </ion-breadcrumb>
+                <ion-breadcrumb style="font-size: 1em" href="/pages/Rapor/TahunAjaranRapor/PesertaDidikRapor/InputNilaiPesertaDidikRapor">Detail</ion-breadcrumb>
+                <ion-breadcrumb style="font-size: 1em" href="/pages/Rapor/TahunAjaranRapor/PesertaDidikRapor/InputNilaiPesertaDidikRapor/InputRapor">Input</ion-breadcrumb>
               </ion-breadcrumbs>
 
-              <h5 style="margin-left: 11px;">Input E - Rapor</h5>
+              <h5 style="margin-left: 11px">Input E - Rapor</h5>
             </ion-title>
           </ion-col>
           <ion-col size-sm="6" size="10">
-            <ion-row class="ion-align-items-center ion-justify-content-end goright mt-2" style="margin-right: 20px;">
-              <div class="btn-group dropstart mb-1 ms-2" style="content: inherit;">
-                <button class="btn dropdown-toggle text-info text-gradient" type="button" data-bs-toggle="dropdown"
-                  aria-expanded="true" style="background-color: transparent;">
+            <ion-row class="ion-align-items-center ion-justify-content-end goright mt-2" style="margin-right: 20px">
+              <div class="btn-group dropstart mb-1 ms-2" style="content: inherit">
+                <button class="btn dropdown-toggle text-info text-gradient" type="button" data-bs-toggle="dropdown" aria-expanded="true" style="background-color: transparent">
                   Hi {{ username }}
                 </button>
                 <ul class="dropdown-menu dropdown-menu-dark">
@@ -40,8 +34,7 @@
                 <a href="/SignUp">
                   <ion-icon class="iconButton text-info text-gradient" src="assets/icon/signup.svg"></ion-icon>
                 </a>
-                <a href="/SignUp" class="d-none d-sm-inline-block mb-1 text-info text-gradient"
-                  style="text-decoration: none;">&nbsp;Add User</a>
+                <a href="/SignUp" class="d-none d-sm-inline-block mb-1 text-info text-gradient" style="text-decoration: none">&nbsp;Add User</a>
               </div>
               <div>&nbsp;</div>
             </ion-row>
@@ -61,50 +54,50 @@
                 <ol class="list-group">
                   <li class="list-group-item">
                     Moral dan nilai-nilai Agama<br />
-                    <ion-textarea class="custom-textarea" placeholder="Type something here"
-                      v-model="formData.text1"></ion-textarea>
+                    <ion-textarea class="custom-textarea" placeholder="Type something here" v-model="formData.text1"></ion-textarea>
                     <ion-note color="danger" v-for="error in v$.text1.$errors" :key="error.$uid">
-                      <br /> {{ error.$message }}
+                      <br />
+                      {{ error.$message }}
                     </ion-note>
                   </li>
                   <li class="list-group-item">
                     Motorik Kasar dan Motorik Halus<br />
-                    <ion-textarea class="custom-textarea" placeholder="Type something here"
-                      v-model="formData.text2"></ion-textarea>
+                    <ion-textarea class="custom-textarea" placeholder="Type something here" v-model="formData.text2"></ion-textarea>
                     <ion-note color="danger" v-for="error in v$.text2.$errors" :key="error.$uid">
-                      <br /> {{ error.$message }}
+                      <br />
+                      {{ error.$message }}
                     </ion-note>
                   </li>
                   <li class="list-group-item">
                     Bahasa<br />
-                    <ion-textarea class="custom-textarea" placeholder="Type something here"
-                      v-model="formData.text3"></ion-textarea>
+                    <ion-textarea class="custom-textarea" placeholder="Type something here" v-model="formData.text3"></ion-textarea>
                     <ion-note color="danger" v-for="error in v$.text3.$errors" :key="error.$uid">
-                      <br /> {{ error.$message }}
+                      <br />
+                      {{ error.$message }}
                     </ion-note>
                   </li>
                   <li class="list-group-item">
                     Kognitif<br />
-                    <ion-textarea class="custom-textarea" placeholder="Type something here"
-                      v-model="formData.text4"></ion-textarea>
+                    <ion-textarea class="custom-textarea" placeholder="Type something here" v-model="formData.text4"></ion-textarea>
                     <ion-note color="danger" v-for="error in v$.text4.$errors" :key="error.$uid">
-                      <br /> {{ error.$message }}
+                      <br />
+                      {{ error.$message }}
                     </ion-note>
                   </li>
                   <li class="list-group-item">
                     Sosial-emosional<br />
-                    <ion-textarea class="custom-textarea" placeholder="Type something here"
-                      v-model="formData.text5"></ion-textarea>
+                    <ion-textarea class="custom-textarea" placeholder="Type something here" v-model="formData.text5"></ion-textarea>
                     <ion-note color="danger" v-for="error in v$.text5.$errors" :key="error.$uid">
-                      <br /> {{ error.$message }}
+                      <br />
+                      {{ error.$message }}
                     </ion-note>
                   </li>
                   <li class="list-group-item">
                     Seni<br />
-                    <ion-textarea class="custom-textarea" placeholder="Type something here"
-                      v-model="formData.text6"></ion-textarea>
+                    <ion-textarea class="custom-textarea" placeholder="Type something here" v-model="formData.text6"></ion-textarea>
                     <ion-note color="danger" v-for="error in v$.text6.$errors" :key="error.$uid">
-                      <br /> {{ error.$message }}
+                      <br />
+                      {{ error.$message }}
                     </ion-note>
                   </li>
                 </ol>
@@ -116,9 +109,7 @@
           <div>
             <ion-row class="ion-justify-content-center row-button mt-4 mb-3">
               <ion-col size="6" size-sm="2">
-                <a class="btn btn-danger"
-                  href="/pages/Rapor/TahunAjaranRapor/PesertaDidikRapor/InputNilaiPesertaDidikRapor"
-                  role="button">Batalkan</a>
+                <a class="btn btn-danger" href="/pages/Rapor/TahunAjaranRapor/PesertaDidikRapor/InputNilaiPesertaDidikRapor" role="button">Batalkan</a>
               </ion-col>
               <ion-col size="6" size-sm="2">
                 <a class="btn btn-primary" role="button" @click="submitForm()">Simpan</a>
@@ -240,6 +231,7 @@ export default defineComponent({
               "Access-Control-Allow-Origin": "*",
               "Access-Control-Allow-Credentials": "true",
               "Content-Type": "application/json",
+              "Authorization": "Bearer " + localStorage.getItem("access_token"),
             },
             withCredentials: true,
           })
@@ -258,13 +250,14 @@ export default defineComponent({
         Authorization: "Bearer " + localStorage.getItem("access_token"),
       };
 
-      axios.delete("http://localhost:5000/API/auth/logout", { headers })
+      axios
+        .delete("http://localhost:5000/API/auth/logout", { headers })
         .then((response) => {
           console.log(response);
           localStorage.clear();
           alert("Anda berhasil keluar");
         })
-        .catch(error => {
+        .catch((error) => {
           console.log(error.response.data);
         });
     },
@@ -347,7 +340,7 @@ a .iconButton {
   top: -1.5px;
 }
 
-.btn-search:focus~.input-search {
+.btn-search:focus ~ .input-search {
   width: 230px;
   border-radius: 10px;
   background-color: white;
@@ -401,7 +394,7 @@ a .iconButton {
 /* small laptop dimension */
 
 @media only screen and (max-width: 1280px) {
-  .btn-search:focus~.input-search {
+  .btn-search:focus ~ .input-search {
     width: 250px;
   }
 
@@ -423,7 +416,7 @@ a .iconButton {
 /* tablet dimension */
 
 @media only screen and (max-width: 990px) {
-  .btn-search:focus~.input-search {
+  .btn-search:focus ~ .input-search {
     width: 200px;
   }
 
@@ -471,7 +464,7 @@ a .iconButton {
     right: 34%;
   }
 
-  .btn-search:focus~.input-search {
+  .btn-search:focus ~ .input-search {
     width: 200px;
   }
 
@@ -488,7 +481,7 @@ a .iconButton {
     right: 41%;
   }
 
-  .btn-search:focus~.input-search {
+  .btn-search:focus ~ .input-search {
     width: 180px;
   }
 
@@ -503,7 +496,7 @@ a .iconButton {
     right: 50%;
   }
 
-  .btn-search:focus~.input-search {
+  .btn-search:focus ~ .input-search {
     width: 150px;
   }
 

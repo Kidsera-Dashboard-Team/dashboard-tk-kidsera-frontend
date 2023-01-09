@@ -2779,6 +2779,7 @@ export default defineComponent({
               "Access-Control-Allow-Origin": "*",
               "Access-Control-Allow-Credentials": "true",
               "Content-Type": "application/json",
+              "Authorization": "Bearer " + localStorage.getItem("access_token"),
             },
             withCredentials: true,
           })

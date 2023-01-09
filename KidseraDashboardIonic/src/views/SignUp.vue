@@ -5,18 +5,16 @@
         <ion-grid>
           <ion-row class="ion-justify-content-start">
             <ion-col size="6">
-              <a href="#" style="text-decoration: none; color: white;"><ion-title class="title-dashboard">Kidsera
-                  Dashboard</ion-title></a>
+              <a href="#" style="text-decoration: none; color: white"><ion-title class="title-dashboard">Kidsera Dashboard</ion-title></a>
             </ion-col>
           </ion-row>
         </ion-grid>
       </ion-toolbar>
 
-
-      <img src="assets/img/background-signup.svg" class="background" alt="">
+      <img src="assets/img/background-signup.svg" class="background" alt="" />
 
       <div id="container">
-        <ion-card class='card-middle' color="white" mode="md">
+        <ion-card class="card-middle" color="white" mode="md">
           <ion-card-header>
             <ion-card-title>Daftar</ion-card-title>
           </ion-card-header>
@@ -58,8 +56,7 @@
                 <ion-col>
                   <ion-item fill="outline">
                     <ion-label position="floating">Password</ion-label>
-                    <ion-input name="password" placeholder="Password" type="password"
-                      v-model="data.password"></ion-input>
+                    <ion-input name="password" placeholder="Password" type="password" v-model="data.password"></ion-input>
                   </ion-item>
                 </ion-col>
               </ion-row>
@@ -73,21 +70,8 @@
               </ion-row>
               <ion-row class="ion-justify-content-start">
                 <ion-col>
-                  <ion-item>
-                    <ion-checkbox slot="start"></ion-checkbox>
-                    <ion-label class="ionlebel">
-                      <p>Saya setuju dengan <b>Syarat dan Ketentuan</b></p>
-                    </ion-label>
-                  </ion-item>
-                </ion-col>
-              </ion-row>
-              <ion-row class="ion-justify-content-start">
-                <ion-col>
                   <div class="button-regis">
-                    <ion-button expand="block" color="=" @click="submit()"
-                      style=" background-image: linear-gradient(to right, #3A416F, #141727);">
-                      Registrasi
-                    </ion-button>
+                    <ion-button expand="block" color="=" @click="submit()" style="background-image: linear-gradient(to right, #3a416f, #141727)"> Registrasi </ion-button>
                   </div>
                 </ion-col>
               </ion-row>
@@ -108,27 +92,54 @@
 </template>
 
 <script lang="ts">
-import { IonContent, IonPage, IonTitle, IonToolbar, IonCard, IonCardHeader, IonCardContent, IonCardTitle, IonGrid, IonRow, IonCol, IonInput, IonItem, IonCheckbox, IonLabel, IonButton } from '@ionic/vue';
-import { defineComponent, reactive } from 'vue';
-import axios from 'axios';
-import useRouter from 'vue-router';
+import {
+  IonContent,
+  IonPage,
+  IonTitle,
+  IonToolbar,
+  IonCard,
+  IonCardHeader,
+  IonCardContent,
+  IonCardTitle,
+  IonGrid,
+  IonRow,
+  IonCol,
+  IonInput,
+  IonItem,
+  IonCheckbox,
+  IonLabel,
+  IonButton,
+} from "@ionic/vue";
+import { defineComponent, reactive } from "vue";
+import axios from "axios";
+import useRouter from "vue-router";
 
 export default defineComponent({
-  name: 'SignUp',
+  name: "SignUp",
   components: {
     IonContent,
     IonPage,
     IonTitle,
-    IonToolbar, IonCard, IonCardHeader, IonCardContent, IonCardTitle, IonGrid, IonRow, IonCol, IonInput, IonItem, IonCheckbox, IonLabel, IonButton
+    IonToolbar,
+    IonCard,
+    IonCardHeader,
+    IonCardContent,
+    IonCardTitle,
+    IonGrid,
+    IonRow,
+    IonCol,
+    IonInput,
+    IonItem,
+    IonLabel,
+    IonButton,
   },
   setup() {
-
     const data = reactive({
-      email: '',
-      username: '',
-      password: '',
-      fname: '',
-      lname: '',
+      email: "",
+      username: "",
+      password: "",
+      fname: "",
+      lname: "",
     });
 
     const submit = () => {
@@ -138,20 +149,21 @@ export default defineComponent({
             "Access-Control-Allow-Origin": "*",
             "Access-Control-Allow-Credentials": "true",
             "Content-Type": "application/json",
-            "Authorization": "Bearer " + localStorage.getItem('access_token')
+            Authorization: "Bearer " + localStorage.getItem("access_token"),
           },
-          withCredentials: true
+          withCredentials: true,
         })
-        .then(response => {
-          console.log(response)
+        .then((response) => {
+          console.log(response);
+          alert("Akun berhasil didaftarkan");
+          window.location.href = "/pages/Dashboard";
         })
         .catch((error) => {
           let status = error.response.data.msg;
           if (status == "Missing Authorization Header") {
             alert("Anda belum login");
             window.location.href = "/SignIn";
-          }
-          else if (status == "Token has expired") {
+          } else if (status == "Token has expired") {
             alert("Sesi telah berakhir, silahkan login kembali");
             window.location.href = "/SignIn";
           }
@@ -161,10 +173,8 @@ export default defineComponent({
     return {
       data,
       submit,
-    }
-
+    };
   },
-
 });
 </script>
 
@@ -216,12 +226,12 @@ ion-checkbox::part(container) {
 
 .sabeb {
   text-decoration: none;
-  color: linear-gradient(to right, #3A416F, #141727);
+  color: linear-gradient(to right, #3a416f, #141727);
 }
 
 .card-inside {
   margin: 15px 30px 0;
-  background-color: #857B7B;
+  background-color: #857b7b;
   margin-top: 22px;
 }
 
@@ -232,7 +242,6 @@ ion-checkbox::part(container) {
 }
 
 @media only screen and (max-width: 769px) {
-
   .card-middle {
     width: 60%;
     font-size: 10px;

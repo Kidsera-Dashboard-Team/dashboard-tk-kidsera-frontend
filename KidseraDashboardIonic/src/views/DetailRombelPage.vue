@@ -95,15 +95,15 @@
                             <!-- alt="user1"> -->
                           </div>
                           <div class="justify-content-center">
-                            <h6 class="mb-0 text-sm td-name">{{ result.nama }}</h6>
+                            <h6 class="mb-0 text-sm td-name">{{ result.nomor_induk }}</h6>
                           </div>
                         </div>
                       </td>
                       <td class="align-middle">
-                        <p class="text-xs font-weight-bold mb-0 text-center">Manager</p>
+                        <p class="text-xs font-weight-bold mb-0 text-center">{{ result.nama }}</p>
                       </td>
                       <td class="align-middle text-center text-sm">
-                        <span class="">1313621000</span>
+                        <span class="">{{ result.jenis_kelamin }}</span>
                       </td>
                     </tr>
                   </tbody>

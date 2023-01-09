@@ -56,7 +56,7 @@
               </ion-card-header>
               <ion-card-content class="d-grid gap-3">
                 <ion-item fill="outline" lines="none">
-                  <ion-label position="floating" :readonly="true" class="mb-5">Nama Fasilitas -> Fasilitas {{
+                  <ion-label position="floating" :readonly="true" class="mb-5"> Fasilitas {{
                     nama
                   }}</ion-label>
                   <!-- <ion-input placeholder="Masukkan Fasilitas" ></ion-input> -->
@@ -216,6 +216,7 @@ export default defineComponent({
         })
         .then(response => {
           console.log(response);
+          alert('success');
           window.location.href = "/pages/Sarpras/DetailSarpras/" + this.id_ruang
         })
         .catch(error => {

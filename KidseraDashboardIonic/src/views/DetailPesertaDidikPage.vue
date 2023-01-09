@@ -53,7 +53,7 @@
                 <h3 class="px-3 py-3 title-table">Biodata Peserta Didik</h3>
               </ion-col>
             </ion-row>
-            <h2 class="text-center mt-1 mb-4">Nama Aku</h2>
+            <h2 class="text-center text-dark mt-1 mb-4 text-uppercase fw-bold"> {{ results.nama }}</h2>
             <ion-row class="mx-auto form-container">
               <ion-col size="4" style="line-height: 2.5" class="text-dark text-center form1">
                 <ul>

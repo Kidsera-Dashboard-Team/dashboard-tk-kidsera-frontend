@@ -46,7 +46,7 @@
       <ion-card class="mt-4 p-3 rounded text-center card-form">
         <ion-card-header>
           <ion-card-title>
-            <h4>Tambah Peserta Didik</h4>
+            <h4>Edit Peserta Didik</h4>
           </ion-card-title>
         </ion-card-header>
         <ion-card-content class="d-grid gap-3">
@@ -222,7 +222,7 @@
                 <a class="btn btn-danger" href="/pages/PesertaDidik" role="button">Batalkan</a>
               </ion-col>
               <ion-col size="6" size-sm="2">
-                <a class="btn btn-success" role="button" @click="submitForm()">Tambah</a>
+                <a class="btn btn-success" role="button" @click="submitForm()">Edit</a>
               </ion-col>
             </ion-row>
           </div>
@@ -512,7 +512,7 @@ export default defineComponent({
               "Access-Control-Allow-Origin": "*",
               "Access-Control-Allow-Credentials": "true",
               "Content-Type": "application/json",
-              Authorization: "Bearer " + localStorage.getItem("access_token"),
+              "Authorization": "Bearer " + localStorage.getItem("access_token"),
             },
             withCredentials: true,
           })
