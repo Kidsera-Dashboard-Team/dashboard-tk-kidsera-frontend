@@ -201,7 +201,6 @@
 import { defineComponent, onMounted, ref } from "vue";
 import { IonButtons, IonContent, IonMenuButton, IonPage, IonTitle, IonToolbar, IonCol, IonGrid, IonRow, IonBreadcrumb, IonBreadcrumbs } from "@ionic/vue";
 import axios from "axios";
-import Swal from 'sweetalert2'
 
 export default defineComponent({
   name: "DashboardPage",
