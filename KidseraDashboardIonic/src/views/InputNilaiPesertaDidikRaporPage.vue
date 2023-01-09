@@ -47,23 +47,23 @@
           <ion-row class="ion-justify-content-between mb-4">
             <ion-col size-xl="4" size-md="4" size-xs="12">
               <h6 class="text-dark">Nama Peserta Didik</h6>
-              <h4 class="text-dark">Jono Sukandara</h4>
+              <h4 class="text-dark">{{results.nama_peserta_didik.nama}}</h4>
             </ion-col>
             <ion-col size-xl="2" size-md="2" size-xs="12">
               <h6 class="text-dark">Rombel</h6>
-              <h4 class="text-dark">2022/2023</h4>
+              <h4 class="text-dark">{{results.nama_peserta_didik.tahun_ajaran}}</h4>
             </ion-col>
             <ion-col size-xl="1" size-md="1" size-xs="12">
               <h6 class="text-dark">Kelas</h6>
-              <h4 class="text-dark">A</h4>
+              <h4 class="text-dark">{{results.nama_peserta_didik.tingkat_kelas}}</h4>
             </ion-col>
-            <ion-col size-xl="2" size-md="2" size-xs="12">
+            <!-- <ion-col size-xl="2" size-md="2" size-xs="12">
               <h6 class="text-dark">Kelompok Usia</h6>
               <h4 class="text-dark">6</h4>
-            </ion-col>
+            </ion-col> -->
             <ion-col size-xl="3" size-md="3" size-xs="12">
               <h6 class="text-dark">Nomor Induk</h6>
-              <h4 class="text-dark">132413</h4>
+              <h4 class="text-dark">{{results.nama_peserta_didik.nomor_induk}}</h4>
             </ion-col>
           </ion-row>
         </ion-card-header>
@@ -268,6 +268,7 @@ export default defineComponent({
       .get("http://localhost:5000/API/rapor/" + this.id_siswa, { headers })
       .then((response) => {
         this.results = response.data.rapor;
+        this.results.nama_peserta_didik = response.data.nama_peserta_didik;
         console.log(response);
       })
       .catch(function (error) {
