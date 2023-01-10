@@ -2780,7 +2780,15 @@ export default defineComponent({
             window.location.href = "/pages/Rapor/" + this.tahun + "/" + this.kelas + "/" + this.id_siswa;
           })
           .catch((error) => {
-            console.log(error.response);
+            let status = error.response.data.msg;
+            if (status == "Missing Authorization Header") {
+              alert("Anda belum login");
+              window.location.href = "/SignIn";
+            }
+            else if (status == "Token has expired") {
+              alert("Sesi telah berakhir, silahkan login kembali");
+              window.location.href = "/SignIn";
+            }
           });
       }
     },

@@ -79,7 +79,7 @@
                 <a class="btn btn-danger" href="/pages/RombonganBelajar" role="button">Batalkan</a>
               </ion-col>
               <ion-col size="6" size-sm="2">
-                <a class="btn btn-success" role="button" @click="submitForm()">Tambah</a>
+                <a class="btn btn-primary" role="button" @click="submitForm()">Simpan</a>
               </ion-col>
             </ion-row>
           </div>
@@ -211,7 +211,15 @@ export default defineComponent({
             window.location.href = "/pages/RombonganBelajar/" + this.tahun + "/" + this.kelas;
           })
           .catch((error) => {
-            console.log(error.response);
+            let status = error.response.data.msg;
+            if (status == "Missing Authorization Header") {
+              alert("Anda belum login");
+              window.location.href = "/SignIn";
+            }
+            else if (status == "Token has expired") {
+              alert("Sesi telah berakhir, silahkan login kembali");
+              window.location.href = "/SignIn";
+            }
           });
       }
     },

@@ -242,8 +242,16 @@ export default defineComponent({
           localStorage.clear();
           alert("Anda berhasil keluar");
         })
-        .catch(error => {
-          console.log(error.response.data);
+        .catch((error) => {
+          let status = error.response.data.msg;
+          if (status == "Missing Authorization Header") {
+            alert("Anda belum login");
+            window.location.href = "/SignIn";
+          }
+          else if (status == "Token has expired") {
+            alert("Sesi telah berakhir, silahkan login kembali");
+            window.location.href = "/SignIn";
+          }
         });
     },
 
@@ -274,8 +282,16 @@ export default defineComponent({
         .then(response => {
           console.log(response);
         })
-        .catch(error => {
-          console.log(error.response.data);
+        .catch((error) => {
+          let status = error.response.data.msg;
+          if (status == "Missing Authorization Header") {
+            alert("Anda belum login");
+            window.location.href = "/SignIn";
+          }
+          else if (status == "Token has expired") {
+            alert("Sesi telah berakhir, silahkan login kembali");
+            window.location.href = "/SignIn";
+          }
         });
     }
   },
