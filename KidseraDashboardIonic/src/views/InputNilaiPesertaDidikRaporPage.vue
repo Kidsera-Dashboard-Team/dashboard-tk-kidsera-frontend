@@ -47,15 +47,15 @@
           <ion-row class="ion-justify-content-between mb-4">
             <ion-col size-xl="4" size-md="4" size-xs="12">
               <h6 class="text-dark">Nama Peserta Didik</h6>
-              <h4 class="text-dark">{{results.nama_peserta_didik.nama}}</h4>
+              <h4 v-if="results.length != 0" class="text-dark">{{results.nama_peserta_didik.nama}}</h4>
             </ion-col>
             <ion-col size-xl="2" size-md="2" size-xs="12">
               <h6 class="text-dark">Rombel</h6>
-              <h4 class="text-dark">{{results.nama_peserta_didik.tahun_ajaran}}</h4>
+              <h4 v-if="results.length != 0" class="text-dark">{{results.nama_peserta_didik.tahun_ajaran}}</h4>
             </ion-col>
             <ion-col size-xl="1" size-md="1" size-xs="12">
               <h6 class="text-dark">Kelas</h6>
-              <h4 class="text-dark">{{results.nama_peserta_didik.tingkat_kelas}}</h4>
+              <h4 v-if="results.length != 0" class="text-dark">{{results.nama_peserta_didik.tingkat_kelas}}</h4>
             </ion-col>
             <!-- <ion-col size-xl="2" size-md="2" size-xs="12">
               <h6 class="text-dark">Kelompok Usia</h6>
@@ -63,7 +63,7 @@
             </ion-col> -->
             <ion-col size-xl="3" size-md="3" size-xs="12">
               <h6 class="text-dark">Nomor Induk</h6>
-              <h4 class="text-dark">{{results.nama_peserta_didik.nomor_induk}}</h4>
+              <h4 v-if="results.length != 0" class="text-dark">{{results.nama_peserta_didik.nomor_induk}}</h4>
             </ion-col>
           </ion-row>
         </ion-card-header>
@@ -95,11 +95,11 @@
                           <ion-icon src=""></ion-icon>
                         </div>
                       </a>
-                      <!-- <a @click="delRapot('tengah_semester', 1)">
+                      <a @click="delRapot('tengah_semester', 1)">
                         <div class="kotak kotak-merah">
                           <ion-icon src=""></ion-icon>
                         </div>
-                      </a> -->
+                      </a>
                     </div>
                     <div v-else-if="ishere('tengah_semester', '1') != true">
                       <a :href="'/pages/Rapor/' + tahun + '/' + kelas + '/' + id_siswa + '/tengah_semester/1/add'">
@@ -124,11 +124,11 @@
                           <ion-icon src=""></ion-icon>
                         </div>
                       </a>
-                      <!-- <a @click="delRapot('akhir_semester', 1)">
+                      <a @click="delRapot('akhir_semester', 1)">
                         <div class="kotak kotak-merah">
                           <ion-icon src=""></ion-icon>
                         </div>
-                      </a> -->
+                      </a>
                     </div>
                     <div v-else-if="ishere('akhir_semester', '1') != true">
                       <a :href="'/pages/Rapor/' + tahun + '/' + kelas + '/' + id_siswa + '/akhir_semester/1/add'">
@@ -153,11 +153,11 @@
                           <ion-icon src=""></ion-icon>
                         </div>
                       </a>
-                      <!-- <a @click="delRapot('tengah_semester',2)">
+                      <a @click="delRapot('tengah_semester',2)">
                         <div class="kotak kotak-merah">
                           <ion-icon src=""></ion-icon>
                         </div>
-                      </a> -->
+                      </a>
                     </div>
                     <div v-else-if="ishere('tengah_semester', '2') != true">
                       <a :href="'/pages/Rapor/' + tahun + '/' + kelas + '/' + id_siswa + '/tengah_semester/2/add'">
@@ -182,11 +182,11 @@
                           <ion-icon src=""></ion-icon>
                         </div>
                       </a>
-                      <!-- <a @click="delRapot('akhir_semester', 2)">
+                      <a @click="delRapot('akhir_semester', 2)">
                         <div class="kotak kotak-merah">
                           <ion-icon src=""></ion-icon>
                         </div>
-                      </a> -->
+                      </a>
                     </div>
                     <div v-else-if="ishere('akhir_semester', '2') != true">
                       <a :href="'/pages/Rapor/' + tahun + '/' + kelas + '/' + id_siswa + '/akhir_semester/2/add'">
@@ -316,9 +316,9 @@ export default defineComponent({
       let headers = {
         Authorization: "Bearer " + localStorage.getItem("access_token"),
       };
-
+      
       axios
-        .delete("http://localhost:5000/API/rapor/detail/" + this.id_siswa + "/"+ periode +"/" + semester, { headers })
+        .delete("http://localhost:5000/API/rapor/detail/" + this.id_siswa + "/"+ semester +"/" + periode, { headers })
         .then((response) => {
           console.log(response);
           window.location.reload();
