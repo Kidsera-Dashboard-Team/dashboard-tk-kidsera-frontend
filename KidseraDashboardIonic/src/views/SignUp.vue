@@ -5,7 +5,8 @@
         <ion-grid>
           <ion-row class="ion-justify-content-start">
             <ion-col size="6">
-              <a href="#" style="text-decoration: none; color: white"><ion-title class="title-dashboard">Kidsera Dashboard</ion-title></a>
+              <a href="#" style="text-decoration: none; color: white"><ion-title class="title-dashboard">Kidsera
+                  Dashboard</ion-title></a>
             </ion-col>
           </ion-row>
         </ion-grid>
@@ -56,7 +57,8 @@
                 <ion-col>
                   <ion-item fill="outline">
                     <ion-label position="floating">Password</ion-label>
-                    <ion-input name="password" placeholder="Password" type="password" v-model="data.password"></ion-input>
+                    <ion-input name="password" placeholder="Password" type="password"
+                      v-model="data.password"></ion-input>
                   </ion-item>
                 </ion-col>
               </ion-row>
@@ -71,7 +73,8 @@
               <ion-row class="ion-justify-content-start">
                 <ion-col>
                   <div class="button-regis">
-                    <ion-button expand="block" color="=" @click="submit()" style="background-image: linear-gradient(to right, #3a416f, #141727)"> Registrasi </ion-button>
+                    <ion-button expand="block" color="=" @click="submit()"
+                      style="background-image: linear-gradient(to right, #3a416f, #141727)"> Registrasi </ion-button>
                   </div>
                 </ion-col>
               </ion-row>
@@ -144,7 +147,7 @@ export default defineComponent({
 
     const submit = () => {
       axios
-        .post("http://localhost:5000/API/auth/register", JSON.stringify(data), {
+        .post("http://31.187.72.73:81/API/auth/register", JSON.stringify(data), {
           headers: {
             "Access-Control-Allow-Origin": "*",
             "Access-Control-Allow-Credentials": "true",

@@ -420,7 +420,7 @@ export default defineComponent({
     };
 
     axios
-      .get("http://localhost:5000/API/students/" + this.id, { headers })
+      .get("http://31.187.72.73:81/API/students/" + this.id, { headers })
       .then((response) => {
         this.formData.nama = response.data.nama;
         this.formData.jenis_kelamin = response.data.jenis_kelamin;
@@ -457,7 +457,7 @@ export default defineComponent({
       };
 
       axios
-        .delete("http://localhost:5000/API/auth/logout", { headers })
+        .delete("http://31.187.72.73:81/API/auth/logout", { headers })
         .then((response) => {
           console.log(response);
           localStorage.clear();
@@ -507,7 +507,7 @@ export default defineComponent({
         });
         console.log(json);
         await axios
-          .put("http://localhost:5000/API/students/" + this.id , json, {
+          .put("http://31.187.72.73:81/API/students/" + this.id, json, {
             headers: {
               "Access-Control-Allow-Origin": "*",
               "Access-Control-Allow-Credentials": "true",

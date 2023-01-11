@@ -98,7 +98,7 @@ export default defineComponent({
 
     const submit = () => {
       axios
-        .post("http://localhost:5000/API/auth/login", JSON.stringify(data), {
+        .post("http://31.187.72.73:81/API/auth/login", JSON.stringify(data), {
           headers: {
             "Access-Control-Allow-Origin": "*",
             "Access-Control-Allow-Credentials": "true",

@@ -11,7 +11,8 @@
               <ion-breadcrumbs :max-items="4" :items-after-collapse="2" class="p-0">
                 <ion-breadcrumb style="font-size: 1em" href="/Pages">Pages</ion-breadcrumb>
                 <ion-breadcrumb style="font-size: 1em" href="/pages/RombonganBelajar">Rombongan Belajar</ion-breadcrumb>
-                <ion-breadcrumb style="font-size: 1em" href="/pages/RombonganBelajar/TambahRombonganBelajar">Tambah</ion-breadcrumb>
+                <ion-breadcrumb style="font-size: 1em"
+                  href="/pages/RombonganBelajar/TambahRombonganBelajar">Tambah</ion-breadcrumb>
               </ion-breadcrumbs>
               <h5 style="margin-left: 11px">Tambah Rombongan Belajar</h5>
             </ion-title>
@@ -19,7 +20,8 @@
           <ion-col size-sm="6" size="10">
             <ion-row class="ion-align-items-center ion-justify-content-end goright mt-2" style="margin-right: 20px">
               <div class="btn-group dropstart mb-1 ms-2" style="content: inherit">
-                <button class="btn dropdown-toggle text-info text-gradient" type="button" data-bs-toggle="dropdown" aria-expanded="true" style="background-color: transparent">
+                <button class="btn dropdown-toggle text-info text-gradient" type="button" data-bs-toggle="dropdown"
+                  aria-expanded="true" style="background-color: transparent">
                   Hi {{ username }}
                 </button>
                 <ul class="dropdown-menu dropdown-menu-dark">
@@ -30,7 +32,8 @@
                 <a href="/SignUp">
                   <ion-icon class="iconButton text-info text-gradient" src="assets/icon/signup.svg"></ion-icon>
                 </a>
-                <a href="/SignUp" class="d-none d-sm-inline-block mb-1 text-info text-gradient" style="text-decoration: none">&nbsp;Add User</a>
+                <a href="/SignUp" class="d-none d-sm-inline-block mb-1 text-info text-gradient"
+                  style="text-decoration: none">&nbsp;Add User</a>
               </div>
               <div>&nbsp;</div>
             </ion-row>
@@ -167,7 +170,7 @@ export default defineComponent({
       };
 
       axios
-        .delete("http://localhost:5000/API/auth/logout", { headers })
+        .delete("http://31.187.72.73:81/API/auth/logout", { headers })
         .then((response) => {
           console.log(response);
           localStorage.clear();
@@ -199,7 +202,7 @@ export default defineComponent({
         });
         console.log(json);
         await axios
-          .post("http://localhost:5000/API/rombel", json, {
+          .post("http://31.187.72.73:81/API/rombel", json, {
             headers: {
               "Access-Control-Allow-Origin": "*",
               "Access-Control-Allow-Credentials": "true",
@@ -294,7 +297,7 @@ a .iconButton {
   top: -1.5px;
 }
 
-.btn-search:focus ~ .input-search {
+.btn-search:focus~.input-search {
   width: 230px;
   border-radius: 10px;
   background-color: white;
@@ -333,7 +336,7 @@ a .iconButton {
 /* small laptop dimension */
 
 @media only screen and (max-width: 1280px) {
-  .btn-search:focus ~ .input-search {
+  .btn-search:focus~.input-search {
     width: 250px;
   }
 
@@ -345,7 +348,7 @@ a .iconButton {
 /* tablet dimension */
 
 @media only screen and (max-width: 990px) {
-  .btn-search:focus ~ .input-search {
+  .btn-search:focus~.input-search {
     width: 200px;
   }
 
@@ -371,7 +374,7 @@ a .iconButton {
     right: 34%;
   }
 
-  .btn-search:focus ~ .input-search {
+  .btn-search:focus~.input-search {
     width: 200px;
   }
 
@@ -388,7 +391,7 @@ a .iconButton {
     right: 41%;
   }
 
-  .btn-search:focus ~ .input-search {
+  .btn-search:focus~.input-search {
     width: 180px;
   }
 
@@ -408,7 +411,7 @@ a .iconButton {
     right: 50%;
   }
 
-  .btn-search:focus ~ .input-search {
+  .btn-search:focus~.input-search {
     width: 150px;
   }
 

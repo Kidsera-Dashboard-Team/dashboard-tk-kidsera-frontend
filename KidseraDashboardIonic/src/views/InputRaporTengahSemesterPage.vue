@@ -240,7 +240,7 @@ export default defineComponent({
         });
         console.log(json);
         await axios
-          .post("http://localhost:5000/API/rapor/" + this.id_siswa, json, {
+          .post("http://31.187.72.73:81/API/rapor/" + this.id_siswa, json, {
             headers: {
               "Access-Control-Allow-Origin": "*",
               "Access-Control-Allow-Credentials": "true",
@@ -273,7 +273,7 @@ export default defineComponent({
       };
 
       axios
-        .delete("http://localhost:5000/API/auth/logout", { headers })
+        .delete("http://31.187.72.73:81/API/auth/logout", { headers })
         .then((response) => {
           console.log(response);
           localStorage.clear();

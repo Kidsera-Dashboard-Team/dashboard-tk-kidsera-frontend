@@ -11,9 +11,12 @@
               <ion-breadcrumbs :max-items="4" :items-after-collapse="2" class="p-0">
                 <ion-breadcrumb style="font-size: 1em" href="/Pages">Pages</ion-breadcrumb>
                 <ion-breadcrumb style="font-size: 1em" href="/pages/Rapor">E - Rapor</ion-breadcrumb>
-                <ion-breadcrumb style="font-size: 1em" href="/pages/Rapor/TahunAjaranRapor">Tahun Ajaran</ion-breadcrumb>
-                <ion-breadcrumb style="font-size: 1em" href="/pages/Rapor/TahunAjaranRapor/PesertaDidikRapor">Peserta Didik</ion-breadcrumb>
-                <ion-breadcrumb style="font-size: 1em" href="/pages/Rapor/TahunAjaranRapor/PesertaDidikRapor/InputNilaiPesertaDidikRapor">Detail</ion-breadcrumb>
+                <ion-breadcrumb style="font-size: 1em" href="/pages/Rapor/TahunAjaranRapor">Tahun
+                  Ajaran</ion-breadcrumb>
+                <ion-breadcrumb style="font-size: 1em" href="/pages/Rapor/TahunAjaranRapor/PesertaDidikRapor">Peserta
+                  Didik</ion-breadcrumb>
+                <ion-breadcrumb style="font-size: 1em"
+                  href="/pages/Rapor/TahunAjaranRapor/PesertaDidikRapor/InputNilaiPesertaDidikRapor">Detail</ion-breadcrumb>
               </ion-breadcrumbs>
               <h5 style="margin-left: 11px">Input Nilai E - Rapor</h5>
             </ion-title>
@@ -21,7 +24,8 @@
           <ion-col size-sm="6" size="10">
             <ion-row class="ion-align-items-center ion-justify-content-end goright mt-2" style="margin-right: 20px">
               <div class="btn-group dropstart mb-1 ms-2" style="content: inherit">
-                <button class="btn dropdown-toggle text-info text-gradient" type="button" data-bs-toggle="dropdown" aria-expanded="true" style="background-color: transparent">
+                <button class="btn dropdown-toggle text-info text-gradient" type="button" data-bs-toggle="dropdown"
+                  aria-expanded="true" style="background-color: transparent">
                   Hi {{ username }}
                 </button>
                 <ul class="dropdown-menu dropdown-menu-dark">
@@ -32,7 +36,8 @@
                 <a href="/SignUp">
                   <ion-icon class="iconButton text-info text-gradient" src="assets/icon/signup.svg"></ion-icon>
                 </a>
-                <a href="/SignUp" class="d-none d-sm-inline-block mb-1 text-info text-gradient" style="text-decoration: none">&nbsp;Add User</a>
+                <a href="/SignUp" class="d-none d-sm-inline-block mb-1 text-info text-gradient"
+                  style="text-decoration: none">&nbsp;Add User</a>
                 <div>&nbsp;</div>
               </div>
             </ion-row>
@@ -47,15 +52,15 @@
           <ion-row class="ion-justify-content-between mb-4">
             <ion-col size-xl="4" size-md="4" size-xs="12">
               <h6 class="text-dark">Nama Peserta Didik</h6>
-              <h4 v-if="results.length != 0" class="text-dark">{{results.nama_peserta_didik.nama}}</h4>
+              <h4 v-if="results.length != 0" class="text-dark">{{ results.nama_peserta_didik.nama }}</h4>
             </ion-col>
             <ion-col size-xl="2" size-md="2" size-xs="12">
               <h6 class="text-dark">Rombel</h6>
-              <h4 v-if="results.length != 0" class="text-dark">{{results.nama_peserta_didik.tahun_ajaran}}</h4>
+              <h4 v-if="results.length != 0" class="text-dark">{{ results.nama_peserta_didik.tahun_ajaran }}</h4>
             </ion-col>
             <ion-col size-xl="1" size-md="1" size-xs="12">
               <h6 class="text-dark">Kelas</h6>
-              <h4 v-if="results.length != 0" class="text-dark">{{results.nama_peserta_didik.tingkat_kelas}}</h4>
+              <h4 v-if="results.length != 0" class="text-dark">{{ results.nama_peserta_didik.tingkat_kelas }}</h4>
             </ion-col>
             <!-- <ion-col size-xl="2" size-md="2" size-xs="12">
               <h6 class="text-dark">Kelompok Usia</h6>
@@ -63,7 +68,7 @@
             </ion-col> -->
             <ion-col size-xl="3" size-md="3" size-xs="12">
               <h6 class="text-dark">Nomor Induk</h6>
-              <h4 v-if="results.length != 0" class="text-dark">{{results.nama_peserta_didik.nomor_induk}}</h4>
+              <h4 v-if="results.length != 0" class="text-dark">{{ results.nama_peserta_didik.nomor_induk }}</h4>
             </ion-col>
           </ion-row>
         </ion-card-header>
@@ -153,7 +158,7 @@
                           <ion-icon src=""></ion-icon>
                         </div>
                       </a>
-                      <a @click="delRapot('tengah_semester',2)">
+                      <a @click="delRapot('tengah_semester', 2)">
                         <div class="kotak kotak-merah">
                           <ion-icon src=""></ion-icon>
                         </div>
@@ -265,7 +270,7 @@ export default defineComponent({
     };
 
     axios
-      .get("http://localhost:5000/API/rapor/" + this.id_siswa, { headers })
+      .get("http://31.187.72.73:81/API/rapor/" + this.id_siswa, { headers })
       .then((response) => {
         this.results = response.data.rapor;
         this.results.nama_peserta_didik = response.data.nama_peserta_didik;
@@ -282,7 +287,7 @@ export default defineComponent({
       };
 
       axios
-        .delete("http://localhost:5000/API/auth/logout", { headers })
+        .delete("http://31.187.72.73:81/API/auth/logout", { headers })
         .then((response) => {
           console.log(response);
           localStorage.clear();
@@ -316,9 +321,9 @@ export default defineComponent({
       let headers = {
         Authorization: "Bearer " + localStorage.getItem("access_token"),
       };
-      
+
       axios
-        .delete("http://localhost:5000/API/rapor/detail/" + this.id_siswa + "/"+ semester +"/" + periode, { headers })
+        .delete("http://31.187.72.73:81/API/rapor/detail/" + this.id_siswa + "/" + semester + "/" + periode, { headers })
         .then((response) => {
           console.log(response);
           window.location.reload();
@@ -402,7 +407,7 @@ a .iconButton {
   top: -1.5px;
 }
 
-.btn-search:focus ~ .input-search {
+.btn-search:focus~.input-search {
   width: 230px;
   border-radius: 10px;
   background-color: white;
@@ -464,7 +469,7 @@ th {
   white-space: nowrap;
 }
 
-.tables > :not(:last-child) > :last-child > * {
+.tables> :not(:last-child)> :last-child>* {
   border-bottom-color: black;
 }
 
@@ -539,7 +544,7 @@ td {
 /* small laptop dimension */
 
 @media only screen and (max-width: 1280px) {
-  .btn-search:focus ~ .input-search {
+  .btn-search:focus~.input-search {
     width: 250px;
   }
 
@@ -561,7 +566,7 @@ td {
 /* tablet dimension */
 
 @media only screen and (max-width: 990px) {
-  .btn-search:focus ~ .input-search {
+  .btn-search:focus~.input-search {
     width: 200px;
   }
 
@@ -609,7 +614,7 @@ td {
     right: 34%;
   }
 
-  .btn-search:focus ~ .input-search {
+  .btn-search:focus~.input-search {
     width: 200px;
   }
 
@@ -626,7 +631,7 @@ td {
     right: 41%;
   }
 
-  .btn-search:focus ~ .input-search {
+  .btn-search:focus~.input-search {
     width: 180px;
   }
 
@@ -641,7 +646,7 @@ td {
     right: 50%;
   }
 
-  .btn-search:focus ~ .input-search {
+  .btn-search:focus~.input-search {
     width: 150px;
   }
 

@@ -188,8 +188,8 @@ export default defineComponent({
         Authorization: "Bearer " + localStorage.getItem("access_token"),
       };
 
-      axios 
-        .delete("http://localhost:5000/API/auth/logout", { headers })
+      axios
+        .delete("http://31.187.72.73:81/API/auth/logout", { headers })
         .then((response) => {
           console.log(response);
           localStorage.clear();
@@ -222,7 +222,7 @@ export default defineComponent({
         });
         console.log(json);
         axios
-          .post("http://localhost:5000/API/sarpras/" + this.id, json, {
+          .post("http://31.187.72.73:81/API/sarpras/" + this.id, json, {
             headers: {
               "Access-Control-Allow-Origin": "*",
               "Access-Control-Allow-Credentials": "true",

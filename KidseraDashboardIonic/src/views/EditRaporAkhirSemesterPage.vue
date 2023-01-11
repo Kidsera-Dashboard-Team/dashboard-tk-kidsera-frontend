@@ -2764,7 +2764,7 @@ export default defineComponent({
         });
         console.log(json);
         await axios
-          .put("http://localhost:5000/API/rapor/detail/" + this.id_siswa + "/akhir_semester/" + this.semester, json, {
+          .put("http://31.187.72.73:81/API/rapor/detail/" + this.id_siswa + "/akhir_semester/" + this.semester, json, {
             headers: {
               "Access-Control-Allow-Origin": "*",
               "Access-Control-Allow-Credentials": "true",
@@ -2800,7 +2800,7 @@ export default defineComponent({
   },
   mounted: function () {
     axios
-      .get("http://localhost:5000/API/rapor/detail/" + this.id_siswa + "/akhir_semester/" + this.semester)
+      .get("http://31.187.72.73:81/API/rapor/detail/" + this.id_siswa + "/akhir_semester/" + this.semester)
       .then((response) => {
         this.results = response.data.rapor[0].nilai;
         this.formData.aaa = this.results[0][0].a;

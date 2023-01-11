@@ -168,7 +168,7 @@ export default defineComponent({
   },
   mounted: function () {
     axios
-      .get("http://localhost:5000/API/rombel/" + this.tahun + "/" + this.kelas)
+      .get("http://31.187.72.73:81/API/rombel/" + this.tahun + "/" + this.kelas)
       .then((response) => {
         this.formData.tahun_ajaran = response.data.rombel.tahun_ajaran;
         this.formData.ruangan = response.data.rombel.ruangan;
@@ -195,7 +195,7 @@ export default defineComponent({
         });
         console.log(json);
         await axios
-          .put("http://localhost:5000/API/rombel/" + this.tahun + "/" + this.kelas, json, {
+          .put("http://31.187.72.73:81/API/rombel/" + this.tahun + "/" + this.kelas, json, {
             headers: {
               "Access-Control-Allow-Origin": "*",
               "Access-Control-Allow-Credentials": "true",

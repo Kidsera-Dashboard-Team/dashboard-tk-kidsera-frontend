@@ -71,9 +71,9 @@
                 <div class="card-content">
                   <ion-card class="card-content-judul" @click="() => router.push('/pages/Rapor/' + tahun + '/B')">
                     <ion-card-content class="ion-margin text-center" style="margin: 70px">
-                        <ion-card-title>
-                          <p>TK B</p>
-                        </ion-card-title>
+                      <ion-card-title>
+                        <p>TK B</p>
+                      </ion-card-title>
                     </ion-card-content>
                   </ion-card>
                 </div>
@@ -127,7 +127,7 @@ export default defineComponent({
       };
 
       axios
-        .delete("http://localhost:5000/API/auth/logout", { headers })
+        .delete("http://31.187.72.73:81/API/auth/logout", { headers })
         .then((response) => {
           console.log(response);
           localStorage.clear();

@@ -148,7 +148,7 @@ export default defineComponent({
   },
   mounted: function () {
     axios
-      .get("http://localhost:5000/API/rapor/detail/" + this.id_siswa + "/tengah_semester/" + this.semester)
+      .get("http://31.187.72.73:81/API/rapor/detail/" + this.id_siswa + "/tengah_semester/" + this.semester)
       .then((response) => {
         this.results = response.data.rapor[0].nilai;
         this.text1 = this.results[0][0].text1;
@@ -170,7 +170,7 @@ export default defineComponent({
       };
 
       axios
-        .delete("http://localhost:5000/API/auth/logout", { headers })
+        .delete("http://31.187.72.73:81/API/auth/logout", { headers })
         .then((response) => {
           console.log(response);
           localStorage.clear();

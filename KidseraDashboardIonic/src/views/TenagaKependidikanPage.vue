@@ -201,7 +201,7 @@ export default defineComponent({
       };
 
       axios
-        .get("http://localhost:5000/API/tendik/guru", { headers })
+        .get("http://31.187.72.73:81/API/tendik/guru", { headers })
         .then((response) => {
           this.guruList = response.data;
           console.log(response.data);
@@ -219,7 +219,7 @@ export default defineComponent({
         });
 
       axios
-        .get("http://localhost:5000/API/tendik/nonguru", { headers })
+        .get("http://31.187.72.73:81/API/tendik/nonguru", { headers })
         .then((response) => {
           this.nonGuruList = response.data;
           console.log(response.data);
@@ -247,7 +247,7 @@ export default defineComponent({
       };
 
       axios
-        .delete("http://localhost:5000/API/auth/logout", { headers })
+        .delete("http://31.187.72.73:81/API/auth/logout", { headers })
         .then((response) => {
           console.log(response);
           localStorage.clear();
@@ -271,7 +271,7 @@ export default defineComponent({
       };
 
       axios
-        .delete("http://localhost:5000/API/tendik/" + id, { headers })
+        .delete("http://31.187.72.73:81/API/tendik/" + id, { headers })
         .then((response) => {
           console.log(response);
           window.location.reload();

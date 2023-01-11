@@ -147,7 +147,7 @@ export default defineComponent({
   },
   mounted: function () {
     axios
-      .get("http://localhost:5000/API/rombel/" + this.tahun + "/" + this.kelas)
+      .get("http://31.187.72.73:81/API/rombel/" + this.tahun + "/" + this.kelas)
       .then((response) => {
         this.results = response.data;
         this.results.ruangan = response.data.rombel.ruangan;
@@ -167,7 +167,7 @@ export default defineComponent({
       };
 
       axios
-        .delete("http://localhost:5000/API/auth/logout", { headers })
+        .delete("http://31.187.72.73:81/API/auth/logout", { headers })
         .then((response) => {
           console.log(response);
           localStorage.clear();

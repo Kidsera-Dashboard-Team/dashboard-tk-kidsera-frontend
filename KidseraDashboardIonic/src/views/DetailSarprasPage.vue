@@ -153,7 +153,7 @@ export default defineComponent({
       Authorization: "Bearer " + localStorage.getItem("access_token"),
     };
     axios
-      .get("http://localhost:5000/API/sarpras/" + this.id, { headers })
+      .get("http://31.187.72.73:81/API/sarpras/" + this.id, { headers })
       .then((response) => {
         this.fasilSarpras = response.data['sarpras'];
         this.namaRuang = response.data['nama_ruangan']
@@ -180,7 +180,7 @@ export default defineComponent({
       };
 
       axios
-        .delete("http://localhost:5000/API/auth/logout", { headers })
+        .delete("http://31.187.72.73:81/API/auth/logout", { headers })
         .then((response) => {
           console.log(response);
           localStorage.clear();
@@ -205,7 +205,7 @@ export default defineComponent({
       };
 
       axios
-        .delete("http://localhost:5000/API/sarpras_detail/" + id, { headers })
+        .delete("http://31.187.72.73:81/API/sarpras_detail/" + id, { headers })
         .then((response) => {
           console.log(response);
           window.location.reload();
